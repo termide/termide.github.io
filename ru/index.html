@@ -30,23 +30,47 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body class="scanlines">
-    <!-- Language Switcher -->
-    <div class="lang-switcher">
-        <a href="../index.html">EN</a>
-        <span class="divider">/</span>
-        <a href="index.html" class="active">RU</a>
-    </div>
+    <!-- Hero Slides Data -->
+    <script>
+        window.heroSlides = [
+            { text: "Терминальная IDE для хакеров", image: "../assets/screenshots/editor.png" },
+            { text: "Навигация по проектам как у профи", image: "../assets/screenshots/file-manager.png" },
+            { text: "Подсветка синтаксиса 17+ языков", image: "../assets/screenshots/editor.png" },
+            { text: "Отслеживай. Коммить. Пуш. Всё в TUI", image: "../assets/screenshots/git.png" },
+            { text: "Команды без выхода из редактора", image: "../assets/screenshots/terminal.png" },
+            { text: "Темы. Сессии. Твой воркфлоу", image: "../assets/screenshots/themes.png" }
+        ];
+    </script>
 
-    <!-- Hero Section -->
-    <header class="hero">
-        <div class="hero-bg"></div>
-        <div class="container">
-            <div class="hero-content">
-                <img src="../assets/logo.svg" alt="TermIDE Logo" class="logo neon-glow">
-                <h1 class="glitch" data-text="TermIDE">TermIDE</h1>
+    <!-- Menubar - Full Width -->
+    <nav class="menubar">
+        <div class="menubar-logo">TermIDE</div>
+        <div class="menubar-nav">
+            <a href="#features">Функции</a>
+            <a href="#screenshots">Темы</a>
+            <a href="#compare">Сравнение</a>
+            <a href="#install">Установка</a>
+        </div>
+        <div class="lang-switcher">
+            <a href="../index.html">EN</a>
+            <span class="divider">/</span>
+            <a href="index.html" class="active">RU</a>
+        </div>
+    </nav>
+
+    <!-- Page Container -->
+    <main class="page-container">
+        <!-- Hero Header -->
+        <div class="hero-header">
+            <img src="../assets/logo.svg" alt="TermIDE Logo" class="logo">
+            <h1 class="glitch" data-text="TermIDE">TermIDE</h1>
+        </div>
+
+        <!-- Hero Carousel 50/50 -->
+        <div class="hero-carousel">
+            <div class="hero-carousel-content">
                 <p class="tagline">
-                    <span class="typewriter">Терминальная IDE для хакеров</span>
-                    <span class="cursor">_</span>
+                    <span class="typewriter"></span><span class="cursor">_</span>
                 </p>
                 <p class="subtitle">Написана на Rust. Работает из коробки. Всё включено.</p>
                 <div class="cta-buttons">
@@ -58,7 +82,7 @@
                     </a>
                 </div>
             </div>
-            <div class="hero-image">
+            <div class="hero-carousel-image">
                 <div class="terminal-frame neon-border">
                     <div class="terminal-header">
                         <span class="terminal-dot red"></span>
@@ -66,252 +90,316 @@
                         <span class="terminal-dot green"></span>
                         <span class="terminal-title">termide</span>
                     </div>
-                    <img src="../assets/termide.jpg" alt="TermIDE Screenshot" class="screenshot">
+                    <div class="hero-screenshots">
+                        <img src="../assets/screenshots/editor.png" alt="Редактор TermIDE" class="screenshot active">
+                        <img src="../assets/screenshots/file-manager.png" alt="Файловый менеджер" class="screenshot">
+                        <img src="../assets/screenshots/editor.png" alt="Подсветка синтаксиса" class="screenshot">
+                        <img src="../assets/screenshots/git.png" alt="Git интеграция" class="screenshot">
+                        <img src="../assets/screenshots/terminal.png" alt="Терминал" class="screenshot">
+                        <img src="../assets/screenshots/themes.png" alt="Темы" class="screenshot">
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="scroll-indicator">
-            <span class="arrow">&#x25BC;</span>
-        </div>
-    </header>
 
-    <!-- Features Section -->
-    <section id="features" class="features">
-        <div class="container">
+        <!-- Features Section -->
+        <section id="features" class="features">
             <h2 class="section-title glitch-hover">// Возможности</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">&gt;_</div>
-                    <h3>Встроенный терминал</h3>
-                    <p>Полная поддержка PTY с историей прокрутки. Выполняйте команды, не покидая IDE.</p>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">&gt;_</div>
+                        <h3>Встроенный терминал</h3>
+                        <p>Полная поддержка PTY с историей прокрутки. Выполняйте команды, не покидая IDE.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">[]</div>
+                        <h3>Файловый менеджер</h3>
+                        <p>Двухпанельная навигация с glob-поиском, пакетными операциями и индикаторами Git.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">{}</div>
+                        <h3>Подсветка синтаксиса</h3>
+                        <p>17+ языков на базе tree-sitter. Rust, Python, JavaScript, Go и другие.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">+-</div>
+                        <h3>Git интеграция</h3>
+                        <p>Панель статуса, история коммитов, inline diff, маркеры изменений. Stage, commit, push из TUI.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">#*</div>
+                        <h3>12 тем оформления</h3>
+                        <p>Dracula, Nord, Monokai, Solarized, OneDark и другие. Создавайте свои темы в TOML.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">%%</div>
+                        <h3>Мониторинг ресурсов</h3>
+                        <p>CPU, RAM и использование диска в реальном времени. Цветовая индикация в статус-баре.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">@!</div>
+                        <h3>Многоязычный UI</h3>
+                        <p>Интерфейс на 9 языках: русский, английский, китайский, немецкий, французский и другие.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">::</div>
+                        <h3>Сессии</h3>
+                        <p>Сохраняйте и восстанавливайте рабочее пространство. Переключайтесь между проектами.</p>
+                    </div>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">[]</div>
-                    <h3>Файловый менеджер</h3>
-                    <p>Двухпанельная навигация с glob-поиском, пакетными операциями и индикаторами Git.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">{}</div>
-                    <h3>Подсветка синтаксиса</h3>
-                    <p>17+ языков на базе tree-sitter. Rust, Python, JavaScript, Go и другие.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">+-</div>
-                    <h3>Git интеграция</h3>
-                    <p>Панель статуса, история коммитов, inline diff, маркеры изменений. Stage, commit, push из TUI.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">#*</div>
-                    <h3>12 тем оформления</h3>
-                    <p>Dracula, Nord, Monokai, Solarized, OneDark и другие. Создавайте свои темы в TOML.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">%%</div>
-                    <h3>Мониторинг ресурсов</h3>
-                    <p>CPU, RAM и использование диска в реальном времени. Цветовая индикация в статус-баре.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">@!</div>
-                    <h3>Многоязычный UI</h3>
-                    <p>Интерфейс на 9 языках: русский, английский, китайский, немецкий, французский и другие.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">::</div>
-                    <h3>Сессии</h3>
-                    <p>Сохраняйте и восстанавливайте рабочее пространство. Переключайтесь между проектами.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Screenshots Gallery -->
-    <section id="screenshots" class="screenshots">
-        <div class="container">
+        <!-- Screenshots Gallery -->
+        <section id="screenshots" class="screenshots">
             <h2 class="section-title glitch-hover">// Галерея тем</h2>
-            <p class="section-subtitle">Выбери свой стиль. Или создай собственный.</p>
-            <div class="gallery">
-                <div class="gallery-item" data-theme="dracula">
-                    <div class="gallery-frame neon-border-hover">
-                        <img src="../assets/dracula.png" alt="Тема Dracula" loading="lazy">
-                        <div class="gallery-overlay">
-                            <span class="theme-name">Dracula</span>
+                <p class="section-subtitle">Выбери свой стиль. Или создай собственный.</p>
+                <div class="gallery">
+                    <div class="gallery-item" data-theme="dracula">
+                        <div class="gallery-frame neon-border-hover">
+                            <img src="../assets/themes/dracula.png" alt="Тема Dracula" loading="lazy">
+                            <div class="gallery-overlay">
+                                <span class="theme-name">Dracula</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-theme="monokai">
+                        <div class="gallery-frame neon-border-hover">
+                            <img src="../assets/themes/monokai.png" alt="Тема Monokai" loading="lazy">
+                            <div class="gallery-overlay">
+                                <span class="theme-name">Monokai</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-theme="nord">
+                        <div class="gallery-frame neon-border-hover">
+                            <img src="../assets/themes/nord.png" alt="Тема Nord" loading="lazy">
+                            <div class="gallery-overlay">
+                                <span class="theme-name">Nord</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-theme="onedark">
+                        <div class="gallery-frame neon-border-hover">
+                            <img src="../assets/themes/onedark.png" alt="Тема One Dark" loading="lazy">
+                            <div class="gallery-overlay">
+                                <span class="theme-name">One Dark</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-theme="solarized-dark">
+                        <div class="gallery-frame neon-border-hover">
+                            <img src="../assets/themes/solarized-dark.png" alt="Тема Solarized Dark" loading="lazy">
+                            <div class="gallery-overlay">
+                                <span class="theme-name">Solarized Dark</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-theme="solarized-light">
+                        <div class="gallery-frame neon-border-hover">
+                            <img src="../assets/themes/solarized-light.png" alt="Тема Solarized Light" loading="lazy">
+                            <div class="gallery-overlay">
+                                <span class="theme-name">Solarized Light</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-theme="github-light">
+                        <div class="gallery-frame neon-border-hover">
+                            <img src="../assets/themes/github-light.png" alt="Тема GitHub Light" loading="lazy">
+                            <div class="gallery-overlay">
+                                <span class="theme-name">GitHub Light</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-theme="macos-dark">
+                        <div class="gallery-frame neon-border-hover">
+                            <img src="../assets/themes/macos-dark.png" alt="Тема macOS Dark" loading="lazy">
+                            <div class="gallery-overlay">
+                                <span class="theme-name">macOS Dark</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-theme="macos-light">
+                        <div class="gallery-frame neon-border-hover">
+                            <img src="../assets/themes/macos-light.png" alt="Тема macOS Light" loading="lazy">
+                            <div class="gallery-overlay">
+                                <span class="theme-name">macOS Light</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-theme="atom-one-light">
+                        <div class="gallery-frame neon-border-hover">
+                            <img src="../assets/themes/atom-one-light.png" alt="Тема Atom One Light" loading="lazy">
+                            <div class="gallery-overlay">
+                                <span class="theme-name">Atom One Light</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-theme="ayu-light">
+                        <div class="gallery-frame neon-border-hover">
+                            <img src="../assets/themes/ayu-light.png" alt="Тема Ayu Light" loading="lazy">
+                            <div class="gallery-overlay">
+                                <span class="theme-name">Ayu Light</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-theme="material-lighter">
+                        <div class="gallery-frame neon-border-hover">
+                            <img src="../assets/themes/material-lighter.png" alt="Тема Material Lighter" loading="lazy">
+                            <div class="gallery-overlay">
+                                <span class="theme-name">Material Lighter</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-theme="far-manager">
+                        <div class="gallery-frame neon-border-hover">
+                            <img src="../assets/themes/far-manager.png" alt="Тема Far Manager" loading="lazy">
+                            <div class="gallery-overlay">
+                                <span class="theme-name">Far Manager</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-theme="norton-commander">
+                        <div class="gallery-frame neon-border-hover">
+                            <img src="../assets/themes/norton-commander.png" alt="Тема Norton Commander" loading="lazy">
+                            <div class="gallery-overlay">
+                                <span class="theme-name">Norton Commander</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-theme="midnight">
+                        <div class="gallery-frame neon-border-hover">
+                            <img src="../assets/themes/midnight.png" alt="Тема Midnight" loading="lazy">
+                            <div class="gallery-overlay">
+                                <span class="theme-name">Midnight</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-theme="volkov-commander">
+                        <div class="gallery-frame neon-border-hover">
+                            <img src="../assets/themes/volkov-commander.png" alt="Тема Volkov Commander" loading="lazy">
+                            <div class="gallery-overlay">
+                                <span class="theme-name">Volkov Commander</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-theme="windows-95">
+                        <div class="gallery-frame neon-border-hover">
+                            <img src="../assets/themes/windows-95.png" alt="Тема Windows 95" loading="lazy">
+                            <div class="gallery-overlay">
+                                <span class="theme-name">Windows 95</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-theme="windows-xp">
+                        <div class="gallery-frame neon-border-hover">
+                            <img src="../assets/themes/windows-xp.png" alt="Тема Windows XP" loading="lazy">
+                            <div class="gallery-overlay">
+                                <span class="theme-name">Windows XP</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="gallery-item" data-theme="monokai">
-                    <div class="gallery-frame neon-border-hover">
-                        <img src="../assets/monokai.png" alt="Тема Monokai" loading="lazy">
-                        <div class="gallery-overlay">
-                            <span class="theme-name">Monokai</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- Placeholders for future screenshots -->
-                <div class="gallery-item placeholder" data-theme="nord">
-                    <div class="gallery-frame">
-                        <div class="screenshot-placeholder">
-                            <span class="placeholder-icon">[ ]</span>
-                            <span class="placeholder-text">Nord</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="gallery-item placeholder" data-theme="solarized">
-                    <div class="gallery-frame">
-                        <div class="screenshot-placeholder">
-                            <span class="placeholder-icon">[ ]</span>
-                            <span class="placeholder-text">Solarized</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Comparison Section -->
-    <section id="compare" class="comparison">
-        <div class="container">
+        <!-- Comparison Section -->
+        <section id="compare" class="comparison">
             <h2 class="section-title glitch-hover">// Почему TermIDE?</h2>
-            <p class="section-subtitle">Всё необходимое уже включено.</p>
-            <div class="table-wrapper">
-                <table class="comparison-table">
-                    <thead>
-                        <tr>
-                            <th>Функция</th>
-                            <th class="highlight">TermIDE</th>
-                            <th>Vim/Neovim</th>
-                            <th>Helix</th>
-                            <th>Micro</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Встроенный терминал</td>
-                            <td class="highlight"><span class="check">&#10003;</span></td>
-                            <td><span class="plugin">плагин</span></td>
-                            <td><span class="cross">&#10007;</span></td>
-                            <td><span class="cross">&#10007;</span></td>
-                        </tr>
-                        <tr>
-                            <td>Файловый менеджер</td>
-                            <td class="highlight"><span class="check">&#10003;</span></td>
-                            <td><span class="plugin">плагин</span></td>
-                            <td><span class="cross">&#10007;</span></td>
-                            <td><span class="cross">&#10007;</span></td>
-                        </tr>
-                        <tr>
-                            <td>Git интеграция</td>
-                            <td class="highlight"><span class="check">&#10003;</span></td>
-                            <td><span class="plugin">плагин</span></td>
-                            <td><span class="cross">&#10007;</span></td>
-                            <td><span class="cross">&#10007;</span></td>
-                        </tr>
-                        <tr>
-                            <td>Подсветка синтаксиса</td>
-                            <td class="highlight"><span class="check">&#10003;</span></td>
-                            <td><span class="check">&#10003;</span></td>
-                            <td><span class="check">&#10003;</span></td>
-                            <td><span class="check">&#10003;</span></td>
-                        </tr>
-                        <tr>
-                            <td>Работает из коробки</td>
-                            <td class="highlight"><span class="check">&#10003;</span></td>
-                            <td><span class="cross">&#10007;</span></td>
-                            <td><span class="check">&#10003;</span></td>
-                            <td><span class="check">&#10003;</span></td>
-                        </tr>
-                        <tr>
-                            <td>Мониторинг ресурсов</td>
-                            <td class="highlight"><span class="check">&#10003;</span></td>
-                            <td><span class="cross">&#10007;</span></td>
-                            <td><span class="cross">&#10007;</span></td>
-                            <td><span class="cross">&#10007;</span></td>
-                        </tr>
-                        <tr>
-                            <td>Просмотр изображений</td>
-                            <td class="highlight"><span class="check">&#10003;</span></td>
-                            <td><span class="plugin">плагин</span></td>
-                            <td><span class="cross">&#10007;</span></td>
-                            <td><span class="cross">&#10007;</span></td>
-                        </tr>
-                        <tr>
-                            <td>Сессии</td>
-                            <td class="highlight"><span class="check">&#10003;</span></td>
-                            <td><span class="plugin">плагин</span></td>
-                            <td><span class="cross">&#10007;</span></td>
-                            <td><span class="cross">&#10007;</span></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </section>
+                <p class="section-subtitle">Всё необходимое уже включено.</p>
+                <div class="table-wrapper">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Функция</th>
+                                <th class="highlight">TermIDE</th>
+                                <th>Vim/Neovim</th>
+                                <th>Helix</th>
+                                <th>Micro</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Встроенный терминал</td>
+                                <td class="highlight"><span class="check">&#10003;</span></td>
+                                <td><span class="plugin">плагин</span></td>
+                                <td><span class="cross">&#10007;</span></td>
+                                <td><span class="cross">&#10007;</span></td>
+                            </tr>
+                            <tr>
+                                <td>Файловый менеджер</td>
+                                <td class="highlight"><span class="check">&#10003;</span></td>
+                                <td><span class="plugin">плагин</span></td>
+                                <td><span class="cross">&#10007;</span></td>
+                                <td><span class="cross">&#10007;</span></td>
+                            </tr>
+                            <tr>
+                                <td>Git интеграция</td>
+                                <td class="highlight"><span class="check">&#10003;</span></td>
+                                <td><span class="plugin">плагин</span></td>
+                                <td><span class="cross">&#10007;</span></td>
+                                <td><span class="cross">&#10007;</span></td>
+                            </tr>
+                            <tr>
+                                <td>Подсветка синтаксиса</td>
+                                <td class="highlight"><span class="check">&#10003;</span></td>
+                                <td><span class="check">&#10003;</span></td>
+                                <td><span class="check">&#10003;</span></td>
+                                <td><span class="check">&#10003;</span></td>
+                            </tr>
+                            <tr>
+                                <td>Работает из коробки</td>
+                                <td class="highlight"><span class="check">&#10003;</span></td>
+                                <td><span class="cross">&#10007;</span></td>
+                                <td><span class="check">&#10003;</span></td>
+                                <td><span class="check">&#10003;</span></td>
+                            </tr>
+                            <tr>
+                                <td>Мониторинг ресурсов</td>
+                                <td class="highlight"><span class="check">&#10003;</span></td>
+                                <td><span class="cross">&#10007;</span></td>
+                                <td><span class="cross">&#10007;</span></td>
+                                <td><span class="cross">&#10007;</span></td>
+                            </tr>
+                            <tr>
+                                <td>Просмотр изображений</td>
+                                <td class="highlight"><span class="check">&#10003;</span></td>
+                                <td><span class="plugin">плагин</span></td>
+                                <td><span class="cross">&#10007;</span></td>
+                                <td><span class="cross">&#10007;</span></td>
+                            </tr>
+                            <tr>
+                                <td>Сессии</td>
+                                <td class="highlight"><span class="check">&#10003;</span></td>
+                                <td><span class="plugin">плагин</span></td>
+                                <td><span class="cross">&#10007;</span></td>
+                                <td><span class="cross">&#10007;</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+        </section>
 
-    <!-- Installation Section -->
-    <section id="install" class="installation">
-        <div class="container">
+        <!-- Installation Section -->
+        <section id="install" class="installation">
             <h2 class="section-title glitch-hover">// Установка</h2>
-            <p class="section-subtitle">Выберите удобный способ.</p>
-            <div class="install-grid">
-                <div class="install-card">
-                    <h3><span class="icon">&#127866;</span> Homebrew</h3>
-                    <p class="platform">macOS / Linux</p>
-                    <div class="code-block">
-                        <code>brew install termide/tap/termide</code>
-                        <button class="copy-btn" data-copy="brew install termide/tap/termide" title="Копировать">
-                            <span class="copy-icon">[&nbsp;]</span>
-                        </button>
+                <p class="section-subtitle">Одна команда — и готово.</p>
+                <div class="install-grid">
+                    <div class="install-card full-width">
+                        <h3><span class="icon">&#9889;</span> Быстрая установка</h3>
+                        <p class="platform">Linux / macOS — автоопределение системы</p>
+                        <div class="code-block">
+                            <code>curl -fsSL https://raw.githubusercontent.com/termide/termide/main/install.sh | sh</code>
+                            <button class="copy-btn" data-copy="curl -fsSL https://raw.githubusercontent.com/termide/termide/main/install.sh | sh" title="Копировать">
+                                <span class="copy-icon">&#128203;</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
-                <div class="install-card">
-                    <h3><span class="icon">&#128230;</span> Arch Linux</h3>
-                    <p class="platform">AUR</p>
-                    <div class="code-block">
-                        <code>yay -S termide-bin</code>
-                        <button class="copy-btn" data-copy="yay -S termide-bin" title="Копировать">
-                            <span class="copy-icon">[&nbsp;]</span>
-                        </button>
-                    </div>
-                </div>
-                <div class="install-card">
-                    <h3><span class="icon">&#9881;</span> Cargo</h3>
-                    <p class="platform">Rust 1.70+</p>
-                    <div class="code-block">
-                        <code>cargo install termide</code>
-                        <button class="copy-btn" data-copy="cargo install termide" title="Копировать">
-                            <span class="copy-icon">[&nbsp;]</span>
-                        </button>
-                    </div>
-                </div>
-                <div class="install-card">
-                    <h3><span class="icon">&#10052;</span> Nix</h3>
-                    <p class="platform">NixOS / Flakes</p>
-                    <div class="code-block">
-                        <code>nix run github:termide/termide</code>
-                        <button class="copy-btn" data-copy="nix run github:termide/termide" title="Копировать">
-                            <span class="copy-icon">[&nbsp;]</span>
-                        </button>
-                    </div>
-                </div>
-                <div class="install-card full-width">
-                    <h3><span class="icon">&#128190;</span> Скачать бинарник</h3>
-                    <p class="platform">Linux x86_64 / ARM64 / macOS</p>
-                    <div class="code-block">
-                        <code>curl -fsSL https://github.com/termide/termide/releases/latest/download/termide-linux-x86_64.tar.gz | tar xz</code>
-                        <button class="copy-btn" data-copy="curl -fsSL https://github.com/termide/termide/releases/latest/download/termide-linux-x86_64.tar.gz | tar xz" title="Копировать">
-                            <span class="copy-icon">[&nbsp;]</span>
-                        </button>
-                    </div>
-                    <a href="https://github.com/termide/termide/releases" class="releases-link" target="_blank" rel="noopener">
-                        Все релизы &rarr;
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <!-- Footer -->
+    <!-- Footer - Full Width -->
     <footer class="footer">
-        <div class="container">
+        <div class="footer-inner">
             <div class="footer-content">
                 <div class="footer-logo">
                     <img src="../assets/logo.svg" alt="TermIDE" class="footer-logo-img">

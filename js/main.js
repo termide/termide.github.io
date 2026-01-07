@@ -1,11 +1,109 @@
 // TermIDE Landing Page - Main JavaScript
 
 document.addEventListener('DOMContentLoaded', () => {
+    initHeroCarousel();
     initCopyButtons();
     initLightbox();
     initSmoothScroll();
     initScrollAnimations();
+    initActiveSection();
 });
+
+// Hero Carousel with Typewriter Effect
+function initHeroCarousel() {
+    const typewriterEl = document.querySelector('.typewriter');
+    const cursorEl = document.querySelector('.cursor');
+    const screenshotsContainer = document.querySelector('.hero-screenshots');
+
+    if (!typewriterEl || !screenshotsContainer) return;
+
+    // Get slides data from HTML data attribute or use defaults
+    const slidesData = window.heroSlides || [
+        { text: "The terminal-native IDE for hackers", image: "termide.jpg" }
+    ];
+
+    const screenshots = screenshotsContainer.querySelectorAll('.screenshot, .screenshot-placeholder');
+
+    let currentSlide = 0;
+    let isTyping = false;
+
+    const TYPING_SPEED = 50;      // ms per character
+    const ERASING_SPEED = 30;     // ms per character
+    const PAUSE_AFTER_TYPE = 5000; // 5 seconds pause
+    const PAUSE_AFTER_ERASE = 500; // brief pause before next slide
+
+    // Typewriter effect - type text
+    function typeText(text, callback) {
+        isTyping = true;
+        let i = 0;
+        typewriterEl.textContent = '';
+
+        function type() {
+            if (i < text.length) {
+                typewriterEl.textContent += text.charAt(i);
+                i++;
+                setTimeout(type, TYPING_SPEED);
+            } else {
+                isTyping = false;
+                if (callback) callback();
+            }
+        }
+        type();
+    }
+
+    // Typewriter effect - erase text
+    function eraseText(callback) {
+        isTyping = true;
+        let text = typewriterEl.textContent;
+
+        function erase() {
+            if (text.length > 0) {
+                text = text.slice(0, -1);
+                typewriterEl.textContent = text;
+                setTimeout(erase, ERASING_SPEED);
+            } else {
+                isTyping = false;
+                if (callback) callback();
+            }
+        }
+        erase();
+    }
+
+    // Switch screenshot
+    function showScreenshot(index) {
+        screenshots.forEach((s, i) => {
+            s.classList.toggle('active', i === index);
+        });
+    }
+
+    // Main carousel loop
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % slidesData.length;
+        showScreenshot(currentSlide);
+
+        setTimeout(() => {
+            typeText(slidesData[currentSlide].text, () => {
+                setTimeout(() => {
+                    eraseText(() => {
+                        setTimeout(nextSlide, PAUSE_AFTER_ERASE);
+                    });
+                }, PAUSE_AFTER_TYPE);
+            });
+        }, PAUSE_AFTER_ERASE);
+    }
+
+    // Initialize - show first slide
+    showScreenshot(0);
+    typeText(slidesData[0].text, () => {
+        if (slidesData.length > 1) {
+            setTimeout(() => {
+                eraseText(() => {
+                    setTimeout(nextSlide, PAUSE_AFTER_ERASE);
+                });
+            }, PAUSE_AFTER_TYPE);
+        }
+    });
+}
 
 // Copy to Clipboard
 function initCopyButtons() {
@@ -189,6 +287,33 @@ document.head.insertAdjacentHTML('beforeend', `
         }
     </style>
 `);
+
+// Active Section Highlighting
+function initActiveSection() {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.menubar-nav a');
+
+    if (!sections.length || !navLinks.length) return;
+
+    const observerOptions = {
+        root: null,
+        rootMargin: '-20% 0px -60% 0px',
+        threshold: 0
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                navLinks.forEach(link => {
+                    link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+                });
+            }
+        });
+    }, observerOptions);
+
+    sections.forEach(section => observer.observe(section));
+}
 
 // Console Easter Egg
 console.log('%c TermIDE ', 'background: #40ff40; color: #0a0a0f; font-size: 24px; font-weight: bold; font-family: monospace;');
