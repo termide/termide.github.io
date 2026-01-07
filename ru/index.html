@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TermIDE - Терминальная IDE для хакеров</title>
+    <meta name="description" content="Мощная терминальная IDE на Rust. Встроенный файловый менеджер, терминал, подсветка синтаксиса, Git интеграция и 12 тем. Работает из коробки.">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="TermIDE - Терминальная IDE для хакеров">
+    <meta property="og:description" content="Мощная терминальная IDE на Rust со встроенным файловым менеджером, терминалом и Git поддержкой.">
+    <meta property="og:image" content="../assets/termide.jpg">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="TermIDE - Терминальная IDE для хакеров">
+    <meta name="twitter:description" content="Мощная терминальная IDE на Rust.">
+    <meta name="twitter:image" content="../assets/termide.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="../assets/logo.svg">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="scanlines">
+    <!-- Language Switcher -->
+    <div class="lang-switcher">
+        <a href="../index.html">EN</a>
+        <span class="divider">/</span>
+        <a href="index.html" class="active">RU</a>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-bg"></div>
+        <div class="container">
+            <div class="hero-content">
+                <img src="../assets/logo.svg" alt="TermIDE Logo" class="logo neon-glow">
+                <h1 class="glitch" data-text="TermIDE">TermIDE</h1>
+                <p class="tagline">
+                    <span class="typewriter">Терминальная IDE для хакеров</span>
+                    <span class="cursor">_</span>
+                </p>
+                <p class="subtitle">Написана на Rust. Работает из коробки. Всё включено.</p>
+                <div class="cta-buttons">
+                    <a href="#install" class="btn btn-primary neon-border">
+                        <span class="btn-icon">$</span> Установить
+                    </a>
+                    <a href="https://github.com/termide/termide" class="btn btn-secondary" target="_blank" rel="noopener">
+                        <span class="btn-icon">&gt;</span> GitHub
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="terminal-frame neon-border">
+                    <div class="terminal-header">
+                        <span class="terminal-dot red"></span>
+                        <span class="terminal-dot yellow"></span>
+                        <span class="terminal-dot green"></span>
+                        <span class="terminal-title">termide</span>
+                    </div>
+                    <img src="../assets/termide.jpg" alt="TermIDE Screenshot" class="screenshot">
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span class="arrow">&#x25BC;</span>
+        </div>
+    </header>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title glitch-hover">// Возможности</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">&gt;_</div>
+                    <h3>Встроенный терминал</h3>
+                    <p>Полная поддержка PTY с историей прокрутки. Выполняйте команды, не покидая IDE.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">[]</div>
+                    <h3>Файловый менеджер</h3>
+                    <p>Двухпанельная навигация с glob-поиском, пакетными операциями и индикаторами Git.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">{}</div>
+                    <h3>Подсветка синтаксиса</h3>
+                    <p>17+ языков на базе tree-sitter. Rust, Python, JavaScript, Go и другие.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">+-</div>
+                    <h3>Git интеграция</h3>
+                    <p>Панель статуса, история коммитов, inline diff, маркеры изменений. Stage, commit, push из TUI.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">#*</div>
+                    <h3>12 тем оформления</h3>
+                    <p>Dracula, Nord, Monokai, Solarized, OneDark и другие. Создавайте свои темы в TOML.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">%%</div>
+                    <h3>Мониторинг ресурсов</h3>
+                    <p>CPU, RAM и использование диска в реальном времени. Цветовая индикация в статус-баре.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">@!</div>
+                    <h3>Многоязычный UI</h3>
+                    <p>Интерфейс на 9 языках: русский, английский, китайский, немецкий, французский и другие.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">::</div>
+                    <h3>Сессии</h3>
+                    <p>Сохраняйте и восстанавливайте рабочее пространство. Переключайтесь между проектами.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Screenshots Gallery -->
+    <section id="screenshots" class="screenshots">
+        <div class="container">
+            <h2 class="section-title glitch-hover">// Галерея тем</h2>
+            <p class="section-subtitle">Выбери свой стиль. Или создай собственный.</p>
+            <div class="gallery">
+                <div class="gallery-item" data-theme="dracula">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="../assets/dracula.png" alt="Тема Dracula" loading="lazy">
+                        <div class="gallery-overlay">
+                            <span class="theme-name">Dracula</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-theme="monokai">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="../assets/monokai.png" alt="Тема Monokai" loading="lazy">
+                        <div class="gallery-overlay">
+                            <span class="theme-name">Monokai</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Placeholders for future screenshots -->
+                <div class="gallery-item placeholder" data-theme="nord">
+                    <div class="gallery-frame">
+                        <div class="screenshot-placeholder">
+                            <span class="placeholder-icon">[ ]</span>
+                            <span class="placeholder-text">Nord</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item placeholder" data-theme="solarized">
+                    <div class="gallery-frame">
+                        <div class="screenshot-placeholder">
+                            <span class="placeholder-icon">[ ]</span>
+                            <span class="placeholder-text">Solarized</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Section -->
+    <section id="compare" class="comparison">
+        <div class="container">
+            <h2 class="section-title glitch-hover">// Почему TermIDE?</h2>
+            <p class="section-subtitle">Всё необходимое уже включено.</p>
+            <div class="table-wrapper">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Функция</th>
+                            <th class="highlight">TermIDE</th>
+                            <th>Vim/Neovim</th>
+                            <th>Helix</th>
+                            <th>Micro</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Встроенный терминал</td>
+                            <td class="highlight"><span class="check">&#10003;</span></td>
+                            <td><span class="plugin">плагин</span></td>
+                            <td><span class="cross">&#10007;</span></td>
+                            <td><span class="cross">&#10007;</span></td>
+                        </tr>
+                        <tr>
+                            <td>Файловый менеджер</td>
+                            <td class="highlight"><span class="check">&#10003;</span></td>
+                            <td><span class="plugin">плагин</span></td>
+                            <td><span class="cross">&#10007;</span></td>
+                            <td><span class="cross">&#10007;</span></td>
+                        </tr>
+                        <tr>
+                            <td>Git интеграция</td>
+                            <td class="highlight"><span class="check">&#10003;</span></td>
+                            <td><span class="plugin">плагин</span></td>
+                            <td><span class="cross">&#10007;</span></td>
+                            <td><span class="cross">&#10007;</span></td>
+                        </tr>
+                        <tr>
+                            <td>Подсветка синтаксиса</td>
+                            <td class="highlight"><span class="check">&#10003;</span></td>
+                            <td><span class="check">&#10003;</span></td>
+                            <td><span class="check">&#10003;</span></td>
+                            <td><span class="check">&#10003;</span></td>
+                        </tr>
+                        <tr>
+                            <td>Работает из коробки</td>
+                            <td class="highlight"><span class="check">&#10003;</span></td>
+                            <td><span class="cross">&#10007;</span></td>
+                            <td><span class="check">&#10003;</span></td>
+                            <td><span class="check">&#10003;</span></td>
+                        </tr>
+                        <tr>
+                            <td>Мониторинг ресурсов</td>
+                            <td class="highlight"><span class="check">&#10003;</span></td>
+                            <td><span class="cross">&#10007;</span></td>
+                            <td><span class="cross">&#10007;</span></td>
+                            <td><span class="cross">&#10007;</span></td>
+                        </tr>
+                        <tr>
+                            <td>Просмотр изображений</td>
+                            <td class="highlight"><span class="check">&#10003;</span></td>
+                            <td><span class="plugin">плагин</span></td>
+                            <td><span class="cross">&#10007;</span></td>
+                            <td><span class="cross">&#10007;</span></td>
+                        </tr>
+                        <tr>
+                            <td>Сессии</td>
+                            <td class="highlight"><span class="check">&#10003;</span></td>
+                            <td><span class="plugin">плагин</span></td>
+                            <td><span class="cross">&#10007;</span></td>
+                            <td><span class="cross">&#10007;</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Installation Section -->
+    <section id="install" class="installation">
+        <div class="container">
+            <h2 class="section-title glitch-hover">// Установка</h2>
+            <p class="section-subtitle">Выберите удобный способ.</p>
+            <div class="install-grid">
+                <div class="install-card">
+                    <h3><span class="icon">&#127866;</span> Homebrew</h3>
+                    <p class="platform">macOS / Linux</p>
+                    <div class="code-block">
+                        <code>brew install termide/tap/termide</code>
+                        <button class="copy-btn" data-copy="brew install termide/tap/termide" title="Копировать">
+                            <span class="copy-icon">[&nbsp;]</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="install-card">
+                    <h3><span class="icon">&#128230;</span> Arch Linux</h3>
+                    <p class="platform">AUR</p>
+                    <div class="code-block">
+                        <code>yay -S termide-bin</code>
+                        <button class="copy-btn" data-copy="yay -S termide-bin" title="Копировать">
+                            <span class="copy-icon">[&nbsp;]</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="install-card">
+                    <h3><span class="icon">&#9881;</span> Cargo</h3>
+                    <p class="platform">Rust 1.70+</p>
+                    <div class="code-block">
+                        <code>cargo install termide</code>
+                        <button class="copy-btn" data-copy="cargo install termide" title="Копировать">
+                            <span class="copy-icon">[&nbsp;]</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="install-card">
+                    <h3><span class="icon">&#10052;</span> Nix</h3>
+                    <p class="platform">NixOS / Flakes</p>
+                    <div class="code-block">
+                        <code>nix run github:termide/termide</code>
+                        <button class="copy-btn" data-copy="nix run github:termide/termide" title="Копировать">
+                            <span class="copy-icon">[&nbsp;]</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="install-card full-width">
+                    <h3><span class="icon">&#128190;</span> Скачать бинарник</h3>
+                    <p class="platform">Linux x86_64 / ARM64 / macOS</p>
+                    <div class="code-block">
+                        <code>curl -fsSL https://github.com/termide/termide/releases/latest/download/termide-linux-x86_64.tar.gz | tar xz</code>
+                        <button class="copy-btn" data-copy="curl -fsSL https://github.com/termide/termide/releases/latest/download/termide-linux-x86_64.tar.gz | tar xz" title="Копировать">
+                            <span class="copy-icon">[&nbsp;]</span>
+                        </button>
+                    </div>
+                    <a href="https://github.com/termide/termide/releases" class="releases-link" target="_blank" rel="noopener">
+                        Все релизы &rarr;
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="../assets/logo.svg" alt="TermIDE" class="footer-logo-img">
+                    <span class="footer-name">TermIDE</span>
+                </div>
+                <div class="footer-links">
+                    <a href="https://github.com/termide/termide" target="_blank" rel="noopener">GitHub</a>
+                    <a href="https://github.com/termide/termide/blob/main/doc/ru/README.md" target="_blank" rel="noopener">Документация</a>
+                    <a href="https://github.com/termide/termide/releases" target="_blank" rel="noopener">Релизы</a>
+                    <a href="https://github.com/termide/termide/issues" target="_blank" rel="noopener">Баги</a>
+                </div>
+                <div class="footer-meta">
+                    <p>MIT License &bull; Сделано с <span class="rust-heart">&#9829;</span> на Rust</p>
+                    <p class="version">v0.8.4</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-grid"></div>
+    </footer>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+        <button class="lightbox-close">&times;</button>
+        <img class="lightbox-image" src="" alt="">
+    </div>
+
+    <!-- Scripts -->
+    <script src="../js/main.js"></script>
+</body>
+</html>

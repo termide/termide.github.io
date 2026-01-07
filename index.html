@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TermIDE - Terminal-native IDE for Hackers</title>
+    <meta name="description" content="A powerful terminal-native IDE written in Rust. Integrated file manager, terminal, syntax highlighting, Git integration, and 12 themes. Zero configuration required.">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="TermIDE - Terminal-native IDE for Hackers">
+    <meta property="og:description" content="A powerful terminal-native IDE written in Rust with integrated file manager, terminal, and Git support.">
+    <meta property="og:image" content="assets/termide.jpg">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="TermIDE - Terminal-native IDE for Hackers">
+    <meta name="twitter:description" content="A powerful terminal-native IDE written in Rust.">
+    <meta name="twitter:image" content="assets/termide.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="scanlines">
+    <!-- Language Switcher -->
+    <div class="lang-switcher">
+        <a href="index.html" class="active">EN</a>
+        <span class="divider">/</span>
+        <a href="ru/index.html">RU</a>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-bg"></div>
+        <div class="container">
+            <div class="hero-content">
+                <img src="assets/logo.svg" alt="TermIDE Logo" class="logo neon-glow">
+                <h1 class="glitch" data-text="TermIDE">TermIDE</h1>
+                <p class="tagline">
+                    <span class="typewriter">The terminal-native IDE for hackers</span>
+                    <span class="cursor">_</span>
+                </p>
+                <p class="subtitle">Written in Rust. Zero configuration. Batteries included.</p>
+                <div class="cta-buttons">
+                    <a href="#install" class="btn btn-primary neon-border">
+                        <span class="btn-icon">$</span> Get Started
+                    </a>
+                    <a href="https://github.com/termide/termide" class="btn btn-secondary" target="_blank" rel="noopener">
+                        <span class="btn-icon">&gt;</span> View on GitHub
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="terminal-frame neon-border">
+                    <div class="terminal-header">
+                        <span class="terminal-dot red"></span>
+                        <span class="terminal-dot yellow"></span>
+                        <span class="terminal-dot green"></span>
+                        <span class="terminal-title">termide</span>
+                    </div>
+                    <img src="assets/termide.jpg" alt="TermIDE Screenshot" class="screenshot">
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span class="arrow">&#x25BC;</span>
+        </div>
+    </header>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title glitch-hover">// Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">&gt;_</div>
+                    <h3>Integrated Terminal</h3>
+                    <p>Full PTY support with scrollback history. Run commands without leaving the IDE.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">[]</div>
+                    <h3>Smart File Manager</h3>
+                    <p>Dual-pane navigation with glob search, batch operations, and Git status indicators.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">{}</div>
+                    <h3>Syntax Highlighting</h3>
+                    <p>17+ languages powered by tree-sitter. Rust, Python, JavaScript, Go, and more.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">+-</div>
+                    <h3>Git Integration</h3>
+                    <p>Status panel, commit log, inline diff, gutter markers. Stage, commit, push from TUI.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">#*</div>
+                    <h3>12 Themes</h3>
+                    <p>Dracula, Nord, Monokai, Solarized, OneDark, and more. Create your own with TOML.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">%%</div>
+                    <h3>Resource Monitor</h3>
+                    <p>Real-time CPU, RAM, and disk usage. Color-coded indicators in status bar.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">@!</div>
+                    <h3>Multi-language UI</h3>
+                    <p>Interface in 9 languages: English, Russian, Chinese, German, French, and more.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">::</div>
+                    <h3>Sessions</h3>
+                    <p>Save and restore your workspace. Switch between projects seamlessly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Screenshots Gallery -->
+    <section id="screenshots" class="screenshots">
+        <div class="container">
+            <h2 class="section-title glitch-hover">// Themes Gallery</h2>
+            <p class="section-subtitle">Choose your vibe. Or create your own.</p>
+            <div class="gallery">
+                <div class="gallery-item" data-theme="dracula">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="assets/dracula.png" alt="Dracula Theme" loading="lazy">
+                        <div class="gallery-overlay">
+                            <span class="theme-name">Dracula</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-theme="monokai">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="assets/monokai.png" alt="Monokai Theme" loading="lazy">
+                        <div class="gallery-overlay">
+                            <span class="theme-name">Monokai</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Placeholders for future screenshots -->
+                <div class="gallery-item placeholder" data-theme="nord">
+                    <div class="gallery-frame">
+                        <div class="screenshot-placeholder">
+                            <span class="placeholder-icon">[ ]</span>
+                            <span class="placeholder-text">Nord</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item placeholder" data-theme="solarized">
+                    <div class="gallery-frame">
+                        <div class="screenshot-placeholder">
+                            <span class="placeholder-icon">[ ]</span>
+                            <span class="placeholder-text">Solarized</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Section -->
+    <section id="compare" class="comparison">
+        <div class="container">
+            <h2 class="section-title glitch-hover">// Why TermIDE?</h2>
+            <p class="section-subtitle">Everything you need, out of the box.</p>
+            <div class="table-wrapper">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th class="highlight">TermIDE</th>
+                            <th>Vim/Neovim</th>
+                            <th>Helix</th>
+                            <th>Micro</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Built-in Terminal</td>
+                            <td class="highlight"><span class="check">&#10003;</span></td>
+                            <td><span class="plugin">plugin</span></td>
+                            <td><span class="cross">&#10007;</span></td>
+                            <td><span class="cross">&#10007;</span></td>
+                        </tr>
+                        <tr>
+                            <td>File Manager</td>
+                            <td class="highlight"><span class="check">&#10003;</span></td>
+                            <td><span class="plugin">plugin</span></td>
+                            <td><span class="cross">&#10007;</span></td>
+                            <td><span class="cross">&#10007;</span></td>
+                        </tr>
+                        <tr>
+                            <td>Git Integration</td>
+                            <td class="highlight"><span class="check">&#10003;</span></td>
+                            <td><span class="plugin">plugin</span></td>
+                            <td><span class="cross">&#10007;</span></td>
+                            <td><span class="cross">&#10007;</span></td>
+                        </tr>
+                        <tr>
+                            <td>Syntax Highlighting</td>
+                            <td class="highlight"><span class="check">&#10003;</span></td>
+                            <td><span class="check">&#10003;</span></td>
+                            <td><span class="check">&#10003;</span></td>
+                            <td><span class="check">&#10003;</span></td>
+                        </tr>
+                        <tr>
+                            <td>Zero Config</td>
+                            <td class="highlight"><span class="check">&#10003;</span></td>
+                            <td><span class="cross">&#10007;</span></td>
+                            <td><span class="check">&#10003;</span></td>
+                            <td><span class="check">&#10003;</span></td>
+                        </tr>
+                        <tr>
+                            <td>Resource Monitor</td>
+                            <td class="highlight"><span class="check">&#10003;</span></td>
+                            <td><span class="cross">&#10007;</span></td>
+                            <td><span class="cross">&#10007;</span></td>
+                            <td><span class="cross">&#10007;</span></td>
+                        </tr>
+                        <tr>
+                            <td>Image Preview</td>
+                            <td class="highlight"><span class="check">&#10003;</span></td>
+                            <td><span class="plugin">plugin</span></td>
+                            <td><span class="cross">&#10007;</span></td>
+                            <td><span class="cross">&#10007;</span></td>
+                        </tr>
+                        <tr>
+                            <td>Sessions</td>
+                            <td class="highlight"><span class="check">&#10003;</span></td>
+                            <td><span class="plugin">plugin</span></td>
+                            <td><span class="cross">&#10007;</span></td>
+                            <td><span class="cross">&#10007;</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Installation Section -->
+    <section id="install" class="installation">
+        <div class="container">
+            <h2 class="section-title glitch-hover">// Installation</h2>
+            <p class="section-subtitle">Choose your preferred method.</p>
+            <div class="install-grid">
+                <div class="install-card">
+                    <h3><span class="icon">&#127866;</span> Homebrew</h3>
+                    <p class="platform">macOS / Linux</p>
+                    <div class="code-block">
+                        <code>brew install termide/tap/termide</code>
+                        <button class="copy-btn" data-copy="brew install termide/tap/termide" title="Copy to clipboard">
+                            <span class="copy-icon">[&nbsp;]</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="install-card">
+                    <h3><span class="icon">&#128230;</span> Arch Linux</h3>
+                    <p class="platform">AUR</p>
+                    <div class="code-block">
+                        <code>yay -S termide-bin</code>
+                        <button class="copy-btn" data-copy="yay -S termide-bin" title="Copy to clipboard">
+                            <span class="copy-icon">[&nbsp;]</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="install-card">
+                    <h3><span class="icon">&#9881;</span> Cargo</h3>
+                    <p class="platform">Rust 1.70+</p>
+                    <div class="code-block">
+                        <code>cargo install termide</code>
+                        <button class="copy-btn" data-copy="cargo install termide" title="Copy to clipboard">
+                            <span class="copy-icon">[&nbsp;]</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="install-card">
+                    <h3><span class="icon">&#10052;</span> Nix</h3>
+                    <p class="platform">NixOS / Flakes</p>
+                    <div class="code-block">
+                        <code>nix run github:termide/termide</code>
+                        <button class="copy-btn" data-copy="nix run github:termide/termide" title="Copy to clipboard">
+                            <span class="copy-icon">[&nbsp;]</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="install-card full-width">
+                    <h3><span class="icon">&#128190;</span> Binary Download</h3>
+                    <p class="platform">Linux x86_64 / ARM64 / macOS</p>
+                    <div class="code-block">
+                        <code>curl -fsSL https://github.com/termide/termide/releases/latest/download/termide-linux-x86_64.tar.gz | tar xz</code>
+                        <button class="copy-btn" data-copy="curl -fsSL https://github.com/termide/termide/releases/latest/download/termide-linux-x86_64.tar.gz | tar xz" title="Copy to clipboard">
+                            <span class="copy-icon">[&nbsp;]</span>
+                        </button>
+                    </div>
+                    <a href="https://github.com/termide/termide/releases" class="releases-link" target="_blank" rel="noopener">
+                        View all releases &rarr;
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="assets/logo.svg" alt="TermIDE" class="footer-logo-img">
+                    <span class="footer-name">TermIDE</span>
+                </div>
+                <div class="footer-links">
+                    <a href="https://github.com/termide/termide" target="_blank" rel="noopener">GitHub</a>
+                    <a href="https://github.com/termide/termide/blob/main/doc/en/README.md" target="_blank" rel="noopener">Documentation</a>
+                    <a href="https://github.com/termide/termide/releases" target="_blank" rel="noopener">Releases</a>
+                    <a href="https://github.com/termide/termide/issues" target="_blank" rel="noopener">Issues</a>
+                </div>
+                <div class="footer-meta">
+                    <p>MIT License &bull; Made with <span class="rust-heart">&#9829;</span> and Rust</p>
+                    <p class="version">v0.8.4</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-grid"></div>
+    </footer>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+        <button class="lightbox-close">&times;</button>
+        <img class="lightbox-image" src="" alt="">
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+</body>
+</html>
