@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TermIDE - Терминальная IDE для хакеров</title>
-    <meta name="description" content="Мощная терминальная IDE на Rust. Встроенный файловый менеджер, терминал, подсветка синтаксиса, Git интеграция и 12 тем. Работает из коробки.">
+    <title>TermIDE — Легковесная терминальная IDE</title>
+    <meta name="description" content="Легковесная терминальная IDE на Rust. 24 темы, LSP, SFTP/FTP, Git интеграция, файловый менеджер, 15 языков интерфейса. Работает из коробки.">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="TermIDE - Терминальная IDE для хакеров">
-    <meta property="og:description" content="Мощная терминальная IDE на Rust со встроенным файловым менеджером, терминалом и Git поддержкой.">
+    <meta property="og:title" content="TermIDE — Легковесная терминальная IDE">
+    <meta property="og:description" content="Легковесная терминальная IDE на Rust. 24 темы, LSP, SFTP, Git интеграция и 15 языков интерфейса из коробки.">
     <meta property="og:image" content="../assets/termide.jpg">
     <meta property="og:type" content="website">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="TermIDE - Терминальная IDE для хакеров">
-    <meta name="twitter:description" content="Мощная терминальная IDE на Rust.">
+    <meta name="twitter:title" content="TermIDE — Легковесная терминальная IDE">
+    <meta name="twitter:description" content="Легковесная терминальная IDE на Rust. 24 темы, LSP, SFTP, Git интеграция из коробки.">
     <meta name="twitter:image" content="../assets/termide.jpg">
 
     <!-- Favicon -->
@@ -33,12 +33,13 @@
     <!-- Hero Slides Data -->
     <script>
         window.heroSlides = [
-            { text: "Терминальная IDE для хакеров", image: "../assets/screenshots/editor.png" },
-            { text: "Навигация по проектам как у профи", image: "../assets/screenshots/file-manager.png" },
-            { text: "Подсветка синтаксиса 17+ языков", image: "../assets/screenshots/editor.png" },
-            { text: "Отслеживай. Коммить. Пуш. Всё в TUI", image: "../assets/screenshots/git.png" },
-            { text: "Команды без выхода из редактора", image: "../assets/screenshots/terminal.png" },
-            { text: "Темы. Сессии. Твой воркфлоу", image: "../assets/screenshots/themes.png" }
+            { text: "Легковесная терминальная IDE на каждый день", image: "../assets/screenshots/editor.png" },
+            { text: "Навигация, копирование, перемещение — не покидая терминал", image: "../assets/screenshots/file-manager.png" },
+            { text: "LSP-автодополнение и диагностика из коробки", image: "../assets/screenshots/editor.png" },
+            { text: "Git статус, лог, diff, коммит, push — всё в TUI", image: "../assets/screenshots/git.png" },
+            { text: "Встроенный терминал с полной PTY поддержкой", image: "../assets/screenshots/terminal.png" },
+            { text: "Структура кода с синхронизацией курсора и навигацией", image: "../assets/screenshots/outline.png" },
+            { text: "24 темы, 15 языков, SFTP, закладки и многое другое", image: "../assets/screenshots/themes.png" }
         ];
     </script>
 
@@ -96,6 +97,7 @@
                         <img src="../assets/screenshots/editor.png" alt="Подсветка синтаксиса" class="screenshot">
                         <img src="../assets/screenshots/git.png" alt="Git интеграция" class="screenshot">
                         <img src="../assets/screenshots/terminal.png" alt="Терминал" class="screenshot">
+                        <img src="../assets/screenshots/outline.png" alt="Структура кода" class="screenshot">
                         <img src="../assets/screenshots/themes.png" alt="Темы" class="screenshot">
                     </div>
                 </div>
@@ -109,42 +111,62 @@
                     <div class="feature-card">
                         <div class="feature-icon">&gt;_</div>
                         <h3>Встроенный терминал</h3>
-                        <p>Полная поддержка PTY с историей прокрутки. Выполняйте команды, не покидая IDE.</p>
+                        <p>Полная PTY поддержка с прокруткой, мышью и детекцией URL.</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">[]</div>
                         <h3>Файловый менеджер</h3>
-                        <p>Двухпанельная навигация с glob-поиском, пакетными операциями и индикаторами Git.</p>
+                        <p>Git-индикаторы, glob/regex поиск, пакетные операции, закладки и переключатель каталогов.</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">{}</div>
                         <h3>Подсветка синтаксиса</h3>
-                        <p>17+ языков на базе tree-sitter. Rust, Python, JavaScript, Go и другие.</p>
+                        <p>18+ языков на базе tree-sitter. Rust, Python, JS, Go, C/C++ и другие.</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">+-</div>
                         <h3>Git интеграция</h3>
-                        <p>Панель статуса, история коммитов, inline diff, маркеры изменений. Stage, commit, push из TUI.</p>
+                        <p>Панель статуса, лог коммитов с ASCII-графом, просмотр diff, staging, push/pull.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">&lt;&gt;</div>
+                        <h3>LSP и диагностика</h3>
+                        <p>Автодополнение кода, hover-информация, переход к определению. Панель ошибок и предупреждений.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">§</div>
+                        <h3>Структура кода</h3>
+                        <p>Навигация по структуре через tree-sitter запросы. Синхронизация курсора с редактором.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">↔</div>
+                        <h3>Удалённые файлы</h3>
+                        <p>Просмотр и редактирование файлов по SFTP, FTP и SMB. Загрузка с отслеживанием прогресса.</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">#*</div>
-                        <h3>12 тем оформления</h3>
-                        <p>Dracula, Nord, Monokai, Solarized, OneDark и другие. Создавайте свои темы в TOML.</p>
+                        <h3>24 темы оформления</h3>
+                        <p>Тёмные, светлые, ретро и кинематографические. Создавайте свои темы в TOML.</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">%%</div>
                         <h3>Мониторинг ресурсов</h3>
-                        <p>CPU, RAM и использование диска в реальном времени. Цветовая индикация в статус-баре.</p>
+                        <p>CPU, RAM и диск в реальном времени. Цветовая индикация в статус-баре.</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">@!</div>
-                        <h3>Многоязычный UI</h3>
-                        <p>Интерфейс на 9 языках: русский, английский, китайский, немецкий, французский и другие.</p>
+                        <h3>15 языков интерфейса</h3>
+                        <p>Русский, английский, китайский, японский, корейский, немецкий, французский, испанский и другие.</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">::</div>
-                        <h3>Сессии</h3>
-                        <p>Сохраняйте и восстанавливайте рабочее пространство. Переключайтесь между проектами.</p>
+                        <h3>Сессии и закладки</h3>
+                        <p>Автосохранение рабочего пространства. Закладки каталогов. Переключение между проектами.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">$/</div>
+                        <h3>Скрипты и Vim-режим</h3>
+                        <p>Запуск пользовательских скриптов из меню. Vim-стиль редактирования с поддержкой кириллицы.</p>
                     </div>
                 </div>
         </section>
@@ -154,6 +176,7 @@
             <h2 class="section-title glitch-hover">// Галерея тем</h2>
                 <p class="section-subtitle">Выбери свой стиль. Или создай собственный.</p>
                 <div class="gallery">
+                    <!-- Тёмные темы -->
                     <div class="gallery-item" data-theme="dracula">
                         <div class="gallery-frame neon-border-hover">
                             <img src="../assets/themes/dracula.png" alt="Тема Dracula" loading="lazy">
@@ -194,6 +217,23 @@
                             </div>
                         </div>
                     </div>
+                    <div class="gallery-item" data-theme="midnight">
+                        <div class="gallery-frame neon-border-hover">
+                            <img src="../assets/themes/midnight.png" alt="Тема Midnight" loading="lazy">
+                            <div class="gallery-overlay">
+                                <span class="theme-name">Midnight</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-theme="macos-dark">
+                        <div class="gallery-frame neon-border-hover">
+                            <img src="../assets/themes/macos-dark.png" alt="Тема macOS Dark" loading="lazy">
+                            <div class="gallery-overlay">
+                                <span class="theme-name">macOS Dark</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Светлые темы -->
                     <div class="gallery-item" data-theme="solarized-light">
                         <div class="gallery-frame neon-border-hover">
                             <img src="../assets/themes/solarized-light.png" alt="Тема Solarized Light" loading="lazy">
@@ -207,22 +247,6 @@
                             <img src="../assets/themes/github-light.png" alt="Тема GitHub Light" loading="lazy">
                             <div class="gallery-overlay">
                                 <span class="theme-name">GitHub Light</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-theme="macos-dark">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="../assets/themes/macos-dark.png" alt="Тема macOS Dark" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">macOS Dark</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-theme="macos-light">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="../assets/themes/macos-light.png" alt="Тема macOS Light" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">macOS Light</span>
                             </div>
                         </div>
                     </div>
@@ -250,6 +274,23 @@
                             </div>
                         </div>
                     </div>
+                    <div class="gallery-item" data-theme="macos-light">
+                        <div class="gallery-frame neon-border-hover">
+                            <img src="../assets/themes/macos-light.png" alt="Тема macOS Light" loading="lazy">
+                            <div class="gallery-overlay">
+                                <span class="theme-name">macOS Light</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-theme="manuscript">
+                        <div class="gallery-frame neon-border-hover">
+                            <img src="../assets/themes/manuscript.png" alt="Тема Manuscript" loading="lazy">
+                            <div class="gallery-overlay">
+                                <span class="theme-name">Manuscript</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Ретро темы -->
                     <div class="gallery-item" data-theme="far-manager">
                         <div class="gallery-frame neon-border-hover">
                             <img src="../assets/themes/far-manager.png" alt="Тема Far Manager" loading="lazy">
@@ -266,11 +307,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="gallery-item" data-theme="midnight">
+                    <div class="gallery-item" data-theme="dos-navigator">
                         <div class="gallery-frame neon-border-hover">
-                            <img src="../assets/themes/midnight.png" alt="Тема Midnight" loading="lazy">
+                            <img src="../assets/themes/dos-navigator.png" alt="Тема DOS Navigator" loading="lazy">
                             <div class="gallery-overlay">
-                                <span class="theme-name">Midnight</span>
+                                <span class="theme-name">DOS Navigator</span>
                             </div>
                         </div>
                     </div>
@@ -290,11 +331,44 @@
                             </div>
                         </div>
                     </div>
+                    <div class="gallery-item" data-theme="windows-98">
+                        <div class="gallery-frame neon-border-hover">
+                            <img src="../assets/themes/windows-98.png" alt="Тема Windows 98" loading="lazy">
+                            <div class="gallery-overlay">
+                                <span class="theme-name">Windows 98</span>
+                            </div>
+                        </div>
+                    </div>
                     <div class="gallery-item" data-theme="windows-xp">
                         <div class="gallery-frame neon-border-hover">
                             <img src="../assets/themes/windows-xp.png" alt="Тема Windows XP" loading="lazy">
                             <div class="gallery-overlay">
                                 <span class="theme-name">Windows XP</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Кинематографические темы -->
+                    <div class="gallery-item" data-theme="matrix">
+                        <div class="gallery-frame neon-border-hover">
+                            <img src="../assets/themes/matrix.png" alt="Тема Matrix" loading="lazy">
+                            <div class="gallery-overlay">
+                                <span class="theme-name">Matrix</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-theme="pip-boy">
+                        <div class="gallery-frame neon-border-hover">
+                            <img src="../assets/themes/pip-boy.png" alt="Тема Pip-Boy" loading="lazy">
+                            <div class="gallery-overlay">
+                                <span class="theme-name">Pip-Boy</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-theme="terminator">
+                        <div class="gallery-frame neon-border-hover">
+                            <img src="../assets/themes/terminator.png" alt="Тема Terminator" loading="lazy">
+                            <div class="gallery-overlay">
+                                <span class="theme-name">Terminator</span>
                             </div>
                         </div>
                     </div>
@@ -373,6 +447,27 @@
                                 <td><span class="cross">&#10007;</span></td>
                                 <td><span class="cross">&#10007;</span></td>
                             </tr>
+                            <tr>
+                                <td>Поддержка LSP</td>
+                                <td class="highlight"><span class="check">&#10003;</span></td>
+                                <td><span class="plugin">плагин</span></td>
+                                <td><span class="check">&#10003;</span></td>
+                                <td><span class="plugin">плагин</span></td>
+                            </tr>
+                            <tr>
+                                <td>Удалённые файлы (SFTP)</td>
+                                <td class="highlight"><span class="check">&#10003;</span></td>
+                                <td><span class="plugin">плагин</span></td>
+                                <td><span class="cross">&#10007;</span></td>
+                                <td><span class="cross">&#10007;</span></td>
+                            </tr>
+                            <tr>
+                                <td>Структура кода</td>
+                                <td class="highlight"><span class="check">&#10003;</span></td>
+                                <td><span class="plugin">плагин</span></td>
+                                <td><span class="cross">&#10007;</span></td>
+                                <td><span class="cross">&#10007;</span></td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -413,7 +508,7 @@
                 </div>
                 <div class="footer-meta">
                     <p>MIT License &bull; Сделано с <span class="rust-heart">&#9829;</span> на Rust</p>
-                    <p class="version">v0.8.5</p>
+                    <p class="version">v0.12.1</p>
                 </div>
             </div>
         </div>

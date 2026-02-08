@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TermIDE - Terminal-native IDE for Hackers</title>
-    <meta name="description" content="A powerful terminal-native IDE written in Rust. Integrated file manager, terminal, syntax highlighting, Git integration, and 12 themes. Zero configuration required.">
+    <title>TermIDE — Lightweight Terminal IDE</title>
+    <meta name="description" content="A lightweight terminal IDE written in Rust. 24 themes, LSP support, SFTP/FTP, Git integration, file manager, 15 UI languages. Zero configuration required.">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="TermIDE - Terminal-native IDE for Hackers">
-    <meta property="og:description" content="A powerful terminal-native IDE written in Rust with integrated file manager, terminal, and Git support.">
+    <meta property="og:title" content="TermIDE — Lightweight Terminal IDE">
+    <meta property="og:description" content="A lightweight terminal IDE written in Rust. 24 themes, LSP, SFTP, Git integration, and 15 UI languages out of the box.">
     <meta property="og:image" content="assets/termide.jpg">
     <meta property="og:type" content="website">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="TermIDE - Terminal-native IDE for Hackers">
-    <meta name="twitter:description" content="A powerful terminal-native IDE written in Rust.">
+    <meta name="twitter:title" content="TermIDE — Lightweight Terminal IDE">
+    <meta name="twitter:description" content="A lightweight terminal IDE written in Rust. 24 themes, LSP, SFTP, Git integration out of the box.">
     <meta name="twitter:image" content="assets/termide.jpg">
 
     <!-- Favicon -->
@@ -33,12 +33,13 @@
     <!-- Hero Slides Data -->
     <script>
         window.heroSlides = [
-            { text: "The terminal-native IDE for hackers", image: "assets/screenshots/editor.png" },
-            { text: "Navigate your projects like a pro", image: "assets/screenshots/file-manager.png" },
-            { text: "Syntax highlighting for 17+ languages", image: "assets/screenshots/editor.png" },
-            { text: "Track changes. Commit. Push. All in TUI", image: "assets/screenshots/git.png" },
-            { text: "Run commands without leaving the editor", image: "assets/screenshots/terminal.png" },
-            { text: "Themes. Sessions. Your workflow, your rules", image: "assets/screenshots/themes.png" }
+            { text: "A lightweight terminal IDE for daily use", image: "assets/screenshots/editor.png" },
+            { text: "Navigate, copy, move — without leaving the terminal", image: "assets/screenshots/file-manager.png" },
+            { text: "LSP completions and diagnostics out of the box", image: "assets/screenshots/editor.png" },
+            { text: "Git status, log, diff, commit, push — all in TUI", image: "assets/screenshots/git.png" },
+            { text: "Integrated terminal with full PTY support", image: "assets/screenshots/terminal.png" },
+            { text: "Code outline with cursor sync and structural navigation", image: "assets/screenshots/outline.png" },
+            { text: "24 themes, 15 languages, SFTP, bookmarks and more", image: "assets/screenshots/themes.png" }
         ];
     </script>
 
@@ -96,6 +97,7 @@
                         <img src="assets/screenshots/editor.png" alt="Syntax Highlighting" class="screenshot">
                         <img src="assets/screenshots/git.png" alt="Git Integration" class="screenshot">
                         <img src="assets/screenshots/terminal.png" alt="Terminal" class="screenshot">
+                        <img src="assets/screenshots/outline.png" alt="Code Outline" class="screenshot">
                         <img src="assets/screenshots/themes.png" alt="Themes" class="screenshot">
                     </div>
                 </div>
@@ -109,27 +111,42 @@
                     <div class="feature-card">
                         <div class="feature-icon">&gt;_</div>
                         <h3>Integrated Terminal</h3>
-                        <p>Full PTY support with scrollback history. Run commands without leaving the IDE.</p>
+                        <p>Full PTY support with scrollback, mouse tracking, and URL detection.</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">[]</div>
                         <h3>Smart File Manager</h3>
-                        <p>Dual-pane navigation with glob search, batch operations, and Git status indicators.</p>
+                        <p>Git status indicators, glob/regex search, batch operations, bookmarks, and directory switcher.</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">{}</div>
                         <h3>Syntax Highlighting</h3>
-                        <p>17+ languages powered by tree-sitter. Rust, Python, JavaScript, Go, and more.</p>
+                        <p>18+ languages powered by tree-sitter. Rust, Python, JS, Go, C/C++, and more.</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">+-</div>
                         <h3>Git Integration</h3>
-                        <p>Status panel, commit log, inline diff, gutter markers. Stage, commit, push from TUI.</p>
+                        <p>Status panel, commit log with ASCII graph, diff viewer, staging, push/pull.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">&lt;&gt;</div>
+                        <h3>LSP &amp; Diagnostics</h3>
+                        <p>Code completion, hover info, go-to-definition. Diagnostics panel with error/warning filtering.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">§</div>
+                        <h3>Code Outline</h3>
+                        <p>Structural navigation via tree-sitter queries. Cursor sync with editor position.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">↔</div>
+                        <h3>Remote Files</h3>
+                        <p>Browse and edit files over SFTP, FTP, and SMB. Upload/download with progress tracking.</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">#*</div>
-                        <h3>12 Themes</h3>
-                        <p>Dracula, Nord, Monokai, Solarized, OneDark, and more. Create your own with TOML.</p>
+                        <h3>24 Themes</h3>
+                        <p>Dark, light, retro, and cinematic themes. Create your own in TOML format.</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">%%</div>
@@ -138,13 +155,18 @@
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">@!</div>
-                        <h3>Multi-language UI</h3>
-                        <p>Interface in 9 languages: English, Russian, Chinese, German, French, and more.</p>
+                        <h3>15 UI Languages</h3>
+                        <p>English, Russian, Chinese, Japanese, Korean, German, French, Spanish, and more.</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">::</div>
-                        <h3>Sessions</h3>
-                        <p>Save and restore your workspace. Switch between projects seamlessly.</p>
+                        <h3>Sessions &amp; Bookmarks</h3>
+                        <p>Auto-save workspaces. Directory bookmarks. Switch between projects seamlessly.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">$/</div>
+                        <h3>Scripts &amp; Vim Mode</h3>
+                        <p>Run custom automation scripts from menu. Optional Vim-style editing with Cyrillic support.</p>
                     </div>
                 </div>
         </section>
@@ -154,6 +176,7 @@
             <h2 class="section-title glitch-hover">// Themes Gallery</h2>
                 <p class="section-subtitle">Choose your vibe. Or create your own.</p>
                 <div class="gallery">
+                    <!-- Dark themes -->
                     <div class="gallery-item" data-theme="dracula">
                         <div class="gallery-frame neon-border-hover">
                             <img src="assets/themes/dracula.png" alt="Dracula Theme" loading="lazy">
@@ -194,6 +217,23 @@
                             </div>
                         </div>
                     </div>
+                    <div class="gallery-item" data-theme="midnight">
+                        <div class="gallery-frame neon-border-hover">
+                            <img src="assets/themes/midnight.png" alt="Midnight Theme" loading="lazy">
+                            <div class="gallery-overlay">
+                                <span class="theme-name">Midnight</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-theme="macos-dark">
+                        <div class="gallery-frame neon-border-hover">
+                            <img src="assets/themes/macos-dark.png" alt="macOS Dark Theme" loading="lazy">
+                            <div class="gallery-overlay">
+                                <span class="theme-name">macOS Dark</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Light themes -->
                     <div class="gallery-item" data-theme="solarized-light">
                         <div class="gallery-frame neon-border-hover">
                             <img src="assets/themes/solarized-light.png" alt="Solarized Light Theme" loading="lazy">
@@ -207,22 +247,6 @@
                             <img src="assets/themes/github-light.png" alt="GitHub Light Theme" loading="lazy">
                             <div class="gallery-overlay">
                                 <span class="theme-name">GitHub Light</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-theme="macos-dark">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="assets/themes/macos-dark.png" alt="macOS Dark Theme" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">macOS Dark</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-theme="macos-light">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="assets/themes/macos-light.png" alt="macOS Light Theme" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">macOS Light</span>
                             </div>
                         </div>
                     </div>
@@ -250,6 +274,23 @@
                             </div>
                         </div>
                     </div>
+                    <div class="gallery-item" data-theme="macos-light">
+                        <div class="gallery-frame neon-border-hover">
+                            <img src="assets/themes/macos-light.png" alt="macOS Light Theme" loading="lazy">
+                            <div class="gallery-overlay">
+                                <span class="theme-name">macOS Light</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-theme="manuscript">
+                        <div class="gallery-frame neon-border-hover">
+                            <img src="assets/themes/manuscript.png" alt="Manuscript Theme" loading="lazy">
+                            <div class="gallery-overlay">
+                                <span class="theme-name">Manuscript</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Retro themes -->
                     <div class="gallery-item" data-theme="far-manager">
                         <div class="gallery-frame neon-border-hover">
                             <img src="assets/themes/far-manager.png" alt="Far Manager Theme" loading="lazy">
@@ -266,11 +307,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="gallery-item" data-theme="midnight">
+                    <div class="gallery-item" data-theme="dos-navigator">
                         <div class="gallery-frame neon-border-hover">
-                            <img src="assets/themes/midnight.png" alt="Midnight Theme" loading="lazy">
+                            <img src="assets/themes/dos-navigator.png" alt="DOS Navigator Theme" loading="lazy">
                             <div class="gallery-overlay">
-                                <span class="theme-name">Midnight</span>
+                                <span class="theme-name">DOS Navigator</span>
                             </div>
                         </div>
                     </div>
@@ -290,11 +331,44 @@
                             </div>
                         </div>
                     </div>
+                    <div class="gallery-item" data-theme="windows-98">
+                        <div class="gallery-frame neon-border-hover">
+                            <img src="assets/themes/windows-98.png" alt="Windows 98 Theme" loading="lazy">
+                            <div class="gallery-overlay">
+                                <span class="theme-name">Windows 98</span>
+                            </div>
+                        </div>
+                    </div>
                     <div class="gallery-item" data-theme="windows-xp">
                         <div class="gallery-frame neon-border-hover">
                             <img src="assets/themes/windows-xp.png" alt="Windows XP Theme" loading="lazy">
                             <div class="gallery-overlay">
                                 <span class="theme-name">Windows XP</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Cinematic themes -->
+                    <div class="gallery-item" data-theme="matrix">
+                        <div class="gallery-frame neon-border-hover">
+                            <img src="assets/themes/matrix.png" alt="Matrix Theme" loading="lazy">
+                            <div class="gallery-overlay">
+                                <span class="theme-name">Matrix</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-theme="pip-boy">
+                        <div class="gallery-frame neon-border-hover">
+                            <img src="assets/themes/pip-boy.png" alt="Pip-Boy Theme" loading="lazy">
+                            <div class="gallery-overlay">
+                                <span class="theme-name">Pip-Boy</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-theme="terminator">
+                        <div class="gallery-frame neon-border-hover">
+                            <img src="assets/themes/terminator.png" alt="Terminator Theme" loading="lazy">
+                            <div class="gallery-overlay">
+                                <span class="theme-name">Terminator</span>
                             </div>
                         </div>
                     </div>
@@ -373,6 +447,27 @@
                                 <td><span class="cross">&#10007;</span></td>
                                 <td><span class="cross">&#10007;</span></td>
                             </tr>
+                            <tr>
+                                <td>LSP Support</td>
+                                <td class="highlight"><span class="check">&#10003;</span></td>
+                                <td><span class="plugin">plugin</span></td>
+                                <td><span class="check">&#10003;</span></td>
+                                <td><span class="plugin">plugin</span></td>
+                            </tr>
+                            <tr>
+                                <td>Remote Files (SFTP)</td>
+                                <td class="highlight"><span class="check">&#10003;</span></td>
+                                <td><span class="plugin">plugin</span></td>
+                                <td><span class="cross">&#10007;</span></td>
+                                <td><span class="cross">&#10007;</span></td>
+                            </tr>
+                            <tr>
+                                <td>Code Outline</td>
+                                <td class="highlight"><span class="check">&#10003;</span></td>
+                                <td><span class="plugin">plugin</span></td>
+                                <td><span class="cross">&#10007;</span></td>
+                                <td><span class="cross">&#10007;</span></td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -413,7 +508,7 @@
                 </div>
                 <div class="footer-meta">
                     <p>MIT License &bull; Made with <span class="rust-heart">&#9829;</span> and Rust</p>
-                    <p class="version">v0.8.5</p>
+                    <p class="version">v0.12.1</p>
                 </div>
             </div>
         </div>

@@ -317,5 +317,5 @@ function initActiveSection() {
 
 // Console Easter Egg
 console.log('%c TermIDE ', 'background: #40ff40; color: #0a0a0f; font-size: 24px; font-weight: bold; font-family: monospace;');
-console.log('%c Terminal-native IDE for hackers ', 'color: #40ff40; font-size: 14px; font-family: monospace;');
+console.log('%c Terminal IDE for developers and sysadmins ', 'color: #40ff40; font-size: 14px; font-family: monospace;');
 console.log('%c https://github.com/termide/termide ', 'color: #888; font-size: 12px; font-family: monospace;');
