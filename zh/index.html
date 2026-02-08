@@ -1,25 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TermIDE — Lightweight Terminal IDE</title>
-    <meta name="description" content="A lightweight terminal IDE written in Rust. 24 themes, LSP support, SFTP/FTP, Git integration, file manager, 15 UI languages. Zero configuration required.">
+    <title>TermIDE — 轻量级终端 IDE</title>
+    <meta name="description" content="基于 Rust 的轻量级终端 IDE。24 个主题、LSP 支持、SFTP/FTP、Git 集成、文件管理器、15 种界面语言。零配置即可使用。">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="TermIDE — Lightweight Terminal IDE">
-    <meta property="og:description" content="A lightweight terminal IDE written in Rust. 24 themes, LSP, SFTP, Git integration, and 15 UI languages out of the box.">
-    <meta property="og:image" content="assets/termide.jpg">
+    <meta property="og:title" content="TermIDE — 轻量级终端 IDE">
+    <meta property="og:description" content="基于 Rust 的轻量级终端 IDE。24 个主题、LSP、SFTP、Git 集成和 15 种界面语言，开箱即用。">
+    <meta property="og:image" content="../assets/termide.jpg">
     <meta property="og:type" content="website">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="TermIDE — Lightweight Terminal IDE">
-    <meta name="twitter:description" content="A lightweight terminal IDE written in Rust. 24 themes, LSP, SFTP, Git integration out of the box.">
-    <meta name="twitter:image" content="assets/termide.jpg">
+    <meta name="twitter:title" content="TermIDE — 轻量级终端 IDE">
+    <meta name="twitter:description" content="基于 Rust 的轻量级终端 IDE。24 个主题、LSP、SFTP、Git 集成，开箱即用。">
+    <meta name="twitter:image" content="../assets/termide.jpg">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+    <link rel="icon" type="image/svg+xml" href="../assets/logo.svg">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,19 +27,19 @@
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body class="scanlines">
     <!-- Hero Slides Data -->
     <script>
         window.heroSlides = [
-            { text: "A lightweight terminal IDE for daily use", image: "assets/screenshots/editor.png" },
-            { text: "Navigate, copy, move — without leaving the terminal", image: "assets/screenshots/file-manager.png" },
-            { text: "LSP completions and diagnostics out of the box", image: "assets/screenshots/editor.png" },
-            { text: "Git status, log, diff, commit, push — all in TUI", image: "assets/screenshots/git.png" },
-            { text: "Integrated terminal with full PTY support", image: "assets/screenshots/terminal.png" },
-            { text: "Code outline with cursor sync and structural navigation", image: "assets/screenshots/outline.png" },
-            { text: "24 themes, 15 languages, SFTP, bookmarks and more", image: "assets/screenshots/themes.png" }
+            { text: "轻量级终端 IDE，满足日常开发需求", image: "../assets/screenshots/editor.png" },
+            { text: "浏览、复制、移动——无需离开终端", image: "../assets/screenshots/file-manager.png" },
+            { text: "LSP 自动补全和诊断，开箱即用", image: "../assets/screenshots/editor.png" },
+            { text: "Git 状态、日志、差异、提交、推送——全在 TUI 中", image: "../assets/screenshots/git.png" },
+            { text: "内置终端，完整 PTY 支持", image: "../assets/screenshots/terminal.png" },
+            { text: "代码大纲，光标同步与结构化导航", image: "../assets/screenshots/outline.png" },
+            { text: "24 个主题、15 种语言、SFTP、书签等更多功能", image: "../assets/screenshots/themes.png" }
         ];
     </script>
 
@@ -47,17 +47,17 @@
     <nav class="menubar">
         <div class="menubar-logo">TermIDE</div>
         <div class="menubar-nav">
-            <a href="#features">Features</a>
-            <a href="#screenshots">Themes</a>
-            <a href="#compare">Compare</a>
-            <a href="#install">Install</a>
+            <a href="#features">功能</a>
+            <a href="#screenshots">主题</a>
+            <a href="#compare">比较</a>
+            <a href="#install">安装</a>
         </div>
         <div class="lang-switcher">
-            <a href="index.html" class="active">EN</a>
+            <a href="../index.html">EN</a>
             <span class="divider">/</span>
-            <a href="ru/index.html">RU</a>
+            <a href="../ru/index.html">RU</a>
             <span class="divider">/</span>
-            <a href="zh/index.html">ZH</a>
+            <a href="index.html" class="active">ZH</a>
         </div>
     </nav>
 
@@ -65,7 +65,7 @@
     <main class="page-container">
         <!-- Hero Header -->
         <div class="hero-header">
-            <img src="assets/logo.svg" alt="TermIDE Logo" class="logo">
+            <img src="../assets/logo.svg" alt="TermIDE Logo" class="logo">
             <h1 class="glitch" data-text="TermIDE">TermIDE</h1>
         </div>
 
@@ -75,13 +75,13 @@
                 <p class="tagline">
                     <span class="typewriter"></span><span class="cursor">_</span>
                 </p>
-                <p class="subtitle">Written in Rust. Zero configuration. Batteries included.</p>
+                <p class="subtitle">基于 Rust 编写。零配置。开箱即用。</p>
                 <div class="cta-buttons">
                     <a href="#install" class="btn btn-primary neon-border">
-                        <span class="btn-icon">$</span> Get Started
+                        <span class="btn-icon">$</span> 开始使用
                     </a>
                     <a href="https://github.com/termide/termide" class="btn btn-secondary" target="_blank" rel="noopener">
-                        <span class="btn-icon">&gt;</span> View on GitHub
+                        <span class="btn-icon">&gt;</span> GitHub
                     </a>
                 </div>
             </div>
@@ -94,13 +94,13 @@
                         <span class="terminal-title">termide</span>
                     </div>
                     <div class="hero-screenshots">
-                        <img src="assets/screenshots/editor.png" alt="TermIDE Editor" class="screenshot active">
-                        <img src="assets/screenshots/file-manager.png" alt="File Manager" class="screenshot">
-                        <img src="assets/screenshots/editor.png" alt="Syntax Highlighting" class="screenshot">
-                        <img src="assets/screenshots/git.png" alt="Git Integration" class="screenshot">
-                        <img src="assets/screenshots/terminal.png" alt="Terminal" class="screenshot">
-                        <img src="assets/screenshots/outline.png" alt="Code Outline" class="screenshot">
-                        <img src="assets/screenshots/themes.png" alt="Themes" class="screenshot">
+                        <img src="../assets/screenshots/editor.png" alt="TermIDE 编辑器" class="screenshot active">
+                        <img src="../assets/screenshots/file-manager.png" alt="文件管理器" class="screenshot">
+                        <img src="../assets/screenshots/editor.png" alt="语法高亮" class="screenshot">
+                        <img src="../assets/screenshots/git.png" alt="Git 集成" class="screenshot">
+                        <img src="../assets/screenshots/terminal.png" alt="终端" class="screenshot">
+                        <img src="../assets/screenshots/outline.png" alt="代码大纲" class="screenshot">
+                        <img src="../assets/screenshots/themes.png" alt="主题" class="screenshot">
                     </div>
                 </div>
             </div>
@@ -108,80 +108,80 @@
 
         <!-- Features Section -->
         <section id="features" class="features">
-            <h2 class="section-title glitch-hover">// Features</h2>
-            <div class="features-grid">
+            <h2 class="section-title glitch-hover">// 功能</h2>
+                <div class="features-grid">
                     <div class="feature-card">
                         <div class="feature-icon">&gt;_</div>
-                        <h3>Integrated Terminal</h3>
-                        <p>Full PTY support with scrollback, mouse tracking, and URL detection.</p>
+                        <h3>内置终端</h3>
+                        <p>完整的 PTY 支持，包含回滚、鼠标跟踪和 URL 检测。</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">[]</div>
-                        <h3>Smart File Manager</h3>
-                        <p>Git status indicators, glob/regex search, batch operations, bookmarks, and directory switcher.</p>
+                        <h3>智能文件管理器</h3>
+                        <p>Git 状态指示、glob/regex 搜索、批量操作、书签和目录切换器。</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">{}</div>
-                        <h3>Syntax Highlighting</h3>
-                        <p>18+ languages powered by tree-sitter. Rust, Python, JS, Go, C/C++, and more.</p>
+                        <h3>语法高亮</h3>
+                        <p>基于 tree-sitter 支持 18+ 种语言。Rust、Python、JS、Go、C/C++ 等。</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">+-</div>
-                        <h3>Git Integration</h3>
-                        <p>Status panel, commit log with ASCII graph, diff viewer, staging, push/pull.</p>
+                        <h3>Git 集成</h3>
+                        <p>状态面板、带 ASCII 图形的提交日志、差异查看器、暂存、推送/拉取。</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">&lt;&gt;</div>
-                        <h3>LSP &amp; Diagnostics</h3>
-                        <p>Code completion, hover info, go-to-definition. Diagnostics panel with error/warning filtering.</p>
+                        <h3>LSP 与诊断</h3>
+                        <p>代码补全、悬停信息、跳转到定义。带错误/警告过滤的诊断面板。</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">§</div>
-                        <h3>Code Outline</h3>
-                        <p>Structural navigation via tree-sitter queries. Cursor sync with editor position.</p>
+                        <h3>代码大纲</h3>
+                        <p>通过 tree-sitter 查询进行结构化导航。光标与编辑器位置同步。</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">↔</div>
-                        <h3>Remote Files</h3>
-                        <p>Browse and edit files over SFTP, FTP, and SMB. Upload/download with progress tracking.</p>
+                        <h3>远程文件</h3>
+                        <p>通过 SFTP、FTP 和 SMB 浏览和编辑文件。支持进度跟踪的上传/下载。</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">#*</div>
-                        <h3>24 Themes</h3>
-                        <p>Dark, light, retro, and cinematic themes. Create your own in TOML format.</p>
+                        <h3>24 个主题</h3>
+                        <p>暗色、亮色、复古和电影主题。使用 TOML 格式创建自定义主题。</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">%%</div>
-                        <h3>Resource Monitor</h3>
-                        <p>Real-time CPU, RAM, and disk usage. Color-coded indicators in status bar.</p>
+                        <h3>资源监控</h3>
+                        <p>实时显示 CPU、内存和磁盘使用情况。状态栏中的彩色指示器。</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">@!</div>
-                        <h3>15 UI Languages</h3>
-                        <p>English, Russian, Chinese, Japanese, Korean, German, French, Spanish, and more.</p>
+                        <h3>15 种界面语言</h3>
+                        <p>中文、英语、俄语、日语、韩语、德语、法语、西班牙语等。</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">::</div>
-                        <h3>Sessions &amp; Bookmarks</h3>
-                        <p>Auto-save workspaces. Directory bookmarks. Switch between projects seamlessly.</p>
+                        <h3>会话与书签</h3>
+                        <p>自动保存工作区。目录书签。在项目之间无缝切换。</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">$/</div>
-                        <h3>Scripts &amp; Vim Mode</h3>
-                        <p>Run custom automation scripts from menu. Optional Vim-style editing with Cyrillic support.</p>
+                        <h3>脚本与 Vim 模式</h3>
+                        <p>从菜单运行自定义自动化脚本。可选的 Vim 风格编辑，支持西里尔字母。</p>
                     </div>
                 </div>
         </section>
 
         <!-- Screenshots Gallery -->
         <section id="screenshots" class="screenshots">
-            <h2 class="section-title glitch-hover">// Themes Gallery</h2>
-                <p class="section-subtitle">Choose your vibe. Or create your own.</p>
+            <h2 class="section-title glitch-hover">// 主题画廊</h2>
+                <p class="section-subtitle">选择你的风格，或创建自己的主题。</p>
                 <div class="gallery">
-                    <!-- Dark themes -->
+                    <!-- 暗色主题 -->
                     <div class="gallery-item" data-theme="dracula">
                         <div class="gallery-frame neon-border-hover">
-                            <img src="assets/themes/dracula.png" alt="Dracula Theme" loading="lazy">
+                            <img src="../assets/themes/dracula.png" alt="Dracula 主题" loading="lazy">
                             <div class="gallery-overlay">
                                 <span class="theme-name">Dracula</span>
                             </div>
@@ -189,7 +189,7 @@
                     </div>
                     <div class="gallery-item" data-theme="monokai">
                         <div class="gallery-frame neon-border-hover">
-                            <img src="assets/themes/monokai.png" alt="Monokai Theme" loading="lazy">
+                            <img src="../assets/themes/monokai.png" alt="Monokai 主题" loading="lazy">
                             <div class="gallery-overlay">
                                 <span class="theme-name">Monokai</span>
                             </div>
@@ -197,7 +197,7 @@
                     </div>
                     <div class="gallery-item" data-theme="nord">
                         <div class="gallery-frame neon-border-hover">
-                            <img src="assets/themes/nord.png" alt="Nord Theme" loading="lazy">
+                            <img src="../assets/themes/nord.png" alt="Nord 主题" loading="lazy">
                             <div class="gallery-overlay">
                                 <span class="theme-name">Nord</span>
                             </div>
@@ -205,7 +205,7 @@
                     </div>
                     <div class="gallery-item" data-theme="onedark">
                         <div class="gallery-frame neon-border-hover">
-                            <img src="assets/themes/onedark.png" alt="One Dark Theme" loading="lazy">
+                            <img src="../assets/themes/onedark.png" alt="One Dark 主题" loading="lazy">
                             <div class="gallery-overlay">
                                 <span class="theme-name">One Dark</span>
                             </div>
@@ -213,7 +213,7 @@
                     </div>
                     <div class="gallery-item" data-theme="solarized-dark">
                         <div class="gallery-frame neon-border-hover">
-                            <img src="assets/themes/solarized-dark.png" alt="Solarized Dark Theme" loading="lazy">
+                            <img src="../assets/themes/solarized-dark.png" alt="Solarized Dark 主题" loading="lazy">
                             <div class="gallery-overlay">
                                 <span class="theme-name">Solarized Dark</span>
                             </div>
@@ -221,7 +221,7 @@
                     </div>
                     <div class="gallery-item" data-theme="midnight">
                         <div class="gallery-frame neon-border-hover">
-                            <img src="assets/themes/midnight.png" alt="Midnight Theme" loading="lazy">
+                            <img src="../assets/themes/midnight.png" alt="Midnight 主题" loading="lazy">
                             <div class="gallery-overlay">
                                 <span class="theme-name">Midnight</span>
                             </div>
@@ -229,16 +229,16 @@
                     </div>
                     <div class="gallery-item" data-theme="macos-dark">
                         <div class="gallery-frame neon-border-hover">
-                            <img src="assets/themes/macos-dark.png" alt="macOS Dark Theme" loading="lazy">
+                            <img src="../assets/themes/macos-dark.png" alt="macOS Dark 主题" loading="lazy">
                             <div class="gallery-overlay">
                                 <span class="theme-name">macOS Dark</span>
                             </div>
                         </div>
                     </div>
-                    <!-- Light themes -->
+                    <!-- 亮色主题 -->
                     <div class="gallery-item" data-theme="solarized-light">
                         <div class="gallery-frame neon-border-hover">
-                            <img src="assets/themes/solarized-light.png" alt="Solarized Light Theme" loading="lazy">
+                            <img src="../assets/themes/solarized-light.png" alt="Solarized Light 主题" loading="lazy">
                             <div class="gallery-overlay">
                                 <span class="theme-name">Solarized Light</span>
                             </div>
@@ -246,7 +246,7 @@
                     </div>
                     <div class="gallery-item" data-theme="github-light">
                         <div class="gallery-frame neon-border-hover">
-                            <img src="assets/themes/github-light.png" alt="GitHub Light Theme" loading="lazy">
+                            <img src="../assets/themes/github-light.png" alt="GitHub Light 主题" loading="lazy">
                             <div class="gallery-overlay">
                                 <span class="theme-name">GitHub Light</span>
                             </div>
@@ -254,7 +254,7 @@
                     </div>
                     <div class="gallery-item" data-theme="atom-one-light">
                         <div class="gallery-frame neon-border-hover">
-                            <img src="assets/themes/atom-one-light.png" alt="Atom One Light Theme" loading="lazy">
+                            <img src="../assets/themes/atom-one-light.png" alt="Atom One Light 主题" loading="lazy">
                             <div class="gallery-overlay">
                                 <span class="theme-name">Atom One Light</span>
                             </div>
@@ -262,7 +262,7 @@
                     </div>
                     <div class="gallery-item" data-theme="ayu-light">
                         <div class="gallery-frame neon-border-hover">
-                            <img src="assets/themes/ayu-light.png" alt="Ayu Light Theme" loading="lazy">
+                            <img src="../assets/themes/ayu-light.png" alt="Ayu Light 主题" loading="lazy">
                             <div class="gallery-overlay">
                                 <span class="theme-name">Ayu Light</span>
                             </div>
@@ -270,7 +270,7 @@
                     </div>
                     <div class="gallery-item" data-theme="material-lighter">
                         <div class="gallery-frame neon-border-hover">
-                            <img src="assets/themes/material-lighter.png" alt="Material Lighter Theme" loading="lazy">
+                            <img src="../assets/themes/material-lighter.png" alt="Material Lighter 主题" loading="lazy">
                             <div class="gallery-overlay">
                                 <span class="theme-name">Material Lighter</span>
                             </div>
@@ -278,7 +278,7 @@
                     </div>
                     <div class="gallery-item" data-theme="macos-light">
                         <div class="gallery-frame neon-border-hover">
-                            <img src="assets/themes/macos-light.png" alt="macOS Light Theme" loading="lazy">
+                            <img src="../assets/themes/macos-light.png" alt="macOS Light 主题" loading="lazy">
                             <div class="gallery-overlay">
                                 <span class="theme-name">macOS Light</span>
                             </div>
@@ -286,16 +286,16 @@
                     </div>
                     <div class="gallery-item" data-theme="manuscript">
                         <div class="gallery-frame neon-border-hover">
-                            <img src="assets/themes/manuscript.png" alt="Manuscript Theme" loading="lazy">
+                            <img src="../assets/themes/manuscript.png" alt="Manuscript 主题" loading="lazy">
                             <div class="gallery-overlay">
                                 <span class="theme-name">Manuscript</span>
                             </div>
                         </div>
                     </div>
-                    <!-- Retro themes -->
+                    <!-- 复古主题 -->
                     <div class="gallery-item" data-theme="far-manager">
                         <div class="gallery-frame neon-border-hover">
-                            <img src="assets/themes/far-manager.png" alt="Far Manager Theme" loading="lazy">
+                            <img src="../assets/themes/far-manager.png" alt="Far Manager 主题" loading="lazy">
                             <div class="gallery-overlay">
                                 <span class="theme-name">Far Manager</span>
                             </div>
@@ -303,7 +303,7 @@
                     </div>
                     <div class="gallery-item" data-theme="norton-commander">
                         <div class="gallery-frame neon-border-hover">
-                            <img src="assets/themes/norton-commander.png" alt="Norton Commander Theme" loading="lazy">
+                            <img src="../assets/themes/norton-commander.png" alt="Norton Commander 主题" loading="lazy">
                             <div class="gallery-overlay">
                                 <span class="theme-name">Norton Commander</span>
                             </div>
@@ -311,7 +311,7 @@
                     </div>
                     <div class="gallery-item" data-theme="dos-navigator">
                         <div class="gallery-frame neon-border-hover">
-                            <img src="assets/themes/dos-navigator.png" alt="DOS Navigator Theme" loading="lazy">
+                            <img src="../assets/themes/dos-navigator.png" alt="DOS Navigator 主题" loading="lazy">
                             <div class="gallery-overlay">
                                 <span class="theme-name">DOS Navigator</span>
                             </div>
@@ -319,7 +319,7 @@
                     </div>
                     <div class="gallery-item" data-theme="volkov-commander">
                         <div class="gallery-frame neon-border-hover">
-                            <img src="assets/themes/volkov-commander.png" alt="Volkov Commander Theme" loading="lazy">
+                            <img src="../assets/themes/volkov-commander.png" alt="Volkov Commander 主题" loading="lazy">
                             <div class="gallery-overlay">
                                 <span class="theme-name">Volkov Commander</span>
                             </div>
@@ -327,7 +327,7 @@
                     </div>
                     <div class="gallery-item" data-theme="windows-95">
                         <div class="gallery-frame neon-border-hover">
-                            <img src="assets/themes/windows-95.png" alt="Windows 95 Theme" loading="lazy">
+                            <img src="../assets/themes/windows-95.png" alt="Windows 95 主题" loading="lazy">
                             <div class="gallery-overlay">
                                 <span class="theme-name">Windows 95</span>
                             </div>
@@ -335,7 +335,7 @@
                     </div>
                     <div class="gallery-item" data-theme="windows-98">
                         <div class="gallery-frame neon-border-hover">
-                            <img src="assets/themes/windows-98.png" alt="Windows 98 Theme" loading="lazy">
+                            <img src="../assets/themes/windows-98.png" alt="Windows 98 主题" loading="lazy">
                             <div class="gallery-overlay">
                                 <span class="theme-name">Windows 98</span>
                             </div>
@@ -343,16 +343,16 @@
                     </div>
                     <div class="gallery-item" data-theme="windows-xp">
                         <div class="gallery-frame neon-border-hover">
-                            <img src="assets/themes/windows-xp.png" alt="Windows XP Theme" loading="lazy">
+                            <img src="../assets/themes/windows-xp.png" alt="Windows XP 主题" loading="lazy">
                             <div class="gallery-overlay">
                                 <span class="theme-name">Windows XP</span>
                             </div>
                         </div>
                     </div>
-                    <!-- Cinematic themes -->
+                    <!-- 电影主题 -->
                     <div class="gallery-item" data-theme="matrix">
                         <div class="gallery-frame neon-border-hover">
-                            <img src="assets/themes/matrix.png" alt="Matrix Theme" loading="lazy">
+                            <img src="../assets/themes/matrix.png" alt="Matrix 主题" loading="lazy">
                             <div class="gallery-overlay">
                                 <span class="theme-name">Matrix</span>
                             </div>
@@ -360,7 +360,7 @@
                     </div>
                     <div class="gallery-item" data-theme="pip-boy">
                         <div class="gallery-frame neon-border-hover">
-                            <img src="assets/themes/pip-boy.png" alt="Pip-Boy Theme" loading="lazy">
+                            <img src="../assets/themes/pip-boy.png" alt="Pip-Boy 主题" loading="lazy">
                             <div class="gallery-overlay">
                                 <span class="theme-name">Pip-Boy</span>
                             </div>
@@ -368,7 +368,7 @@
                     </div>
                     <div class="gallery-item" data-theme="terminator">
                         <div class="gallery-frame neon-border-hover">
-                            <img src="assets/themes/terminator.png" alt="Terminator Theme" loading="lazy">
+                            <img src="../assets/themes/terminator.png" alt="Terminator 主题" loading="lazy">
                             <div class="gallery-overlay">
                                 <span class="theme-name">Terminator</span>
                             </div>
@@ -379,13 +379,13 @@
 
         <!-- Comparison Section -->
         <section id="compare" class="comparison">
-            <h2 class="section-title glitch-hover">// Why TermIDE?</h2>
-                <p class="section-subtitle">Everything you need, out of the box.</p>
+            <h2 class="section-title glitch-hover">// 为什么选择 TermIDE？</h2>
+                <p class="section-subtitle">你需要的一切，开箱即用。</p>
                 <div class="table-wrapper">
                     <table class="comparison-table">
                         <thead>
                             <tr>
-                                <th>Feature</th>
+                                <th>功能</th>
                                 <th class="highlight">TermIDE</th>
                                 <th>Vim/Neovim</th>
                                 <th>Helix</th>
@@ -394,79 +394,79 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Built-in Terminal</td>
+                                <td>内置终端</td>
                                 <td class="highlight"><span class="check">&#10003;</span></td>
-                                <td><span class="plugin">plugin</span></td>
+                                <td><span class="plugin">插件</span></td>
                                 <td><span class="cross">&#10007;</span></td>
                                 <td><span class="cross">&#10007;</span></td>
                             </tr>
                             <tr>
-                                <td>File Manager</td>
+                                <td>文件管理器</td>
                                 <td class="highlight"><span class="check">&#10003;</span></td>
-                                <td><span class="plugin">plugin</span></td>
+                                <td><span class="plugin">插件</span></td>
                                 <td><span class="cross">&#10007;</span></td>
                                 <td><span class="cross">&#10007;</span></td>
                             </tr>
                             <tr>
-                                <td>Git Integration</td>
+                                <td>Git 集成</td>
                                 <td class="highlight"><span class="check">&#10003;</span></td>
-                                <td><span class="plugin">plugin</span></td>
+                                <td><span class="plugin">插件</span></td>
                                 <td><span class="cross">&#10007;</span></td>
                                 <td><span class="cross">&#10007;</span></td>
                             </tr>
                             <tr>
-                                <td>Syntax Highlighting</td>
+                                <td>语法高亮</td>
                                 <td class="highlight"><span class="check">&#10003;</span></td>
                                 <td><span class="check">&#10003;</span></td>
                                 <td><span class="check">&#10003;</span></td>
                                 <td><span class="check">&#10003;</span></td>
                             </tr>
                             <tr>
-                                <td>Zero Config</td>
+                                <td>零配置</td>
                                 <td class="highlight"><span class="check">&#10003;</span></td>
                                 <td><span class="cross">&#10007;</span></td>
                                 <td><span class="check">&#10003;</span></td>
                                 <td><span class="check">&#10003;</span></td>
                             </tr>
                             <tr>
-                                <td>Resource Monitor</td>
+                                <td>资源监控</td>
                                 <td class="highlight"><span class="check">&#10003;</span></td>
                                 <td><span class="cross">&#10007;</span></td>
                                 <td><span class="cross">&#10007;</span></td>
                                 <td><span class="cross">&#10007;</span></td>
                             </tr>
                             <tr>
-                                <td>Image Preview</td>
+                                <td>图片预览</td>
                                 <td class="highlight"><span class="check">&#10003;</span></td>
-                                <td><span class="plugin">plugin</span></td>
+                                <td><span class="plugin">插件</span></td>
                                 <td><span class="cross">&#10007;</span></td>
                                 <td><span class="cross">&#10007;</span></td>
                             </tr>
                             <tr>
-                                <td>Sessions</td>
+                                <td>会话</td>
                                 <td class="highlight"><span class="check">&#10003;</span></td>
-                                <td><span class="plugin">plugin</span></td>
+                                <td><span class="plugin">插件</span></td>
                                 <td><span class="cross">&#10007;</span></td>
                                 <td><span class="cross">&#10007;</span></td>
                             </tr>
                             <tr>
-                                <td>LSP Support</td>
+                                <td>LSP 支持</td>
                                 <td class="highlight"><span class="check">&#10003;</span></td>
-                                <td><span class="plugin">plugin</span></td>
+                                <td><span class="plugin">插件</span></td>
                                 <td><span class="check">&#10003;</span></td>
-                                <td><span class="plugin">plugin</span></td>
+                                <td><span class="plugin">插件</span></td>
                             </tr>
                             <tr>
-                                <td>Remote Files (SFTP)</td>
+                                <td>远程文件 (SFTP)</td>
                                 <td class="highlight"><span class="check">&#10003;</span></td>
-                                <td><span class="plugin">plugin</span></td>
+                                <td><span class="plugin">插件</span></td>
                                 <td><span class="cross">&#10007;</span></td>
                                 <td><span class="cross">&#10007;</span></td>
                             </tr>
                             <tr>
-                                <td>Code Outline</td>
+                                <td>代码大纲</td>
                                 <td class="highlight"><span class="check">&#10003;</span></td>
-                                <td><span class="plugin">plugin</span></td>
+                                <td><span class="plugin">插件</span></td>
                                 <td><span class="cross">&#10007;</span></td>
                                 <td><span class="cross">&#10007;</span></td>
                             </tr>
@@ -477,15 +477,15 @@
 
         <!-- Installation Section -->
         <section id="install" class="installation">
-            <h2 class="section-title glitch-hover">// Installation</h2>
-                <p class="section-subtitle">One command to rule them all.</p>
+            <h2 class="section-title glitch-hover">// 安装</h2>
+                <p class="section-subtitle">一条命令，搞定一切。</p>
                 <div class="install-grid">
                     <div class="install-card full-width">
-                        <h3><span class="icon">&#9889;</span> Quick Install</h3>
-                        <p class="platform">Linux / macOS — auto-detects your system</p>
+                        <h3><span class="icon">&#9889;</span> 快速安装</h3>
+                        <p class="platform">Linux / macOS — 自动检测系统环境</p>
                         <div class="code-block">
                             <code>curl -fsSL https://raw.githubusercontent.com/termide/termide/main/install.sh | sh</code>
-                            <button class="copy-btn" data-copy="curl -fsSL https://raw.githubusercontent.com/termide/termide/main/install.sh | sh" title="Copy to clipboard">
+                            <button class="copy-btn" data-copy="curl -fsSL https://raw.githubusercontent.com/termide/termide/main/install.sh | sh" title="复制到剪贴板">
                                 <span class="copy-icon">&#128203;</span>
                             </button>
                         </div>
@@ -499,17 +499,17 @@
         <div class="footer-inner">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <img src="assets/logo.svg" alt="TermIDE" class="footer-logo-img">
+                    <img src="../assets/logo.svg" alt="TermIDE" class="footer-logo-img">
                     <span class="footer-name">TermIDE</span>
                 </div>
                 <div class="footer-links">
                     <a href="https://github.com/termide/termide" target="_blank" rel="noopener">GitHub</a>
-                    <a href="https://github.com/termide/termide/blob/main/doc/en/README.md" target="_blank" rel="noopener">Documentation</a>
-                    <a href="https://github.com/termide/termide/releases" target="_blank" rel="noopener">Releases</a>
-                    <a href="https://github.com/termide/termide/issues" target="_blank" rel="noopener">Issues</a>
+                    <a href="https://github.com/termide/termide/blob/main/doc/zh/README.md" target="_blank" rel="noopener">文档</a>
+                    <a href="https://github.com/termide/termide/releases" target="_blank" rel="noopener">发布</a>
+                    <a href="https://github.com/termide/termide/issues" target="_blank" rel="noopener">问题</a>
                 </div>
                 <div class="footer-meta">
-                    <p>MIT License &bull; Made with <span class="rust-heart">&#9829;</span> and Rust</p>
+                    <p>MIT 许可证 &bull; 使用 Rust 用 <span class="rust-heart">&#9829;</span> 构建</p>
                     <p class="version">v0.12.2</p>
                 </div>
             </div>
@@ -524,6 +524,6 @@
     </div>
 
     <!-- Scripts -->
-    <script src="js/main.js"></script>
+    <script src="../js/main.js"></script>
 </body>
 </html>
