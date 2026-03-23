@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TermIDE — Легковесная терминальная IDE</title>
-    <meta name="description" content="Легковесная терминальная IDE на Rust. 24 темы, LSP, SFTP/FTP, Git интеграция, файловый менеджер, 15 языков интерфейса. Работает из коробки.">
+    <meta name="description" content="Легковесная терминальная IDE на Rust. 34 темы, LSP, SFTP/FTP, Git интеграция, файловый менеджер, 15 языков интерфейса. Работает из коробки.">
 
     <!-- Open Graph -->
     <meta property="og:title" content="TermIDE — Легковесная терминальная IDE">
-    <meta property="og:description" content="Легковесная терминальная IDE на Rust. 24 темы, LSP, SFTP, Git интеграция и 15 языков интерфейса из коробки.">
+    <meta property="og:description" content="Легковесная терминальная IDE на Rust. 34 темы, LSP, SFTP, Git интеграция и 15 языков интерфейса из коробки.">
     <meta property="og:image" content="../assets/termide.jpg">
     <meta property="og:type" content="website">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="TermIDE — Легковесная терминальная IDE">
-    <meta name="twitter:description" content="Легковесная терминальная IDE на Rust. 24 темы, LSP, SFTP, Git интеграция из коробки.">
+    <meta name="twitter:description" content="Легковесная терминальная IDE на Rust. 34 темы, LSP, SFTP, Git интеграция из коробки.">
     <meta name="twitter:image" content="../assets/termide.jpg">
 
     <!-- Favicon -->
@@ -39,7 +39,7 @@
             { text: "Git статус, лог, diff, коммит, push — всё в TUI", image: "../assets/screenshots/git.png" },
             { text: "Встроенный терминал с полной PTY поддержкой", image: "../assets/screenshots/terminal.png" },
             { text: "Структура кода с синхронизацией курсора и навигацией", image: "../assets/screenshots/outline.png" },
-            { text: "24 темы, 15 языков, SFTP, закладки и многое другое", image: "../assets/screenshots/themes.png" }
+            { text: "34 темы, 15 языков, SFTP, закладки и многое другое", image: "../assets/screenshots/themes.png" }
         ];
     </script>
 
@@ -147,13 +147,13 @@
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">#*</div>
-                        <h3>24 темы оформления</h3>
+                        <h3>34 темы оформления</h3>
                         <p>Тёмные, светлые, ретро и кинематографические. Создавайте свои темы в TOML.</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">%%</div>
                         <h3>Мониторинг ресурсов</h3>
-                        <p>CPU, RAM и диск в реальном времени. Цветовая индикация в статус-баре.</p>
+                        <p>CPU, RAM, сетевая активность и диск в реальном времени в строке меню. Клик по индикатору открывает модал с топ-процессами по CPU/RAM или сетевым соединениям.</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">@!</div>
@@ -232,6 +232,86 @@
                             <img src="../assets/themes/macos-dark.png" alt="Тема macOS Dark" loading="lazy">
                             <div class="gallery-overlay">
                                 <span class="theme-name">macOS Dark</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-theme="ayu-dark">
+                        <div class="gallery-frame neon-border-hover">
+                            <img src="../assets/themes/ayu-dark.png" alt="Тема Ayu Dark" loading="lazy">
+                            <div class="gallery-overlay">
+                                <span class="theme-name">Ayu Dark</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-theme="catppuccin-macchiato">
+                        <div class="gallery-frame neon-border-hover">
+                            <img src="../assets/themes/catppuccin-macchiato.png" alt="Тема Catppuccin Macchiato" loading="lazy">
+                            <div class="gallery-overlay">
+                                <span class="theme-name">Catppuccin</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-theme="everforest">
+                        <div class="gallery-frame neon-border-hover">
+                            <img src="../assets/themes/everforest.png" alt="Тема Everforest" loading="lazy">
+                            <div class="gallery-overlay">
+                                <span class="theme-name">Everforest</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-theme="github-dark">
+                        <div class="gallery-frame neon-border-hover">
+                            <img src="../assets/themes/github-dark.png" alt="Тема GitHub Dark" loading="lazy">
+                            <div class="gallery-overlay">
+                                <span class="theme-name">GitHub Dark</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-theme="gruvbox">
+                        <div class="gallery-frame neon-border-hover">
+                            <img src="../assets/themes/gruvbox.png" alt="Тема Gruvbox" loading="lazy">
+                            <div class="gallery-overlay">
+                                <span class="theme-name">Gruvbox</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-theme="kanagawa">
+                        <div class="gallery-frame neon-border-hover">
+                            <img src="../assets/themes/kanagawa.png" alt="Тема Kanagawa" loading="lazy">
+                            <div class="gallery-overlay">
+                                <span class="theme-name">Kanagawa</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-theme="material-ocean">
+                        <div class="gallery-frame neon-border-hover">
+                            <img src="../assets/themes/material-ocean.png" alt="Тема Material Ocean" loading="lazy">
+                            <div class="gallery-overlay">
+                                <span class="theme-name">Material Ocean</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-theme="rosepine">
+                        <div class="gallery-frame neon-border-hover">
+                            <img src="../assets/themes/rosepine.png" alt="Тема Rosé Pine" loading="lazy">
+                            <div class="gallery-overlay">
+                                <span class="theme-name">Rosé Pine</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-theme="tokyonight">
+                        <div class="gallery-frame neon-border-hover">
+                            <img src="../assets/themes/tokyonight.png" alt="Тема Tokyo Night" loading="lazy">
+                            <div class="gallery-overlay">
+                                <span class="theme-name">Tokyo Night</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-theme="terminal">
+                        <div class="gallery-frame neon-border-hover">
+                            <img src="../assets/themes/terminal.png" alt="Тема Terminal" loading="lazy">
+                            <div class="gallery-overlay">
+                                <span class="theme-name">Terminal</span>
                             </div>
                         </div>
                     </div>
@@ -510,7 +590,7 @@
                 </div>
                 <div class="footer-meta">
                     <p>MIT License &bull; Сделано с <span class="rust-heart">&#9829;</span> на Rust</p>
-                    <p class="version">v0.15.1</p>
+                    <p class="version">v0.17.2</p>
                 </div>
             </div>
         </div>

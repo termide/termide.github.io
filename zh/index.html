@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TermIDE — 轻量级终端 IDE</title>
-    <meta name="description" content="基于 Rust 的轻量级终端 IDE。24 个主题、LSP 支持、SFTP/FTP、Git 集成、文件管理器、15 种界面语言。零配置即可使用。">
+    <meta name="description" content="基于 Rust 的轻量级终端 IDE。34 个主题、LSP 支持、SFTP/FTP、Git 集成、文件管理器、15 种界面语言。零配置即可使用。">
 
     <!-- Open Graph -->
     <meta property="og:title" content="TermIDE — 轻量级终端 IDE">
-    <meta property="og:description" content="基于 Rust 的轻量级终端 IDE。24 个主题、LSP、SFTP、Git 集成和 15 种界面语言，开箱即用。">
+    <meta property="og:description" content="基于 Rust 的轻量级终端 IDE。34 个主题、LSP、SFTP、Git 集成和 15 种界面语言，开箱即用。">
     <meta property="og:image" content="../assets/termide.jpg">
     <meta property="og:type" content="website">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="TermIDE — 轻量级终端 IDE">
-    <meta name="twitter:description" content="基于 Rust 的轻量级终端 IDE。24 个主题、LSP、SFTP、Git 集成，开箱即用。">
+    <meta name="twitter:description" content="基于 Rust 的轻量级终端 IDE。34 个主题、LSP、SFTP、Git 集成，开箱即用。">
     <meta name="twitter:image" content="../assets/termide.jpg">
 
     <!-- Favicon -->
@@ -39,7 +39,7 @@
             { text: "Git 状态、日志、差异、提交、推送——全在 TUI 中", image: "../assets/screenshots/git.png" },
             { text: "内置终端，完整 PTY 支持", image: "../assets/screenshots/terminal.png" },
             { text: "代码大纲，光标同步与结构化导航", image: "../assets/screenshots/outline.png" },
-            { text: "24 个主题、15 种语言、SFTP、书签等更多功能", image: "../assets/screenshots/themes.png" }
+            { text: "34 个主题、15 种语言、SFTP、书签等更多功能", image: "../assets/screenshots/themes.png" }
         ];
     </script>
 
@@ -147,13 +147,13 @@
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">#*</div>
-                        <h3>24 个主题</h3>
+                        <h3>34 个主题</h3>
                         <p>暗色、亮色、复古和电影主题。使用 TOML 格式创建自定义主题。</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">%%</div>
                         <h3>资源监控</h3>
-                        <p>实时显示 CPU、内存和磁盘使用情况。状态栏中的彩色指示器。</p>
+                        <p>实时显示 CPU、内存、网络 I/O 和磁盘使用情况。点击菜单栏任意指示器可查看占用最高的进程（CPU/RAM 或网络连接）。</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">@!</div>
@@ -232,6 +232,86 @@
                             <img src="../assets/themes/macos-dark.png" alt="macOS Dark 主题" loading="lazy">
                             <div class="gallery-overlay">
                                 <span class="theme-name">macOS Dark</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-theme="ayu-dark">
+                        <div class="gallery-frame neon-border-hover">
+                            <img src="../assets/themes/ayu-dark.png" alt="Ayu Dark 主题" loading="lazy">
+                            <div class="gallery-overlay">
+                                <span class="theme-name">Ayu Dark</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-theme="catppuccin-macchiato">
+                        <div class="gallery-frame neon-border-hover">
+                            <img src="../assets/themes/catppuccin-macchiato.png" alt="Catppuccin Macchiato 主题" loading="lazy">
+                            <div class="gallery-overlay">
+                                <span class="theme-name">Catppuccin</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-theme="everforest">
+                        <div class="gallery-frame neon-border-hover">
+                            <img src="../assets/themes/everforest.png" alt="Everforest 主题" loading="lazy">
+                            <div class="gallery-overlay">
+                                <span class="theme-name">Everforest</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-theme="github-dark">
+                        <div class="gallery-frame neon-border-hover">
+                            <img src="../assets/themes/github-dark.png" alt="GitHub Dark 主题" loading="lazy">
+                            <div class="gallery-overlay">
+                                <span class="theme-name">GitHub Dark</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-theme="gruvbox">
+                        <div class="gallery-frame neon-border-hover">
+                            <img src="../assets/themes/gruvbox.png" alt="Gruvbox 主题" loading="lazy">
+                            <div class="gallery-overlay">
+                                <span class="theme-name">Gruvbox</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-theme="kanagawa">
+                        <div class="gallery-frame neon-border-hover">
+                            <img src="../assets/themes/kanagawa.png" alt="Kanagawa 主题" loading="lazy">
+                            <div class="gallery-overlay">
+                                <span class="theme-name">Kanagawa</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-theme="material-ocean">
+                        <div class="gallery-frame neon-border-hover">
+                            <img src="../assets/themes/material-ocean.png" alt="Material Ocean 主题" loading="lazy">
+                            <div class="gallery-overlay">
+                                <span class="theme-name">Material Ocean</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-theme="rosepine">
+                        <div class="gallery-frame neon-border-hover">
+                            <img src="../assets/themes/rosepine.png" alt="Rosé Pine 主题" loading="lazy">
+                            <div class="gallery-overlay">
+                                <span class="theme-name">Rosé Pine</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-theme="tokyonight">
+                        <div class="gallery-frame neon-border-hover">
+                            <img src="../assets/themes/tokyonight.png" alt="Tokyo Night 主题" loading="lazy">
+                            <div class="gallery-overlay">
+                                <span class="theme-name">Tokyo Night</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-theme="terminal">
+                        <div class="gallery-frame neon-border-hover">
+                            <img src="../assets/themes/terminal.png" alt="Terminal 主题" loading="lazy">
+                            <div class="gallery-overlay">
+                                <span class="theme-name">Terminal</span>
                             </div>
                         </div>
                     </div>
@@ -510,7 +590,7 @@
                 </div>
                 <div class="footer-meta">
                     <p>MIT 许可证 &bull; 使用 Rust 用 <span class="rust-heart">&#9829;</span> 构建</p>
-                    <p class="version">v0.15.1</p>
+                    <p class="version">v0.17.2</p>
                 </div>
             </div>
         </div>
