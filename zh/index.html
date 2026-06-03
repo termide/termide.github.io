@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TermIDE — 轻量级终端 IDE</title>
-    <meta name="description" content="基于 Rust 的轻量级终端 IDE。34 个主题、LSP 支持、SFTP/FTP、Git 集成、文件管理器、15 种界面语言。零配置即可使用。">
+    <meta name="description" content="基于 Rust 的轻量级终端 IDE。38 个主题、LSP 支持、SFTP/FTP、Git 集成、文件管理器、15 种界面语言。零配置即可使用。">
 
     <!-- Open Graph -->
     <meta property="og:title" content="TermIDE — 轻量级终端 IDE">
-    <meta property="og:description" content="基于 Rust 的轻量级终端 IDE。34 个主题、LSP、SFTP、Git 集成和 15 种界面语言，开箱即用。">
+    <meta property="og:description" content="基于 Rust 的轻量级终端 IDE。38 个主题、LSP、SFTP、Git 集成和 15 种界面语言，开箱即用。">
     <meta property="og:image" content="../assets/termide.jpg">
     <meta property="og:type" content="website">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="TermIDE — 轻量级终端 IDE">
-    <meta name="twitter:description" content="基于 Rust 的轻量级终端 IDE。34 个主题、LSP、SFTP、Git 集成，开箱即用。">
+    <meta name="twitter:description" content="基于 Rust 的轻量级终端 IDE。38 个主题、LSP、SFTP、Git 集成，开箱即用。">
     <meta name="twitter:image" content="../assets/termide.jpg">
 
     <!-- Favicon -->
@@ -39,7 +39,7 @@
             { text: "Git 状态、日志、差异、提交、推送——全在 TUI 中", image: "../assets/screenshots/git.png" },
             { text: "内置终端，完整 PTY 支持", image: "../assets/screenshots/terminal.png" },
             { text: "代码大纲，光标同步与结构化导航", image: "../assets/screenshots/outline.png" },
-            { text: "34 个主题、15 种语言、SFTP、书签等更多功能", image: "../assets/screenshots/themes.png" }
+            { text: "38 个主题、15 种语言、SFTP、书签等更多功能", image: "../assets/screenshots/themes.png" }
         ];
     </script>
 
@@ -123,7 +123,7 @@
                     <div class="feature-card">
                         <div class="feature-icon">{}</div>
                         <h3>语法高亮</h3>
-                        <p>基于 tree-sitter 支持 19 种语言。Rust、Python、JS、Go、C/C++ 等。</p>
+                        <p>基于 tree-sitter 支持 21 种语言。Rust、Python、JS、Go、C/C++、PHP 等。</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">+-</div>
@@ -133,7 +133,7 @@
                     <div class="feature-card">
                         <div class="feature-icon">&lt;&gt;</div>
                         <h3>LSP 与诊断</h3>
-                        <p>代码补全、悬停信息、跳转到定义。带错误/警告过滤的诊断面板。</p>
+                        <p>代码补全、悬停信息、跳转到定义、查找引用、重命名，以及自动导入等快速修复。带错误/警告过滤的诊断面板。</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">§</div>
@@ -143,11 +143,11 @@
                     <div class="feature-card">
                         <div class="feature-icon">↔</div>
                         <h3>远程文件</h3>
-                        <p>通过 SFTP、FTP 和 SMB 浏览和编辑文件。支持进度跟踪的上传/下载。</p>
+                        <p>通过 SFTP、FTP、FTPS 和 SMB 浏览和编辑文件。支持进度跟踪的上传/下载。</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">#*</div>
-                        <h3>34 个主题</h3>
+                        <h3>38 个主题</h3>
                         <p>暗色、亮色、复古和电影主题。使用 TOML 格式创建自定义主题。</p>
                     </div>
                     <div class="feature-card">
@@ -169,6 +169,11 @@
                         <div class="feature-icon">$/</div>
                         <h3>脚本与 Vim 模式</h3>
                         <p>从菜单运行自定义自动化脚本。可选的 Vim 风格编辑，支持西里尔字母。</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">✎</div>
+                        <h3>即插即用 $EDITOR</h3>
+                        <p>设置 <code>EDITOR=termide</code> 即可编写 git 提交信息、crontab 等。传入任意文件路径即可立即打开。</p>
                     </div>
                 </div>
         </section>
@@ -590,7 +595,7 @@
                 </div>
                 <div class="footer-meta">
                     <p>MIT 许可证 &bull; 使用 Rust 用 <span class="rust-heart">&#9829;</span> 构建</p>
-                    <p class="version">v0.17.2</p>
+                    <p class="version">v0.23.8</p>
                 </div>
             </div>
         </div>

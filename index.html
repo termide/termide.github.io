@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TermIDE — Lightweight Terminal IDE</title>
-    <meta name="description" content="A lightweight terminal IDE written in Rust. 34 themes, LSP support, SFTP/FTP, Git integration, file manager, 15 UI languages. Zero configuration required.">
+    <meta name="description" content="A lightweight terminal IDE written in Rust. 38 themes, LSP support, SFTP/FTP, Git integration, file manager, 15 UI languages. Zero configuration required.">
 
     <!-- Open Graph -->
     <meta property="og:title" content="TermIDE — Lightweight Terminal IDE">
-    <meta property="og:description" content="A lightweight terminal IDE written in Rust. 34 themes, LSP, SFTP, Git integration, and 15 UI languages out of the box.">
+    <meta property="og:description" content="A lightweight terminal IDE written in Rust. 38 themes, LSP, SFTP, Git integration, and 15 UI languages out of the box.">
     <meta property="og:image" content="assets/termide.jpg">
     <meta property="og:type" content="website">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="TermIDE — Lightweight Terminal IDE">
-    <meta name="twitter:description" content="A lightweight terminal IDE written in Rust. 34 themes, LSP, SFTP, Git integration out of the box.">
+    <meta name="twitter:description" content="A lightweight terminal IDE written in Rust. 38 themes, LSP, SFTP, Git integration out of the box.">
     <meta name="twitter:image" content="assets/termide.jpg">
 
     <!-- Favicon -->
@@ -39,7 +39,7 @@
             { text: "Git status, log, diff, commit, push — all in TUI", image: "assets/screenshots/git.png" },
             { text: "Integrated terminal with full PTY support", image: "assets/screenshots/terminal.png" },
             { text: "Code outline with cursor sync and structural navigation", image: "assets/screenshots/outline.png" },
-            { text: "34 themes, 15 languages, SFTP, bookmarks and more", image: "assets/screenshots/themes.png" }
+            { text: "38 themes, 15 languages, SFTP, bookmarks and more", image: "assets/screenshots/themes.png" }
         ];
     </script>
 
@@ -123,7 +123,7 @@
                     <div class="feature-card">
                         <div class="feature-icon">{}</div>
                         <h3>Syntax Highlighting</h3>
-                        <p>19 languages powered by tree-sitter. Rust, Python, JS, Go, C/C++, and more.</p>
+                        <p>21 languages powered by tree-sitter. Rust, Python, JS, Go, C/C++, PHP, and more.</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">+-</div>
@@ -133,7 +133,7 @@
                     <div class="feature-card">
                         <div class="feature-icon">&lt;&gt;</div>
                         <h3>LSP &amp; Diagnostics</h3>
-                        <p>Code completion, hover info, go-to-definition. Diagnostics panel with error/warning filtering.</p>
+                        <p>Completion, hover, go-to-definition, find references, rename, and quick-fixes like auto-import. Diagnostics panel with error/warning filtering.</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">§</div>
@@ -143,11 +143,11 @@
                     <div class="feature-card">
                         <div class="feature-icon">↔</div>
                         <h3>Remote Files</h3>
-                        <p>Browse and edit files over SFTP, FTP, and SMB. Upload/download with progress tracking.</p>
+                        <p>Browse and edit files over SFTP, FTP, FTPS, and SMB. Upload/download with progress tracking.</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">#*</div>
-                        <h3>34 Themes</h3>
+                        <h3>38 Themes</h3>
                         <p>Dark, light, retro, and cinematic themes. Create your own in TOML format.</p>
                     </div>
                     <div class="feature-card">
@@ -169,6 +169,11 @@
                         <div class="feature-icon">$/</div>
                         <h3>Scripts &amp; Vim Mode</h3>
                         <p>Run custom automation scripts from menu. Optional Vim-style editing with Cyrillic support.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">✎</div>
+                        <h3>Drop-in $EDITOR</h3>
+                        <p>Set <code>EDITOR=termide</code> to write git commit messages, crontabs, and more. Pass any file path to open it instantly.</p>
                     </div>
                 </div>
         </section>
@@ -590,7 +595,7 @@
                 </div>
                 <div class="footer-meta">
                     <p>MIT License &bull; Made with <span class="rust-heart">&#9829;</span> and Rust</p>
-                    <p class="version">v0.17.2</p>
+                    <p class="version">v0.23.8</p>
                 </div>
             </div>
         </div>

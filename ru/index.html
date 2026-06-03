@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TermIDE — Легковесная терминальная IDE</title>
-    <meta name="description" content="Легковесная терминальная IDE на Rust. 34 темы, LSP, SFTP/FTP, Git интеграция, файловый менеджер, 15 языков интерфейса. Работает из коробки.">
+    <meta name="description" content="Легковесная терминальная IDE на Rust. 38 тем, LSP, SFTP/FTP, Git интеграция, файловый менеджер, 15 языков интерфейса. Работает из коробки.">
 
     <!-- Open Graph -->
     <meta property="og:title" content="TermIDE — Легковесная терминальная IDE">
-    <meta property="og:description" content="Легковесная терминальная IDE на Rust. 34 темы, LSP, SFTP, Git интеграция и 15 языков интерфейса из коробки.">
+    <meta property="og:description" content="Легковесная терминальная IDE на Rust. 38 тем, LSP, SFTP, Git интеграция и 15 языков интерфейса из коробки.">
     <meta property="og:image" content="../assets/termide.jpg">
     <meta property="og:type" content="website">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="TermIDE — Легковесная терминальная IDE">
-    <meta name="twitter:description" content="Легковесная терминальная IDE на Rust. 34 темы, LSP, SFTP, Git интеграция из коробки.">
+    <meta name="twitter:description" content="Легковесная терминальная IDE на Rust. 38 тем, LSP, SFTP, Git интеграция из коробки.">
     <meta name="twitter:image" content="../assets/termide.jpg">
 
     <!-- Favicon -->
@@ -39,7 +39,7 @@
             { text: "Git статус, лог, diff, коммит, push — всё в TUI", image: "../assets/screenshots/git.png" },
             { text: "Встроенный терминал с полной PTY поддержкой", image: "../assets/screenshots/terminal.png" },
             { text: "Структура кода с синхронизацией курсора и навигацией", image: "../assets/screenshots/outline.png" },
-            { text: "34 темы, 15 языков, SFTP, закладки и многое другое", image: "../assets/screenshots/themes.png" }
+            { text: "38 тем, 15 языков, SFTP, закладки и многое другое", image: "../assets/screenshots/themes.png" }
         ];
     </script>
 
@@ -123,7 +123,7 @@
                     <div class="feature-card">
                         <div class="feature-icon">{}</div>
                         <h3>Подсветка синтаксиса</h3>
-                        <p>19 языков на базе tree-sitter. Rust, Python, JS, Go, C/C++ и другие.</p>
+                        <p>21 язык на базе tree-sitter. Rust, Python, JS, Go, C/C++, PHP и другие.</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">+-</div>
@@ -133,7 +133,7 @@
                     <div class="feature-card">
                         <div class="feature-icon">&lt;&gt;</div>
                         <h3>LSP и диагностика</h3>
-                        <p>Автодополнение кода, hover-информация, переход к определению. Панель ошибок и предупреждений.</p>
+                        <p>Автодополнение, hover, переход к определению, поиск ссылок, переименование и быстрые исправления вроде авто-импорта. Панель ошибок и предупреждений.</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">§</div>
@@ -143,11 +143,11 @@
                     <div class="feature-card">
                         <div class="feature-icon">↔</div>
                         <h3>Удалённые файлы</h3>
-                        <p>Просмотр и редактирование файлов по SFTP, FTP и SMB. Загрузка с отслеживанием прогресса.</p>
+                        <p>Просмотр и редактирование файлов по SFTP, FTP, FTPS и SMB. Загрузка с отслеживанием прогресса.</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">#*</div>
-                        <h3>34 темы оформления</h3>
+                        <h3>38 тем оформления</h3>
                         <p>Тёмные, светлые, ретро и кинематографические. Создавайте свои темы в TOML.</p>
                     </div>
                     <div class="feature-card">
@@ -169,6 +169,11 @@
                         <div class="feature-icon">$/</div>
                         <h3>Скрипты и Vim-режим</h3>
                         <p>Запуск пользовательских скриптов из меню. Vim-стиль редактирования с поддержкой кириллицы.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">✎</div>
+                        <h3>Готовый $EDITOR</h3>
+                        <p>Задайте <code>EDITOR=termide</code> — и редактируйте сообщения коммитов, crontab и не только. Передайте любой путь к файлу, чтобы открыть его сразу.</p>
                     </div>
                 </div>
         </section>
@@ -590,7 +595,7 @@
                 </div>
                 <div class="footer-meta">
                     <p>MIT License &bull; Сделано с <span class="rust-heart">&#9829;</span> на Rust</p>
-                    <p class="version">v0.17.2</p>
+                    <p class="version">v0.23.8</p>
                 </div>
             </div>
         </div>
