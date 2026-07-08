@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TermIDE — 轻量级终端 IDE</title>
-    <meta name="description" content="基于 Rust 的轻量级终端 IDE。38 个主题、LSP 支持、SFTP/FTP、Git 集成、文件管理器、15 种界面语言。零配置即可使用。">
+    <meta name="description" content="基于 Rust 的轻量级终端 IDE。数据库查看器、Markdown/HTML/图表预览、LSP、SFTP/FTP、Git 集成、38 个主题、22 种语言语法高亮、15 种界面语言。零配置即可使用。">
 
     <!-- Open Graph -->
     <meta property="og:title" content="TermIDE — 轻量级终端 IDE">
-    <meta property="og:description" content="基于 Rust 的轻量级终端 IDE。38 个主题、LSP、SFTP、Git 集成和 15 种界面语言，开箱即用。">
+    <meta property="og:description" content="基于 Rust 的轻量级终端 IDE。数据库查看器、Markdown/图表预览、LSP、SFTP、Git 集成、38 个主题和 15 种界面语言，开箱即用。">
     <meta property="og:image" content="../assets/termide.jpg">
     <meta property="og:type" content="website">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="TermIDE — 轻量级终端 IDE">
-    <meta name="twitter:description" content="基于 Rust 的轻量级终端 IDE。38 个主题、LSP、SFTP、Git 集成，开箱即用。">
+    <meta name="twitter:description" content="基于 Rust 的轻量级终端 IDE。数据库查看器、Markdown/图表预览、LSP、SFTP、Git 集成，开箱即用。">
     <meta name="twitter:image" content="../assets/termide.jpg">
 
     <!-- Favicon -->
@@ -39,6 +39,10 @@
             { text: "Git 状态、日志、差异、提交、推送——全在 TUI 中", image: "../assets/screenshots/git.png" },
             { text: "内置终端，完整 PTY 支持", image: "../assets/screenshots/terminal.png" },
             { text: "代码大纲，光标同步与结构化导航", image: "../assets/screenshots/outline.png" },
+            { text: "只读浏览 SQLite、PostgreSQL 和 MySQL 表", image: "../assets/screenshots/db.png" },
+            { text: "渲染 Markdown 和 HTML，外加文本模式浏览器", image: "../assets/screenshots/markdown.png" },
+            { text: "Mermaid 图表 — 以及从代码生成的类图", image: "../assets/screenshots/mermaid.png" },
+            { text: "十六进制/二进制查看器与编辑器，支持搜索", image: "../assets/screenshots/hex.png" },
             { text: "38 个主题、15 种语言、SFTP、书签等更多功能", image: "../assets/screenshots/themes.png" }
         ];
     </script>
@@ -100,6 +104,10 @@
                         <img src="../assets/screenshots/git.png" alt="Git 集成" class="screenshot">
                         <img src="../assets/screenshots/terminal.png" alt="终端" class="screenshot">
                         <img src="../assets/screenshots/outline.png" alt="代码大纲" class="screenshot">
+                        <img src="../assets/screenshots/db.png" alt="数据库查看器" class="screenshot">
+                        <img src="../assets/screenshots/markdown.png" alt="Markdown 预览" class="screenshot">
+                        <img src="../assets/screenshots/mermaid.png" alt="Mermaid 图表" class="screenshot">
+                        <img src="../assets/screenshots/hex.png" alt="十六进制查看器" class="screenshot">
                         <img src="../assets/screenshots/themes.png" alt="主题" class="screenshot">
                     </div>
                 </div>
@@ -123,7 +131,7 @@
                     <div class="feature-card">
                         <div class="feature-icon">{}</div>
                         <h3>语法高亮</h3>
-                        <p>基于 tree-sitter 支持 21 种语言。Rust、Python、JS、Go、C/C++、PHP 等。</p>
+                        <p>基于 tree-sitter 支持 22 种语言。Rust、Python、JS、Go、C/C++、Java、Kotlin、PHP 等。</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">+-</div>
@@ -174,6 +182,26 @@
                         <div class="feature-icon">✎</div>
                         <h3>即插即用 $EDITOR</h3>
                         <p>设置 <code>EDITOR=termide</code> 即可编写 git 提交信息、crontab 等。传入任意文件路径即可立即打开。</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">▦</div>
+                        <h3>数据库查看器</h3>
+                        <p>只读浏览 SQLite、PostgreSQL 和 MySQL/MariaDB 表 — 网格视图、服务端排序、按列过滤，以及将行导出为 TSV/JSON/INSERT。</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">¶</div>
+                        <h3>文档与网页浏览器</h3>
+                        <p>渲染 Markdown 和 HTML 视图，外加文本模式浏览器 — 打开 URL、带前进/后退历史地跟随链接，无需离开终端即可抓取页面。</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">◇</div>
+                        <h3>从代码生成图表</h3>
+                        <p>Mermaid 查看器支持流程图、时序图、状态图和 ER 图 — 还能直接从源文件生成类图。</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">0x</div>
+                        <h3>十六进制/二进制编辑器</h3>
+                        <p>自适应 hex/ASCII 视图，带字节光标、选择和搜索 — 以及原位覆盖编辑，自动生成 <code>.bak</code> 备份。</p>
                     </div>
                 </div>
         </section>
@@ -555,6 +583,27 @@
                                 <td><span class="cross">&#10007;</span></td>
                                 <td><span class="cross">&#10007;</span></td>
                             </tr>
+                            <tr>
+                                <td>数据库查看器</td>
+                                <td class="highlight"><span class="check">&#10003;</span></td>
+                                <td><span class="plugin">插件</span></td>
+                                <td><span class="cross">&#10007;</span></td>
+                                <td><span class="cross">&#10007;</span></td>
+                            </tr>
+                            <tr>
+                                <td>Markdown 与图表预览</td>
+                                <td class="highlight"><span class="check">&#10003;</span></td>
+                                <td><span class="plugin">插件</span></td>
+                                <td><span class="cross">&#10007;</span></td>
+                                <td><span class="cross">&#10007;</span></td>
+                            </tr>
+                            <tr>
+                                <td>十六进制/二进制编辑器</td>
+                                <td class="highlight"><span class="check">&#10003;</span></td>
+                                <td><span class="plugin">插件</span></td>
+                                <td><span class="cross">&#10007;</span></td>
+                                <td><span class="cross">&#10007;</span></td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -595,7 +644,7 @@
                 </div>
                 <div class="footer-meta">
                     <p>MIT 许可证 &bull; 使用 Rust 用 <span class="rust-heart">&#9829;</span> 构建</p>
-                    <p class="version">v0.23.8</p>
+                    <p class="version">v0.29.1</p>
                 </div>
             </div>
         </div>
