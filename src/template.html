@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="{{lang}}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{t:meta.title}}</title>
+    <meta name="description" content="{{t:meta.description|attr}}">
+    <link rel="canonical" href="{{canonical}}">
+{{block:hreflang}}
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="{{t:meta.og_title|attr}}">
+    <meta property="og:description" content="{{t:meta.og_description|attr}}">
+    <meta property="og:image" content="{{og_image}}">
+    <meta property="og:url" content="{{canonical}}">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{t:meta.og_title|attr}}">
+    <meta name="twitter:description" content="{{t:meta.og_description|attr}}">
+    <meta name="twitter:image" content="{{og_image}}">
+
+    <link rel="icon" type="image/svg+xml" href="{{root}}assets/logo.svg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{root}}css/style.css">
+{{block:jsonld}}
+</head>
+<body class="scanlines">
+    <script>
+        window.heroSlides = {{block:slides_json}};
+    </script>
+
+    <nav class="menubar">
+        <div class="menubar-logo">TermIDE</div>
+        <div class="menubar-nav">
+            <a href="#homes">{{t:nav.features}}</a>
+            <a href="#agent">{{t:nav.agent}}</a>
+            <a href="#toolbox">{{t:nav.compare}}</a>
+            <a href="#screenshots">{{t:nav.themes}}</a>
+            <a href="#install">{{t:nav.install}}</a>
+            <a href="{{repo_url}}/blob/main/doc/{{doc_lang}}/README.md" target="_blank" rel="noopener">{{t:nav.docs}}</a>
+        </div>
+{{block:lang_switcher}}
+    </nav>
+
+    <main class="page-container">
+        <div class="hero-header">
+            <img src="{{root}}assets/logo.svg" alt="TermIDE" class="logo">
+            <h1 class="glitch" data-text="TermIDE">TermIDE</h1>
+        </div>
+
+        <div class="hero-carousel">
+            <div class="hero-carousel-content">
+                <p class="headline">{{t:hero.headline}}</p>
+                <p class="tagline">
+                    <span class="typewriter"></span><span class="cursor">_</span>
+                </p>
+                <p class="subtitle">{{t:hero.subtitle}}</p>
+{{block:hero_install}}
+                <div class="cta-buttons">
+                    <a href="#install" class="btn btn-secondary">
+                        <span class="btn-icon">$</span> {{t:hero.install_all}}
+                    </a>
+                    <a href="{{repo_url}}" class="btn btn-secondary" target="_blank" rel="noopener">
+                        <span class="btn-icon">&gt;</span> {{t:hero.cta_github}}
+                    </a>
+                </div>
+            </div>
+            <div class="hero-carousel-image">
+                <div class="terminal-frame neon-border">
+                    <div class="terminal-header">
+                        <span class="terminal-dot red"></span>
+                        <span class="terminal-dot yellow"></span>
+                        <span class="terminal-dot green"></span>
+                        <span class="terminal-title">demo@demo: ~/project — termide</span>
+                    </div>
+                    <div class="hero-screenshots">
+{{block:hero_images}}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+{{block:trust}}
+
+        <section id="homes" class="homes">
+            <h2 class="section-title glitch-hover">{{t:homes.title}}</h2>
+            <p class="section-subtitle">{{t:homes.subtitle}}</p>
+            <div class="homes-grid">
+                <div class="home-column">
+                    <h3 class="home-title"><span class="home-prompt">~$</span> {{t:homes.desk_title}}</h3>
+{{block:homes_desk}}
+                </div>
+                <div class="home-column">
+                    <h3 class="home-title"><span class="home-prompt">root@srv:~#</span> {{t:homes.server_title}}</h3>
+{{block:homes_server}}
+                </div>
+            </div>
+        </section>
+
+        <section id="agent" class="agent">
+            <h2 class="section-title glitch-hover">{{t:agent.title}}</h2>
+            <p class="section-subtitle">{{t:agent.subtitle}}</p>
+{{block:agent_hooks}}
+            <div class="agent-layout">
+                <div class="terminal-frame neon-border agent-shot">
+                    <img src="{{root}}{{agent_image}}" alt="TermIDE agent panel" class="screenshot" loading="lazy">
+                </div>
+                <div class="agent-items">
+{{block:agent_items}}
+                </div>
+            </div>
+            <div class="agent-cli">
+                <h3>{{t:agent.cli_title}}</h3>
+                <p>{{t:agent.cli_desc}}</p>
+{{block:agent_cli}}
+            </div>
+        </section>
+
+        <section id="toolbox" class="comparison">
+            <h2 class="section-title glitch-hover">{{t:compare.stack_title}}</h2>
+            <p class="section-subtitle">{{t:compare.stack_subtitle}}</p>
+            <div class="table-wrapper">
+{{block:stack_table}}
+            </div>
+        </section>
+
+        <section id="screenshots" class="screenshots">
+            <h2 class="section-title glitch-hover">{{t:themes.title}}</h2>
+            <p class="section-subtitle">{{t:themes.subtitle}}</p>
+{{block:theme_filters}}
+            <div class="gallery">
+{{block:theme_gallery}}
+            </div>
+{{block:theme_show_all}}
+{{block:theme_custom}}
+        </section>
+
+        <section id="features" class="features">
+            <h2 class="section-title glitch-hover">{{t:features.title}}</h2>
+            <p class="section-subtitle">{{t:features.subtitle}}</p>
+{{block:feature_list}}
+        </section>
+
+        <section id="compare" class="comparison">
+            <h2 class="section-title glitch-hover">{{t:compare.title}}</h2>
+            <p class="section-subtitle">{{t:compare.subtitle}}</p>
+{{block:compare_table}}
+        </section>
+
+        <section id="faq" class="faq">
+            <h2 class="section-title glitch-hover">{{t:faq.title}}</h2>
+{{block:faq}}
+        </section>
+
+        <section id="install" class="installation">
+            <h2 class="section-title glitch-hover">{{t:install.title}}</h2>
+            <p class="section-subtitle">{{t:install.subtitle}}</p>
+{{block:install_tabs}}
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="{{root}}assets/logo.svg" alt="TermIDE" class="footer-logo-img">
+                    <span class="footer-name">TermIDE</span>
+                </div>
+                <div class="footer-links">
+                    <a href="{{repo_url}}" target="_blank" rel="noopener">GitHub</a>
+                    <a href="{{repo_url}}/blob/main/doc/{{doc_lang}}/README.md" target="_blank" rel="noopener">{{t:footer.docs}}</a>
+                    <a href="{{repo_url}}/releases" target="_blank" rel="noopener">{{t:footer.releases}}</a>
+                    <a href="{{repo_url}}/issues" target="_blank" rel="noopener">{{t:footer.issues}}</a>
+                </div>
+                <div class="footer-meta">
+                    <p>{{t:footer.license}}</p>
+                    <p class="version">v<span data-version>{{version}}</span></p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-grid"></div>
+    </footer>
+
+    <div id="lightbox" class="lightbox">
+        <button class="lightbox-close">&times;</button>
+        <img class="lightbox-image" src="" alt="">
+    </div>
+
+    <script src="{{root}}js/main.js"></script>
+</body>
+</html>

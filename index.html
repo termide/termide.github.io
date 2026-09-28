@@ -3,58 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TermIDE — Lightweight Terminal IDE</title>
-    <meta name="description" content="A lightweight terminal IDE written in Rust. Database viewer, Markdown/HTML/diagram preview, LSP, SFTP/FTP, Git integration, 38 themes, 22-language syntax highlighting, 15 UI languages. Zero configuration required.">
+    <title>TermIDE — all-in-one terminal workspace for desktops and servers</title>
+    <meta name="description" content="Editor with LSP, dual-pane file manager with SFTP/FTP, terminal, git, database viewer and a coding agent that runs on your own model — one zero-config static binary written in Rust.">
+    <link rel="canonical" href="https://termide.github.io/">
+    <link rel="alternate" hreflang="en" href="https://termide.github.io/">
+    <link rel="alternate" hreflang="ru" href="https://termide.github.io/ru/">
+    <link rel="alternate" hreflang="zh" href="https://termide.github.io/zh/">
+    <link rel="alternate" hreflang="x-default" href="https://termide.github.io/">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="TermIDE — Lightweight Terminal IDE">
-    <meta property="og:description" content="A lightweight terminal IDE written in Rust. Database viewer, Markdown/diagram preview, LSP, SFTP, Git integration, 38 themes, and 15 UI languages out of the box.">
-    <meta property="og:image" content="assets/termide.jpg">
+    <meta property="og:title" content="TermIDE — one terminal workspace, on your laptop and on your servers">
+    <meta property="og:description" content="Editor, file manager, terminal, git, databases and a coding agent in one static Rust binary. Zero config.">
+    <meta property="og:image" content="https://termide.github.io/assets/og.png">
+    <meta property="og:url" content="https://termide.github.io/">
     <meta property="og:type" content="website">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="TermIDE — Lightweight Terminal IDE">
-    <meta name="twitter:description" content="A lightweight terminal IDE written in Rust. Database viewer, Markdown/diagram preview, LSP, SFTP, Git integration out of the box.">
-    <meta name="twitter:image" content="assets/termide.jpg">
+    <meta name="twitter:title" content="TermIDE — one terminal workspace, on your laptop and on your servers">
+    <meta name="twitter:description" content="Editor, file manager, terminal, git, databases and a coding agent in one static Rust binary. Zero config.">
+    <meta name="twitter:image" content="https://termide.github.io/assets/og.png">
 
-    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
 
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
-    <!-- Styles -->
     <link rel="stylesheet" href="css/style.css">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "TermIDE",
+  "url": "https://termide.github.io/",
+  "description": "Editor with LSP, dual-pane file manager with SFTP/FTP, terminal, git, database viewer and a coding agent that runs on your own model — one zero-config static binary written in Rust.",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Linux, macOS, Windows, Android",
+  "softwareVersion": "0.36.0",
+  "license": "https://opensource.org/licenses/MIT",
+  "downloadUrl": "https://github.com/termide/termide/releases/latest",
+  "codeRepository": "https://github.com/termide/termide",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+    </script>
 </head>
 <body class="scanlines">
-    <!-- Hero Slides Data -->
     <script>
-        window.heroSlides = [
-            { text: "A lightweight terminal IDE for daily use", image: "assets/screenshots/editor.png" },
-            { text: "Navigate, copy, move — without leaving the terminal", image: "assets/screenshots/file-manager.png" },
-            { text: "LSP completions and diagnostics out of the box", image: "assets/screenshots/editor.png" },
-            { text: "Git status, log, diff, commit, push — all in TUI", image: "assets/screenshots/git.png" },
-            { text: "Integrated terminal with full PTY support", image: "assets/screenshots/terminal.png" },
-            { text: "Code outline with cursor sync and structural navigation", image: "assets/screenshots/outline.png" },
-            { text: "Browse SQLite, PostgreSQL and MySQL tables read-only", image: "assets/screenshots/db.png" },
-            { text: "Rendered Markdown and HTML, with a text-mode browser", image: "assets/screenshots/markdown.png" },
-            { text: "Mermaid diagrams — and class diagrams from your code", image: "assets/screenshots/mermaid.png" },
-            { text: "Hex / binary viewer and editor with search", image: "assets/screenshots/hex.png" },
-            { text: "38 themes, 15 languages, SFTP, bookmarks and more", image: "assets/screenshots/themes.png" }
-        ];
+        window.heroSlides = [{"text": "Files, code, git and a shell side by side", "image": "assets/screenshots/overview.png"}, {"text": "A coding agent on your own model, local or hosted", "image": "assets/screenshots/agent.png"}, {"text": "Two panes, local and remote, transfers in the background", "image": "assets/screenshots/file-manager.png"}, {"text": "SSH dropped? termide --attach, and everything is where you left it", "image": "assets/screenshots/detach.gif"}, {"text": "Status, commit graph, diff, branches and worktrees", "image": "assets/screenshots/git.png"}, {"text": "Browse and edit SQLite, PostgreSQL and MySQL tables", "image": "assets/screenshots/db.png"}, {"text": "CPU, memory, processes and ports one click away", "image": "assets/screenshots/monitor.png"}, {"text": "Rendered Markdown with Mermaid diagrams", "image": "assets/screenshots/markdown.png"}, {"text": "Hex view and in-place editing for binary files", "image": "assets/screenshots/hex.png"}, {"text": "38 themes, from Dracula to Norton Commander", "image": "assets/screenshots/themes.png"}];
     </script>
 
-    <!-- Menubar - Full Width -->
     <nav class="menubar">
         <div class="menubar-logo">TermIDE</div>
         <div class="menubar-nav">
-            <a href="#features">Features</a>
+            <a href="#homes">Features</a>
+            <a href="#agent">Agent</a>
+            <a href="#toolbox">Compare</a>
             <a href="#screenshots">Themes</a>
-            <a href="#compare">Compare</a>
             <a href="#install">Install</a>
+            <a href="https://github.com/termide/termide/blob/main/doc/en/README.md" target="_blank" rel="noopener">Docs</a>
         </div>
         <div class="lang-switcher">
             <a href="index.html" class="active">EN</a>
@@ -65,27 +76,29 @@
         </div>
     </nav>
 
-    <!-- Page Container -->
     <main class="page-container">
-        <!-- Hero Header -->
         <div class="hero-header">
-            <img src="assets/logo.svg" alt="TermIDE Logo" class="logo">
+            <img src="assets/logo.svg" alt="TermIDE" class="logo">
             <h1 class="glitch" data-text="TermIDE">TermIDE</h1>
         </div>
 
-        <!-- Hero Carousel 50/50 -->
         <div class="hero-carousel">
             <div class="hero-carousel-content">
+                <p class="headline">One terminal workspace — on your laptop and on your servers.</p>
                 <p class="tagline">
                     <span class="typewriter"></span><span class="cursor">_</span>
                 </p>
-                <p class="subtitle">Written in Rust. Zero configuration. Batteries included.</p>
+                <p class="subtitle">Editor, file manager, terminal, git, databases and a coding agent. One static binary, zero config.</p>
+                <div class="code-block hero-install">
+                    <pre><code data-template="curl -fsSL https://raw.githubusercontent.com/termide/termide/main/install.sh | sh">curl -fsSL https://raw.githubusercontent.com/termide/termide/main/install.sh | sh</code></pre>
+                    <button class="copy-btn" data-copy="curl -fsSL https://raw.githubusercontent.com/termide/termide/main/install.sh | sh" title="Copy to clipboard"><span class="copy-icon">&#128203;</span></button>
+                </div>
                 <div class="cta-buttons">
-                    <a href="#install" class="btn btn-primary neon-border">
-                        <span class="btn-icon">$</span> Get Started
+                    <a href="#install" class="btn btn-secondary">
+                        <span class="btn-icon">$</span> All install options
                     </a>
                     <a href="https://github.com/termide/termide" class="btn btn-secondary" target="_blank" rel="noopener">
-                        <span class="btn-icon">&gt;</span> View on GitHub
+                        <span class="btn-icon">&gt;</span> GitHub
                     </a>
                 </div>
             </div>
@@ -95,540 +108,696 @@
                         <span class="terminal-dot red"></span>
                         <span class="terminal-dot yellow"></span>
                         <span class="terminal-dot green"></span>
-                        <span class="terminal-title">termide</span>
+                        <span class="terminal-title">demo@demo: ~/project — termide</span>
                     </div>
                     <div class="hero-screenshots">
-                        <img src="assets/screenshots/editor.png" alt="TermIDE Editor" class="screenshot active">
-                        <img src="assets/screenshots/file-manager.png" alt="File Manager" class="screenshot">
-                        <img src="assets/screenshots/editor.png" alt="Syntax Highlighting" class="screenshot">
-                        <img src="assets/screenshots/git.png" alt="Git Integration" class="screenshot">
-                        <img src="assets/screenshots/terminal.png" alt="Terminal" class="screenshot">
-                        <img src="assets/screenshots/outline.png" alt="Code Outline" class="screenshot">
-                        <img src="assets/screenshots/db.png" alt="Database Viewer" class="screenshot">
-                        <img src="assets/screenshots/markdown.png" alt="Markdown Preview" class="screenshot">
-                        <img src="assets/screenshots/mermaid.png" alt="Mermaid Diagrams" class="screenshot">
-                        <img src="assets/screenshots/hex.png" alt="Hex Viewer" class="screenshot">
-                        <img src="assets/screenshots/themes.png" alt="Themes" class="screenshot">
+                        <img src="assets/screenshots/overview.png" alt="Files, code, git and a shell side by side" class="screenshot active">
+                        <img src="assets/screenshots/agent.png" alt="A coding agent on your own model, local or hosted" class="screenshot" loading="lazy">
+                        <img src="assets/screenshots/file-manager.png" alt="Two panes, local and remote, transfers in the background" class="screenshot" loading="lazy">
+                        <img src="assets/screenshots/detach.gif" alt="SSH dropped? termide --attach, and everything is where you left it" class="screenshot" loading="lazy">
+                        <img src="assets/screenshots/git.png" alt="Status, commit graph, diff, branches and worktrees" class="screenshot" loading="lazy">
+                        <img src="assets/screenshots/db.png" alt="Browse and edit SQLite, PostgreSQL and MySQL tables" class="screenshot" loading="lazy">
+                        <img src="assets/screenshots/monitor.png" alt="CPU, memory, processes and ports one click away" class="screenshot" loading="lazy">
+                        <img src="assets/screenshots/markdown.png" alt="Rendered Markdown with Mermaid diagrams" class="screenshot" loading="lazy">
+                        <img src="assets/screenshots/hex.png" alt="Hex view and in-place editing for binary files" class="screenshot" loading="lazy">
+                        <img src="assets/screenshots/themes.png" alt="38 themes, from Dracula to Norton Commander" class="screenshot" loading="lazy">
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Features Section -->
-        <section id="features" class="features">
-            <h2 class="section-title glitch-hover">// Features</h2>
-            <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">&gt;_</div>
-                        <h3>Integrated Terminal</h3>
-                        <p>Full PTY support with scrollback, text search, mouse tracking, and URL detection.</p>
+        <ul class="trust-strip">
+            <li><span class="trust-mark">&#10003;</span> One ~12 MB download, no dependencies</li>
+            <li><span class="trust-mark">&#10003;</span> No telemetry, no account, no update checks</li>
+            <li><span class="trust-mark">&#10003;</span> AI stays off until you configure a model</li>
+            <li><span class="trust-mark">&#10003;</span> Menus, mouse and F-keys: familiar from minute one</li>
+        </ul>
+
+        <section id="homes" class="homes">
+            <h2 class="section-title glitch-hover">// Two homes, one tool</h2>
+            <p class="section-subtitle">The same binary and the same keys at your desk and on a box you reached over SSH.</p>
+            <div class="homes-grid">
+                <div class="home-column">
+                    <h3 class="home-title"><span class="home-prompt">~$</span> At your desk</h3>
+                    <div class="home-item">
+                        <h4>Code with LSP</h4>
+                        <p>Completion, go to definition, references, rename and diagnostics for 22 languages, without a plugin setup.</p>
                     </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">[]</div>
-                        <h3>Smart File Manager</h3>
-                        <p>Git status indicators, glob/regex search, batch operations, bookmarks, and directory switcher.</p>
+                    <div class="home-item">
+                        <h4>An agent on your model</h4>
+                        <p>Point it at llama.cpp, Ollama or vLLM on your machine and no code leaves it, or use a hosted endpoint.</p>
                     </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">{}</div>
-                        <h3>Syntax Highlighting</h3>
-                        <p>22 languages powered by tree-sitter. Rust, Python, JS, Go, C/C++, Java, Kotlin, PHP, and more.</p>
+                    <div class="home-item">
+                        <h4>Git at a glance</h4>
+                        <p>Status, a coloured commit graph, diffs, stashes, and branches together with their worktrees.</p>
                     </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">+-</div>
-                        <h3>Git Integration</h3>
-                        <p>Status panel, commit log with ASCII graph, diff viewer, staging, push/pull.</p>
+                    <div class="home-item">
+                        <h4>Docs next to the code</h4>
+                        <p>Rendered Markdown, Mermaid diagrams, HTML and images in panels beside the editor.</p>
                     </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">&lt;&gt;</div>
-                        <h3>LSP &amp; Diagnostics</h3>
-                        <p>Completion, hover, go-to-definition, find references, rename, and quick-fixes like auto-import. Diagnostics panel with error/warning filtering.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">§</div>
-                        <h3>Code Outline</h3>
-                        <p>Structural navigation via tree-sitter queries. Cursor sync with editor position.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">↔</div>
-                        <h3>Remote Files</h3>
-                        <p>Browse and edit files over SFTP, FTP, FTPS, and SMB. Upload/download with progress tracking.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">#*</div>
-                        <h3>38 Themes</h3>
-                        <p>Dark, light, retro, and cinematic themes. Create your own in TOML format.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">%%</div>
-                        <h3>Resource Monitor</h3>
-                        <p>Real-time CPU, RAM, network I/O, and disk in the menu bar. Click any indicator to open a detail modal: top processes by CPU/RAM usage or network connections.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">@!</div>
-                        <h3>15 UI Languages</h3>
-                        <p>English, Russian, Chinese, Japanese, Korean, German, French, Spanish, and more.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">::</div>
-                        <h3>Sessions &amp; Bookmarks</h3>
-                        <p>Auto-save workspaces. Directory bookmarks. Switch between projects seamlessly.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">$/</div>
-                        <h3>Scripts &amp; Vim Mode</h3>
-                        <p>Run custom automation scripts from menu. Optional Vim-style editing with Cyrillic support.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">✎</div>
-                        <h3>Drop-in $EDITOR</h3>
-                        <p>Set <code>EDITOR=termide</code> to write git commit messages, crontabs, and more. Pass any file path to open it instantly.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">▦</div>
-                        <h3>Database Viewer</h3>
-                        <p>Browse SQLite, PostgreSQL, and MySQL/MariaDB tables read-only — grid view, server-side sort, per-column filters, and row export to TSV/JSON/INSERT.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">¶</div>
-                        <h3>Docs &amp; Web Browser</h3>
-                        <p>Rendered Markdown and HTML views, plus a text-mode browser — open URLs, follow links with back/forward history, and fetch pages without leaving the terminal.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">◇</div>
-                        <h3>Diagrams from Code</h3>
-                        <p>Mermaid viewer for flowcharts, sequence, state, and ER diagrams — plus class diagrams generated straight from your source files.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">0x</div>
-                        <h3>Hex &amp; Binary Editor</h3>
-                        <p>Adaptive hex/ASCII viewer with a byte cursor, selection, and search — plus overwrite-in-place editing with automatic <code>.bak</code> backups.</p>
+                    <div class="home-item">
+                        <h4>Your project commands</h4>
+                        <p>Build, test and deploy commands in <code>commands.toml</code>, per project, on a hotkey.</p>
                     </div>
                 </div>
+                <div class="home-column">
+                    <h3 class="home-title"><span class="home-prompt">root@srv:~#</span> On your servers</h3>
+                    <div class="home-item">
+                        <h4>Copy one file and run</h4>
+                        <p>A static musl binary with no OpenSSL and no libc to match: Alpine, ARM boards, containers, Termux.</p>
+                    </div>
+                    <div class="home-item">
+                        <h4>Local and remote panes</h4>
+                        <p>SFTP, FTP and FTPS in the file manager; copy between hosts while the transfer runs in the background.</p>
+                    </div>
+                    <div class="home-item">
+                        <h4>Survives a dropped SSH</h4>
+                        <p><code>termide --detached</code> keeps editors, shells and jobs running; <code>--attach</code> brings them back at any size.</p>
+                    </div>
+                    <div class="home-item">
+                        <h4>What is eating the box</h4>
+                        <p>CPU, memory, network and disk in the menu bar, with top processes and listening ports a click away.</p>
+                    </div>
+                    <div class="home-item">
+                        <h4>Look inside the database</h4>
+                        <p>SQLite, PostgreSQL and MySQL tables with sorting, filters, cell editing and export.</p>
+                    </div>
+                    <div class="home-item">
+                        <h4>Your $EDITOR</h4>
+                        <p><code>EDITOR=termide</code> for <code>crontab -e</code>, <code>visudo</code> and commit messages.</p>
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <!-- Screenshots Gallery -->
+        <section id="agent" class="agent">
+            <h2 class="section-title glitch-hover">// A coding agent that asks first</h2>
+            <p class="section-subtitle">Describe a task; the model reads, edits and runs commands in your project, and every change waits for your approval.</p>
+            <div class="agent-hooks">
+                <div class="agent-hook">
+                    <span class="agent-hook-q">Local model?</span>
+                    <span class="agent-hook-a">Code never leaves your machine.</span>
+                </div>
+                <div class="agent-hook">
+                    <span class="agent-hook-q">Wary of agents?</span>
+                    <span class="agent-hook-a">It asks before every change.</span>
+                </div>
+                <div class="agent-hook">
+                    <span class="agent-hook-q">Already on Claude Code or Codex?</span>
+                    <span class="agent-hook-a">Run them in the same panel.</span>
+                </div>
+            </div>
+            <div class="agent-layout">
+                <div class="terminal-frame neon-border agent-shot">
+                    <img src="assets/screenshots/agent.gif" alt="TermIDE agent panel" class="screenshot" loading="lazy">
+                </div>
+                <div class="agent-items">
+                    <div class="agent-item">
+                        <h4>Bring your own model</h4>
+                        <p>Any OpenAI- or Anthropic-compatible endpoint: llama.cpp, Ollama, vLLM, omlx or a hosted provider. The context window comes from the server when it reports one.</p>
+                    </div>
+                    <div class="agent-item">
+                        <h4>Nothing changes without you</h4>
+                        <p>Allow once, for the session or always for a pattern; deny with a reason the model reads; plan mode refuses every write.</p>
+                    </div>
+                    <div class="agent-item">
+                        <h4>Tools it needs, nothing more</h4>
+                        <p>Read, edit, write and shell, plus web search and fetch through a browser profile of its own, never your logins.</p>
+                    </div>
+                    <div class="agent-item">
+                        <h4>Other agents in the same panel</h4>
+                        <p>Claude Code, Codex and Gemini CLI over the Agent Client Protocol, your own agents, and subagents for focused jobs.</p>
+                    </div>
+                    <div class="agent-item">
+                        <h4>Extend it in files</h4>
+                        <p>Skills, prompt templates, command scripts, MCP servers, hooks and project instructions, all plain files.</p>
+                    </div>
+                    <div class="agent-item">
+                        <h4>See what it costs</h4>
+                        <p>Live phase and speed, a context bar and token totals; each answer ends with its time and tokens. Sessions resume later.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="agent-cli">
+                <h3>Headless, for scripts and CI</h3>
+                <p>The same agent, tools and permission rules without the UI:</p>
+                <div class="code-block">
+                    <pre><code data-template="termide --prompt &quot;run the tests and report failures&quot; --output json">termide --prompt &quot;run the tests and report failures&quot; --output json</code></pre>
+                    <button class="copy-btn" data-copy="termide --prompt &quot;run the tests and report failures&quot; --output json" title="Copy to clipboard"><span class="copy-icon">&#128203;</span></button>
+                </div>
+            </div>
+        </section>
+
+        <section id="toolbox" class="comparison">
+            <h2 class="section-title glitch-hover">// The everyday part of your toolbox</h2>
+            <p class="section-subtitle">TermIDE does not try to replace these tools. It covers the part you reach for every day, in one place.</p>
+            <div class="table-wrapper">
+                <table class="comparison-table stack-table">
+                    <thead>
+                        <tr><th>Task</th><th>Usually</th><th class="highlight">In TermIDE</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Keep work alive after SSH drops</td><td>tmux, screen</td><td class="highlight">Detached instances</td></tr>
+                        <tr><td>Move files between hosts</td><td>mc, ranger, scp</td><td class="highlight">Dual-pane file manager with SFTP/FTP</td></tr>
+                        <tr><td>Edit code and configs</td><td>vim, nano</td><td class="highlight">Editor with LSP</td></tr>
+                        <tr><td>Review and commit</td><td>lazygit, tig</td><td class="highlight">Git status, log and diff panels</td></tr>
+                        <tr><td>Find what is eating the box</td><td>htop, ss</td><td class="highlight">Resource monitor</td></tr>
+                        <tr><td>Look into a database</td><td>sqlite3, psql</td><td class="highlight">Database viewer</td></tr>
+                        <tr><td>Ask a model to change code</td><td>aider, Claude Code</td><td class="highlight">Agent panel, or those agents inside it</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
         <section id="screenshots" class="screenshots">
-            <h2 class="section-title glitch-hover">// Themes Gallery</h2>
-                <p class="section-subtitle">Choose your vibe. Or create your own.</p>
-                <div class="gallery">
-                    <!-- Dark themes -->
-                    <div class="gallery-item" data-theme="dracula">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="assets/themes/dracula.png" alt="Dracula Theme" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">Dracula</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-theme="monokai">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="assets/themes/monokai.png" alt="Monokai Theme" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">Monokai</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-theme="nord">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="assets/themes/nord.png" alt="Nord Theme" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">Nord</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-theme="onedark">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="assets/themes/onedark.png" alt="One Dark Theme" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">One Dark</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-theme="solarized-dark">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="assets/themes/solarized-dark.png" alt="Solarized Dark Theme" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">Solarized Dark</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-theme="midnight">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="assets/themes/midnight.png" alt="Midnight Theme" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">Midnight</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-theme="macos-dark">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="assets/themes/macos-dark.png" alt="macOS Dark Theme" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">macOS Dark</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-theme="ayu-dark">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="assets/themes/ayu-dark.png" alt="Ayu Dark Theme" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">Ayu Dark</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-theme="catppuccin-macchiato">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="assets/themes/catppuccin-macchiato.png" alt="Catppuccin Macchiato Theme" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">Catppuccin</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-theme="everforest">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="assets/themes/everforest.png" alt="Everforest Theme" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">Everforest</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-theme="github-dark">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="assets/themes/github-dark.png" alt="GitHub Dark Theme" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">GitHub Dark</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-theme="gruvbox">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="assets/themes/gruvbox.png" alt="Gruvbox Theme" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">Gruvbox</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-theme="kanagawa">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="assets/themes/kanagawa.png" alt="Kanagawa Theme" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">Kanagawa</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-theme="material-ocean">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="assets/themes/material-ocean.png" alt="Material Ocean Theme" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">Material Ocean</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-theme="rosepine">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="assets/themes/rosepine.png" alt="Rosé Pine Theme" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">Rosé Pine</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-theme="tokyonight">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="assets/themes/tokyonight.png" alt="Tokyo Night Theme" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">Tokyo Night</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-theme="terminal">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="assets/themes/terminal.png" alt="Terminal Theme" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">Terminal</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Light themes -->
-                    <div class="gallery-item" data-theme="solarized-light">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="assets/themes/solarized-light.png" alt="Solarized Light Theme" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">Solarized Light</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-theme="github-light">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="assets/themes/github-light.png" alt="GitHub Light Theme" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">GitHub Light</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-theme="atom-one-light">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="assets/themes/atom-one-light.png" alt="Atom One Light Theme" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">Atom One Light</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-theme="ayu-light">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="assets/themes/ayu-light.png" alt="Ayu Light Theme" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">Ayu Light</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-theme="material-lighter">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="assets/themes/material-lighter.png" alt="Material Lighter Theme" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">Material Lighter</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-theme="macos-light">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="assets/themes/macos-light.png" alt="macOS Light Theme" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">macOS Light</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-theme="manuscript">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="assets/themes/manuscript.png" alt="Manuscript Theme" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">Manuscript</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Retro themes -->
-                    <div class="gallery-item" data-theme="far-manager">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="assets/themes/far-manager.png" alt="Far Manager Theme" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">Far Manager</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-theme="norton-commander">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="assets/themes/norton-commander.png" alt="Norton Commander Theme" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">Norton Commander</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-theme="dos-navigator">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="assets/themes/dos-navigator.png" alt="DOS Navigator Theme" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">DOS Navigator</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-theme="volkov-commander">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="assets/themes/volkov-commander.png" alt="Volkov Commander Theme" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">Volkov Commander</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-theme="windows-95">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="assets/themes/windows-95.png" alt="Windows 95 Theme" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">Windows 95</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-theme="windows-98">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="assets/themes/windows-98.png" alt="Windows 98 Theme" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">Windows 98</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-theme="windows-xp">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="assets/themes/windows-xp.png" alt="Windows XP Theme" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">Windows XP</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Cinematic themes -->
-                    <div class="gallery-item" data-theme="matrix">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="assets/themes/matrix.png" alt="Matrix Theme" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">Matrix</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-theme="pip-boy">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="assets/themes/pip-boy.png" alt="Pip-Boy Theme" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">Pip-Boy</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-theme="terminator">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="assets/themes/terminator.png" alt="Terminator Theme" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">Terminator</span>
-                            </div>
-                        </div>
+            <h2 class="section-title glitch-hover">// Themes</h2>
+            <p class="section-subtitle">Choose your vibe. Or write your own.</p>
+            <div class="theme-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="retro">Retro</button>
+                <button class="filter-btn" data-filter="dark">Dark</button>
+                <button class="filter-btn" data-filter="light">Light</button>
+                <button class="filter-btn" data-filter="cinematic">Cinematic</button>
+            </div>
+            <div class="gallery">
+                <div class="gallery-item" data-group="retro">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="assets/themes/norton-commander.png" alt="Norton Commander" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Norton Commander</span></div>
                     </div>
                 </div>
+                <div class="gallery-item" data-group="retro">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="assets/themes/far-manager.png" alt="Far Manager" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Far Manager</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-group="cinematic">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="assets/themes/matrix.png" alt="Matrix" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Matrix</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-group="cinematic">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="assets/themes/pip-boy.png" alt="Pip-Boy" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Pip-Boy</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-group="dark">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="assets/themes/dracula.png" alt="Dracula" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Dracula</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-group="dark">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="assets/themes/tokyonight.png" alt="Tokyo Night" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Tokyo Night</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-group="dark">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="assets/themes/nord.png" alt="Nord" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Nord</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-group="light">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="assets/themes/ayu-light.png" alt="Ayu Light" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Ayu Light</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-group="light">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="assets/themes/solarized-light.png" alt="Solarized Light" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Solarized Light</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item extra" data-group="retro">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="assets/themes/dos-navigator.png" alt="DOS Navigator" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">DOS Navigator</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item extra" data-group="retro">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="assets/themes/volkov-commander.png" alt="Volkov Commander" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Volkov Commander</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item extra" data-group="retro">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="assets/themes/windows-95.png" alt="Windows 95" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Windows 95</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item extra" data-group="retro">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="assets/themes/windows-98.png" alt="Windows 98" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Windows 98</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item extra" data-group="retro">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="assets/themes/windows-xp.png" alt="Windows XP" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Windows XP</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item extra" data-group="cinematic">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="assets/themes/terminator.png" alt="Terminator" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Terminator</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item extra" data-group="dark">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="assets/themes/monokai.png" alt="Monokai" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Monokai</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item extra" data-group="dark">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="assets/themes/onedark.png" alt="One Dark" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">One Dark</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item extra" data-group="dark">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="assets/themes/solarized-dark.png" alt="Solarized Dark" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Solarized Dark</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item extra" data-group="dark">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="assets/themes/midnight.png" alt="Midnight" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Midnight</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item extra" data-group="dark">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="assets/themes/macos-dark.png" alt="macOS Dark" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">macOS Dark</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item extra" data-group="dark">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="assets/themes/ayu-dark.png" alt="Ayu Dark" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Ayu Dark</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item extra" data-group="dark">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="assets/themes/catppuccin-macchiato.png" alt="Catppuccin" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Catppuccin</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item extra" data-group="dark">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="assets/themes/everforest.png" alt="Everforest" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Everforest</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item extra" data-group="dark">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="assets/themes/github-dark.png" alt="GitHub Dark" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">GitHub Dark</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item extra" data-group="dark">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="assets/themes/gruvbox.png" alt="Gruvbox" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Gruvbox</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item extra" data-group="dark">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="assets/themes/kanagawa.png" alt="Kanagawa" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Kanagawa</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item extra" data-group="dark">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="assets/themes/material-ocean.png" alt="Material Ocean" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Material Ocean</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item extra" data-group="dark">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="assets/themes/rosepine.png" alt="Rosé Pine" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Rosé Pine</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item extra" data-group="dark">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="assets/themes/terminal.png" alt="Terminal" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Terminal</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item extra" data-group="dark">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="assets/themes/billiard.png" alt="Billiard" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Billiard</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item extra" data-group="light">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="assets/themes/github-light.png" alt="GitHub Light" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">GitHub Light</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item extra" data-group="light">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="assets/themes/atom-one-light.png" alt="Atom One Light" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Atom One Light</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item extra" data-group="light">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="assets/themes/material-lighter.png" alt="Material Lighter" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Material Lighter</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item extra" data-group="light">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="assets/themes/macos-light.png" alt="macOS Light" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">macOS Light</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item extra" data-group="light">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="assets/themes/manuscript.png" alt="Manuscript" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Manuscript</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item extra" data-group="light">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="assets/themes/blue-sky.png" alt="Blue Sky" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Blue Sky</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item extra" data-group="light">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="assets/themes/green-backs.png" alt="Green Backs" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Green Backs</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item extra" data-group="light">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="assets/themes/pinky-pie.png" alt="Pinky Pie" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Pinky Pie</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="show-all"><button class="btn btn-secondary" data-show-all>Show all 38 themes</button></div>
+            <div class="theme-custom">
+                <div class="theme-custom-text">
+                    <h3>Make it yours</h3>
+                    <p>A theme is a TOML file with ten colours. No build step, no plugin.</p>
+                    <ul>
+                    <li>Named colours or RGB, ten keys in one file.</li>
+                    <li>A file with a built-in theme's name replaces that theme.</li>
+                    <li><code>"Reset"</code> lets your terminal's own background show through.</li>
+                    <li>Set it per project or per host: a red theme on production tells you where you are.</li>
+                    </ul>
+                    <a class="doc-link" href="https://github.com/termide/termide/blob/main/doc/en/themes.md" target="_blank" rel="noopener">&gt; Theme format</a>
+                </div>
+                <div class="code-block theme-example">
+                    <pre><code data-template="# ~/.config/termide/themes/prod-red.toml
+name = &quot;prod-red&quot;
+
+[colors]
+bg          = { rgb = [40, 8, 8] }
+fg          = { rgb = [240, 220, 220] }
+accented_bg = { rgb = [110, 20, 20] }
+accented_fg = &quot;White&quot;
+selected_bg = { rgb = [200, 40, 40] }
+selected_fg = &quot;White&quot;
+disabled    = &quot;DarkGray&quot;
+success     = &quot;LightGreen&quot;
+warning     = &quot;LightYellow&quot;
+error       = &quot;LightRed&quot;"># ~/.config/termide/themes/prod-red.toml
+name = &quot;prod-red&quot;
+
+[colors]
+bg          = { rgb = [40, 8, 8] }
+fg          = { rgb = [240, 220, 220] }
+accented_bg = { rgb = [110, 20, 20] }
+accented_fg = &quot;White&quot;
+selected_bg = { rgb = [200, 40, 40] }
+selected_fg = &quot;White&quot;
+disabled    = &quot;DarkGray&quot;
+success     = &quot;LightGreen&quot;
+warning     = &quot;LightYellow&quot;
+error       = &quot;LightRed&quot;</code></pre>
+                    <button class="copy-btn" data-copy="# ~/.config/termide/themes/prod-red.toml
+name = &quot;prod-red&quot;
+
+[colors]
+bg          = { rgb = [40, 8, 8] }
+fg          = { rgb = [240, 220, 220] }
+accented_bg = { rgb = [110, 20, 20] }
+accented_fg = &quot;White&quot;
+selected_bg = { rgb = [200, 40, 40] }
+selected_fg = &quot;White&quot;
+disabled    = &quot;DarkGray&quot;
+success     = &quot;LightGreen&quot;
+warning     = &quot;LightYellow&quot;
+error       = &quot;LightRed&quot;" title="Copy to clipboard"><span class="copy-icon">&#128203;</span></button>
+                </div>
+            </div>
         </section>
 
-        <!-- Comparison Section -->
+        <section id="features" class="features">
+            <h2 class="section-title glitch-hover">// Everything else</h2>
+            <p class="section-subtitle">The rest of what ships in the binary.</p>
+            <div class="feature-groups">
+            <div class="feature-group">
+                <h3 class="feature-group-title">Code</h3>
+                <ul class="feature-list">
+                    <li><span class="feature-icon">{}</span><span><strong>Editor with LSP</strong> Completion, hover, go to definition, references, rename and quick fixes; a diagnostics panel; tree-sitter highlighting for 22 languages.</span></li>
+                    <li><span class="feature-icon">§</span><span><strong>Code outline</strong> Structural navigation through tree-sitter queries, synced with the cursor.</span></li>
+                    <li><span class="feature-icon">¶</span><span><strong>Docs and diagrams</strong> Rendered Markdown and HTML, a text-mode browser, and Mermaid diagrams drawn as text, including class diagrams from your source.</span></li>
+                    <li><span class="feature-icon">0x</span><span><strong>Hex editor</strong> Hex/ASCII view with a byte cursor, selection and search; overwrite editing with a <code>.bak</code> backup.</span></li>
+                </ul>
+            </div>
+            <div class="feature-group">
+                <h3 class="feature-group-title">Files and data</h3>
+                <ul class="feature-list">
+                    <li><span class="feature-icon">[]</span><span><strong>File manager</strong> Tree with nested git status, glob and regex search, batch operations, bookmarks and a directory switcher.</span></li>
+                    <li><span class="feature-icon">↔</span><span><strong>Remote filesystems</strong> SFTP, FTP and FTPS in pure Rust; SMB and NFS through the OS mount.</span></li>
+                    <li><span class="feature-icon">⇅</span><span><strong>Background operations</strong> Copy, move, upload and download with progress, pause, resume and cancel.</span></li>
+                    <li><span class="feature-icon">▦</span><span><strong>Database viewer</strong> SQLite, PostgreSQL and MySQL: server-side sort, per-column filters, cell editing, rows as TSV, JSON or INSERT.</span></li>
+                </ul>
+            </div>
+            <div class="feature-group">
+                <h3 class="feature-group-title">Servers and ops</h3>
+                <ul class="feature-list">
+                    <li><span class="feature-icon">&amp;</span><span><strong>Detached instances</strong> Close the terminal or lose the connection; attach again later from any terminal (Unix).</span></li>
+                    <li><span class="feature-icon">&gt;_</span><span><strong>Integrated terminal</strong> Full PTY with scrollback, search, mouse and URL detection; the title follows your <code>cd</code>.</span></li>
+                    <li><span class="feature-icon">%%</span><span><strong>Resource monitor</strong> CPU, RAM, network and disk; top processes by CPU, memory or connections, with listening ports.</span></li>
+                    <li><span class="feature-icon">◆</span><span><strong>One static binary</strong> Linux x86_64 and ARM64 (glibc or musl), macOS, native Windows and Android Termux.</span></li>
+                </ul>
+            </div>
+            <div class="feature-group">
+                <h3 class="feature-group-title">Workspace</h3>
+                <ul class="feature-list">
+                    <li><span class="feature-icon">+-</span><span><strong>Git</strong> Status, log with a coloured commit graph, diff, staging, stash, blame, branches and their worktrees.</span></li>
+                    <li><span class="feature-icon">::</span><span><strong>Projects</strong> Panel layouts restored per directory, with per-project settings and commands.</span></li>
+                    <li><span class="feature-icon">$/</span><span><strong>Custom commands</strong> Global or per-project commands with hotkeys, parameter forms and terminal, background or report modes.</span></li>
+                    <li><span class="feature-icon">⌘</span><span><strong>Palette and Open</strong> <code>Ctrl+P</code> fuzzy command palette; <code>Ctrl+G</code> opens a file, a folder or a URL with path suggestions.</span></li>
+                </ul>
+            </div>
+            <div class="feature-group">
+                <h3 class="feature-group-title">Look and feel</h3>
+                <ul class="feature-list">
+                    <li><span class="feature-icon">#*</span><span><strong>38 themes</strong> Dark, light, retro and cinematic; write your own in TOML.</span></li>
+                    <li><span class="feature-icon">@!</span><span><strong>15 UI languages</strong> English, Chinese, Russian, Japanese, Korean, German, French, Spanish and more.</span></li>
+                    <li><span class="feature-icon">F1</span><span><strong>Keyboard and mouse</strong> Every binding is editable in Settings; full mouse support; hotkeys work on a Cyrillic layout and with <code>Alt</code> on macOS.</span></li>
+                    <li><span class="feature-icon">✎</span><span><strong>Vim mode</strong> Optional Vim-style editing for those whose fingers expect it.</span></li>
+                </ul>
+            </div>
+            </div>
+        </section>
+
         <section id="compare" class="comparison">
             <h2 class="section-title glitch-hover">// Why TermIDE?</h2>
-                <p class="section-subtitle">Everything you need, out of the box.</p>
+            <p class="section-subtitle">Editors cover the code. TermIDE covers what surrounds it too.</p>
+            <div class="table-wrapper">
+                <table class="comparison-table">
+                    <thead>
+                        <tr><th>Feature</th><th class="highlight">TermIDE</th><th>Fresh</th><th>Vim/Neovim</th><th>Helix</th><th>Micro</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Built-in coding agent (local or hosted models)</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="plugin">plugin</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+                        <tr><td>MCP servers</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="plugin">plugin</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+                        <tr><td>Remote filesystems (SFTP/FTP)</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="plugin">SSH</span></td><td><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+                        <tr><td>Database viewer</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="plugin">plugin</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+                        <tr><td>Detachable instances</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+                        <tr><td>Resource monitor</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+                        <tr><td>File manager</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="plugin">tree only</span></td><td><span class="plugin">plugin</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+                        <tr><td>Background file operations</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="plugin">plugin</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+                        <tr><td>Built-in terminal</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="plugin">plugin</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+                        <tr><td>Zero config</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <details class="compare-more">
+                <summary>Show the other rows</summary>
                 <div class="table-wrapper">
                     <table class="comparison-table">
                         <thead>
-                            <tr>
-                                <th>Feature</th>
-                                <th class="highlight">TermIDE</th>
-                                <th>Vim/Neovim</th>
-                                <th>Helix</th>
-                                <th>Micro</th>
-                            </tr>
+                            <tr><th>Feature</th><th class="highlight">TermIDE</th><th>Fresh</th><th>Vim/Neovim</th><th>Helix</th><th>Micro</th></tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Built-in Terminal</td>
-                                <td class="highlight"><span class="check">&#10003;</span></td>
-                                <td><span class="plugin">plugin</span></td>
-                                <td><span class="cross">&#10007;</span></td>
-                                <td><span class="cross">&#10007;</span></td>
-                            </tr>
-                            <tr>
-                                <td>File Manager</td>
-                                <td class="highlight"><span class="check">&#10003;</span></td>
-                                <td><span class="plugin">plugin</span></td>
-                                <td><span class="cross">&#10007;</span></td>
-                                <td><span class="cross">&#10007;</span></td>
-                            </tr>
-                            <tr>
-                                <td>Git Integration</td>
-                                <td class="highlight"><span class="check">&#10003;</span></td>
-                                <td><span class="plugin">plugin</span></td>
-                                <td><span class="cross">&#10007;</span></td>
-                                <td><span class="cross">&#10007;</span></td>
-                            </tr>
-                            <tr>
-                                <td>Syntax Highlighting</td>
-                                <td class="highlight"><span class="check">&#10003;</span></td>
-                                <td><span class="check">&#10003;</span></td>
-                                <td><span class="check">&#10003;</span></td>
-                                <td><span class="check">&#10003;</span></td>
-                            </tr>
-                            <tr>
-                                <td>Zero Config</td>
-                                <td class="highlight"><span class="check">&#10003;</span></td>
-                                <td><span class="cross">&#10007;</span></td>
-                                <td><span class="check">&#10003;</span></td>
-                                <td><span class="check">&#10003;</span></td>
-                            </tr>
-                            <tr>
-                                <td>Resource Monitor</td>
-                                <td class="highlight"><span class="check">&#10003;</span></td>
-                                <td><span class="cross">&#10007;</span></td>
-                                <td><span class="cross">&#10007;</span></td>
-                                <td><span class="cross">&#10007;</span></td>
-                            </tr>
-                            <tr>
-                                <td>Image Preview</td>
-                                <td class="highlight"><span class="check">&#10003;</span></td>
-                                <td><span class="plugin">plugin</span></td>
-                                <td><span class="cross">&#10007;</span></td>
-                                <td><span class="cross">&#10007;</span></td>
-                            </tr>
-                            <tr>
-                                <td>Sessions</td>
-                                <td class="highlight"><span class="check">&#10003;</span></td>
-                                <td><span class="plugin">plugin</span></td>
-                                <td><span class="cross">&#10007;</span></td>
-                                <td><span class="cross">&#10007;</span></td>
-                            </tr>
-                            <tr>
-                                <td>LSP Support</td>
-                                <td class="highlight"><span class="check">&#10003;</span></td>
-                                <td><span class="plugin">plugin</span></td>
-                                <td><span class="check">&#10003;</span></td>
-                                <td><span class="plugin">plugin</span></td>
-                            </tr>
-                            <tr>
-                                <td>Remote Files (SFTP)</td>
-                                <td class="highlight"><span class="check">&#10003;</span></td>
-                                <td><span class="plugin">plugin</span></td>
-                                <td><span class="cross">&#10007;</span></td>
-                                <td><span class="cross">&#10007;</span></td>
-                            </tr>
-                            <tr>
-                                <td>Code Outline</td>
-                                <td class="highlight"><span class="check">&#10003;</span></td>
-                                <td><span class="plugin">plugin</span></td>
-                                <td><span class="cross">&#10007;</span></td>
-                                <td><span class="cross">&#10007;</span></td>
-                            </tr>
-                            <tr>
-                                <td>Database Viewer</td>
-                                <td class="highlight"><span class="check">&#10003;</span></td>
-                                <td><span class="plugin">plugin</span></td>
-                                <td><span class="cross">&#10007;</span></td>
-                                <td><span class="cross">&#10007;</span></td>
-                            </tr>
-                            <tr>
-                                <td>Markdown &amp; Diagram Preview</td>
-                                <td class="highlight"><span class="check">&#10003;</span></td>
-                                <td><span class="plugin">plugin</span></td>
-                                <td><span class="cross">&#10007;</span></td>
-                                <td><span class="cross">&#10007;</span></td>
-                            </tr>
-                            <tr>
-                                <td>Hex / Binary Editor</td>
-                                <td class="highlight"><span class="check">&#10003;</span></td>
-                                <td><span class="plugin">plugin</span></td>
-                                <td><span class="cross">&#10007;</span></td>
-                                <td><span class="cross">&#10007;</span></td>
-                            </tr>
+                        <tr><td>LSP support</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="plugin">plugin</span></td></tr>
+                        <tr><td>Script automation</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="plugin">plugin</span></td></tr>
+                        <tr><td>External agents (Claude Code, Codex, Gemini CLI)</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="plugin">plugin</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+                        <tr><td>Markdown preview</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="plugin">plugin</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+                        <tr><td>Git integration</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="plugin">plugin</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+                        <tr><td>Project layouts</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="plugin">plugin</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+                        <tr><td>Multi-panel layout</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="plugin">plugin</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+                        <tr><td>Bookmarks</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="plugin">plugin</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+                        <tr><td>Hex / binary viewer</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="plugin">plugin</span></td><td><span class="cross">&#10007;</span></td><td><span class="plugin">plugin</span></td></tr>
+                        <tr><td>Diagram viewer (Mermaid)</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="plugin">plugin</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+                        <tr><td>Image viewer</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="plugin">plugin</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
                         </tbody>
                     </table>
                 </div>
+            </details>
         </section>
 
-        <!-- Installation Section -->
+        <section id="faq" class="faq">
+            <h2 class="section-title glitch-hover">// FAQ</h2>
+            <div class="faq-list">
+                <details class="faq-item">
+                    <summary>Do I have to use the AI agent?</summary>
+                    <p>No. No provider or model is set by default, so the agent does nothing and sends nothing until you configure one. Everything else works without it.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>Does TermIDE phone home?</summary>
+                    <p>No telemetry, no account and no update checks. It goes online only when you ask: a remote location, a web page, <code>git push</code> or <code>pull</code>, or a model for the agent.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>Does it replace tmux?</summary>
+                    <p>For the common case of keeping work alive over SSH, yes: <code>termide --detached</code> keeps the whole workspace running and <code>--attach</code> brings it back. It does not manage arbitrary sessions and windows the way tmux does, and runs fine inside tmux.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>How do I use it on a server?</summary>
+                    <p>Copy the static musl binary and run it; nothing else needs installing. You can also stay local and open the server over SFTP or FTP from the file manager.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>Which terminals does it need?</summary>
+                    <p>Any modern terminal with true colour. Images are drawn natively in Kitty, WezTerm, iTerm2, Ghostty and foot; <code>Alt</code> hotkeys on macOS work in terminals with the Kitty keyboard protocol.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>Does it run on Windows?</summary>
+                    <p>Yes, natively through ConPTY in Windows Terminal, or in WSL. Detached instances are Unix-only.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>Do I have to learn new keys?</summary>
+                    <p>Menus list every shortcut, the mouse works everywhere, and the dual-pane layout will feel familiar from mc or FAR. Every binding can be changed in Settings, and there is an optional Vim mode.</p>
+                </details>
+            </div>
+        </section>
+
         <section id="install" class="installation">
-            <h2 class="section-title glitch-hover">// Installation</h2>
-                <p class="section-subtitle">One command to rule them all.</p>
-                <div class="install-grid">
-                    <div class="install-card full-width">
-                        <h3><span class="icon">&#9889;</span> Quick Install</h3>
-                        <p class="platform">Linux / macOS — auto-detects your system</p>
-                        <div class="code-block">
-                            <code>curl -fsSL https://raw.githubusercontent.com/termide/termide/main/install.sh | sh</code>
-                            <button class="copy-btn" data-copy="curl -fsSL https://raw.githubusercontent.com/termide/termide/main/install.sh | sh" title="Copy to clipboard">
-                                <span class="copy-icon">&#128203;</span>
-                            </button>
-                        </div>
-                    </div>
+            <h2 class="section-title glitch-hover">// Install</h2>
+            <p class="section-subtitle">Pick your platform. No runtime, no dependencies.</p>
+            <div class="install-card">
+            <div class="install-tabs" role="tablist">
+                <button class="install-tab active" role="tab" aria-selected="true" data-tab="script">Script</button>
+                <button class="install-tab" role="tab" aria-selected="false" data-tab="static">Server</button>
+                <button class="install-tab" role="tab" aria-selected="false" data-tab="brew">Homebrew</button>
+                <button class="install-tab" role="tab" aria-selected="false" data-tab="arch">Arch</button>
+                <button class="install-tab" role="tab" aria-selected="false" data-tab="nix">Nix</button>
+                <button class="install-tab" role="tab" aria-selected="false" data-tab="deb">Debian</button>
+                <button class="install-tab" role="tab" aria-selected="false" data-tab="rpm">Fedora</button>
+                <button class="install-tab" role="tab" aria-selected="false" data-tab="termux">Termux</button>
+                <button class="install-tab" role="tab" aria-selected="false" data-tab="windows">Windows</button>
+            </div>
+            <div class="install-panel active" role="tabpanel" data-panel="script">
+                <p class="platform">Linux and macOS; detects your system.</p>
+                <div class="code-block">
+                    <pre><code data-template="curl -fsSL https://raw.githubusercontent.com/termide/termide/main/install.sh | sh">curl -fsSL https://raw.githubusercontent.com/termide/termide/main/install.sh | sh</code></pre>
+                    <button class="copy-btn" data-copy="curl -fsSL https://raw.githubusercontent.com/termide/termide/main/install.sh | sh" title="Copy to clipboard"><span class="copy-icon">&#128203;</span></button>
                 </div>
+            </div>
+            <div class="install-panel" role="tabpanel" data-panel="static">
+                <p class="platform">Static musl binary for any Linux, including Alpine and containers.</p>
+                <div class="code-block">
+                    <pre><code data-template="curl -LO https://github.com/termide/termide/releases/latest/download/termide-{v}-x86_64-unknown-linux-musl.tar.gz
+tar xzf termide-{v}-x86_64-unknown-linux-musl.tar.gz &amp;&amp; ./termide">curl -LO https://github.com/termide/termide/releases/latest/download/termide-0.36.0-x86_64-unknown-linux-musl.tar.gz
+tar xzf termide-0.36.0-x86_64-unknown-linux-musl.tar.gz &amp;&amp; ./termide</code></pre>
+                    <button class="copy-btn" data-copy="curl -LO https://github.com/termide/termide/releases/latest/download/termide-0.36.0-x86_64-unknown-linux-musl.tar.gz
+tar xzf termide-0.36.0-x86_64-unknown-linux-musl.tar.gz &amp;&amp; ./termide" title="Copy to clipboard"><span class="copy-icon">&#128203;</span></button>
+                </div>
+            </div>
+            <div class="install-panel" role="tabpanel" data-panel="brew">
+                <p class="platform">macOS and Linux.</p>
+                <div class="code-block">
+                    <pre><code data-template="brew tap termide/termide
+brew install termide">brew tap termide/termide
+brew install termide</code></pre>
+                    <button class="copy-btn" data-copy="brew tap termide/termide
+brew install termide" title="Copy to clipboard"><span class="copy-icon">&#128203;</span></button>
+                </div>
+            </div>
+            <div class="install-panel" role="tabpanel" data-panel="arch">
+                <p class="platform">From the AUR; <code>termide</code> builds from source.</p>
+                <div class="code-block">
+                    <pre><code data-template="yay -S termide-bin">yay -S termide-bin</code></pre>
+                    <button class="copy-btn" data-copy="yay -S termide-bin" title="Copy to clipboard"><span class="copy-icon">&#128203;</span></button>
+                </div>
+            </div>
+            <div class="install-panel" role="tabpanel" data-panel="nix">
+                <p class="platform">Run without installing, or <code>nix profile install</code>.</p>
+                <div class="code-block">
+                    <pre><code data-template="nix run github:termide/termide">nix run github:termide/termide</code></pre>
+                    <button class="copy-btn" data-copy="nix run github:termide/termide" title="Copy to clipboard"><span class="copy-icon">&#128203;</span></button>
+                </div>
+            </div>
+            <div class="install-panel" role="tabpanel" data-panel="deb">
+                <p class="platform">Debian and Ubuntu, x86_64.</p>
+                <div class="code-block">
+                    <pre><code data-template="curl -LO https://github.com/termide/termide/releases/latest/download/termide_{v}-1_amd64.deb
+sudo dpkg -i termide_{v}-1_amd64.deb">curl -LO https://github.com/termide/termide/releases/latest/download/termide_0.36.0-1_amd64.deb
+sudo dpkg -i termide_0.36.0-1_amd64.deb</code></pre>
+                    <button class="copy-btn" data-copy="curl -LO https://github.com/termide/termide/releases/latest/download/termide_0.36.0-1_amd64.deb
+sudo dpkg -i termide_0.36.0-1_amd64.deb" title="Copy to clipboard"><span class="copy-icon">&#128203;</span></button>
+                </div>
+            </div>
+            <div class="install-panel" role="tabpanel" data-panel="rpm">
+                <p class="platform">Fedora, RHEL and CentOS, x86_64.</p>
+                <div class="code-block">
+                    <pre><code data-template="sudo rpm -i https://github.com/termide/termide/releases/latest/download/termide-{v}-1.x86_64.rpm">sudo rpm -i https://github.com/termide/termide/releases/latest/download/termide-0.36.0-1.x86_64.rpm</code></pre>
+                    <button class="copy-btn" data-copy="sudo rpm -i https://github.com/termide/termide/releases/latest/download/termide-0.36.0-1.x86_64.rpm" title="Copy to clipboard"><span class="copy-icon">&#128203;</span></button>
+                </div>
+            </div>
+            <div class="install-panel" role="tabpanel" data-panel="termux">
+                <p class="platform">Android; the static ARM64 build runs on Bionic.</p>
+                <div class="code-block">
+                    <pre><code data-template="pkg install git openssh
+curl -LO https://github.com/termide/termide/releases/latest/download/termide-{v}-aarch64-unknown-linux-musl.tar.gz
+tar xzf termide-{v}-aarch64-unknown-linux-musl.tar.gz &amp;&amp; ./termide">pkg install git openssh
+curl -LO https://github.com/termide/termide/releases/latest/download/termide-0.36.0-aarch64-unknown-linux-musl.tar.gz
+tar xzf termide-0.36.0-aarch64-unknown-linux-musl.tar.gz &amp;&amp; ./termide</code></pre>
+                    <button class="copy-btn" data-copy="pkg install git openssh
+curl -LO https://github.com/termide/termide/releases/latest/download/termide-0.36.0-aarch64-unknown-linux-musl.tar.gz
+tar xzf termide-0.36.0-aarch64-unknown-linux-musl.tar.gz &amp;&amp; ./termide" title="Copy to clipboard"><span class="copy-icon">&#128203;</span></button>
+                </div>
+            </div>
+            <div class="install-panel" role="tabpanel" data-panel="windows">
+                <p class="platform">Download, extract and run <code>termide.exe</code> in Windows Terminal.</p>
+                <div class="code-block">
+                    <pre><code data-template="https://github.com/termide/termide/releases/latest/download/termide-{v}-x86_64-pc-windows-msvc.zip">https://github.com/termide/termide/releases/latest/download/termide-0.36.0-x86_64-pc-windows-msvc.zip</code></pre>
+                    <button class="copy-btn" data-copy="https://github.com/termide/termide/releases/latest/download/termide-0.36.0-x86_64-pc-windows-msvc.zip" title="Copy to clipboard"><span class="copy-icon">&#128203;</span></button>
+                </div>
+            </div>
+            </div>
         </section>
     </main>
 
-    <!-- Footer - Full Width -->
     <footer class="footer">
         <div class="footer-inner">
             <div class="footer-content">
@@ -644,20 +813,18 @@
                 </div>
                 <div class="footer-meta">
                     <p>MIT License &bull; Made with <span class="rust-heart">&#9829;</span> and Rust</p>
-                    <p class="version">v0.29.1</p>
+                    <p class="version">v<span data-version>0.36.0</span></p>
                 </div>
             </div>
         </div>
         <div class="footer-grid"></div>
     </footer>
 
-    <!-- Lightbox -->
     <div id="lightbox" class="lightbox">
         <button class="lightbox-close">&times;</button>
         <img class="lightbox-image" src="" alt="">
     </div>
 
-    <!-- Scripts -->
     <script src="js/main.js"></script>
 </body>
 </html>

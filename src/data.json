@@ -1,0 +1,712 @@
+{
+  "site_url": "https://termide.github.io",
+  "repo_url": "https://github.com/termide/termide",
+  "version": "0.36.0",
+  "languages": [
+    {
+      "code": "en",
+      "label": "EN",
+      "dir": ""
+    },
+    {
+      "code": "ru",
+      "label": "RU",
+      "dir": "ru"
+    },
+    {
+      "code": "zh",
+      "label": "ZH",
+      "dir": "zh"
+    }
+  ],
+  "og_image": "assets/og.png",
+  "slides": [
+    {
+      "id": "overview",
+      "image": "assets/screenshots/overview.png"
+    },
+    {
+      "id": "agent",
+      "image": "assets/screenshots/agent.png"
+    },
+    {
+      "id": "files",
+      "image": "assets/screenshots/file-manager.png"
+    },
+    {
+      "id": "detach",
+      "image": "assets/screenshots/detach.gif"
+    },
+    {
+      "id": "git",
+      "image": "assets/screenshots/git.png"
+    },
+    {
+      "id": "db",
+      "image": "assets/screenshots/db.png"
+    },
+    {
+      "id": "monitor",
+      "image": "assets/screenshots/monitor.png"
+    },
+    {
+      "id": "docs",
+      "image": "assets/screenshots/markdown.png"
+    },
+    {
+      "id": "hex",
+      "image": "assets/screenshots/hex.png"
+    },
+    {
+      "id": "themes",
+      "image": "assets/screenshots/themes.png"
+    }
+  ],
+  "homes": {
+    "desk": [
+      "editor",
+      "agent",
+      "git",
+      "docs",
+      "commands"
+    ],
+    "server": [
+      "static",
+      "remote",
+      "detach",
+      "monitor",
+      "db",
+      "editor_var"
+    ]
+  },
+  "agent": {
+    "image": "assets/screenshots/agent.gif",
+    "items": [
+      "models",
+      "permissions",
+      "tools",
+      "agents",
+      "extend",
+      "visibility"
+    ],
+    "cli": "termide --prompt \"run the tests and report failures\" --output json",
+    "hooks": [
+      "local",
+      "asks",
+      "others"
+    ]
+  },
+  "feature_groups": [
+    {
+      "id": "code",
+      "cards": [
+        {
+          "id": "editor",
+          "icon": "{}"
+        },
+        {
+          "id": "outline",
+          "icon": "§"
+        },
+        {
+          "id": "docs",
+          "icon": "¶"
+        },
+        {
+          "id": "hex",
+          "icon": "0x"
+        }
+      ]
+    },
+    {
+      "id": "files",
+      "cards": [
+        {
+          "id": "fm",
+          "icon": "[]"
+        },
+        {
+          "id": "remote",
+          "icon": "↔"
+        },
+        {
+          "id": "bgops",
+          "icon": "⇅"
+        },
+        {
+          "id": "db",
+          "icon": "▦"
+        }
+      ]
+    },
+    {
+      "id": "ops",
+      "cards": [
+        {
+          "id": "detach",
+          "icon": "&amp;"
+        },
+        {
+          "id": "terminal",
+          "icon": "&gt;_"
+        },
+        {
+          "id": "monitor",
+          "icon": "%%"
+        },
+        {
+          "id": "static",
+          "icon": "◆"
+        }
+      ]
+    },
+    {
+      "id": "workspace",
+      "cards": [
+        {
+          "id": "git",
+          "icon": "+-"
+        },
+        {
+          "id": "projects",
+          "icon": "::"
+        },
+        {
+          "id": "commands",
+          "icon": "$/"
+        },
+        {
+          "id": "palette",
+          "icon": "⌘"
+        }
+      ]
+    },
+    {
+      "id": "look",
+      "cards": [
+        {
+          "id": "themes",
+          "icon": "#*"
+        },
+        {
+          "id": "languages",
+          "icon": "@!"
+        },
+        {
+          "id": "keyboard",
+          "icon": "F1"
+        },
+        {
+          "id": "vim",
+          "icon": "✎"
+        }
+      ]
+    }
+  ],
+  "compare": {
+    "columns": [
+      "TermIDE",
+      "Fresh",
+      "Vim/Neovim",
+      "Helix",
+      "Micro"
+    ],
+    "rows": [
+      {
+        "id": "lsp",
+        "values": [
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "plugin"
+        ]
+      },
+      {
+        "id": "zero",
+        "values": [
+          "yes",
+          "yes",
+          "no",
+          "yes",
+          "yes"
+        ]
+      },
+      {
+        "id": "script",
+        "values": [
+          "yes",
+          "yes",
+          "yes",
+          "no",
+          "plugin"
+        ]
+      },
+      {
+        "id": "extagent",
+        "values": [
+          "yes",
+          "yes",
+          "plugin",
+          "no",
+          "no"
+        ]
+      },
+      {
+        "id": "remote",
+        "values": [
+          "yes",
+          "ssh",
+          "yes",
+          "no",
+          "no"
+        ]
+      },
+      {
+        "id": "md",
+        "values": [
+          "yes",
+          "yes",
+          "plugin",
+          "no",
+          "no"
+        ]
+      },
+      {
+        "id": "term",
+        "values": [
+          "yes",
+          "yes",
+          "plugin",
+          "no",
+          "no"
+        ]
+      },
+      {
+        "id": "git",
+        "values": [
+          "yes",
+          "yes",
+          "plugin",
+          "no",
+          "no"
+        ]
+      },
+      {
+        "id": "layouts",
+        "values": [
+          "yes",
+          "yes",
+          "plugin",
+          "no",
+          "no"
+        ]
+      },
+      {
+        "id": "panels",
+        "values": [
+          "yes",
+          "yes",
+          "plugin",
+          "no",
+          "no"
+        ]
+      },
+      {
+        "id": "bookmarks",
+        "values": [
+          "yes",
+          "yes",
+          "plugin",
+          "no",
+          "no"
+        ]
+      },
+      {
+        "id": "hex",
+        "values": [
+          "yes",
+          "no",
+          "plugin",
+          "no",
+          "plugin"
+        ]
+      },
+      {
+        "id": "fm",
+        "values": [
+          "yes",
+          "tree",
+          "plugin",
+          "no",
+          "no"
+        ]
+      },
+      {
+        "id": "detach",
+        "values": [
+          "yes",
+          "yes",
+          "no",
+          "no",
+          "no"
+        ]
+      },
+      {
+        "id": "agent",
+        "values": [
+          "yes",
+          "no",
+          "plugin",
+          "no",
+          "no"
+        ]
+      },
+      {
+        "id": "mcp",
+        "values": [
+          "yes",
+          "no",
+          "plugin",
+          "no",
+          "no"
+        ]
+      },
+      {
+        "id": "db",
+        "values": [
+          "yes",
+          "no",
+          "plugin",
+          "no",
+          "no"
+        ]
+      },
+      {
+        "id": "mermaid",
+        "values": [
+          "yes",
+          "no",
+          "plugin",
+          "no",
+          "no"
+        ]
+      },
+      {
+        "id": "image",
+        "values": [
+          "yes",
+          "no",
+          "plugin",
+          "no",
+          "no"
+        ]
+      },
+      {
+        "id": "bgops",
+        "values": [
+          "yes",
+          "no",
+          "plugin",
+          "no",
+          "no"
+        ]
+      },
+      {
+        "id": "monitor",
+        "values": [
+          "yes",
+          "no",
+          "no",
+          "no",
+          "no"
+        ]
+      }
+    ],
+    "featured": [
+      "agent",
+      "mcp",
+      "remote",
+      "db",
+      "detach",
+      "monitor",
+      "fm",
+      "bgops",
+      "term",
+      "zero"
+    ]
+  },
+  "stack": [
+    "detach",
+    "files",
+    "edit",
+    "git",
+    "procs",
+    "db",
+    "agent"
+  ],
+  "install": [
+    {
+      "id": "script",
+      "command": "curl -fsSL https://raw.githubusercontent.com/termide/termide/main/install.sh | sh"
+    },
+    {
+      "id": "static",
+      "command": "curl -LO https://github.com/termide/termide/releases/latest/download/termide-{v}-x86_64-unknown-linux-musl.tar.gz\ntar xzf termide-{v}-x86_64-unknown-linux-musl.tar.gz && ./termide"
+    },
+    {
+      "id": "brew",
+      "command": "brew tap termide/termide\nbrew install termide"
+    },
+    {
+      "id": "arch",
+      "command": "yay -S termide-bin"
+    },
+    {
+      "id": "nix",
+      "command": "nix run github:termide/termide"
+    },
+    {
+      "id": "deb",
+      "command": "curl -LO https://github.com/termide/termide/releases/latest/download/termide_{v}-1_amd64.deb\nsudo dpkg -i termide_{v}-1_amd64.deb"
+    },
+    {
+      "id": "rpm",
+      "command": "sudo rpm -i https://github.com/termide/termide/releases/latest/download/termide-{v}-1.x86_64.rpm"
+    },
+    {
+      "id": "termux",
+      "command": "pkg install git openssh\ncurl -LO https://github.com/termide/termide/releases/latest/download/termide-{v}-aarch64-unknown-linux-musl.tar.gz\ntar xzf termide-{v}-aarch64-unknown-linux-musl.tar.gz && ./termide"
+    },
+    {
+      "id": "windows",
+      "command": "https://github.com/termide/termide/releases/latest/download/termide-{v}-x86_64-pc-windows-msvc.zip"
+    }
+  ],
+  "themes": [
+    {
+      "id": "norton-commander",
+      "name": "Norton Commander",
+      "group": "retro"
+    },
+    {
+      "id": "far-manager",
+      "name": "Far Manager",
+      "group": "retro"
+    },
+    {
+      "id": "matrix",
+      "name": "Matrix",
+      "group": "cinematic"
+    },
+    {
+      "id": "pip-boy",
+      "name": "Pip-Boy",
+      "group": "cinematic"
+    },
+    {
+      "id": "dracula",
+      "name": "Dracula",
+      "group": "dark"
+    },
+    {
+      "id": "tokyonight",
+      "name": "Tokyo Night",
+      "group": "dark"
+    },
+    {
+      "id": "nord",
+      "name": "Nord",
+      "group": "dark"
+    },
+    {
+      "id": "ayu-light",
+      "name": "Ayu Light",
+      "group": "light"
+    },
+    {
+      "id": "solarized-light",
+      "name": "Solarized Light",
+      "group": "light"
+    },
+    {
+      "id": "dos-navigator",
+      "name": "DOS Navigator",
+      "group": "retro"
+    },
+    {
+      "id": "volkov-commander",
+      "name": "Volkov Commander",
+      "group": "retro"
+    },
+    {
+      "id": "windows-95",
+      "name": "Windows 95",
+      "group": "retro"
+    },
+    {
+      "id": "windows-98",
+      "name": "Windows 98",
+      "group": "retro"
+    },
+    {
+      "id": "windows-xp",
+      "name": "Windows XP",
+      "group": "retro"
+    },
+    {
+      "id": "terminator",
+      "name": "Terminator",
+      "group": "cinematic"
+    },
+    {
+      "id": "monokai",
+      "name": "Monokai",
+      "group": "dark"
+    },
+    {
+      "id": "onedark",
+      "name": "One Dark",
+      "group": "dark"
+    },
+    {
+      "id": "solarized-dark",
+      "name": "Solarized Dark",
+      "group": "dark"
+    },
+    {
+      "id": "midnight",
+      "name": "Midnight",
+      "group": "dark"
+    },
+    {
+      "id": "macos-dark",
+      "name": "macOS Dark",
+      "group": "dark"
+    },
+    {
+      "id": "ayu-dark",
+      "name": "Ayu Dark",
+      "group": "dark"
+    },
+    {
+      "id": "catppuccin-macchiato",
+      "name": "Catppuccin",
+      "group": "dark"
+    },
+    {
+      "id": "everforest",
+      "name": "Everforest",
+      "group": "dark"
+    },
+    {
+      "id": "github-dark",
+      "name": "GitHub Dark",
+      "group": "dark"
+    },
+    {
+      "id": "gruvbox",
+      "name": "Gruvbox",
+      "group": "dark"
+    },
+    {
+      "id": "kanagawa",
+      "name": "Kanagawa",
+      "group": "dark"
+    },
+    {
+      "id": "material-ocean",
+      "name": "Material Ocean",
+      "group": "dark"
+    },
+    {
+      "id": "rosepine",
+      "name": "Rosé Pine",
+      "group": "dark"
+    },
+    {
+      "id": "terminal",
+      "name": "Terminal",
+      "group": "dark"
+    },
+    {
+      "id": "billiard",
+      "name": "Billiard",
+      "group": "dark"
+    },
+    {
+      "id": "github-light",
+      "name": "GitHub Light",
+      "group": "light"
+    },
+    {
+      "id": "atom-one-light",
+      "name": "Atom One Light",
+      "group": "light"
+    },
+    {
+      "id": "material-lighter",
+      "name": "Material Lighter",
+      "group": "light"
+    },
+    {
+      "id": "macos-light",
+      "name": "macOS Light",
+      "group": "light"
+    },
+    {
+      "id": "manuscript",
+      "name": "Manuscript",
+      "group": "light"
+    },
+    {
+      "id": "blue-sky",
+      "name": "Blue Sky",
+      "group": "light"
+    },
+    {
+      "id": "green-backs",
+      "name": "Green Backs",
+      "group": "light"
+    },
+    {
+      "id": "pinky-pie",
+      "name": "Pinky Pie",
+      "group": "light"
+    }
+  ],
+  "theme_groups": [
+    "all",
+    "retro",
+    "dark",
+    "light",
+    "cinematic"
+  ],
+  "trust": [
+    "size",
+    "privacy",
+    "ai_off",
+    "familiar"
+  ],
+  "hero_install": "curl -fsSL https://raw.githubusercontent.com/termide/termide/main/install.sh | sh",
+  "theme_custom": {
+    "example": "# ~/.config/termide/themes/prod-red.toml\nname = \"prod-red\"\n\n[colors]\nbg          = { rgb = [40, 8, 8] }\nfg          = { rgb = [240, 220, 220] }\naccented_bg = { rgb = [110, 20, 20] }\naccented_fg = \"White\"\nselected_bg = { rgb = [200, 40, 40] }\nselected_fg = \"White\"\ndisabled    = \"DarkGray\"\nsuccess     = \"LightGreen\"\nwarning     = \"LightYellow\"\nerror       = \"LightRed\"",
+    "points": [
+      "file",
+      "override",
+      "transparent",
+      "project"
+    ],
+    "doc": "themes.md"
+  },
+  "gallery_initial": 9,
+  "faq": [
+    "ai",
+    "privacy",
+    "tmux",
+    "ssh",
+    "terminals",
+    "windows",
+    "keys"
+  ]
+}

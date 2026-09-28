@@ -7,6 +7,9 @@ document.addEventListener('DOMContentLoaded', () => {
     initSmoothScroll();
     initScrollAnimations();
     initActiveSection();
+    initInstallTabs();
+    initThemeFilters();
+    initLatestVersion();
 });
 
 // Hero Carousel with Typewriter Effect
@@ -166,6 +169,25 @@ function initLightbox() {
         }
     });
 
+    // The hero carousel and the agent recording open at full size too
+    const heroFrame = document.querySelector('.hero-screenshots');
+    if (heroFrame) {
+        heroFrame.addEventListener('click', () => {
+            const img = heroFrame.querySelector('.screenshot.active');
+            if (img) openLightbox(img);
+        });
+    }
+    document.querySelectorAll('.agent-shot img').forEach(img => {
+        img.addEventListener('click', () => openLightbox(img));
+    });
+
+    function openLightbox(img) {
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
     lightboxClose.addEventListener('click', closeLightbox);
 
     lightbox.addEventListener('click', (e) => {
@@ -226,7 +248,7 @@ function initScrollAnimations() {
     document.querySelectorAll('.feature-card').forEach((card, index) => {
         card.style.opacity = '0';
         card.style.transform = 'translateY(20px)';
-        card.style.transition = `opacity 0.5s ease ${index * 0.1}s, transform 0.5s ease ${index * 0.1}s`;
+        card.style.transition = `opacity 0.5s ease ${(index % 6) * 0.08}s, transform 0.5s ease ${(index % 6) * 0.08}s`;
         observer.observe(card);
     });
 
@@ -234,8 +256,16 @@ function initScrollAnimations() {
     document.querySelectorAll('.gallery-item').forEach((item, index) => {
         item.style.opacity = '0';
         item.style.transform = 'translateY(20px)';
-        item.style.transition = `opacity 0.5s ease ${index * 0.15}s, transform 0.5s ease ${index * 0.15}s`;
+        item.style.transition = `opacity 0.5s ease ${(index % 6) * 0.08}s, transform 0.5s ease ${(index % 6) * 0.08}s`;
         observer.observe(item);
+    });
+
+    // Observe the two-homes and agent items
+    document.querySelectorAll('.home-item, .agent-item').forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = `opacity 0.5s ease ${(index % 6) * 0.08}s, transform 0.5s ease ${(index % 6) * 0.08}s`;
+        observer.observe(card);
     });
 
     // Observe install cards
@@ -315,7 +345,74 @@ function initActiveSection() {
     sections.forEach(section => observer.observe(section));
 }
 
+// Install tabs
+function initInstallTabs() {
+    const tabs = document.querySelectorAll('.install-tab');
+    const panels = document.querySelectorAll('.install-panel');
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            tabs.forEach(t => {
+                t.classList.toggle('active', t === tab);
+                t.setAttribute('aria-selected', t === tab ? 'true' : 'false');
+            });
+            panels.forEach(p => p.classList.toggle('active', p.dataset.panel === tab.dataset.tab));
+        });
+    });
+}
+
+// Theme gallery: a few themes first, the rest on request or through a filter
+function initThemeFilters() {
+    const gallery = document.querySelector('.gallery');
+    const showAll = document.querySelector('[data-show-all]');
+    const buttons = document.querySelectorAll('.filter-btn');
+    const items = document.querySelectorAll('.gallery-item[data-group]');
+    if (!gallery) return;
+
+    if (showAll) {
+        gallery.classList.add('collapsed');
+        showAll.addEventListener('click', () => {
+            gallery.classList.remove('collapsed');
+            showAll.parentElement.remove();
+        });
+    }
+
+    buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            buttons.forEach(b => b.classList.toggle('active', b === btn));
+            const group = btn.dataset.filter;
+            if (group !== 'all') {
+                gallery.classList.remove('collapsed');
+                if (showAll && showAll.isConnected) showAll.parentElement.remove();
+            }
+            items.forEach(item => {
+                item.hidden = group !== 'all' && item.dataset.group !== group;
+            });
+        });
+    });
+}
+
+// The page is built with the version current at build time; a newer
+// release replaces it in the footer and in every versioned command.
+async function initLatestVersion() {
+    let version;
+    try {
+        const response = await fetch('https://api.github.com/repos/termide/termide/releases/latest');
+        if (!response.ok) return;
+        version = (await response.json()).tag_name.replace(/^v/, '');
+    } catch (err) {
+        return;
+    }
+    if (!/^\d+\.\d+\.\d+$/.test(version)) return;
+    document.querySelectorAll('[data-version]').forEach(el => { el.textContent = version; });
+    document.querySelectorAll('code[data-template]').forEach(code => {
+        const command = code.dataset.template.replaceAll('{v}', version);
+        code.textContent = command;
+        const button = code.closest('.code-block').querySelector('.copy-btn');
+        if (button) button.dataset.copy = command;
+    });
+}
+
 // Console Easter Egg
 console.log('%c TermIDE ', 'background: #40ff40; color: #0a0a0f; font-size: 24px; font-weight: bold; font-family: monospace;');
-console.log('%c Terminal IDE for developers and sysadmins ', 'color: #40ff40; font-size: 14px; font-family: monospace;');
+console.log('%c All-in-one terminal workspace for desktops and servers ', 'color: #40ff40; font-size: 14px; font-family: monospace;');
 console.log('%c https://github.com/termide/termide ', 'color: #888; font-size: 12px; font-family: monospace;');

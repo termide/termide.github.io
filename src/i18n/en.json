@@ -1,0 +1,434 @@
+{
+  "meta": {
+    "title": "TermIDE — all-in-one terminal workspace for desktops and servers",
+    "description": "Editor with LSP, dual-pane file manager with SFTP/FTP, terminal, git, database viewer and a coding agent that runs on your own model — one zero-config static binary written in Rust.",
+    "og_title": "TermIDE — one terminal workspace, on your laptop and on your servers",
+    "og_description": "Editor, file manager, terminal, git, databases and a coding agent in one static Rust binary. Zero config."
+  },
+  "nav": {
+    "features": "Features",
+    "agent": "Agent",
+    "compare": "Compare",
+    "themes": "Themes",
+    "install": "Install",
+    "docs": "Docs"
+  },
+  "hero": {
+    "headline": "One terminal workspace — on your laptop and on your servers.",
+    "subtitle": "Editor, file manager, terminal, git, databases and a coding agent. One static binary, zero config.",
+    "cta_github": "GitHub",
+    "slides": {
+      "overview": "Files, code, git and a shell side by side",
+      "agent": "A coding agent on your own model, local or hosted",
+      "files": "Two panes, local and remote, transfers in the background",
+      "detach": "SSH dropped? termide --attach, and everything is where you left it",
+      "git": "Status, commit graph, diff, branches and worktrees",
+      "db": "Browse and edit SQLite, PostgreSQL and MySQL tables",
+      "monitor": "CPU, memory, processes and ports one click away",
+      "docs": "Rendered Markdown with Mermaid diagrams",
+      "hex": "Hex view and in-place editing for binary files",
+      "themes": "38 themes, from Dracula to Norton Commander"
+    },
+    "install_all": "All install options"
+  },
+  "trust": {
+    "size": "One ~12 MB download, no dependencies",
+    "privacy": "No telemetry, no account, no update checks",
+    "ai_off": "AI stays off until you configure a model",
+    "familiar": "Menus, mouse and F-keys: familiar from minute one"
+  },
+  "homes": {
+    "title": "// Two homes, one tool",
+    "subtitle": "The same binary and the same keys at your desk and on a box you reached over SSH.",
+    "desk_title": "At your desk",
+    "server_title": "On your servers",
+    "desk": {
+      "editor": {
+        "t": "Code with LSP",
+        "d": "Completion, go to definition, references, rename and diagnostics for 22 languages, without a plugin setup."
+      },
+      "agent": {
+        "t": "An agent on your model",
+        "d": "Point it at llama.cpp, Ollama or vLLM on your machine and no code leaves it, or use a hosted endpoint."
+      },
+      "git": {
+        "t": "Git at a glance",
+        "d": "Status, a coloured commit graph, diffs, stashes, and branches together with their worktrees."
+      },
+      "docs": {
+        "t": "Docs next to the code",
+        "d": "Rendered Markdown, Mermaid diagrams, HTML and images in panels beside the editor."
+      },
+      "commands": {
+        "t": "Your project commands",
+        "d": "Build, test and deploy commands in <code>commands.toml</code>, per project, on a hotkey."
+      }
+    },
+    "server": {
+      "static": {
+        "t": "Copy one file and run",
+        "d": "A static musl binary with no OpenSSL and no libc to match: Alpine, ARM boards, containers, Termux."
+      },
+      "remote": {
+        "t": "Local and remote panes",
+        "d": "SFTP, FTP and FTPS in the file manager; copy between hosts while the transfer runs in the background."
+      },
+      "detach": {
+        "t": "Survives a dropped SSH",
+        "d": "<code>termide --detached</code> keeps editors, shells and jobs running; <code>--attach</code> brings them back at any size."
+      },
+      "monitor": {
+        "t": "What is eating the box",
+        "d": "CPU, memory, network and disk in the menu bar, with top processes and listening ports a click away."
+      },
+      "db": {
+        "t": "Look inside the database",
+        "d": "SQLite, PostgreSQL and MySQL tables with sorting, filters, cell editing and export."
+      },
+      "editor_var": {
+        "t": "Your $EDITOR",
+        "d": "<code>EDITOR=termide</code> for <code>crontab -e</code>, <code>visudo</code> and commit messages."
+      }
+    }
+  },
+  "agent": {
+    "title": "// A coding agent that asks first",
+    "subtitle": "Describe a task; the model reads, edits and runs commands in your project, and every change waits for your approval.",
+    "items": {
+      "models": {
+        "t": "Bring your own model",
+        "d": "Any OpenAI- or Anthropic-compatible endpoint: llama.cpp, Ollama, vLLM, omlx or a hosted provider. The context window comes from the server when it reports one."
+      },
+      "permissions": {
+        "t": "Nothing changes without you",
+        "d": "Allow once, for the session or always for a pattern; deny with a reason the model reads; plan mode refuses every write."
+      },
+      "tools": {
+        "t": "Tools it needs, nothing more",
+        "d": "Read, edit, write and shell, plus web search and fetch through a browser profile of its own, never your logins."
+      },
+      "agents": {
+        "t": "Other agents in the same panel",
+        "d": "Claude Code, Codex and Gemini CLI over the Agent Client Protocol, your own agents, and subagents for focused jobs."
+      },
+      "extend": {
+        "t": "Extend it in files",
+        "d": "Skills, prompt templates, command scripts, MCP servers, hooks and project instructions, all plain files."
+      },
+      "visibility": {
+        "t": "See what it costs",
+        "d": "Live phase and speed, a context bar and token totals; each answer ends with its time and tokens. Sessions resume later."
+      }
+    },
+    "cli_title": "Headless, for scripts and CI",
+    "cli_desc": "The same agent, tools and permission rules without the UI:",
+    "hooks": {
+      "local": {
+        "t": "Local model?",
+        "d": "Code never leaves your machine."
+      },
+      "asks": {
+        "t": "Wary of agents?",
+        "d": "It asks before every change."
+      },
+      "others": {
+        "t": "Already on Claude Code or Codex?",
+        "d": "Run them in the same panel."
+      }
+    }
+  },
+  "features": {
+    "title": "// Everything else",
+    "subtitle": "The rest of what ships in the binary.",
+    "groups": {
+      "code": {
+        "title": "Code",
+        "cards": {
+          "editor": {
+            "t": "Editor with LSP",
+            "d": "Completion, hover, go to definition, references, rename and quick fixes; a diagnostics panel; tree-sitter highlighting for 22 languages."
+          },
+          "outline": {
+            "t": "Code outline",
+            "d": "Structural navigation through tree-sitter queries, synced with the cursor."
+          },
+          "docs": {
+            "t": "Docs and diagrams",
+            "d": "Rendered Markdown and HTML, a text-mode browser, and Mermaid diagrams drawn as text, including class diagrams from your source."
+          },
+          "hex": {
+            "t": "Hex editor",
+            "d": "Hex/ASCII view with a byte cursor, selection and search; overwrite editing with a <code>.bak</code> backup."
+          }
+        }
+      },
+      "files": {
+        "title": "Files and data",
+        "cards": {
+          "fm": {
+            "t": "File manager",
+            "d": "Tree with nested git status, glob and regex search, batch operations, bookmarks and a directory switcher."
+          },
+          "remote": {
+            "t": "Remote filesystems",
+            "d": "SFTP, FTP and FTPS in pure Rust; SMB and NFS through the OS mount."
+          },
+          "bgops": {
+            "t": "Background operations",
+            "d": "Copy, move, upload and download with progress, pause, resume and cancel."
+          },
+          "db": {
+            "t": "Database viewer",
+            "d": "SQLite, PostgreSQL and MySQL: server-side sort, per-column filters, cell editing, rows as TSV, JSON or INSERT."
+          }
+        }
+      },
+      "ops": {
+        "title": "Servers and ops",
+        "cards": {
+          "detach": {
+            "t": "Detached instances",
+            "d": "Close the terminal or lose the connection; attach again later from any terminal (Unix)."
+          },
+          "terminal": {
+            "t": "Integrated terminal",
+            "d": "Full PTY with scrollback, search, mouse and URL detection; the title follows your <code>cd</code>."
+          },
+          "monitor": {
+            "t": "Resource monitor",
+            "d": "CPU, RAM, network and disk; top processes by CPU, memory or connections, with listening ports."
+          },
+          "static": {
+            "t": "One static binary",
+            "d": "Linux x86_64 and ARM64 (glibc or musl), macOS, native Windows and Android Termux."
+          }
+        }
+      },
+      "workspace": {
+        "title": "Workspace",
+        "cards": {
+          "git": {
+            "t": "Git",
+            "d": "Status, log with a coloured commit graph, diff, staging, stash, blame, branches and their worktrees."
+          },
+          "projects": {
+            "t": "Projects",
+            "d": "Panel layouts restored per directory, with per-project settings and commands."
+          },
+          "commands": {
+            "t": "Custom commands",
+            "d": "Global or per-project commands with hotkeys, parameter forms and terminal, background or report modes."
+          },
+          "palette": {
+            "t": "Palette and Open",
+            "d": "<code>Ctrl+P</code> fuzzy command palette; <code>Ctrl+G</code> opens a file, a folder or a URL with path suggestions."
+          }
+        }
+      },
+      "look": {
+        "title": "Look and feel",
+        "cards": {
+          "themes": {
+            "t": "38 themes",
+            "d": "Dark, light, retro and cinematic; write your own in TOML."
+          },
+          "languages": {
+            "t": "15 UI languages",
+            "d": "English, Chinese, Russian, Japanese, Korean, German, French, Spanish and more."
+          },
+          "keyboard": {
+            "t": "Keyboard and mouse",
+            "d": "Every binding is editable in Settings; full mouse support; hotkeys work on a Cyrillic layout and with <code>Alt</code> on macOS."
+          },
+          "vim": {
+            "t": "Vim mode",
+            "d": "Optional Vim-style editing for those whose fingers expect it."
+          }
+        }
+      }
+    }
+  },
+  "compare": {
+    "title": "// Why TermIDE?",
+    "subtitle": "Editors cover the code. TermIDE covers what surrounds it too.",
+    "feature_col": "Feature",
+    "values": {
+      "plugin": "plugin",
+      "ssh": "SSH",
+      "tree": "tree only"
+    },
+    "rows": {
+      "lsp": "LSP support",
+      "zero": "Zero config",
+      "script": "Script automation",
+      "agent": "Built-in coding agent (local or hosted models)",
+      "extagent": "External agents (Claude Code, Codex, Gemini CLI)",
+      "mcp": "MCP servers",
+      "remote": "Remote filesystems (SFTP/FTP)",
+      "hex": "Hex / binary viewer",
+      "db": "Database viewer",
+      "md": "Markdown preview",
+      "mermaid": "Diagram viewer (Mermaid)",
+      "image": "Image viewer",
+      "term": "Built-in terminal",
+      "fm": "File manager",
+      "bgops": "Background file operations",
+      "git": "Git integration",
+      "layouts": "Project layouts",
+      "detach": "Detachable instances",
+      "panels": "Multi-panel layout",
+      "bookmarks": "Bookmarks",
+      "monitor": "Resource monitor"
+    },
+    "stack_title": "// The everyday part of your toolbox",
+    "stack_subtitle": "TermIDE does not try to replace these tools. It covers the part you reach for every day, in one place.",
+    "stack_cols": {
+      "task": "Task",
+      "usual": "Usually",
+      "termide": "In TermIDE"
+    },
+    "stack": {
+      "detach": {
+        "task": "Keep work alive after SSH drops",
+        "usual": "tmux, screen",
+        "termide": "Detached instances"
+      },
+      "files": {
+        "task": "Move files between hosts",
+        "usual": "mc, ranger, scp",
+        "termide": "Dual-pane file manager with SFTP/FTP"
+      },
+      "edit": {
+        "task": "Edit code and configs",
+        "usual": "vim, nano",
+        "termide": "Editor with LSP"
+      },
+      "git": {
+        "task": "Review and commit",
+        "usual": "lazygit, tig",
+        "termide": "Git status, log and diff panels"
+      },
+      "procs": {
+        "task": "Find what is eating the box",
+        "usual": "htop, ss",
+        "termide": "Resource monitor"
+      },
+      "db": {
+        "task": "Look into a database",
+        "usual": "sqlite3, psql",
+        "termide": "Database viewer"
+      },
+      "agent": {
+        "task": "Ask a model to change code",
+        "usual": "aider, Claude Code",
+        "termide": "Agent panel, or those agents inside it"
+      }
+    },
+    "show_all": "Show the other rows"
+  },
+  "themes": {
+    "title": "// Themes",
+    "subtitle": "Choose your vibe. Or write your own.",
+    "groups": {
+      "all": "All",
+      "retro": "Retro",
+      "dark": "Dark",
+      "light": "Light",
+      "cinematic": "Cinematic"
+    },
+    "custom": {
+      "title": "Make it yours",
+      "subtitle": "A theme is a TOML file with ten colours. No build step, no plugin.",
+      "points": {
+        "file": "Named colours or RGB, ten keys in one file.",
+        "override": "A file with a built-in theme's name replaces that theme.",
+        "transparent": "<code>\"Reset\"</code> lets your terminal's own background show through.",
+        "project": "Set it per project or per host: a red theme on production tells you where you are."
+      },
+      "doc": "Theme format"
+    },
+    "show_all": "Show all {n} themes"
+  },
+  "install": {
+    "title": "// Install",
+    "subtitle": "Pick your platform. No runtime, no dependencies.",
+    "copy": "Copy to clipboard",
+    "tabs": {
+      "script": {
+        "label": "Script",
+        "note": "Linux and macOS; detects your system."
+      },
+      "static": {
+        "label": "Server",
+        "note": "Static musl binary for any Linux, including Alpine and containers."
+      },
+      "brew": {
+        "label": "Homebrew",
+        "note": "macOS and Linux."
+      },
+      "arch": {
+        "label": "Arch",
+        "note": "From the AUR; <code>termide</code> builds from source."
+      },
+      "nix": {
+        "label": "Nix",
+        "note": "Run without installing, or <code>nix profile install</code>."
+      },
+      "deb": {
+        "label": "Debian",
+        "note": "Debian and Ubuntu, x86_64."
+      },
+      "rpm": {
+        "label": "Fedora",
+        "note": "Fedora, RHEL and CentOS, x86_64."
+      },
+      "termux": {
+        "label": "Termux",
+        "note": "Android; the static ARM64 build runs on Bionic."
+      },
+      "windows": {
+        "label": "Windows",
+        "note": "Download, extract and run <code>termide.exe</code> in Windows Terminal."
+      }
+    }
+  },
+  "faq": {
+    "title": "// FAQ",
+    "items": {
+      "ai": {
+        "q": "Do I have to use the AI agent?",
+        "a": "No. No provider or model is set by default, so the agent does nothing and sends nothing until you configure one. Everything else works without it."
+      },
+      "privacy": {
+        "q": "Does TermIDE phone home?",
+        "a": "No telemetry, no account and no update checks. It goes online only when you ask: a remote location, a web page, <code>git push</code> or <code>pull</code>, or a model for the agent."
+      },
+      "tmux": {
+        "q": "Does it replace tmux?",
+        "a": "For the common case of keeping work alive over SSH, yes: <code>termide --detached</code> keeps the whole workspace running and <code>--attach</code> brings it back. It does not manage arbitrary sessions and windows the way tmux does, and runs fine inside tmux."
+      },
+      "ssh": {
+        "q": "How do I use it on a server?",
+        "a": "Copy the static musl binary and run it; nothing else needs installing. You can also stay local and open the server over SFTP or FTP from the file manager."
+      },
+      "terminals": {
+        "q": "Which terminals does it need?",
+        "a": "Any modern terminal with true colour. Images are drawn natively in Kitty, WezTerm, iTerm2, Ghostty and foot; <code>Alt</code> hotkeys on macOS work in terminals with the Kitty keyboard protocol."
+      },
+      "windows": {
+        "q": "Does it run on Windows?",
+        "a": "Yes, natively through ConPTY in Windows Terminal, or in WSL. Detached instances are Unix-only."
+      },
+      "keys": {
+        "q": "Do I have to learn new keys?",
+        "a": "Menus list every shortcut, the mouse works everywhere, and the dual-pane layout will feel familiar from mc or FAR. Every binding can be changed in Settings, and there is an optional Vim mode."
+      }
+    }
+  },
+  "footer": {
+    "docs": "Documentation",
+    "releases": "Releases",
+    "issues": "Issues",
+    "license": "MIT License &bull; Made with <span class=\"rust-heart\">&#9829;</span> and Rust"
+  }
+}

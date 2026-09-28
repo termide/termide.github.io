@@ -1,0 +1,434 @@
+{
+  "meta": {
+    "title": "TermIDE —— 面向工作站与服务器的一站式终端工作台",
+    "description": "带 LSP 的编辑器、支持 SFTP/FTP 的双栏文件管理器、终端、git、数据库查看器，以及运行在你自己模型上的编程智能体 —— 一个零配置、使用 Rust 编写的静态二进制文件。",
+    "og_title": "TermIDE —— 同一个终端工作台，笔记本和服务器上都能用",
+    "og_description": "编辑器、文件管理器、终端、git、数据库和编程智能体，集成在一个 Rust 静态二进制文件中。零配置。"
+  },
+  "nav": {
+    "features": "功能",
+    "agent": "智能体",
+    "compare": "对比",
+    "themes": "主题",
+    "install": "安装",
+    "docs": "文档"
+  },
+  "hero": {
+    "headline": "同一个终端工作台 —— 在你的笔记本上，也在你的服务器上。",
+    "subtitle": "编辑器、文件管理器、终端、git、数据库和编程智能体。一个静态二进制文件，零配置。",
+    "cta_github": "GitHub",
+    "slides": {
+      "overview": "文件、代码、git 和 shell 并排呈现",
+      "agent": "运行在你自己模型上的编程智能体，本地或云端皆可",
+      "files": "本地与远程双栏，文件传输在后台进行",
+      "detach": "SSH 断了？termide --attach，一切都在原处",
+      "git": "状态、提交图、diff、分支和工作树",
+      "db": "浏览和编辑 SQLite、PostgreSQL 和 MySQL 表",
+      "monitor": "CPU、内存、进程和端口，一键可见",
+      "docs": "渲染后的 Markdown，附带 Mermaid 图表",
+      "hex": "二进制文件的十六进制查看与原地编辑",
+      "themes": "38 款主题，从 Dracula 到 Norton Commander"
+    },
+    "install_all": "全部安装方式"
+  },
+  "trust": {
+    "size": "下载仅约 12 MB，无任何依赖",
+    "privacy": "无遥测、无需账户、不检查更新",
+    "ai_off": "在你配置模型之前，AI 保持关闭",
+    "familiar": "菜单、鼠标和 F 键：上手即会"
+  },
+  "homes": {
+    "title": "// 两处场景，一个工具",
+    "subtitle": "无论在办公桌前，还是通过 SSH 登录的服务器上，都是同一个二进制文件、同一套快捷键。",
+    "desk_title": "在办公桌前",
+    "server_title": "在服务器上",
+    "desk": {
+      "editor": {
+        "t": "带 LSP 的代码编辑",
+        "d": "为 22 种语言提供补全、跳转到定义、查找引用、重命名和诊断，无需配置插件。"
+      },
+      "agent": {
+        "t": "跑在你模型上的智能体",
+        "d": "接入本机的 llama.cpp、Ollama 或 vLLM，代码不会离开你的机器；也可以使用云端接口。"
+      },
+      "git": {
+        "t": "Git 一目了然",
+        "d": "状态、彩色提交图、diff、stash，以及分支和它们的工作树。"
+      },
+      "docs": {
+        "t": "文档就在代码旁边",
+        "d": "渲染后的 Markdown、Mermaid 图表、HTML 和图片，在编辑器旁的面板中显示。"
+      },
+      "commands": {
+        "t": "项目命令",
+        "d": "构建、测试和部署命令写在 <code>commands.toml</code> 中，按项目区分，绑定快捷键。"
+      }
+    },
+    "server": {
+      "static": {
+        "t": "复制一个文件即可运行",
+        "d": "静态 musl 二进制，无需 OpenSSL，也不依赖特定 libc：Alpine、ARM 开发板、容器、Termux。"
+      },
+      "remote": {
+        "t": "本地与远程双栏",
+        "d": "文件管理器内置 SFTP、FTP 和 FTPS；主机之间的复制在后台进行。"
+      },
+      "detach": {
+        "t": "SSH 断开也不丢失",
+        "d": "<code>termide --detached</code> 让编辑器、shell 和任务继续运行；<code>--attach</code> 以任意终端尺寸恢复它们。"
+      },
+      "monitor": {
+        "t": "看清是什么占满了服务器",
+        "d": "菜单栏显示 CPU、内存、网络和磁盘，一键查看占用最高的进程和监听端口。"
+      },
+      "db": {
+        "t": "查看数据库内容",
+        "d": "SQLite、PostgreSQL 和 MySQL 表，支持排序、筛选、单元格编辑和导出。"
+      },
+      "editor_var": {
+        "t": "你的 $EDITOR",
+        "d": "设置 <code>EDITOR=termide</code>，用于 <code>crontab -e</code>、<code>visudo</code> 和提交信息。"
+      }
+    }
+  },
+  "agent": {
+    "title": "// 先征求同意的编程智能体",
+    "subtitle": "描述一个任务，模型会在你的项目中读取、编辑并运行命令，每一处修改都要等你批准。",
+    "items": {
+      "models": {
+        "t": "使用你自己的模型",
+        "d": "任何兼容 OpenAI 或 Anthropic 的接口：llama.cpp、Ollama、vLLM、omlx 或云端服务商。服务器提供上下文窗口时会自动采用。"
+      },
+      "permissions": {
+        "t": "未经你同意不做任何修改",
+        "d": "可允许一次、本次会话内允许或按模式永久允许；拒绝时可附上理由供模型参考；计划模式拒绝一切写入。"
+      },
+      "tools": {
+        "t": "只给它需要的工具",
+        "d": "读取、编辑、写入和 shell，外加通过独立浏览器配置文件进行的网页搜索和抓取，绝不使用你的登录状态。"
+      },
+      "agents": {
+        "t": "同一面板中的其他智能体",
+        "d": "通过 Agent Client Protocol 接入 Claude Code、Codex 和 Gemini CLI，也支持自定义智能体和处理专项任务的子智能体。"
+      },
+      "extend": {
+        "t": "用文件来扩展",
+        "d": "Skills、提示词模板、命令脚本、MCP 服务器、钩子和项目说明，全都是普通文件。"
+      },
+      "visibility": {
+        "t": "清楚知道开销",
+        "d": "实时显示阶段和速度、上下文占用条和 token 总数；每个回答末尾附上耗时和 token 数。会话可以稍后继续。"
+      }
+    },
+    "cli_title": "无界面模式，用于脚本和 CI",
+    "cli_desc": "同样的智能体、工具和权限规则，无需界面：",
+    "hooks": {
+      "local": {
+        "t": "使用本地模型？",
+        "d": "代码不会离开你的机器。"
+      },
+      "asks": {
+        "t": "对智能体心存顾虑？",
+        "d": "每次修改前它都会先询问。"
+      },
+      "others": {
+        "t": "已经在用 Claude Code 或 Codex？",
+        "d": "在同一个面板中运行它们。"
+      }
+    }
+  },
+  "features": {
+    "title": "// 其他功能",
+    "subtitle": "二进制文件中包含的其余功能。",
+    "groups": {
+      "code": {
+        "title": "代码",
+        "cards": {
+          "editor": {
+            "t": "带 LSP 的编辑器",
+            "d": "补全、悬停提示、跳转到定义、查找引用、重命名和快速修复；诊断面板；基于 tree-sitter 的 22 种语言语法高亮。"
+          },
+          "outline": {
+            "t": "代码大纲",
+            "d": "基于 tree-sitter 查询的结构化导航，与光标同步。"
+          },
+          "docs": {
+            "t": "文档与图表",
+            "d": "渲染后的 Markdown 和 HTML、文本模式浏览器，以及以文本绘制的 Mermaid 图表，包括从源代码生成的类图。"
+          },
+          "hex": {
+            "t": "十六进制编辑器",
+            "d": "带字节光标、选区和搜索的十六进制/ASCII 视图；覆盖式编辑并自动生成 <code>.bak</code> 备份。"
+          }
+        }
+      },
+      "files": {
+        "title": "文件与数据",
+        "cards": {
+          "fm": {
+            "t": "文件管理器",
+            "d": "带嵌套 git 状态的目录树、glob 与正则搜索、批量操作、书签和目录切换器。"
+          },
+          "remote": {
+            "t": "远程文件系统",
+            "d": "纯 Rust 实现的 SFTP、FTP 和 FTPS；SMB 和 NFS 通过操作系统挂载。"
+          },
+          "bgops": {
+            "t": "后台操作",
+            "d": "复制、移动、上传和下载，带进度显示，可暂停、继续和取消。"
+          },
+          "db": {
+            "t": "数据库查看器",
+            "d": "SQLite、PostgreSQL 和 MySQL：服务端排序、按列筛选、单元格编辑，行可导出为 TSV、JSON 或 INSERT。"
+          }
+        }
+      },
+      "ops": {
+        "title": "服务器与运维",
+        "cards": {
+          "detach": {
+            "t": "可分离实例",
+            "d": "关闭终端或断开连接后，稍后可从任意终端重新连接（Unix）。"
+          },
+          "terminal": {
+            "t": "内置终端",
+            "d": "完整 PTY，支持回滚、搜索、鼠标和 URL 识别；标题会跟随 <code>cd</code> 变化。"
+          },
+          "monitor": {
+            "t": "资源监控",
+            "d": "CPU、内存、网络和磁盘；按 CPU、内存或连接数列出占用最高的进程及其监听端口。"
+          },
+          "static": {
+            "t": "一个静态二进制文件",
+            "d": "Linux x86_64 和 ARM64（glibc 或 musl）、macOS、原生 Windows 以及 Android Termux。"
+          }
+        }
+      },
+      "workspace": {
+        "title": "工作区",
+        "cards": {
+          "git": {
+            "t": "Git",
+            "d": "状态、带彩色提交图的日志、diff、暂存、stash、blame、分支及其工作树。"
+          },
+          "projects": {
+            "t": "项目",
+            "d": "按目录恢复面板布局，并支持项目级设置和命令。"
+          },
+          "commands": {
+            "t": "自定义命令",
+            "d": "全局或项目级命令，支持快捷键、参数表单，以及终端、后台或报告三种模式。"
+          },
+          "palette": {
+            "t": "命令面板与打开",
+            "d": "<code>Ctrl+P</code> 模糊搜索命令面板；<code>Ctrl+G</code> 打开文件、文件夹或 URL，并提供路径建议。"
+          }
+        }
+      },
+      "look": {
+        "title": "外观与操作",
+        "cards": {
+          "themes": {
+            "t": "38 款主题",
+            "d": "深色、浅色、复古和电影风格；也可以用 TOML 编写自己的主题。"
+          },
+          "languages": {
+            "t": "15 种界面语言",
+            "d": "中文、英语、俄语、日语、韩语、德语、法语、西班牙语等。"
+          },
+          "keyboard": {
+            "t": "键盘与鼠标",
+            "d": "所有快捷键都可在设置中修改；完整的鼠标支持；在西里尔字母布局下以及 macOS 上的 <code>Alt</code> 组合键都能正常使用。"
+          },
+          "vim": {
+            "t": "Vim 模式",
+            "d": "可选的 Vim 风格编辑，适合已经习惯它的双手。"
+          }
+        }
+      }
+    }
+  },
+  "compare": {
+    "title": "// 为什么选择 TermIDE？",
+    "subtitle": "编辑器只负责代码，TermIDE 还覆盖了代码之外的一切。",
+    "feature_col": "功能",
+    "values": {
+      "plugin": "插件",
+      "ssh": "SSH",
+      "tree": "仅文件树"
+    },
+    "rows": {
+      "lsp": "LSP 支持",
+      "zero": "零配置",
+      "script": "脚本自动化",
+      "agent": "内置编程智能体（本地或云端模型）",
+      "extagent": "外部智能体（Claude Code、Codex、Gemini CLI）",
+      "mcp": "MCP 服务器",
+      "remote": "远程文件系统（SFTP/FTP）",
+      "hex": "十六进制 / 二进制查看器",
+      "db": "数据库查看器",
+      "md": "Markdown 预览",
+      "mermaid": "图表查看器（Mermaid）",
+      "image": "图片查看器",
+      "term": "内置终端",
+      "fm": "文件管理器",
+      "bgops": "后台文件操作",
+      "git": "Git 集成",
+      "layouts": "项目布局",
+      "detach": "可分离实例",
+      "panels": "多面板布局",
+      "bookmarks": "书签",
+      "monitor": "资源监控"
+    },
+    "stack_title": "// 你工具箱中的日常部分",
+    "stack_subtitle": "TermIDE 并不打算取代这些工具，而是把你每天都要用到的那部分集中到一处。",
+    "stack_cols": {
+      "task": "任务",
+      "usual": "通常使用",
+      "termide": "在 TermIDE 中"
+    },
+    "stack": {
+      "detach": {
+        "task": "SSH 断开后工作不丢失",
+        "usual": "tmux、screen",
+        "termide": "可分离实例"
+      },
+      "files": {
+        "task": "在主机之间传输文件",
+        "usual": "mc、ranger、scp",
+        "termide": "支持 SFTP/FTP 的双栏文件管理器"
+      },
+      "edit": {
+        "task": "编辑代码和配置",
+        "usual": "vim、nano",
+        "termide": "带 LSP 的编辑器"
+      },
+      "git": {
+        "task": "审阅并提交",
+        "usual": "lazygit、tig",
+        "termide": "Git 状态、日志和 diff 面板"
+      },
+      "procs": {
+        "task": "找出占满服务器的进程",
+        "usual": "htop、ss",
+        "termide": "资源监控"
+      },
+      "db": {
+        "task": "查看数据库",
+        "usual": "sqlite3、psql",
+        "termide": "数据库查看器"
+      },
+      "agent": {
+        "task": "让模型修改代码",
+        "usual": "aider、Claude Code",
+        "termide": "智能体面板，或在其中运行这些智能体"
+      }
+    },
+    "show_all": "显示其余行"
+  },
+  "themes": {
+    "title": "// 主题",
+    "subtitle": "选择你的风格，或者自己写一个。",
+    "groups": {
+      "all": "全部",
+      "retro": "复古",
+      "dark": "深色",
+      "light": "浅色",
+      "cinematic": "电影"
+    },
+    "custom": {
+      "title": "打造你自己的主题",
+      "subtitle": "主题就是一个包含十种颜色的 TOML 文件。无需构建，无需插件。",
+      "points": {
+        "file": "颜色名或 RGB，一个文件十个键。",
+        "override": "与内置主题同名的文件会替换该主题。",
+        "transparent": "<code>\"Reset\"</code> 让终端自身的背景透出来。",
+        "project": "可按项目或主机设置：生产环境用红色主题，一眼就知道身在何处。"
+      },
+      "doc": "主题格式"
+    },
+    "show_all": "显示全部 {n} 款主题"
+  },
+  "install": {
+    "title": "// 安装",
+    "subtitle": "选择你的平台。无需运行时，没有依赖。",
+    "copy": "复制到剪贴板",
+    "tabs": {
+      "script": {
+        "label": "脚本",
+        "note": "Linux 和 macOS；自动识别系统。"
+      },
+      "static": {
+        "label": "服务器",
+        "note": "适用于任何 Linux 的静态 musl 二进制，包括 Alpine 和容器。"
+      },
+      "brew": {
+        "label": "Homebrew",
+        "note": "macOS 和 Linux。"
+      },
+      "arch": {
+        "label": "Arch",
+        "note": "来自 AUR；<code>termide</code> 包从源码构建。"
+      },
+      "nix": {
+        "label": "Nix",
+        "note": "无需安装即可运行，或使用 <code>nix profile install</code>。"
+      },
+      "deb": {
+        "label": "Debian",
+        "note": "Debian 和 Ubuntu，x86_64。"
+      },
+      "rpm": {
+        "label": "Fedora",
+        "note": "Fedora、RHEL 和 CentOS，x86_64。"
+      },
+      "termux": {
+        "label": "Termux",
+        "note": "Android；静态 ARM64 版本可在 Bionic 上运行。"
+      },
+      "windows": {
+        "label": "Windows",
+        "note": "下载、解压，然后在 Windows Terminal 中运行 <code>termide.exe</code>。"
+      }
+    }
+  },
+  "faq": {
+    "title": "// 常见问题",
+    "items": {
+      "ai": {
+        "q": "必须使用 AI 智能体吗？",
+        "a": "不必。默认不设置任何服务商和模型，因此在你配置之前，智能体不会执行任何操作，也不会发送任何数据。其余功能都可独立使用。"
+      },
+      "privacy": {
+        "q": "TermIDE 会向外发送数据吗？",
+        "a": "没有遥测、无需账户、不检查更新。只有在你主动要求时才会联网：打开远程位置、网页、执行 <code>git push</code> 或 <code>pull</code>，或为智能体接入模型。"
+      },
+      "tmux": {
+        "q": "它能取代 tmux 吗？",
+        "a": "对于 SSH 断开后保留工作这一常见需求，可以：<code>termide --detached</code> 让整个工作台继续运行，<code>--attach</code> 将其恢复。它不像 tmux 那样管理任意会话和窗口，也可以在 tmux 中正常运行。"
+      },
+      "ssh": {
+        "q": "如何在服务器上使用？",
+        "a": "复制静态 musl 二进制文件并运行即可，无需安装其他任何东西。也可以留在本地，通过文件管理器以 SFTP 或 FTP 打开服务器。"
+      },
+      "terminals": {
+        "q": "需要什么终端？",
+        "a": "任何支持真彩色的现代终端。Kitty、WezTerm、iTerm2、Ghostty 和 foot 可原生显示图片；在 macOS 上，支持 Kitty 键盘协议的终端可使用 <code>Alt</code> 快捷键。"
+      },
+      "windows": {
+        "q": "能在 Windows 上运行吗？",
+        "a": "可以，通过 ConPTY 在 Windows Terminal 中原生运行，或在 WSL 中运行。可分离实例仅支持 Unix。"
+      },
+      "keys": {
+        "q": "需要学习新的快捷键吗？",
+        "a": "菜单会列出每个快捷键，鼠标处处可用，双栏布局对 mc 或 FAR 用户来说十分熟悉。所有快捷键都可在设置中修改，还有可选的 Vim 模式。"
+      }
+    }
+  },
+  "footer": {
+    "docs": "文档",
+    "releases": "版本发布",
+    "issues": "问题反馈",
+    "license": "MIT 许可证 &bull; 用 <span class=\"rust-heart\">&#9829;</span> 和 Rust 打造"
+  }
+}

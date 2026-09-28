@@ -3,86 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TermIDE — Легковесная терминальная IDE</title>
-    <meta name="description" content="Легковесная терминальная IDE на Rust. Просмотр баз данных, превью Markdown/HTML/диаграмм, LSP, SFTP/FTP, Git интеграция, 38 тем, подсветка 22 языков, 15 языков интерфейса. Работает из коробки.">
+    <title>TermIDE — терминальное рабочее место «всё в одном» для рабочей машины и серверов</title>
+    <meta name="description" content="Редактор с LSP, двухпанельный файловый менеджер с SFTP/FTP, терминал, git, просмотр баз данных и агент для кода на вашей собственной модели — один статический бинарник на Rust без настройки.">
+    <link rel="canonical" href="https://termide.github.io/ru/">
+    <link rel="alternate" hreflang="en" href="https://termide.github.io/">
+    <link rel="alternate" hreflang="ru" href="https://termide.github.io/ru/">
+    <link rel="alternate" hreflang="zh" href="https://termide.github.io/zh/">
+    <link rel="alternate" hreflang="x-default" href="https://termide.github.io/">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="TermIDE — Легковесная терминальная IDE">
-    <meta property="og:description" content="Легковесная терминальная IDE на Rust. Просмотр баз данных, превью Markdown/диаграмм, LSP, SFTP, Git интеграция, 38 тем и 15 языков интерфейса из коробки.">
-    <meta property="og:image" content="../assets/termide.jpg">
+    <meta property="og:title" content="TermIDE — одно терминальное рабочее место на ноутбуке и на серверах">
+    <meta property="og:description" content="Редактор, файловый менеджер, терминал, git, базы данных и агент для кода в одном статическом бинарнике на Rust. Без настройки.">
+    <meta property="og:image" content="https://termide.github.io/assets/og.png">
+    <meta property="og:url" content="https://termide.github.io/ru/">
     <meta property="og:type" content="website">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="TermIDE — Легковесная терминальная IDE">
-    <meta name="twitter:description" content="Легковесная терминальная IDE на Rust. Просмотр баз данных, превью Markdown/диаграмм, LSP, SFTP, Git интеграция из коробки.">
-    <meta name="twitter:image" content="../assets/termide.jpg">
+    <meta name="twitter:title" content="TermIDE — одно терминальное рабочее место на ноутбуке и на серверах">
+    <meta name="twitter:description" content="Редактор, файловый менеджер, терминал, git, базы данных и агент для кода в одном статическом бинарнике на Rust. Без настройки.">
+    <meta name="twitter:image" content="https://termide.github.io/assets/og.png">
 
-    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="../assets/logo.svg">
 
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
-    <!-- Styles -->
     <link rel="stylesheet" href="../css/style.css">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "TermIDE",
+  "url": "https://termide.github.io/ru/",
+  "description": "Редактор с LSP, двухпанельный файловый менеджер с SFTP/FTP, терминал, git, просмотр баз данных и агент для кода на вашей собственной модели — один статический бинарник на Rust без настройки.",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Linux, macOS, Windows, Android",
+  "softwareVersion": "0.36.0",
+  "license": "https://opensource.org/licenses/MIT",
+  "downloadUrl": "https://github.com/termide/termide/releases/latest",
+  "codeRepository": "https://github.com/termide/termide",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+    </script>
 </head>
 <body class="scanlines">
-    <!-- Hero Slides Data -->
     <script>
-        window.heroSlides = [
-            { text: "Легковесная терминальная IDE на каждый день", image: "../assets/screenshots/editor.png" },
-            { text: "Навигация, копирование, перемещение — не покидая терминал", image: "../assets/screenshots/file-manager.png" },
-            { text: "LSP-автодополнение и диагностика из коробки", image: "../assets/screenshots/editor.png" },
-            { text: "Git статус, лог, diff, коммит, push — всё в TUI", image: "../assets/screenshots/git.png" },
-            { text: "Встроенный терминал с полной PTY поддержкой", image: "../assets/screenshots/terminal.png" },
-            { text: "Структура кода с синхронизацией курсора и навигацией", image: "../assets/screenshots/outline.png" },
-            { text: "Просмотр таблиц SQLite, PostgreSQL и MySQL только на чтение", image: "../assets/screenshots/db.png" },
-            { text: "Рендеринг Markdown и HTML, плюс текстовый браузер", image: "../assets/screenshots/markdown.png" },
-            { text: "Диаграммы Mermaid — и диаграммы классов из вашего кода", image: "../assets/screenshots/mermaid.png" },
-            { text: "Hex/бинарный просмотр и редактор с поиском", image: "../assets/screenshots/hex.png" },
-            { text: "38 тем, 15 языков, SFTP, закладки и многое другое", image: "../assets/screenshots/themes.png" }
-        ];
+        window.heroSlides = [{"text": "Файлы, код, git и шелл рядом друг с другом", "image": "../assets/screenshots/overview.png"}, {"text": "Агент для кода на вашей модели — локальной или облачной", "image": "../assets/screenshots/agent.png"}, {"text": "Две панели, локальная и удалённая, передача файлов в фоне", "image": "../assets/screenshots/file-manager.png"}, {"text": "Оборвался SSH? termide --attach — и всё на своих местах", "image": "../assets/screenshots/detach.gif"}, {"text": "Статус, граф коммитов, diff, ветки и ворктри", "image": "../assets/screenshots/git.png"}, {"text": "Просмотр и правка таблиц SQLite, PostgreSQL и MySQL", "image": "../assets/screenshots/db.png"}, {"text": "CPU, память, процессы и порты в один клик", "image": "../assets/screenshots/monitor.png"}, {"text": "Отрендеренный Markdown с диаграммами Mermaid", "image": "../assets/screenshots/markdown.png"}, {"text": "Hex-просмотр и правка бинарных файлов на месте", "image": "../assets/screenshots/hex.png"}, {"text": "38 тем — от Dracula до Norton Commander", "image": "../assets/screenshots/themes.png"}];
     </script>
 
-    <!-- Menubar - Full Width -->
     <nav class="menubar">
         <div class="menubar-logo">TermIDE</div>
         <div class="menubar-nav">
-            <a href="#features">Функции</a>
+            <a href="#homes">Возможности</a>
+            <a href="#agent">Агент</a>
+            <a href="#toolbox">Сравнение</a>
             <a href="#screenshots">Темы</a>
-            <a href="#compare">Сравнение</a>
             <a href="#install">Установка</a>
+            <a href="https://github.com/termide/termide/blob/main/doc/ru/README.md" target="_blank" rel="noopener">Документация</a>
         </div>
         <div class="lang-switcher">
             <a href="../index.html">EN</a>
             <span class="divider">/</span>
-            <a href="index.html" class="active">RU</a>
+            <a href="../ru/index.html" class="active">RU</a>
             <span class="divider">/</span>
             <a href="../zh/index.html">ZH</a>
         </div>
     </nav>
 
-    <!-- Page Container -->
     <main class="page-container">
-        <!-- Hero Header -->
         <div class="hero-header">
-            <img src="../assets/logo.svg" alt="TermIDE Logo" class="logo">
+            <img src="../assets/logo.svg" alt="TermIDE" class="logo">
             <h1 class="glitch" data-text="TermIDE">TermIDE</h1>
         </div>
 
-        <!-- Hero Carousel 50/50 -->
         <div class="hero-carousel">
             <div class="hero-carousel-content">
+                <p class="headline">Одно терминальное рабочее место — на ноутбуке и на серверах.</p>
                 <p class="tagline">
                     <span class="typewriter"></span><span class="cursor">_</span>
                 </p>
-                <p class="subtitle">Написана на Rust. Работает из коробки. Всё включено.</p>
+                <p class="subtitle">Редактор, файловый менеджер, терминал, git, базы данных и агент для кода. Один статический бинарник, без настройки.</p>
+                <div class="code-block hero-install">
+                    <pre><code data-template="curl -fsSL https://raw.githubusercontent.com/termide/termide/main/install.sh | sh">curl -fsSL https://raw.githubusercontent.com/termide/termide/main/install.sh | sh</code></pre>
+                    <button class="copy-btn" data-copy="curl -fsSL https://raw.githubusercontent.com/termide/termide/main/install.sh | sh" title="Скопировать"><span class="copy-icon">&#128203;</span></button>
+                </div>
                 <div class="cta-buttons">
-                    <a href="#install" class="btn btn-primary neon-border">
-                        <span class="btn-icon">$</span> Установить
+                    <a href="#install" class="btn btn-secondary">
+                        <span class="btn-icon">$</span> Все способы установки
                     </a>
                     <a href="https://github.com/termide/termide" class="btn btn-secondary" target="_blank" rel="noopener">
                         <span class="btn-icon">&gt;</span> GitHub
@@ -95,540 +108,696 @@
                         <span class="terminal-dot red"></span>
                         <span class="terminal-dot yellow"></span>
                         <span class="terminal-dot green"></span>
-                        <span class="terminal-title">termide</span>
+                        <span class="terminal-title">demo@demo: ~/project — termide</span>
                     </div>
                     <div class="hero-screenshots">
-                        <img src="../assets/screenshots/editor.png" alt="Редактор TermIDE" class="screenshot active">
-                        <img src="../assets/screenshots/file-manager.png" alt="Файловый менеджер" class="screenshot">
-                        <img src="../assets/screenshots/editor.png" alt="Подсветка синтаксиса" class="screenshot">
-                        <img src="../assets/screenshots/git.png" alt="Git интеграция" class="screenshot">
-                        <img src="../assets/screenshots/terminal.png" alt="Терминал" class="screenshot">
-                        <img src="../assets/screenshots/outline.png" alt="Структура кода" class="screenshot">
-                        <img src="../assets/screenshots/db.png" alt="Просмотр баз данных" class="screenshot">
-                        <img src="../assets/screenshots/markdown.png" alt="Просмотр Markdown" class="screenshot">
-                        <img src="../assets/screenshots/mermaid.png" alt="Диаграммы Mermaid" class="screenshot">
-                        <img src="../assets/screenshots/hex.png" alt="Hex-просмотр" class="screenshot">
-                        <img src="../assets/screenshots/themes.png" alt="Темы" class="screenshot">
+                        <img src="../assets/screenshots/overview.png" alt="Файлы, код, git и шелл рядом друг с другом" class="screenshot active">
+                        <img src="../assets/screenshots/agent.png" alt="Агент для кода на вашей модели — локальной или облачной" class="screenshot" loading="lazy">
+                        <img src="../assets/screenshots/file-manager.png" alt="Две панели, локальная и удалённая, передача файлов в фоне" class="screenshot" loading="lazy">
+                        <img src="../assets/screenshots/detach.gif" alt="Оборвался SSH? termide --attach — и всё на своих местах" class="screenshot" loading="lazy">
+                        <img src="../assets/screenshots/git.png" alt="Статус, граф коммитов, diff, ветки и ворктри" class="screenshot" loading="lazy">
+                        <img src="../assets/screenshots/db.png" alt="Просмотр и правка таблиц SQLite, PostgreSQL и MySQL" class="screenshot" loading="lazy">
+                        <img src="../assets/screenshots/monitor.png" alt="CPU, память, процессы и порты в один клик" class="screenshot" loading="lazy">
+                        <img src="../assets/screenshots/markdown.png" alt="Отрендеренный Markdown с диаграммами Mermaid" class="screenshot" loading="lazy">
+                        <img src="../assets/screenshots/hex.png" alt="Hex-просмотр и правка бинарных файлов на месте" class="screenshot" loading="lazy">
+                        <img src="../assets/screenshots/themes.png" alt="38 тем — от Dracula до Norton Commander" class="screenshot" loading="lazy">
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Features Section -->
-        <section id="features" class="features">
-            <h2 class="section-title glitch-hover">// Возможности</h2>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">&gt;_</div>
-                        <h3>Встроенный терминал</h3>
-                        <p>Полная PTY поддержка с прокруткой, поиском по тексту, мышью и детекцией URL.</p>
+        <ul class="trust-strip">
+            <li><span class="trust-mark">&#10003;</span> Один файл ~12 МБ, без зависимостей</li>
+            <li><span class="trust-mark">&#10003;</span> Без телеметрии, аккаунтов и проверки обновлений</li>
+            <li><span class="trust-mark">&#10003;</span> ИИ выключен, пока вы не настроите модель</li>
+            <li><span class="trust-mark">&#10003;</span> Меню, мышь и F-клавиши: привычно с первой минуты</li>
+        </ul>
+
+        <section id="homes" class="homes">
+            <h2 class="section-title glitch-hover">// Два места работы, один инструмент</h2>
+            <p class="section-subtitle">Тот же бинарник и те же клавиши за рабочим столом и на сервере, куда вы зашли по SSH.</p>
+            <div class="homes-grid">
+                <div class="home-column">
+                    <h3 class="home-title"><span class="home-prompt">~$</span> За рабочим столом</h3>
+                    <div class="home-item">
+                        <h4>Код с LSP</h4>
+                        <p>Автодополнение, переход к определению, ссылки, переименование и диагностика для 22 языков — без настройки плагинов.</p>
                     </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">[]</div>
-                        <h3>Файловый менеджер</h3>
-                        <p>Git-индикаторы, glob/regex поиск, пакетные операции, закладки и переключатель каталогов.</p>
+                    <div class="home-item">
+                        <h4>Агент на вашей модели</h4>
+                        <p>Подключите llama.cpp, Ollama или vLLM на своей машине — и код никуда не уходит. Или используйте облачный endpoint.</p>
                     </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">{}</div>
-                        <h3>Подсветка синтаксиса</h3>
-                        <p>22 языка на базе tree-sitter. Rust, Python, JS, Go, C/C++, Java, Kotlin, PHP и другие.</p>
+                    <div class="home-item">
+                        <h4>Git как на ладони</h4>
+                        <p>Статус, цветной граф коммитов, diff, stash и ветки вместе с их ворктри.</p>
                     </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">+-</div>
-                        <h3>Git интеграция</h3>
-                        <p>Панель статуса, лог коммитов с ASCII-графом, просмотр diff, staging, push/pull.</p>
+                    <div class="home-item">
+                        <h4>Документы рядом с кодом</h4>
+                        <p>Отрендеренный Markdown, диаграммы Mermaid, HTML и изображения в панелях рядом с редактором.</p>
                     </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">&lt;&gt;</div>
-                        <h3>LSP и диагностика</h3>
-                        <p>Автодополнение, hover, переход к определению, поиск ссылок, переименование и быстрые исправления вроде авто-импорта. Панель ошибок и предупреждений.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">§</div>
-                        <h3>Структура кода</h3>
-                        <p>Навигация по структуре через tree-sitter запросы. Синхронизация курсора с редактором.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">↔</div>
-                        <h3>Удалённые файлы</h3>
-                        <p>Просмотр и редактирование файлов по SFTP, FTP, FTPS и SMB. Загрузка с отслеживанием прогресса.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">#*</div>
-                        <h3>38 тем оформления</h3>
-                        <p>Тёмные, светлые, ретро и кинематографические. Создавайте свои темы в TOML.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">%%</div>
-                        <h3>Мониторинг ресурсов</h3>
-                        <p>CPU, RAM, сетевая активность и диск в реальном времени в строке меню. Клик по индикатору открывает модал с топ-процессами по CPU/RAM или сетевым соединениям.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">@!</div>
-                        <h3>15 языков интерфейса</h3>
-                        <p>Русский, английский, китайский, японский, корейский, немецкий, французский, испанский и другие.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">::</div>
-                        <h3>Сессии и закладки</h3>
-                        <p>Автосохранение рабочего пространства. Закладки каталогов. Переключение между проектами.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">$/</div>
-                        <h3>Скрипты и Vim-режим</h3>
-                        <p>Запуск пользовательских скриптов из меню. Vim-стиль редактирования с поддержкой кириллицы.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">✎</div>
-                        <h3>Готовый $EDITOR</h3>
-                        <p>Задайте <code>EDITOR=termide</code> — и редактируйте сообщения коммитов, crontab и не только. Передайте любой путь к файлу, чтобы открыть его сразу.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">▦</div>
-                        <h3>Просмотр баз данных</h3>
-                        <p>Таблицы SQLite, PostgreSQL и MySQL/MariaDB только на чтение — сетка, серверная сортировка, фильтры по столбцам и экспорт строк в TSV/JSON/INSERT.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">¶</div>
-                        <h3>Документы и веб-браузер</h3>
-                        <p>Рендеринг Markdown и HTML плюс текстовый браузер — открывайте URL, переходите по ссылкам с историей вперёд/назад и загружайте страницы, не покидая терминал.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">◇</div>
-                        <h3>Диаграммы из кода</h3>
-                        <p>Вьюер Mermaid для flowchart, sequence, state и ER-диаграмм — плюс диаграммы классов, построенные прямо из ваших исходников.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">0x</div>
-                        <h3>Hex/бинарный редактор</h3>
-                        <p>Адаптивный hex/ASCII-просмотр с курсором по байтам, выделением и поиском — плюс редактирование поверх с автоматическими <code>.bak</code>-бэкапами.</p>
+                    <div class="home-item">
+                        <h4>Команды проекта</h4>
+                        <p>Сборка, тесты и деплой в <code>commands.toml</code>, для каждого проекта свои, на горячих клавишах.</p>
                     </div>
                 </div>
+                <div class="home-column">
+                    <h3 class="home-title"><span class="home-prompt">root@srv:~#</span> На серверах</h3>
+                    <div class="home-item">
+                        <h4>Скопировал файл — и работает</h4>
+                        <p>Статический musl-бинарник без OpenSSL и без привязки к libc: Alpine, ARM-платы, контейнеры, Termux.</p>
+                    </div>
+                    <div class="home-item">
+                        <h4>Локальная и удалённая панели</h4>
+                        <p>SFTP, FTP и FTPS в файловом менеджере; копирование между хостами идёт в фоне.</p>
+                    </div>
+                    <div class="home-item">
+                        <h4>Переживает обрыв SSH</h4>
+                        <p><code>termide --detached</code> сохраняет редакторы, шеллы и задачи; <code>--attach</code> возвращает их в терминале любого размера.</p>
+                    </div>
+                    <div class="home-item">
+                        <h4>Что нагружает сервер</h4>
+                        <p>CPU, память, сеть и диск в строке меню, топ процессов и слушающие порты в один клик.</p>
+                    </div>
+                    <div class="home-item">
+                        <h4>Заглянуть в базу</h4>
+                        <p>Таблицы SQLite, PostgreSQL и MySQL с сортировкой, фильтрами, правкой ячеек и экспортом.</p>
+                    </div>
+                    <div class="home-item">
+                        <h4>Ваш $EDITOR</h4>
+                        <p><code>EDITOR=termide</code> для <code>crontab -e</code>, <code>visudo</code> и сообщений коммитов.</p>
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <!-- Screenshots Gallery -->
+        <section id="agent" class="agent">
+            <h2 class="section-title glitch-hover">// Агент для кода, который сначала спрашивает</h2>
+            <p class="section-subtitle">Опишите задачу — модель читает, правит и запускает команды в вашем проекте, а каждое изменение ждёт вашего разрешения.</p>
+            <div class="agent-hooks">
+                <div class="agent-hook">
+                    <span class="agent-hook-q">Локальная модель?</span>
+                    <span class="agent-hook-a">Код не покидает вашу машину.</span>
+                </div>
+                <div class="agent-hook">
+                    <span class="agent-hook-q">Не доверяете агентам?</span>
+                    <span class="agent-hook-a">Он спрашивает перед каждым изменением.</span>
+                </div>
+                <div class="agent-hook">
+                    <span class="agent-hook-q">Уже пользуетесь Claude Code или Codex?</span>
+                    <span class="agent-hook-a">Запускайте их в той же панели.</span>
+                </div>
+            </div>
+            <div class="agent-layout">
+                <div class="terminal-frame neon-border agent-shot">
+                    <img src="../assets/screenshots/agent.gif" alt="TermIDE agent panel" class="screenshot" loading="lazy">
+                </div>
+                <div class="agent-items">
+                    <div class="agent-item">
+                        <h4>Своя модель</h4>
+                        <p>Любой OpenAI- или Anthropic-совместимый endpoint: llama.cpp, Ollama, vLLM, omlx или облачный провайдер. Размер контекста берётся с сервера, если он его сообщает.</p>
+                    </div>
+                    <div class="agent-item">
+                        <h4>Без вас ничего не меняется</h4>
+                        <p>Разрешить один раз, на сессию или навсегда по шаблону; отказать с причиной, которую прочтёт модель; режим плана запрещает любую запись.</p>
+                    </div>
+                    <div class="agent-item">
+                        <h4>Только нужные инструменты</h4>
+                        <p>Чтение, правка, запись и шелл, плюс веб-поиск и загрузка страниц через собственный профиль браузера — без ваших логинов.</p>
+                    </div>
+                    <div class="agent-item">
+                        <h4>Другие агенты в той же панели</h4>
+                        <p>Claude Code, Codex и Gemini CLI по Agent Client Protocol, ваши собственные агенты и субагенты для отдельных задач.</p>
+                    </div>
+                    <div class="agent-item">
+                        <h4>Расширяется файлами</h4>
+                        <p>Skills, шаблоны промптов, командные скрипты, MCP-серверы, хуки и инструкции проекта — всё обычные файлы.</p>
+                    </div>
+                    <div class="agent-item">
+                        <h4>Видно, во что обходится</h4>
+                        <p>Фаза и скорость в реальном времени, заполнение контекста и счётчики токенов; каждый ответ заканчивается временем и токенами. Сессии можно продолжить позже.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="agent-cli">
+                <h3>Без интерфейса — для скриптов и CI</h3>
+                <p>Тот же агент, инструменты и правила разрешений без UI:</p>
+                <div class="code-block">
+                    <pre><code data-template="termide --prompt &quot;run the tests and report failures&quot; --output json">termide --prompt &quot;run the tests and report failures&quot; --output json</code></pre>
+                    <button class="copy-btn" data-copy="termide --prompt &quot;run the tests and report failures&quot; --output json" title="Скопировать"><span class="copy-icon">&#128203;</span></button>
+                </div>
+            </div>
+        </section>
+
+        <section id="toolbox" class="comparison">
+            <h2 class="section-title glitch-hover">// Повседневная часть вашего набора</h2>
+            <p class="section-subtitle">TermIDE не пытается заменить эти инструменты. Он закрывает ту их часть, к которой вы обращаетесь каждый день, — в одном месте.</p>
+            <div class="table-wrapper">
+                <table class="comparison-table stack-table">
+                    <thead>
+                        <tr><th>Задача</th><th>Обычно</th><th class="highlight">В TermIDE</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Не потерять работу при обрыве SSH</td><td>tmux, screen</td><td class="highlight">Отсоединяемые экземпляры</td></tr>
+                        <tr><td>Перенести файлы между хостами</td><td>mc, ranger, scp</td><td class="highlight">Двухпанельный файловый менеджер с SFTP/FTP</td></tr>
+                        <tr><td>Править код и конфиги</td><td>vim, nano</td><td class="highlight">Редактор с LSP</td></tr>
+                        <tr><td>Просмотреть и закоммитить</td><td>lazygit, tig</td><td class="highlight">Панели статуса, лога и diff</td></tr>
+                        <tr><td>Найти, что нагружает сервер</td><td>htop, ss</td><td class="highlight">Монитор ресурсов</td></tr>
+                        <tr><td>Заглянуть в базу данных</td><td>sqlite3, psql</td><td class="highlight">Просмотр баз данных</td></tr>
+                        <tr><td>Попросить модель поправить код</td><td>aider, Claude Code</td><td class="highlight">Панель агента — или эти агенты внутри неё</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
         <section id="screenshots" class="screenshots">
-            <h2 class="section-title glitch-hover">// Галерея тем</h2>
-                <p class="section-subtitle">Выбери свой стиль. Или создай собственный.</p>
-                <div class="gallery">
-                    <!-- Тёмные темы -->
-                    <div class="gallery-item" data-theme="dracula">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="../assets/themes/dracula.png" alt="Тема Dracula" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">Dracula</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-theme="monokai">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="../assets/themes/monokai.png" alt="Тема Monokai" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">Monokai</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-theme="nord">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="../assets/themes/nord.png" alt="Тема Nord" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">Nord</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-theme="onedark">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="../assets/themes/onedark.png" alt="Тема One Dark" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">One Dark</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-theme="solarized-dark">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="../assets/themes/solarized-dark.png" alt="Тема Solarized Dark" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">Solarized Dark</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-theme="midnight">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="../assets/themes/midnight.png" alt="Тема Midnight" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">Midnight</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-theme="macos-dark">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="../assets/themes/macos-dark.png" alt="Тема macOS Dark" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">macOS Dark</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-theme="ayu-dark">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="../assets/themes/ayu-dark.png" alt="Тема Ayu Dark" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">Ayu Dark</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-theme="catppuccin-macchiato">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="../assets/themes/catppuccin-macchiato.png" alt="Тема Catppuccin Macchiato" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">Catppuccin</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-theme="everforest">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="../assets/themes/everforest.png" alt="Тема Everforest" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">Everforest</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-theme="github-dark">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="../assets/themes/github-dark.png" alt="Тема GitHub Dark" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">GitHub Dark</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-theme="gruvbox">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="../assets/themes/gruvbox.png" alt="Тема Gruvbox" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">Gruvbox</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-theme="kanagawa">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="../assets/themes/kanagawa.png" alt="Тема Kanagawa" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">Kanagawa</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-theme="material-ocean">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="../assets/themes/material-ocean.png" alt="Тема Material Ocean" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">Material Ocean</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-theme="rosepine">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="../assets/themes/rosepine.png" alt="Тема Rosé Pine" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">Rosé Pine</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-theme="tokyonight">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="../assets/themes/tokyonight.png" alt="Тема Tokyo Night" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">Tokyo Night</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-theme="terminal">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="../assets/themes/terminal.png" alt="Тема Terminal" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">Terminal</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Светлые темы -->
-                    <div class="gallery-item" data-theme="solarized-light">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="../assets/themes/solarized-light.png" alt="Тема Solarized Light" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">Solarized Light</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-theme="github-light">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="../assets/themes/github-light.png" alt="Тема GitHub Light" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">GitHub Light</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-theme="atom-one-light">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="../assets/themes/atom-one-light.png" alt="Тема Atom One Light" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">Atom One Light</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-theme="ayu-light">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="../assets/themes/ayu-light.png" alt="Тема Ayu Light" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">Ayu Light</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-theme="material-lighter">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="../assets/themes/material-lighter.png" alt="Тема Material Lighter" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">Material Lighter</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-theme="macos-light">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="../assets/themes/macos-light.png" alt="Тема macOS Light" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">macOS Light</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-theme="manuscript">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="../assets/themes/manuscript.png" alt="Тема Manuscript" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">Manuscript</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Ретро темы -->
-                    <div class="gallery-item" data-theme="far-manager">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="../assets/themes/far-manager.png" alt="Тема Far Manager" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">Far Manager</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-theme="norton-commander">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="../assets/themes/norton-commander.png" alt="Тема Norton Commander" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">Norton Commander</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-theme="dos-navigator">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="../assets/themes/dos-navigator.png" alt="Тема DOS Navigator" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">DOS Navigator</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-theme="volkov-commander">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="../assets/themes/volkov-commander.png" alt="Тема Volkov Commander" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">Volkov Commander</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-theme="windows-95">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="../assets/themes/windows-95.png" alt="Тема Windows 95" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">Windows 95</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-theme="windows-98">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="../assets/themes/windows-98.png" alt="Тема Windows 98" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">Windows 98</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-theme="windows-xp">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="../assets/themes/windows-xp.png" alt="Тема Windows XP" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">Windows XP</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Кинематографические темы -->
-                    <div class="gallery-item" data-theme="matrix">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="../assets/themes/matrix.png" alt="Тема Matrix" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">Matrix</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-theme="pip-boy">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="../assets/themes/pip-boy.png" alt="Тема Pip-Boy" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">Pip-Boy</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-theme="terminator">
-                        <div class="gallery-frame neon-border-hover">
-                            <img src="../assets/themes/terminator.png" alt="Тема Terminator" loading="lazy">
-                            <div class="gallery-overlay">
-                                <span class="theme-name">Terminator</span>
-                            </div>
-                        </div>
+            <h2 class="section-title glitch-hover">// Темы</h2>
+            <p class="section-subtitle">Выберите свой стиль. Или напишите собственный.</p>
+            <div class="theme-filters">
+                <button class="filter-btn active" data-filter="all">Все</button>
+                <button class="filter-btn" data-filter="retro">Ретро</button>
+                <button class="filter-btn" data-filter="dark">Тёмные</button>
+                <button class="filter-btn" data-filter="light">Светлые</button>
+                <button class="filter-btn" data-filter="cinematic">Кино</button>
+            </div>
+            <div class="gallery">
+                <div class="gallery-item" data-group="retro">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="../assets/themes/norton-commander.png" alt="Norton Commander" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Norton Commander</span></div>
                     </div>
                 </div>
+                <div class="gallery-item" data-group="retro">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="../assets/themes/far-manager.png" alt="Far Manager" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Far Manager</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-group="cinematic">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="../assets/themes/matrix.png" alt="Matrix" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Matrix</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-group="cinematic">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="../assets/themes/pip-boy.png" alt="Pip-Boy" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Pip-Boy</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-group="dark">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="../assets/themes/dracula.png" alt="Dracula" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Dracula</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-group="dark">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="../assets/themes/tokyonight.png" alt="Tokyo Night" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Tokyo Night</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-group="dark">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="../assets/themes/nord.png" alt="Nord" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Nord</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-group="light">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="../assets/themes/ayu-light.png" alt="Ayu Light" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Ayu Light</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-group="light">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="../assets/themes/solarized-light.png" alt="Solarized Light" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Solarized Light</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item extra" data-group="retro">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="../assets/themes/dos-navigator.png" alt="DOS Navigator" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">DOS Navigator</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item extra" data-group="retro">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="../assets/themes/volkov-commander.png" alt="Volkov Commander" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Volkov Commander</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item extra" data-group="retro">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="../assets/themes/windows-95.png" alt="Windows 95" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Windows 95</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item extra" data-group="retro">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="../assets/themes/windows-98.png" alt="Windows 98" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Windows 98</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item extra" data-group="retro">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="../assets/themes/windows-xp.png" alt="Windows XP" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Windows XP</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item extra" data-group="cinematic">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="../assets/themes/terminator.png" alt="Terminator" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Terminator</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item extra" data-group="dark">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="../assets/themes/monokai.png" alt="Monokai" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Monokai</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item extra" data-group="dark">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="../assets/themes/onedark.png" alt="One Dark" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">One Dark</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item extra" data-group="dark">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="../assets/themes/solarized-dark.png" alt="Solarized Dark" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Solarized Dark</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item extra" data-group="dark">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="../assets/themes/midnight.png" alt="Midnight" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Midnight</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item extra" data-group="dark">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="../assets/themes/macos-dark.png" alt="macOS Dark" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">macOS Dark</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item extra" data-group="dark">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="../assets/themes/ayu-dark.png" alt="Ayu Dark" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Ayu Dark</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item extra" data-group="dark">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="../assets/themes/catppuccin-macchiato.png" alt="Catppuccin" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Catppuccin</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item extra" data-group="dark">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="../assets/themes/everforest.png" alt="Everforest" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Everforest</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item extra" data-group="dark">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="../assets/themes/github-dark.png" alt="GitHub Dark" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">GitHub Dark</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item extra" data-group="dark">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="../assets/themes/gruvbox.png" alt="Gruvbox" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Gruvbox</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item extra" data-group="dark">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="../assets/themes/kanagawa.png" alt="Kanagawa" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Kanagawa</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item extra" data-group="dark">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="../assets/themes/material-ocean.png" alt="Material Ocean" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Material Ocean</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item extra" data-group="dark">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="../assets/themes/rosepine.png" alt="Rosé Pine" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Rosé Pine</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item extra" data-group="dark">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="../assets/themes/terminal.png" alt="Terminal" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Terminal</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item extra" data-group="dark">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="../assets/themes/billiard.png" alt="Billiard" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Billiard</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item extra" data-group="light">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="../assets/themes/github-light.png" alt="GitHub Light" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">GitHub Light</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item extra" data-group="light">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="../assets/themes/atom-one-light.png" alt="Atom One Light" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Atom One Light</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item extra" data-group="light">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="../assets/themes/material-lighter.png" alt="Material Lighter" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Material Lighter</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item extra" data-group="light">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="../assets/themes/macos-light.png" alt="macOS Light" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">macOS Light</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item extra" data-group="light">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="../assets/themes/manuscript.png" alt="Manuscript" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Manuscript</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item extra" data-group="light">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="../assets/themes/blue-sky.png" alt="Blue Sky" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Blue Sky</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item extra" data-group="light">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="../assets/themes/green-backs.png" alt="Green Backs" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Green Backs</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item extra" data-group="light">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="../assets/themes/pinky-pie.png" alt="Pinky Pie" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Pinky Pie</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="show-all"><button class="btn btn-secondary" data-show-all>Показать все 38 тем</button></div>
+            <div class="theme-custom">
+                <div class="theme-custom-text">
+                    <h3>Сделайте по-своему</h3>
+                    <p>Тема — это TOML-файл с десятью цветами. Без сборки и плагинов.</p>
+                    <ul>
+                    <li>Именованные цвета или RGB, десять ключей в одном файле.</li>
+                    <li>Файл с именем встроенной темы заменяет эту тему.</li>
+                    <li><code>"Reset"</code> оставляет видимым собственный фон терминала.</li>
+                    <li>Своя тема для проекта или хоста: красная на проде сразу подскажет, где вы.</li>
+                    </ul>
+                    <a class="doc-link" href="https://github.com/termide/termide/blob/main/doc/ru/themes.md" target="_blank" rel="noopener">&gt; Формат тем</a>
+                </div>
+                <div class="code-block theme-example">
+                    <pre><code data-template="# ~/.config/termide/themes/prod-red.toml
+name = &quot;prod-red&quot;
+
+[colors]
+bg          = { rgb = [40, 8, 8] }
+fg          = { rgb = [240, 220, 220] }
+accented_bg = { rgb = [110, 20, 20] }
+accented_fg = &quot;White&quot;
+selected_bg = { rgb = [200, 40, 40] }
+selected_fg = &quot;White&quot;
+disabled    = &quot;DarkGray&quot;
+success     = &quot;LightGreen&quot;
+warning     = &quot;LightYellow&quot;
+error       = &quot;LightRed&quot;"># ~/.config/termide/themes/prod-red.toml
+name = &quot;prod-red&quot;
+
+[colors]
+bg          = { rgb = [40, 8, 8] }
+fg          = { rgb = [240, 220, 220] }
+accented_bg = { rgb = [110, 20, 20] }
+accented_fg = &quot;White&quot;
+selected_bg = { rgb = [200, 40, 40] }
+selected_fg = &quot;White&quot;
+disabled    = &quot;DarkGray&quot;
+success     = &quot;LightGreen&quot;
+warning     = &quot;LightYellow&quot;
+error       = &quot;LightRed&quot;</code></pre>
+                    <button class="copy-btn" data-copy="# ~/.config/termide/themes/prod-red.toml
+name = &quot;prod-red&quot;
+
+[colors]
+bg          = { rgb = [40, 8, 8] }
+fg          = { rgb = [240, 220, 220] }
+accented_bg = { rgb = [110, 20, 20] }
+accented_fg = &quot;White&quot;
+selected_bg = { rgb = [200, 40, 40] }
+selected_fg = &quot;White&quot;
+disabled    = &quot;DarkGray&quot;
+success     = &quot;LightGreen&quot;
+warning     = &quot;LightYellow&quot;
+error       = &quot;LightRed&quot;" title="Скопировать"><span class="copy-icon">&#128203;</span></button>
+                </div>
+            </div>
         </section>
 
-        <!-- Comparison Section -->
+        <section id="features" class="features">
+            <h2 class="section-title glitch-hover">// Всё остальное</h2>
+            <p class="section-subtitle">Остальное, что входит в бинарник.</p>
+            <div class="feature-groups">
+            <div class="feature-group">
+                <h3 class="feature-group-title">Код</h3>
+                <ul class="feature-list">
+                    <li><span class="feature-icon">{}</span><span><strong>Редактор с LSP</strong> Автодополнение, hover, переход к определению, ссылки, переименование и быстрые исправления; панель диагностики; подсветка tree-sitter для 22 языков.</span></li>
+                    <li><span class="feature-icon">§</span><span><strong>Структура кода</strong> Навигация по структуре через запросы tree-sitter, синхронизированная с курсором.</span></li>
+                    <li><span class="feature-icon">¶</span><span><strong>Документы и диаграммы</strong> Отрендеренные Markdown и HTML, текстовый браузер и диаграммы Mermaid, нарисованные текстом, — включая диаграммы классов из ваших исходников.</span></li>
+                    <li><span class="feature-icon">0x</span><span><strong>Hex-редактор</strong> Hex/ASCII-просмотр с курсором по байтам, выделением и поиском; правка поверх с резервной копией <code>.bak</code>.</span></li>
+                </ul>
+            </div>
+            <div class="feature-group">
+                <h3 class="feature-group-title">Файлы и данные</h3>
+                <ul class="feature-list">
+                    <li><span class="feature-icon">[]</span><span><strong>Файловый менеджер</strong> Дерево с вложенным git-статусом, поиск по glob и regex, пакетные операции, закладки и переключатель каталогов.</span></li>
+                    <li><span class="feature-icon">↔</span><span><strong>Удалённые файловые системы</strong> SFTP, FTP и FTPS на чистом Rust; SMB и NFS через монтирование ОС.</span></li>
+                    <li><span class="feature-icon">⇅</span><span><strong>Фоновые операции</strong> Копирование, перемещение, загрузка и выгрузка с прогрессом, паузой, продолжением и отменой.</span></li>
+                    <li><span class="feature-icon">▦</span><span><strong>Просмотр баз данных</strong> SQLite, PostgreSQL и MySQL: серверная сортировка, фильтры по столбцам, правка ячеек, строки в TSV, JSON или INSERT.</span></li>
+                </ul>
+            </div>
+            <div class="feature-group">
+                <h3 class="feature-group-title">Серверы и эксплуатация</h3>
+                <ul class="feature-list">
+                    <li><span class="feature-icon">&amp;</span><span><strong>Отсоединяемые экземпляры</strong> Закройте терминал или потеряйте соединение — и подключитесь снова позже из любого терминала (Unix).</span></li>
+                    <li><span class="feature-icon">&gt;_</span><span><strong>Встроенный терминал</strong> Полноценный PTY с прокруткой, поиском, мышью и распознаванием URL; заголовок следует за <code>cd</code>.</span></li>
+                    <li><span class="feature-icon">%%</span><span><strong>Монитор ресурсов</strong> CPU, RAM, сеть и диск; топ процессов по CPU, памяти или соединениям, со слушающими портами.</span></li>
+                    <li><span class="feature-icon">◆</span><span><strong>Один статический бинарник</strong> Linux x86_64 и ARM64 (glibc или musl), macOS, нативный Windows и Android Termux.</span></li>
+                </ul>
+            </div>
+            <div class="feature-group">
+                <h3 class="feature-group-title">Рабочее пространство</h3>
+                <ul class="feature-list">
+                    <li><span class="feature-icon">+-</span><span><strong>Git</strong> Статус, лог с цветным графом коммитов, diff, индекс, stash, blame, ветки и их ворктри.</span></li>
+                    <li><span class="feature-icon">::</span><span><strong>Проекты</strong> Раскладка панелей восстанавливается для каждого каталога, со своими настройками и командами проекта.</span></li>
+                    <li><span class="feature-icon">$/</span><span><strong>Свои команды</strong> Глобальные и проектные команды с горячими клавишами, формами параметров и режимами терминала, фона или отчёта.</span></li>
+                    <li><span class="feature-icon">⌘</span><span><strong>Палитра и «Открыть»</strong> Нечёткая палитра команд по <code>Ctrl+P</code>; <code>Ctrl+G</code> открывает файл, папку или URL с подсказками путей.</span></li>
+                </ul>
+            </div>
+            <div class="feature-group">
+                <h3 class="feature-group-title">Внешний вид и управление</h3>
+                <ul class="feature-list">
+                    <li><span class="feature-icon">#*</span><span><strong>38 тем</strong> Тёмные, светлые, ретро и кинематографические; свои темы пишутся в TOML.</span></li>
+                    <li><span class="feature-icon">@!</span><span><strong>15 языков интерфейса</strong> Русский, английский, китайский, японский, корейский, немецкий, французский, испанский и другие.</span></li>
+                    <li><span class="feature-icon">F1</span><span><strong>Клавиатура и мышь</strong> Любое сочетание меняется в настройках; полная поддержка мыши; горячие клавиши работают в кириллической раскладке и с <code>Alt</code> на macOS.</span></li>
+                    <li><span class="feature-icon">✎</span><span><strong>Vim-режим</strong> Необязательное редактирование в стиле Vim — для тех, чьи пальцы к нему привыкли.</span></li>
+                </ul>
+            </div>
+            </div>
+        </section>
+
         <section id="compare" class="comparison">
             <h2 class="section-title glitch-hover">// Почему TermIDE?</h2>
-                <p class="section-subtitle">Всё необходимое уже включено.</p>
+            <p class="section-subtitle">Редакторы закрывают работу с кодом. TermIDE — ещё и всё, что вокруг него.</p>
+            <div class="table-wrapper">
+                <table class="comparison-table">
+                    <thead>
+                        <tr><th>Возможность</th><th class="highlight">TermIDE</th><th>Fresh</th><th>Vim/Neovim</th><th>Helix</th><th>Micro</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Встроенный агент для кода (локальные и облачные модели)</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="plugin">плагин</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+                        <tr><td>MCP-серверы</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="plugin">плагин</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+                        <tr><td>Удалённые ФС (SFTP/FTP)</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="plugin">SSH</span></td><td><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+                        <tr><td>Просмотр баз данных</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="plugin">плагин</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+                        <tr><td>Отсоединяемые экземпляры</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+                        <tr><td>Монитор ресурсов</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+                        <tr><td>Файловый менеджер</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="plugin">только дерево</span></td><td><span class="plugin">плагин</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+                        <tr><td>Фоновые файловые операции</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="plugin">плагин</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+                        <tr><td>Встроенный терминал</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="plugin">плагин</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+                        <tr><td>Нулевая настройка</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <details class="compare-more">
+                <summary>Показать остальные строки</summary>
                 <div class="table-wrapper">
                     <table class="comparison-table">
                         <thead>
-                            <tr>
-                                <th>Функция</th>
-                                <th class="highlight">TermIDE</th>
-                                <th>Vim/Neovim</th>
-                                <th>Helix</th>
-                                <th>Micro</th>
-                            </tr>
+                            <tr><th>Возможность</th><th class="highlight">TermIDE</th><th>Fresh</th><th>Vim/Neovim</th><th>Helix</th><th>Micro</th></tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Встроенный терминал</td>
-                                <td class="highlight"><span class="check">&#10003;</span></td>
-                                <td><span class="plugin">плагин</span></td>
-                                <td><span class="cross">&#10007;</span></td>
-                                <td><span class="cross">&#10007;</span></td>
-                            </tr>
-                            <tr>
-                                <td>Файловый менеджер</td>
-                                <td class="highlight"><span class="check">&#10003;</span></td>
-                                <td><span class="plugin">плагин</span></td>
-                                <td><span class="cross">&#10007;</span></td>
-                                <td><span class="cross">&#10007;</span></td>
-                            </tr>
-                            <tr>
-                                <td>Git интеграция</td>
-                                <td class="highlight"><span class="check">&#10003;</span></td>
-                                <td><span class="plugin">плагин</span></td>
-                                <td><span class="cross">&#10007;</span></td>
-                                <td><span class="cross">&#10007;</span></td>
-                            </tr>
-                            <tr>
-                                <td>Подсветка синтаксиса</td>
-                                <td class="highlight"><span class="check">&#10003;</span></td>
-                                <td><span class="check">&#10003;</span></td>
-                                <td><span class="check">&#10003;</span></td>
-                                <td><span class="check">&#10003;</span></td>
-                            </tr>
-                            <tr>
-                                <td>Работает из коробки</td>
-                                <td class="highlight"><span class="check">&#10003;</span></td>
-                                <td><span class="cross">&#10007;</span></td>
-                                <td><span class="check">&#10003;</span></td>
-                                <td><span class="check">&#10003;</span></td>
-                            </tr>
-                            <tr>
-                                <td>Мониторинг ресурсов</td>
-                                <td class="highlight"><span class="check">&#10003;</span></td>
-                                <td><span class="cross">&#10007;</span></td>
-                                <td><span class="cross">&#10007;</span></td>
-                                <td><span class="cross">&#10007;</span></td>
-                            </tr>
-                            <tr>
-                                <td>Просмотр изображений</td>
-                                <td class="highlight"><span class="check">&#10003;</span></td>
-                                <td><span class="plugin">плагин</span></td>
-                                <td><span class="cross">&#10007;</span></td>
-                                <td><span class="cross">&#10007;</span></td>
-                            </tr>
-                            <tr>
-                                <td>Сессии</td>
-                                <td class="highlight"><span class="check">&#10003;</span></td>
-                                <td><span class="plugin">плагин</span></td>
-                                <td><span class="cross">&#10007;</span></td>
-                                <td><span class="cross">&#10007;</span></td>
-                            </tr>
-                            <tr>
-                                <td>Поддержка LSP</td>
-                                <td class="highlight"><span class="check">&#10003;</span></td>
-                                <td><span class="plugin">плагин</span></td>
-                                <td><span class="check">&#10003;</span></td>
-                                <td><span class="plugin">плагин</span></td>
-                            </tr>
-                            <tr>
-                                <td>Удалённые файлы (SFTP)</td>
-                                <td class="highlight"><span class="check">&#10003;</span></td>
-                                <td><span class="plugin">плагин</span></td>
-                                <td><span class="cross">&#10007;</span></td>
-                                <td><span class="cross">&#10007;</span></td>
-                            </tr>
-                            <tr>
-                                <td>Структура кода</td>
-                                <td class="highlight"><span class="check">&#10003;</span></td>
-                                <td><span class="plugin">плагин</span></td>
-                                <td><span class="cross">&#10007;</span></td>
-                                <td><span class="cross">&#10007;</span></td>
-                            </tr>
-                            <tr>
-                                <td>Просмотр баз данных</td>
-                                <td class="highlight"><span class="check">&#10003;</span></td>
-                                <td><span class="plugin">плагин</span></td>
-                                <td><span class="cross">&#10007;</span></td>
-                                <td><span class="cross">&#10007;</span></td>
-                            </tr>
-                            <tr>
-                                <td>Превью Markdown и диаграмм</td>
-                                <td class="highlight"><span class="check">&#10003;</span></td>
-                                <td><span class="plugin">плагин</span></td>
-                                <td><span class="cross">&#10007;</span></td>
-                                <td><span class="cross">&#10007;</span></td>
-                            </tr>
-                            <tr>
-                                <td>Hex/бинарный редактор</td>
-                                <td class="highlight"><span class="check">&#10003;</span></td>
-                                <td><span class="plugin">плагин</span></td>
-                                <td><span class="cross">&#10007;</span></td>
-                                <td><span class="cross">&#10007;</span></td>
-                            </tr>
+                        <tr><td>Поддержка LSP</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="plugin">плагин</span></td></tr>
+                        <tr><td>Автоматизация скриптами</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="plugin">плагин</span></td></tr>
+                        <tr><td>Внешние агенты (Claude Code, Codex, Gemini CLI)</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="plugin">плагин</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+                        <tr><td>Просмотр Markdown</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="plugin">плагин</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+                        <tr><td>Интеграция с Git</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="plugin">плагин</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+                        <tr><td>Раскладки проектов</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="plugin">плагин</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+                        <tr><td>Многопанельный интерфейс</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="plugin">плагин</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+                        <tr><td>Закладки</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="plugin">плагин</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+                        <tr><td>Hex / бинарный просмотрщик</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="plugin">плагин</span></td><td><span class="cross">&#10007;</span></td><td><span class="plugin">плагин</span></td></tr>
+                        <tr><td>Просмотр диаграмм (Mermaid)</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="plugin">плагин</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+                        <tr><td>Просмотр изображений</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="plugin">плагин</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
                         </tbody>
                     </table>
                 </div>
+            </details>
         </section>
 
-        <!-- Installation Section -->
+        <section id="faq" class="faq">
+            <h2 class="section-title glitch-hover">// Вопросы и ответы</h2>
+            <div class="faq-list">
+                <details class="faq-item">
+                    <summary>Обязательно ли пользоваться ИИ-агентом?</summary>
+                    <p>Нет. По умолчанию не задан ни провайдер, ни модель, поэтому агент ничего не делает и никуда ничего не отправляет, пока вы его не настроите. Всё остальное работает без него.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>TermIDE что-то отправляет в сеть?</summary>
+                    <p>Ни телеметрии, ни аккаунтов, ни проверки обновлений. В сеть он выходит только по вашей команде: удалённое расположение, веб-страница, <code>git push</code> или <code>pull</code>, модель для агента.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>Он заменяет tmux?</summary>
+                    <p>Для частого случая — не потерять работу при обрыве SSH — да: <code>termide --detached</code> сохраняет всё рабочее место, а <code>--attach</code> возвращает его. Произвольными сессиями и окнами, как tmux, он не управляет и спокойно работает внутри tmux.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>Как пользоваться им на сервере?</summary>
+                    <p>Скопируйте статический musl-бинарник и запустите — больше ничего ставить не нужно. Можно и остаться локально, открыв сервер по SFTP или FTP из файлового менеджера.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>Какой нужен терминал?</summary>
+                    <p>Любой современный с поддержкой true colour. Изображения рисуются нативно в Kitty, WezTerm, iTerm2, Ghostty и foot; сочетания с <code>Alt</code> на macOS работают в терминалах с протоколом клавиатуры Kitty.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>Работает ли на Windows?</summary>
+                    <p>Да, нативно через ConPTY в Windows Terminal или в WSL. Отсоединяемые экземпляры есть только в Unix.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>Придётся учить новые клавиши?</summary>
+                    <p>В меню видно каждое сочетание, мышь работает везде, а двухпанельная раскладка знакома по mc и FAR. Любое сочетание меняется в настройках, есть необязательный Vim-режим.</p>
+                </details>
+            </div>
+        </section>
+
         <section id="install" class="installation">
             <h2 class="section-title glitch-hover">// Установка</h2>
-                <p class="section-subtitle">Одна команда — и готово.</p>
-                <div class="install-grid">
-                    <div class="install-card full-width">
-                        <h3><span class="icon">&#9889;</span> Быстрая установка</h3>
-                        <p class="platform">Linux / macOS — автоопределение системы</p>
-                        <div class="code-block">
-                            <code>curl -fsSL https://raw.githubusercontent.com/termide/termide/main/install.sh | sh</code>
-                            <button class="copy-btn" data-copy="curl -fsSL https://raw.githubusercontent.com/termide/termide/main/install.sh | sh" title="Копировать">
-                                <span class="copy-icon">&#128203;</span>
-                            </button>
-                        </div>
-                    </div>
+            <p class="section-subtitle">Выберите платформу. Ни рантайма, ни зависимостей.</p>
+            <div class="install-card">
+            <div class="install-tabs" role="tablist">
+                <button class="install-tab active" role="tab" aria-selected="true" data-tab="script">Скрипт</button>
+                <button class="install-tab" role="tab" aria-selected="false" data-tab="static">Сервер</button>
+                <button class="install-tab" role="tab" aria-selected="false" data-tab="brew">Homebrew</button>
+                <button class="install-tab" role="tab" aria-selected="false" data-tab="arch">Arch</button>
+                <button class="install-tab" role="tab" aria-selected="false" data-tab="nix">Nix</button>
+                <button class="install-tab" role="tab" aria-selected="false" data-tab="deb">Debian</button>
+                <button class="install-tab" role="tab" aria-selected="false" data-tab="rpm">Fedora</button>
+                <button class="install-tab" role="tab" aria-selected="false" data-tab="termux">Termux</button>
+                <button class="install-tab" role="tab" aria-selected="false" data-tab="windows">Windows</button>
+            </div>
+            <div class="install-panel active" role="tabpanel" data-panel="script">
+                <p class="platform">Linux и macOS; сам определяет систему.</p>
+                <div class="code-block">
+                    <pre><code data-template="curl -fsSL https://raw.githubusercontent.com/termide/termide/main/install.sh | sh">curl -fsSL https://raw.githubusercontent.com/termide/termide/main/install.sh | sh</code></pre>
+                    <button class="copy-btn" data-copy="curl -fsSL https://raw.githubusercontent.com/termide/termide/main/install.sh | sh" title="Скопировать"><span class="copy-icon">&#128203;</span></button>
                 </div>
+            </div>
+            <div class="install-panel" role="tabpanel" data-panel="static">
+                <p class="platform">Статический musl-бинарник для любого Linux, включая Alpine и контейнеры.</p>
+                <div class="code-block">
+                    <pre><code data-template="curl -LO https://github.com/termide/termide/releases/latest/download/termide-{v}-x86_64-unknown-linux-musl.tar.gz
+tar xzf termide-{v}-x86_64-unknown-linux-musl.tar.gz &amp;&amp; ./termide">curl -LO https://github.com/termide/termide/releases/latest/download/termide-0.36.0-x86_64-unknown-linux-musl.tar.gz
+tar xzf termide-0.36.0-x86_64-unknown-linux-musl.tar.gz &amp;&amp; ./termide</code></pre>
+                    <button class="copy-btn" data-copy="curl -LO https://github.com/termide/termide/releases/latest/download/termide-0.36.0-x86_64-unknown-linux-musl.tar.gz
+tar xzf termide-0.36.0-x86_64-unknown-linux-musl.tar.gz &amp;&amp; ./termide" title="Скопировать"><span class="copy-icon">&#128203;</span></button>
+                </div>
+            </div>
+            <div class="install-panel" role="tabpanel" data-panel="brew">
+                <p class="platform">macOS и Linux.</p>
+                <div class="code-block">
+                    <pre><code data-template="brew tap termide/termide
+brew install termide">brew tap termide/termide
+brew install termide</code></pre>
+                    <button class="copy-btn" data-copy="brew tap termide/termide
+brew install termide" title="Скопировать"><span class="copy-icon">&#128203;</span></button>
+                </div>
+            </div>
+            <div class="install-panel" role="tabpanel" data-panel="arch">
+                <p class="platform">Из AUR; пакет <code>termide</code> собирается из исходников.</p>
+                <div class="code-block">
+                    <pre><code data-template="yay -S termide-bin">yay -S termide-bin</code></pre>
+                    <button class="copy-btn" data-copy="yay -S termide-bin" title="Скопировать"><span class="copy-icon">&#128203;</span></button>
+                </div>
+            </div>
+            <div class="install-panel" role="tabpanel" data-panel="nix">
+                <p class="platform">Запуск без установки или <code>nix profile install</code>.</p>
+                <div class="code-block">
+                    <pre><code data-template="nix run github:termide/termide">nix run github:termide/termide</code></pre>
+                    <button class="copy-btn" data-copy="nix run github:termide/termide" title="Скопировать"><span class="copy-icon">&#128203;</span></button>
+                </div>
+            </div>
+            <div class="install-panel" role="tabpanel" data-panel="deb">
+                <p class="platform">Debian и Ubuntu, x86_64.</p>
+                <div class="code-block">
+                    <pre><code data-template="curl -LO https://github.com/termide/termide/releases/latest/download/termide_{v}-1_amd64.deb
+sudo dpkg -i termide_{v}-1_amd64.deb">curl -LO https://github.com/termide/termide/releases/latest/download/termide_0.36.0-1_amd64.deb
+sudo dpkg -i termide_0.36.0-1_amd64.deb</code></pre>
+                    <button class="copy-btn" data-copy="curl -LO https://github.com/termide/termide/releases/latest/download/termide_0.36.0-1_amd64.deb
+sudo dpkg -i termide_0.36.0-1_amd64.deb" title="Скопировать"><span class="copy-icon">&#128203;</span></button>
+                </div>
+            </div>
+            <div class="install-panel" role="tabpanel" data-panel="rpm">
+                <p class="platform">Fedora, RHEL и CentOS, x86_64.</p>
+                <div class="code-block">
+                    <pre><code data-template="sudo rpm -i https://github.com/termide/termide/releases/latest/download/termide-{v}-1.x86_64.rpm">sudo rpm -i https://github.com/termide/termide/releases/latest/download/termide-0.36.0-1.x86_64.rpm</code></pre>
+                    <button class="copy-btn" data-copy="sudo rpm -i https://github.com/termide/termide/releases/latest/download/termide-0.36.0-1.x86_64.rpm" title="Скопировать"><span class="copy-icon">&#128203;</span></button>
+                </div>
+            </div>
+            <div class="install-panel" role="tabpanel" data-panel="termux">
+                <p class="platform">Android; статическая ARM64-сборка работает на Bionic.</p>
+                <div class="code-block">
+                    <pre><code data-template="pkg install git openssh
+curl -LO https://github.com/termide/termide/releases/latest/download/termide-{v}-aarch64-unknown-linux-musl.tar.gz
+tar xzf termide-{v}-aarch64-unknown-linux-musl.tar.gz &amp;&amp; ./termide">pkg install git openssh
+curl -LO https://github.com/termide/termide/releases/latest/download/termide-0.36.0-aarch64-unknown-linux-musl.tar.gz
+tar xzf termide-0.36.0-aarch64-unknown-linux-musl.tar.gz &amp;&amp; ./termide</code></pre>
+                    <button class="copy-btn" data-copy="pkg install git openssh
+curl -LO https://github.com/termide/termide/releases/latest/download/termide-0.36.0-aarch64-unknown-linux-musl.tar.gz
+tar xzf termide-0.36.0-aarch64-unknown-linux-musl.tar.gz &amp;&amp; ./termide" title="Скопировать"><span class="copy-icon">&#128203;</span></button>
+                </div>
+            </div>
+            <div class="install-panel" role="tabpanel" data-panel="windows">
+                <p class="platform">Скачайте, распакуйте и запустите <code>termide.exe</code> в Windows Terminal.</p>
+                <div class="code-block">
+                    <pre><code data-template="https://github.com/termide/termide/releases/latest/download/termide-{v}-x86_64-pc-windows-msvc.zip">https://github.com/termide/termide/releases/latest/download/termide-0.36.0-x86_64-pc-windows-msvc.zip</code></pre>
+                    <button class="copy-btn" data-copy="https://github.com/termide/termide/releases/latest/download/termide-0.36.0-x86_64-pc-windows-msvc.zip" title="Скопировать"><span class="copy-icon">&#128203;</span></button>
+                </div>
+            </div>
+            </div>
         </section>
     </main>
 
-    <!-- Footer - Full Width -->
     <footer class="footer">
         <div class="footer-inner">
             <div class="footer-content">
@@ -640,24 +809,22 @@
                     <a href="https://github.com/termide/termide" target="_blank" rel="noopener">GitHub</a>
                     <a href="https://github.com/termide/termide/blob/main/doc/ru/README.md" target="_blank" rel="noopener">Документация</a>
                     <a href="https://github.com/termide/termide/releases" target="_blank" rel="noopener">Релизы</a>
-                    <a href="https://github.com/termide/termide/issues" target="_blank" rel="noopener">Баги</a>
+                    <a href="https://github.com/termide/termide/issues" target="_blank" rel="noopener">Задачи</a>
                 </div>
                 <div class="footer-meta">
-                    <p>MIT License &bull; Сделано с <span class="rust-heart">&#9829;</span> на Rust</p>
-                    <p class="version">v0.29.1</p>
+                    <p>Лицензия MIT &bull; Сделано с <span class="rust-heart">&#9829;</span> на Rust</p>
+                    <p class="version">v<span data-version>0.36.0</span></p>
                 </div>
             </div>
         </div>
         <div class="footer-grid"></div>
     </footer>
 
-    <!-- Lightbox -->
     <div id="lightbox" class="lightbox">
         <button class="lightbox-close">&times;</button>
         <img class="lightbox-image" src="" alt="">
     </div>
 
-    <!-- Scripts -->
     <script src="../js/main.js"></script>
 </body>
 </html>
