@@ -101,7 +101,7 @@
       },
       "permissions": {
         "t": "Nothing changes without you",
-        "d": "Allow once, for the session or always for a pattern; deny with a reason the model reads; plan mode refuses every write."
+        "d": "Allow once, for the session or always for a pattern; deny with a reason the model reads; plan mode refuses every write; <code>/undo</code> and checkpoints take edits back."
       },
       "tools": {
         "t": "Tools it needs, nothing more",
@@ -117,7 +117,7 @@
       },
       "visibility": {
         "t": "See what it costs",
-        "d": "Live phase and speed, a context bar and token totals; each answer ends with its time and tokens. Sessions resume later."
+        "d": "Live phase and speed, prefill progress, a context bar and token totals; each answer ends with its time and tokens. Pick the reasoning level per model; sessions resume later."
       }
     },
     "cli_title": "Headless, for scripts and CI",
@@ -129,7 +129,7 @@
       },
       "asks": {
         "t": "Wary of agents?",
-        "d": "It asks before every change."
+        "d": "It asks before every change, and <code>/undo</code> takes it back."
       },
       "others": {
         "t": "Already on Claude Code or Codex?",
@@ -154,7 +154,7 @@
           },
           "docs": {
             "t": "Docs and diagrams",
-            "d": "Rendered Markdown and HTML, a text-mode browser, and Mermaid diagrams drawn as text, including class diagrams from your source."
+            "d": "Rendered Markdown and HTML, a text-mode browser that saves pages as Markdown, and Mermaid diagrams drawn as text, including class diagrams from your source."
           },
           "hex": {
             "t": "Hex editor",
@@ -167,7 +167,7 @@
         "cards": {
           "fm": {
             "t": "File manager",
-            "d": "Tree with nested git status, glob and regex search, batch operations, bookmarks and a directory switcher."
+            "d": "Tree with nested git status, glob and regex search, batch operations, bookmarks and a directory switcher. Zip, tar and ISO archives open like folders, also on a server; <code>P</code> packs the selection."
           },
           "remote": {
             "t": "Remote filesystems",
@@ -266,6 +266,7 @@
       "mcp": "MCP servers",
       "remote": "Remote filesystems (SFTP/FTP)",
       "hex": "Hex / binary viewer",
+      "archive": "Archive browsing (zip/tar)",
       "db": "Database viewer",
       "md": "Markdown preview",
       "mermaid": "Diagram viewer (Mermaid)",

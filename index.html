@@ -40,7 +40,7 @@
   "description": "Editor with LSP, dual-pane file manager with SFTP/FTP, terminal, git, database viewer and a coding agent that runs on your own model — one zero-config static binary written in Rust.",
   "applicationCategory": "DeveloperApplication",
   "operatingSystem": "Linux, macOS, Windows, Android",
-  "softwareVersion": "0.36.0",
+  "softwareVersion": "0.37.0",
   "license": "https://opensource.org/licenses/MIT",
   "downloadUrl": "https://github.com/termide/termide/releases/latest",
   "codeRepository": "https://github.com/termide/termide",
@@ -200,7 +200,7 @@
                 </div>
                 <div class="agent-hook">
                     <span class="agent-hook-q">Wary of agents?</span>
-                    <span class="agent-hook-a">It asks before every change.</span>
+                    <span class="agent-hook-a">It asks before every change, and <code>/undo</code> takes it back.</span>
                 </div>
                 <div class="agent-hook">
                     <span class="agent-hook-q">Already on Claude Code or Codex?</span>
@@ -218,7 +218,7 @@
                     </div>
                     <div class="agent-item">
                         <h4>Nothing changes without you</h4>
-                        <p>Allow once, for the session or always for a pattern; deny with a reason the model reads; plan mode refuses every write.</p>
+                        <p>Allow once, for the session or always for a pattern; deny with a reason the model reads; plan mode refuses every write; <code>/undo</code> and checkpoints take edits back.</p>
                     </div>
                     <div class="agent-item">
                         <h4>Tools it needs, nothing more</h4>
@@ -234,7 +234,7 @@
                     </div>
                     <div class="agent-item">
                         <h4>See what it costs</h4>
-                        <p>Live phase and speed, a context bar and token totals; each answer ends with its time and tokens. Sessions resume later.</p>
+                        <p>Live phase and speed, prefill progress, a context bar and token totals; each answer ends with its time and tokens. Pick the reasoning level per model; sessions resume later.</p>
                     </div>
                 </div>
             </div>
@@ -577,14 +577,14 @@ error       = &quot;LightRed&quot;" title="Copy to clipboard"><span class="copy-
                 <ul class="feature-list">
                     <li><span class="feature-icon">{}</span><span><strong>Editor with LSP</strong> Completion, hover, go to definition, references, rename and quick fixes; a diagnostics panel; tree-sitter highlighting for 22 languages.</span></li>
                     <li><span class="feature-icon">§</span><span><strong>Code outline</strong> Structural navigation through tree-sitter queries, synced with the cursor.</span></li>
-                    <li><span class="feature-icon">¶</span><span><strong>Docs and diagrams</strong> Rendered Markdown and HTML, a text-mode browser, and Mermaid diagrams drawn as text, including class diagrams from your source.</span></li>
+                    <li><span class="feature-icon">¶</span><span><strong>Docs and diagrams</strong> Rendered Markdown and HTML, a text-mode browser that saves pages as Markdown, and Mermaid diagrams drawn as text, including class diagrams from your source.</span></li>
                     <li><span class="feature-icon">0x</span><span><strong>Hex editor</strong> Hex/ASCII view with a byte cursor, selection and search; overwrite editing with a <code>.bak</code> backup.</span></li>
                 </ul>
             </div>
             <div class="feature-group">
                 <h3 class="feature-group-title">Files and data</h3>
                 <ul class="feature-list">
-                    <li><span class="feature-icon">[]</span><span><strong>File manager</strong> Tree with nested git status, glob and regex search, batch operations, bookmarks and a directory switcher.</span></li>
+                    <li><span class="feature-icon">[]</span><span><strong>File manager</strong> Tree with nested git status, glob and regex search, batch operations, bookmarks and a directory switcher. Zip, tar and ISO archives open like folders, also on a server; <code>P</code> packs the selection.</span></li>
                     <li><span class="feature-icon">↔</span><span><strong>Remote filesystems</strong> SFTP, FTP and FTPS in pure Rust; SMB and NFS through the OS mount.</span></li>
                     <li><span class="feature-icon">⇅</span><span><strong>Background operations</strong> Copy, move, upload and download with progress, pause, resume and cancel.</span></li>
                     <li><span class="feature-icon">▦</span><span><strong>Database viewer</strong> SQLite, PostgreSQL and MySQL: server-side sort, per-column filters, cell editing, rows as TSV, JSON or INSERT.</span></li>
@@ -659,6 +659,7 @@ error       = &quot;LightRed&quot;" title="Copy to clipboard"><span class="copy-
                         <tr><td>Multi-panel layout</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="plugin">plugin</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
                         <tr><td>Bookmarks</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="plugin">plugin</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
                         <tr><td>Hex / binary viewer</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="plugin">plugin</span></td><td><span class="cross">&#10007;</span></td><td><span class="plugin">plugin</span></td></tr>
+                        <tr><td>Archive browsing (zip/tar)</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
                         <tr><td>Diagram viewer (Mermaid)</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="plugin">plugin</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
                         <tr><td>Image viewer</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="plugin">plugin</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
                         </tbody>
@@ -727,10 +728,10 @@ error       = &quot;LightRed&quot;" title="Copy to clipboard"><span class="copy-
                 <p class="platform">Static musl binary for any Linux, including Alpine and containers.</p>
                 <div class="code-block">
                     <pre><code data-template="curl -LO https://github.com/termide/termide/releases/latest/download/termide-{v}-x86_64-unknown-linux-musl.tar.gz
-tar xzf termide-{v}-x86_64-unknown-linux-musl.tar.gz &amp;&amp; ./termide">curl -LO https://github.com/termide/termide/releases/latest/download/termide-0.36.0-x86_64-unknown-linux-musl.tar.gz
-tar xzf termide-0.36.0-x86_64-unknown-linux-musl.tar.gz &amp;&amp; ./termide</code></pre>
-                    <button class="copy-btn" data-copy="curl -LO https://github.com/termide/termide/releases/latest/download/termide-0.36.0-x86_64-unknown-linux-musl.tar.gz
-tar xzf termide-0.36.0-x86_64-unknown-linux-musl.tar.gz &amp;&amp; ./termide" title="Copy to clipboard"><span class="copy-icon">&#128203;</span></button>
+tar xzf termide-{v}-x86_64-unknown-linux-musl.tar.gz &amp;&amp; ./termide">curl -LO https://github.com/termide/termide/releases/latest/download/termide-0.37.0-x86_64-unknown-linux-musl.tar.gz
+tar xzf termide-0.37.0-x86_64-unknown-linux-musl.tar.gz &amp;&amp; ./termide</code></pre>
+                    <button class="copy-btn" data-copy="curl -LO https://github.com/termide/termide/releases/latest/download/termide-0.37.0-x86_64-unknown-linux-musl.tar.gz
+tar xzf termide-0.37.0-x86_64-unknown-linux-musl.tar.gz &amp;&amp; ./termide" title="Copy to clipboard"><span class="copy-icon">&#128203;</span></button>
                 </div>
             </div>
             <div class="install-panel" role="tabpanel" data-panel="brew">
@@ -761,17 +762,17 @@ brew install termide" title="Copy to clipboard"><span class="copy-icon">&#128203
                 <p class="platform">Debian and Ubuntu, x86_64.</p>
                 <div class="code-block">
                     <pre><code data-template="curl -LO https://github.com/termide/termide/releases/latest/download/termide_{v}-1_amd64.deb
-sudo dpkg -i termide_{v}-1_amd64.deb">curl -LO https://github.com/termide/termide/releases/latest/download/termide_0.36.0-1_amd64.deb
-sudo dpkg -i termide_0.36.0-1_amd64.deb</code></pre>
-                    <button class="copy-btn" data-copy="curl -LO https://github.com/termide/termide/releases/latest/download/termide_0.36.0-1_amd64.deb
-sudo dpkg -i termide_0.36.0-1_amd64.deb" title="Copy to clipboard"><span class="copy-icon">&#128203;</span></button>
+sudo dpkg -i termide_{v}-1_amd64.deb">curl -LO https://github.com/termide/termide/releases/latest/download/termide_0.37.0-1_amd64.deb
+sudo dpkg -i termide_0.37.0-1_amd64.deb</code></pre>
+                    <button class="copy-btn" data-copy="curl -LO https://github.com/termide/termide/releases/latest/download/termide_0.37.0-1_amd64.deb
+sudo dpkg -i termide_0.37.0-1_amd64.deb" title="Copy to clipboard"><span class="copy-icon">&#128203;</span></button>
                 </div>
             </div>
             <div class="install-panel" role="tabpanel" data-panel="rpm">
                 <p class="platform">Fedora, RHEL and CentOS, x86_64.</p>
                 <div class="code-block">
-                    <pre><code data-template="sudo rpm -i https://github.com/termide/termide/releases/latest/download/termide-{v}-1.x86_64.rpm">sudo rpm -i https://github.com/termide/termide/releases/latest/download/termide-0.36.0-1.x86_64.rpm</code></pre>
-                    <button class="copy-btn" data-copy="sudo rpm -i https://github.com/termide/termide/releases/latest/download/termide-0.36.0-1.x86_64.rpm" title="Copy to clipboard"><span class="copy-icon">&#128203;</span></button>
+                    <pre><code data-template="sudo rpm -i https://github.com/termide/termide/releases/latest/download/termide-{v}-1.x86_64.rpm">sudo rpm -i https://github.com/termide/termide/releases/latest/download/termide-0.37.0-1.x86_64.rpm</code></pre>
+                    <button class="copy-btn" data-copy="sudo rpm -i https://github.com/termide/termide/releases/latest/download/termide-0.37.0-1.x86_64.rpm" title="Copy to clipboard"><span class="copy-icon">&#128203;</span></button>
                 </div>
             </div>
             <div class="install-panel" role="tabpanel" data-panel="termux">
@@ -780,18 +781,18 @@ sudo dpkg -i termide_0.36.0-1_amd64.deb" title="Copy to clipboard"><span class="
                     <pre><code data-template="pkg install git openssh
 curl -LO https://github.com/termide/termide/releases/latest/download/termide-{v}-aarch64-unknown-linux-musl.tar.gz
 tar xzf termide-{v}-aarch64-unknown-linux-musl.tar.gz &amp;&amp; ./termide">pkg install git openssh
-curl -LO https://github.com/termide/termide/releases/latest/download/termide-0.36.0-aarch64-unknown-linux-musl.tar.gz
-tar xzf termide-0.36.0-aarch64-unknown-linux-musl.tar.gz &amp;&amp; ./termide</code></pre>
+curl -LO https://github.com/termide/termide/releases/latest/download/termide-0.37.0-aarch64-unknown-linux-musl.tar.gz
+tar xzf termide-0.37.0-aarch64-unknown-linux-musl.tar.gz &amp;&amp; ./termide</code></pre>
                     <button class="copy-btn" data-copy="pkg install git openssh
-curl -LO https://github.com/termide/termide/releases/latest/download/termide-0.36.0-aarch64-unknown-linux-musl.tar.gz
-tar xzf termide-0.36.0-aarch64-unknown-linux-musl.tar.gz &amp;&amp; ./termide" title="Copy to clipboard"><span class="copy-icon">&#128203;</span></button>
+curl -LO https://github.com/termide/termide/releases/latest/download/termide-0.37.0-aarch64-unknown-linux-musl.tar.gz
+tar xzf termide-0.37.0-aarch64-unknown-linux-musl.tar.gz &amp;&amp; ./termide" title="Copy to clipboard"><span class="copy-icon">&#128203;</span></button>
                 </div>
             </div>
             <div class="install-panel" role="tabpanel" data-panel="windows">
                 <p class="platform">Download, extract and run <code>termide.exe</code> in Windows Terminal.</p>
                 <div class="code-block">
-                    <pre><code data-template="https://github.com/termide/termide/releases/latest/download/termide-{v}-x86_64-pc-windows-msvc.zip">https://github.com/termide/termide/releases/latest/download/termide-0.36.0-x86_64-pc-windows-msvc.zip</code></pre>
-                    <button class="copy-btn" data-copy="https://github.com/termide/termide/releases/latest/download/termide-0.36.0-x86_64-pc-windows-msvc.zip" title="Copy to clipboard"><span class="copy-icon">&#128203;</span></button>
+                    <pre><code data-template="https://github.com/termide/termide/releases/latest/download/termide-{v}-x86_64-pc-windows-msvc.zip">https://github.com/termide/termide/releases/latest/download/termide-0.37.0-x86_64-pc-windows-msvc.zip</code></pre>
+                    <button class="copy-btn" data-copy="https://github.com/termide/termide/releases/latest/download/termide-0.37.0-x86_64-pc-windows-msvc.zip" title="Copy to clipboard"><span class="copy-icon">&#128203;</span></button>
                 </div>
             </div>
             </div>
@@ -813,7 +814,7 @@ tar xzf termide-0.36.0-aarch64-unknown-linux-musl.tar.gz &amp;&amp; ./termide" t
                 </div>
                 <div class="footer-meta">
                     <p>MIT License &bull; Made with <span class="rust-heart">&#9829;</span> and Rust</p>
-                    <p class="version">v<span data-version>0.36.0</span></p>
+                    <p class="version">v<span data-version>0.37.0</span></p>
                 </div>
             </div>
         </div>
