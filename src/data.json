@@ -1,7 +1,7 @@
 {
   "site_url": "https://termide.github.io",
   "repo_url": "https://github.com/termide/termide",
-  "version": "0.37.0",
+  "version": "0.40.0",
   "languages": [
     {
       "code": "en",
@@ -199,6 +199,23 @@
         {
           "id": "vim",
           "icon": "✎"
+        }
+      ]
+    },
+    {
+      "id": "privacy",
+      "cards": [
+        {
+          "id": "vault",
+          "icon": "**"
+        },
+        {
+          "id": "offline",
+          "icon": "~/"
+        },
+        {
+          "id": "prompts",
+          "icon": "#!"
         }
       ]
     }
@@ -431,19 +448,40 @@
           "no",
           "no"
         ]
+      },
+      {
+        "id": "vault",
+        "values": [
+          "yes",
+          "no",
+          "plugin",
+          "no",
+          "no"
+        ]
+      },
+      {
+        "id": "html",
+        "values": [
+          "yes",
+          "no",
+          "plugin",
+          "no",
+          "no"
+        ]
       }
     ],
     "featured": [
       "agent",
       "mcp",
-      "remote",
-      "db",
-      "detach",
-      "monitor",
       "fm",
       "bgops",
-      "term",
-      "zero"
+      "vault",
+      "db",
+      "hex",
+      "mermaid",
+      "html",
+      "image",
+      "monitor"
     ]
   },
   "stack": [
@@ -682,6 +720,36 @@
     {
       "id": "pinky-pie",
       "name": "Pinky Pie",
+      "group": "light"
+    },
+    {
+      "id": "black-earth",
+      "name": "Black Earth",
+      "group": "dark"
+    },
+    {
+      "id": "moonlit-dew",
+      "name": "Moonlit Dew",
+      "group": "dark"
+    },
+    {
+      "id": "fireflies",
+      "name": "Fireflies",
+      "group": "dark"
+    },
+    {
+      "id": "dry-path",
+      "name": "Dry Path",
+      "group": "light"
+    },
+    {
+      "id": "morning-mist",
+      "name": "Morning Mist",
+      "group": "light"
+    },
+    {
+      "id": "summer-meadow",
+      "name": "Summer Meadow",
       "group": "light"
     }
   ],

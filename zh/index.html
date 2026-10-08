@@ -40,7 +40,7 @@
   "description": "带 LSP 的编辑器、支持 SFTP/FTP 的双栏文件管理器、终端、git、数据库查看器，以及运行在你自己模型上的编程智能体 —— 一个零配置、使用 Rust 编写的静态二进制文件。",
   "applicationCategory": "DeveloperApplication",
   "operatingSystem": "Linux, macOS, Windows, Android",
-  "softwareVersion": "0.37.0",
+  "softwareVersion": "0.40.0",
   "license": "https://opensource.org/licenses/MIT",
   "downloadUrl": "https://github.com/termide/termide/releases/latest",
   "codeRepository": "https://github.com/termide/termide",
@@ -54,7 +54,7 @@
 </head>
 <body class="scanlines">
     <script>
-        window.heroSlides = [{"text": "文件、代码、git 和 shell 并排呈现", "image": "../assets/screenshots/overview.png"}, {"text": "运行在你自己模型上的编程智能体，本地或云端皆可", "image": "../assets/screenshots/agent.png"}, {"text": "本地与远程双栏，文件传输在后台进行", "image": "../assets/screenshots/file-manager.png"}, {"text": "SSH 断了？termide --attach，一切都在原处", "image": "../assets/screenshots/detach.gif"}, {"text": "状态、提交图、diff、分支和工作树", "image": "../assets/screenshots/git.png"}, {"text": "浏览和编辑 SQLite、PostgreSQL 和 MySQL 表", "image": "../assets/screenshots/db.png"}, {"text": "CPU、内存、进程和端口，一键可见", "image": "../assets/screenshots/monitor.png"}, {"text": "渲染后的 Markdown，附带 Mermaid 图表", "image": "../assets/screenshots/markdown.png"}, {"text": "二进制文件的十六进制查看与原地编辑", "image": "../assets/screenshots/hex.png"}, {"text": "38 款主题，从 Dracula 到 Norton Commander", "image": "../assets/screenshots/themes.png"}];
+        window.heroSlides = [{"text": "文件、代码、git 和 shell 并排呈现", "image": "../assets/screenshots/overview.png"}, {"text": "运行在你自己模型上的编程智能体，本地或云端皆可", "image": "../assets/screenshots/agent.png"}, {"text": "本地与远程双栏，文件传输在后台进行", "image": "../assets/screenshots/file-manager.png"}, {"text": "SSH 断了？termide --attach，一切都在原处", "image": "../assets/screenshots/detach.gif"}, {"text": "状态、提交图、diff、分支和工作树", "image": "../assets/screenshots/git.png"}, {"text": "浏览和编辑 SQLite、PostgreSQL 和 MySQL 表", "image": "../assets/screenshots/db.png"}, {"text": "CPU、内存、进程和端口，一键可见", "image": "../assets/screenshots/monitor.png"}, {"text": "渲染后的 Markdown，附带 Mermaid 图表", "image": "../assets/screenshots/markdown.png"}, {"text": "二进制文件的十六进制查看与原地编辑", "image": "../assets/screenshots/hex.png"}, {"text": "44 款主题，从 Dracula 到 Norton Commander", "image": "../assets/screenshots/themes.png"}];
     </script>
 
     <nav class="menubar">
@@ -120,7 +120,7 @@
                         <img src="../assets/screenshots/monitor.png" alt="CPU、内存、进程和端口，一键可见" class="screenshot" loading="lazy">
                         <img src="../assets/screenshots/markdown.png" alt="渲染后的 Markdown，附带 Mermaid 图表" class="screenshot" loading="lazy">
                         <img src="../assets/screenshots/hex.png" alt="二进制文件的十六进制查看与原地编辑" class="screenshot" loading="lazy">
-                        <img src="../assets/screenshots/themes.png" alt="38 款主题，从 Dracula 到 Norton Commander" class="screenshot" loading="lazy">
+                        <img src="../assets/screenshots/themes.png" alt="44 款主题，从 Dracula 到 Norton Commander" class="screenshot" loading="lazy">
                     </div>
                 </div>
             </div>
@@ -141,7 +141,7 @@
                     <h3 class="home-title"><span class="home-prompt">~$</span> 在办公桌前</h3>
                     <div class="home-item">
                         <h4>带 LSP 的代码编辑</h4>
-                        <p>为 22 种语言提供补全、跳转到定义、查找引用、重命名和诊断，无需配置插件。</p>
+                        <p>来自任意语言服务器的补全、跳转到定义、查找引用、重命名和诊断，其中七种开箱即用。</p>
                     </div>
                     <div class="home-item">
                         <h4>跑在你模型上的智能体</h4>
@@ -222,7 +222,7 @@
                     </div>
                     <div class="agent-item">
                         <h4>只给它需要的工具</h4>
-                        <p>读取、编辑、写入和 shell，外加通过独立浏览器配置文件进行的网页搜索和抓取，绝不使用你的登录状态。</p>
+                        <p>读取、编辑、写入和 shell，外加通过独立浏览器配置文件进行的网页搜索和抓取，绝不使用你的登录状态；<code>recall</code> 可检索以往会话、git 历史和项目文件。</p>
                     </div>
                     <div class="agent-item">
                         <h4>同一面板中的其他智能体</h4>
@@ -508,8 +508,44 @@
                         <div class="gallery-overlay"><span class="theme-name">Pinky Pie</span></div>
                     </div>
                 </div>
+                <div class="gallery-item extra" data-group="dark">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="../assets/themes/black-earth.png" alt="Black Earth" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Black Earth</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item extra" data-group="dark">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="../assets/themes/moonlit-dew.png" alt="Moonlit Dew" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Moonlit Dew</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item extra" data-group="dark">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="../assets/themes/fireflies.png" alt="Fireflies" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Fireflies</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item extra" data-group="light">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="../assets/themes/dry-path.png" alt="Dry Path" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Dry Path</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item extra" data-group="light">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="../assets/themes/morning-mist.png" alt="Morning Mist" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Morning Mist</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item extra" data-group="light">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="../assets/themes/summer-meadow.png" alt="Summer Meadow" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Summer Meadow</span></div>
+                    </div>
+                </div>
             </div>
-            <div class="show-all"><button class="btn btn-secondary" data-show-all>显示全部 38 款主题</button></div>
+            <div class="show-all"><button class="btn btn-secondary" data-show-all>显示全部 44 款主题</button></div>
             <div class="theme-custom">
                 <div class="theme-custom-text">
                     <h3>打造你自己的主题</h3>
@@ -575,7 +611,7 @@ error       = &quot;LightRed&quot;" title="复制到剪贴板"><span class="copy
             <div class="feature-group">
                 <h3 class="feature-group-title">代码</h3>
                 <ul class="feature-list">
-                    <li><span class="feature-icon">{}</span><span><strong>带 LSP 的编辑器</strong> 补全、悬停提示、跳转到定义、查找引用、重命名和快速修复；诊断面板；基于 tree-sitter 的 22 种语言语法高亮。</span></li>
+                    <li><span class="feature-icon">{}</span><span><strong>带 LSP 的编辑器</strong> 补全、悬停提示、跳转到定义、查找引用、重命名和快速修复；诊断面板；基于 tree-sitter 的 23 种语言语法高亮。</span></li>
                     <li><span class="feature-icon">§</span><span><strong>代码大纲</strong> 基于 tree-sitter 查询的结构化导航，与光标同步。</span></li>
                     <li><span class="feature-icon">¶</span><span><strong>文档与图表</strong> 渲染后的 Markdown 和 HTML、可将网页保存为 Markdown 的文本模式浏览器，以及以文本绘制的 Mermaid 图表，包括从源代码生成的类图。</span></li>
                     <li><span class="feature-icon">0x</span><span><strong>十六进制编辑器</strong> 带字节光标、选区和搜索的十六进制/ASCII 视图；覆盖式编辑并自动生成 <code>.bak</code> 备份。</span></li>
@@ -603,7 +639,7 @@ error       = &quot;LightRed&quot;" title="复制到剪贴板"><span class="copy
                 <h3 class="feature-group-title">工作区</h3>
                 <ul class="feature-list">
                     <li><span class="feature-icon">+-</span><span><strong>Git</strong> 状态、带彩色提交图的日志、diff、暂存、stash、blame、分支及其工作树。</span></li>
-                    <li><span class="feature-icon">::</span><span><strong>项目</strong> 按目录恢复面板布局，并支持项目级设置和命令。</span></li>
+                    <li><span class="feature-icon">::</span><span><strong>项目</strong> 按目录恢复面板布局，并支持项目级设置和命令；切换离开的项目在后台继续运行，每个项目在菜单栏中都有一个按钮。</span></li>
                     <li><span class="feature-icon">$/</span><span><strong>自定义命令</strong> 全局或项目级命令，支持快捷键、参数表单，以及终端、后台或报告三种模式。</span></li>
                     <li><span class="feature-icon">⌘</span><span><strong>命令面板与打开</strong> <code>Ctrl+P</code> 模糊搜索命令面板；<code>Ctrl+G</code> 打开文件、文件夹或 URL，并提供路径建议。</span></li>
                 </ul>
@@ -611,10 +647,18 @@ error       = &quot;LightRed&quot;" title="复制到剪贴板"><span class="copy
             <div class="feature-group">
                 <h3 class="feature-group-title">外观与操作</h3>
                 <ul class="feature-list">
-                    <li><span class="feature-icon">#*</span><span><strong>38 款主题</strong> 深色、浅色、复古和电影风格；也可以用 TOML 编写自己的主题。</span></li>
+                    <li><span class="feature-icon">#*</span><span><strong>44 款主题</strong> 深色、浅色、复古和电影风格；也可以用 TOML 编写自己的主题。</span></li>
                     <li><span class="feature-icon">@!</span><span><strong>15 种界面语言</strong> 中文、英语、俄语、日语、韩语、德语、法语、西班牙语等。</span></li>
                     <li><span class="feature-icon">F1</span><span><strong>键盘与鼠标</strong> 所有快捷键都可在设置中修改；完整的鼠标支持；在西里尔字母布局下以及 macOS 上的 <code>Alt</code> 组合键都能正常使用。</span></li>
                     <li><span class="feature-icon">✎</span><span><strong>Vim 模式</strong> 可选的 Vim 风格编辑，适合已经习惯它的双手。</span></li>
+                </ul>
+            </div>
+            <div class="feature-group">
+                <h3 class="feature-group-title">隐私与控制</h3>
+                <ul class="feature-list">
+                    <li><span class="feature-icon">**</span><span><strong>密码保险库</strong> SFTP、FTP、数据库和 git 的密码保存在由主密码保护的加密保险库中（Argon2 + ChaCha20-Poly1305），绝不会出现在书签、布局或日志中。</span></li>
+                    <li><span class="feature-icon">~/</span><span><strong>只连接你指定的地方</strong> 没有遥测，也不检查更新：termide 只连接你配置的服务器、数据库和模型端点，别无其他。</span></li>
+                    <li><span class="feature-icon">#!</span><span><strong>每段提示词都是文件</strong> 智能体的系统提示词、服务提示词和工具描述都是可以阅读和覆盖的普通文件；<code>/prompt</code> 显示组装后的结果。</span></li>
                 </ul>
             </div>
             </div>
@@ -631,14 +675,15 @@ error       = &quot;LightRed&quot;" title="复制到剪贴板"><span class="copy
                     <tbody>
                         <tr><td>内置编程智能体（本地或云端模型）</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="plugin">插件</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
                         <tr><td>MCP 服务器</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="plugin">插件</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
-                        <tr><td>远程文件系统（SFTP/FTP）</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="plugin">SSH</span></td><td><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
-                        <tr><td>数据库查看器</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="plugin">插件</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
-                        <tr><td>可分离实例</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
-                        <tr><td>资源监控</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
                         <tr><td>文件管理器</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="plugin">仅文件树</span></td><td><span class="plugin">插件</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
                         <tr><td>后台文件操作</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="plugin">插件</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
-                        <tr><td>内置终端</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="plugin">插件</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
-                        <tr><td>零配置</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td></tr>
+                        <tr><td>密码保险库</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="plugin">插件</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+                        <tr><td>数据库查看器</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="plugin">插件</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+                        <tr><td>十六进制 / 二进制查看器</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="plugin">插件</span></td><td><span class="cross">&#10007;</span></td><td><span class="plugin">插件</span></td></tr>
+                        <tr><td>图表查看器（Mermaid）</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="plugin">插件</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+                        <tr><td>HTML 预览</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="plugin">插件</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+                        <tr><td>图片查看器</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="plugin">插件</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+                        <tr><td>资源监控</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
                     </tbody>
                 </table>
             </div>
@@ -651,17 +696,18 @@ error       = &quot;LightRed&quot;" title="复制到剪贴板"><span class="copy
                         </thead>
                         <tbody>
                         <tr><td>LSP 支持</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="plugin">插件</span></td></tr>
+                        <tr><td>零配置</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td></tr>
                         <tr><td>脚本自动化</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="plugin">插件</span></td></tr>
                         <tr><td>外部智能体（Claude Code、Codex、Gemini CLI）</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="plugin">插件</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+                        <tr><td>远程文件系统（SFTP/FTP）</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="plugin">SSH</span></td><td><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
                         <tr><td>Markdown 预览</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="plugin">插件</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+                        <tr><td>内置终端</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="plugin">插件</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
                         <tr><td>Git 集成</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="plugin">插件</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
                         <tr><td>项目布局</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="plugin">插件</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
                         <tr><td>多面板布局</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="plugin">插件</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
                         <tr><td>书签</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="plugin">插件</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
-                        <tr><td>十六进制 / 二进制查看器</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="plugin">插件</span></td><td><span class="cross">&#10007;</span></td><td><span class="plugin">插件</span></td></tr>
                         <tr><td>浏览压缩包（zip/tar）</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
-                        <tr><td>图表查看器（Mermaid）</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="plugin">插件</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
-                        <tr><td>图片查看器</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="plugin">插件</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+                        <tr><td>可分离实例</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -728,10 +774,10 @@ error       = &quot;LightRed&quot;" title="复制到剪贴板"><span class="copy
                 <p class="platform">适用于任何 Linux 的静态 musl 二进制，包括 Alpine 和容器。</p>
                 <div class="code-block">
                     <pre><code data-template="curl -LO https://github.com/termide/termide/releases/latest/download/termide-{v}-x86_64-unknown-linux-musl.tar.gz
-tar xzf termide-{v}-x86_64-unknown-linux-musl.tar.gz &amp;&amp; ./termide">curl -LO https://github.com/termide/termide/releases/latest/download/termide-0.37.0-x86_64-unknown-linux-musl.tar.gz
-tar xzf termide-0.37.0-x86_64-unknown-linux-musl.tar.gz &amp;&amp; ./termide</code></pre>
-                    <button class="copy-btn" data-copy="curl -LO https://github.com/termide/termide/releases/latest/download/termide-0.37.0-x86_64-unknown-linux-musl.tar.gz
-tar xzf termide-0.37.0-x86_64-unknown-linux-musl.tar.gz &amp;&amp; ./termide" title="复制到剪贴板"><span class="copy-icon">&#128203;</span></button>
+tar xzf termide-{v}-x86_64-unknown-linux-musl.tar.gz &amp;&amp; ./termide">curl -LO https://github.com/termide/termide/releases/latest/download/termide-0.40.0-x86_64-unknown-linux-musl.tar.gz
+tar xzf termide-0.40.0-x86_64-unknown-linux-musl.tar.gz &amp;&amp; ./termide</code></pre>
+                    <button class="copy-btn" data-copy="curl -LO https://github.com/termide/termide/releases/latest/download/termide-0.40.0-x86_64-unknown-linux-musl.tar.gz
+tar xzf termide-0.40.0-x86_64-unknown-linux-musl.tar.gz &amp;&amp; ./termide" title="复制到剪贴板"><span class="copy-icon">&#128203;</span></button>
                 </div>
             </div>
             <div class="install-panel" role="tabpanel" data-panel="brew">
@@ -762,17 +808,17 @@ brew install termide" title="复制到剪贴板"><span class="copy-icon">&#12820
                 <p class="platform">Debian 和 Ubuntu，x86_64。</p>
                 <div class="code-block">
                     <pre><code data-template="curl -LO https://github.com/termide/termide/releases/latest/download/termide_{v}-1_amd64.deb
-sudo dpkg -i termide_{v}-1_amd64.deb">curl -LO https://github.com/termide/termide/releases/latest/download/termide_0.37.0-1_amd64.deb
-sudo dpkg -i termide_0.37.0-1_amd64.deb</code></pre>
-                    <button class="copy-btn" data-copy="curl -LO https://github.com/termide/termide/releases/latest/download/termide_0.37.0-1_amd64.deb
-sudo dpkg -i termide_0.37.0-1_amd64.deb" title="复制到剪贴板"><span class="copy-icon">&#128203;</span></button>
+sudo dpkg -i termide_{v}-1_amd64.deb">curl -LO https://github.com/termide/termide/releases/latest/download/termide_0.40.0-1_amd64.deb
+sudo dpkg -i termide_0.40.0-1_amd64.deb</code></pre>
+                    <button class="copy-btn" data-copy="curl -LO https://github.com/termide/termide/releases/latest/download/termide_0.40.0-1_amd64.deb
+sudo dpkg -i termide_0.40.0-1_amd64.deb" title="复制到剪贴板"><span class="copy-icon">&#128203;</span></button>
                 </div>
             </div>
             <div class="install-panel" role="tabpanel" data-panel="rpm">
                 <p class="platform">Fedora、RHEL 和 CentOS，x86_64。</p>
                 <div class="code-block">
-                    <pre><code data-template="sudo rpm -i https://github.com/termide/termide/releases/latest/download/termide-{v}-1.x86_64.rpm">sudo rpm -i https://github.com/termide/termide/releases/latest/download/termide-0.37.0-1.x86_64.rpm</code></pre>
-                    <button class="copy-btn" data-copy="sudo rpm -i https://github.com/termide/termide/releases/latest/download/termide-0.37.0-1.x86_64.rpm" title="复制到剪贴板"><span class="copy-icon">&#128203;</span></button>
+                    <pre><code data-template="sudo rpm -i https://github.com/termide/termide/releases/latest/download/termide-{v}-1.x86_64.rpm">sudo rpm -i https://github.com/termide/termide/releases/latest/download/termide-0.40.0-1.x86_64.rpm</code></pre>
+                    <button class="copy-btn" data-copy="sudo rpm -i https://github.com/termide/termide/releases/latest/download/termide-0.40.0-1.x86_64.rpm" title="复制到剪贴板"><span class="copy-icon">&#128203;</span></button>
                 </div>
             </div>
             <div class="install-panel" role="tabpanel" data-panel="termux">
@@ -781,18 +827,18 @@ sudo dpkg -i termide_0.37.0-1_amd64.deb" title="复制到剪贴板"><span class=
                     <pre><code data-template="pkg install git openssh
 curl -LO https://github.com/termide/termide/releases/latest/download/termide-{v}-aarch64-unknown-linux-musl.tar.gz
 tar xzf termide-{v}-aarch64-unknown-linux-musl.tar.gz &amp;&amp; ./termide">pkg install git openssh
-curl -LO https://github.com/termide/termide/releases/latest/download/termide-0.37.0-aarch64-unknown-linux-musl.tar.gz
-tar xzf termide-0.37.0-aarch64-unknown-linux-musl.tar.gz &amp;&amp; ./termide</code></pre>
+curl -LO https://github.com/termide/termide/releases/latest/download/termide-0.40.0-aarch64-unknown-linux-musl.tar.gz
+tar xzf termide-0.40.0-aarch64-unknown-linux-musl.tar.gz &amp;&amp; ./termide</code></pre>
                     <button class="copy-btn" data-copy="pkg install git openssh
-curl -LO https://github.com/termide/termide/releases/latest/download/termide-0.37.0-aarch64-unknown-linux-musl.tar.gz
-tar xzf termide-0.37.0-aarch64-unknown-linux-musl.tar.gz &amp;&amp; ./termide" title="复制到剪贴板"><span class="copy-icon">&#128203;</span></button>
+curl -LO https://github.com/termide/termide/releases/latest/download/termide-0.40.0-aarch64-unknown-linux-musl.tar.gz
+tar xzf termide-0.40.0-aarch64-unknown-linux-musl.tar.gz &amp;&amp; ./termide" title="复制到剪贴板"><span class="copy-icon">&#128203;</span></button>
                 </div>
             </div>
             <div class="install-panel" role="tabpanel" data-panel="windows">
                 <p class="platform">下载、解压，然后在 Windows Terminal 中运行 <code>termide.exe</code>。</p>
                 <div class="code-block">
-                    <pre><code data-template="https://github.com/termide/termide/releases/latest/download/termide-{v}-x86_64-pc-windows-msvc.zip">https://github.com/termide/termide/releases/latest/download/termide-0.37.0-x86_64-pc-windows-msvc.zip</code></pre>
-                    <button class="copy-btn" data-copy="https://github.com/termide/termide/releases/latest/download/termide-0.37.0-x86_64-pc-windows-msvc.zip" title="复制到剪贴板"><span class="copy-icon">&#128203;</span></button>
+                    <pre><code data-template="https://github.com/termide/termide/releases/latest/download/termide-{v}-x86_64-pc-windows-msvc.zip">https://github.com/termide/termide/releases/latest/download/termide-0.40.0-x86_64-pc-windows-msvc.zip</code></pre>
+                    <button class="copy-btn" data-copy="https://github.com/termide/termide/releases/latest/download/termide-0.40.0-x86_64-pc-windows-msvc.zip" title="复制到剪贴板"><span class="copy-icon">&#128203;</span></button>
                 </div>
             </div>
             </div>
@@ -814,7 +860,7 @@ tar xzf termide-0.37.0-aarch64-unknown-linux-musl.tar.gz &amp;&amp; ./termide" t
                 </div>
                 <div class="footer-meta">
                     <p>MIT 许可证 &bull; 用 <span class="rust-heart">&#9829;</span> 和 Rust 打造</p>
-                    <p class="version">v<span data-version>0.37.0</span></p>
+                    <p class="version">v<span data-version>0.40.0</span></p>
                 </div>
             </div>
         </div>

@@ -40,7 +40,7 @@
   "description": "Редактор с LSP, двухпанельный файловый менеджер с SFTP/FTP, терминал, git, просмотр баз данных и агент для кода на вашей собственной модели — один статический бинарник на Rust без настройки.",
   "applicationCategory": "DeveloperApplication",
   "operatingSystem": "Linux, macOS, Windows, Android",
-  "softwareVersion": "0.37.0",
+  "softwareVersion": "0.40.0",
   "license": "https://opensource.org/licenses/MIT",
   "downloadUrl": "https://github.com/termide/termide/releases/latest",
   "codeRepository": "https://github.com/termide/termide",
@@ -54,7 +54,7 @@
 </head>
 <body class="scanlines">
     <script>
-        window.heroSlides = [{"text": "Файлы, код, git и шелл рядом друг с другом", "image": "../assets/screenshots/overview.png"}, {"text": "Агент для кода на вашей модели — локальной или облачной", "image": "../assets/screenshots/agent.png"}, {"text": "Две панели, локальная и удалённая, передача файлов в фоне", "image": "../assets/screenshots/file-manager.png"}, {"text": "Оборвался SSH? termide --attach — и всё на своих местах", "image": "../assets/screenshots/detach.gif"}, {"text": "Статус, граф коммитов, diff, ветки и ворктри", "image": "../assets/screenshots/git.png"}, {"text": "Просмотр и правка таблиц SQLite, PostgreSQL и MySQL", "image": "../assets/screenshots/db.png"}, {"text": "CPU, память, процессы и порты в один клик", "image": "../assets/screenshots/monitor.png"}, {"text": "Отрендеренный Markdown с диаграммами Mermaid", "image": "../assets/screenshots/markdown.png"}, {"text": "Hex-просмотр и правка бинарных файлов на месте", "image": "../assets/screenshots/hex.png"}, {"text": "38 тем — от Dracula до Norton Commander", "image": "../assets/screenshots/themes.png"}];
+        window.heroSlides = [{"text": "Файлы, код, git и шелл рядом друг с другом", "image": "../assets/screenshots/overview.png"}, {"text": "Агент для кода на вашей модели — локальной или облачной", "image": "../assets/screenshots/agent.png"}, {"text": "Две панели, локальная и удалённая, передача файлов в фоне", "image": "../assets/screenshots/file-manager.png"}, {"text": "Оборвался SSH? termide --attach — и всё на своих местах", "image": "../assets/screenshots/detach.gif"}, {"text": "Статус, граф коммитов, diff, ветки и ворктри", "image": "../assets/screenshots/git.png"}, {"text": "Просмотр и правка таблиц SQLite, PostgreSQL и MySQL", "image": "../assets/screenshots/db.png"}, {"text": "CPU, память, процессы и порты в один клик", "image": "../assets/screenshots/monitor.png"}, {"text": "Отрендеренный Markdown с диаграммами Mermaid", "image": "../assets/screenshots/markdown.png"}, {"text": "Hex-просмотр и правка бинарных файлов на месте", "image": "../assets/screenshots/hex.png"}, {"text": "44 темы — от Dracula до Norton Commander", "image": "../assets/screenshots/themes.png"}];
     </script>
 
     <nav class="menubar">
@@ -120,7 +120,7 @@
                         <img src="../assets/screenshots/monitor.png" alt="CPU, память, процессы и порты в один клик" class="screenshot" loading="lazy">
                         <img src="../assets/screenshots/markdown.png" alt="Отрендеренный Markdown с диаграммами Mermaid" class="screenshot" loading="lazy">
                         <img src="../assets/screenshots/hex.png" alt="Hex-просмотр и правка бинарных файлов на месте" class="screenshot" loading="lazy">
-                        <img src="../assets/screenshots/themes.png" alt="38 тем — от Dracula до Norton Commander" class="screenshot" loading="lazy">
+                        <img src="../assets/screenshots/themes.png" alt="44 темы — от Dracula до Norton Commander" class="screenshot" loading="lazy">
                     </div>
                 </div>
             </div>
@@ -141,7 +141,7 @@
                     <h3 class="home-title"><span class="home-prompt">~$</span> За рабочим столом</h3>
                     <div class="home-item">
                         <h4>Код с LSP</h4>
-                        <p>Автодополнение, переход к определению, ссылки, переименование и диагностика для 22 языков — без настройки плагинов.</p>
+                        <p>Автодополнение, переход к определению, ссылки, переименование и диагностика от любого языкового сервера; семь из них настроены из коробки.</p>
                     </div>
                     <div class="home-item">
                         <h4>Агент на вашей модели</h4>
@@ -222,7 +222,7 @@
                     </div>
                     <div class="agent-item">
                         <h4>Только нужные инструменты</h4>
-                        <p>Чтение, правка, запись и шелл, плюс веб-поиск и загрузка страниц через собственный профиль браузера — без ваших логинов.</p>
+                        <p>Чтение, правка, запись и шелл, плюс веб-поиск и загрузка страниц через собственный профиль браузера — без ваших логинов, и <code>recall</code> по прошлым сессиям, истории git и файлам проекта.</p>
                     </div>
                     <div class="agent-item">
                         <h4>Другие агенты в той же панели</h4>
@@ -508,8 +508,44 @@
                         <div class="gallery-overlay"><span class="theme-name">Pinky Pie</span></div>
                     </div>
                 </div>
+                <div class="gallery-item extra" data-group="dark">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="../assets/themes/black-earth.png" alt="Black Earth" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Black Earth</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item extra" data-group="dark">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="../assets/themes/moonlit-dew.png" alt="Moonlit Dew" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Moonlit Dew</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item extra" data-group="dark">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="../assets/themes/fireflies.png" alt="Fireflies" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Fireflies</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item extra" data-group="light">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="../assets/themes/dry-path.png" alt="Dry Path" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Dry Path</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item extra" data-group="light">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="../assets/themes/morning-mist.png" alt="Morning Mist" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Morning Mist</span></div>
+                    </div>
+                </div>
+                <div class="gallery-item extra" data-group="light">
+                    <div class="gallery-frame neon-border-hover">
+                        <img src="../assets/themes/summer-meadow.png" alt="Summer Meadow" loading="lazy">
+                        <div class="gallery-overlay"><span class="theme-name">Summer Meadow</span></div>
+                    </div>
+                </div>
             </div>
-            <div class="show-all"><button class="btn btn-secondary" data-show-all>Показать все 38 тем</button></div>
+            <div class="show-all"><button class="btn btn-secondary" data-show-all>Показать все 44 тем</button></div>
             <div class="theme-custom">
                 <div class="theme-custom-text">
                     <h3>Сделайте по-своему</h3>
@@ -575,7 +611,7 @@ error       = &quot;LightRed&quot;" title="Скопировать"><span class="
             <div class="feature-group">
                 <h3 class="feature-group-title">Код</h3>
                 <ul class="feature-list">
-                    <li><span class="feature-icon">{}</span><span><strong>Редактор с LSP</strong> Автодополнение, hover, переход к определению, ссылки, переименование и быстрые исправления; панель диагностики; подсветка tree-sitter для 22 языков.</span></li>
+                    <li><span class="feature-icon">{}</span><span><strong>Редактор с LSP</strong> Автодополнение, hover, переход к определению, ссылки, переименование и быстрые исправления; панель диагностики; подсветка tree-sitter для 23 языков.</span></li>
                     <li><span class="feature-icon">§</span><span><strong>Структура кода</strong> Навигация по структуре через запросы tree-sitter, синхронизированная с курсором.</span></li>
                     <li><span class="feature-icon">¶</span><span><strong>Документы и диаграммы</strong> Отрендеренные Markdown и HTML, текстовый браузер, сохраняющий страницы в Markdown, и диаграммы Mermaid, нарисованные текстом, — включая диаграммы классов из ваших исходников.</span></li>
                     <li><span class="feature-icon">0x</span><span><strong>Hex-редактор</strong> Hex/ASCII-просмотр с курсором по байтам, выделением и поиском; правка поверх с резервной копией <code>.bak</code>.</span></li>
@@ -603,7 +639,7 @@ error       = &quot;LightRed&quot;" title="Скопировать"><span class="
                 <h3 class="feature-group-title">Рабочее пространство</h3>
                 <ul class="feature-list">
                     <li><span class="feature-icon">+-</span><span><strong>Git</strong> Статус, лог с цветным графом коммитов, diff, индекс, stash, blame, ветки и их ворктри.</span></li>
-                    <li><span class="feature-icon">::</span><span><strong>Проекты</strong> Раскладка панелей восстанавливается для каждого каталога, со своими настройками и командами проекта.</span></li>
+                    <li><span class="feature-icon">::</span><span><strong>Проекты</strong> Раскладка панелей восстанавливается для каждого каталога, со своими настройками и командами проекта; проекты, с которых вы переключились, продолжают работать в фоне, у каждого — кнопка в меню-баре.</span></li>
                     <li><span class="feature-icon">$/</span><span><strong>Свои команды</strong> Глобальные и проектные команды с горячими клавишами, формами параметров и режимами терминала, фона или отчёта.</span></li>
                     <li><span class="feature-icon">⌘</span><span><strong>Палитра и «Открыть»</strong> Нечёткая палитра команд по <code>Ctrl+P</code>; <code>Ctrl+G</code> открывает файл, папку или URL с подсказками путей.</span></li>
                 </ul>
@@ -611,10 +647,18 @@ error       = &quot;LightRed&quot;" title="Скопировать"><span class="
             <div class="feature-group">
                 <h3 class="feature-group-title">Внешний вид и управление</h3>
                 <ul class="feature-list">
-                    <li><span class="feature-icon">#*</span><span><strong>38 тем</strong> Тёмные, светлые, ретро и кинематографические; свои темы пишутся в TOML.</span></li>
+                    <li><span class="feature-icon">#*</span><span><strong>44 темы</strong> Тёмные, светлые, ретро и кинематографические; свои темы пишутся в TOML.</span></li>
                     <li><span class="feature-icon">@!</span><span><strong>15 языков интерфейса</strong> Русский, английский, китайский, японский, корейский, немецкий, французский, испанский и другие.</span></li>
                     <li><span class="feature-icon">F1</span><span><strong>Клавиатура и мышь</strong> Любое сочетание меняется в настройках; полная поддержка мыши; горячие клавиши работают в кириллической раскладке и с <code>Alt</code> на macOS.</span></li>
                     <li><span class="feature-icon">✎</span><span><strong>Vim-режим</strong> Необязательное редактирование в стиле Vim — для тех, чьи пальцы к нему привыкли.</span></li>
+                </ul>
+            </div>
+            <div class="feature-group">
+                <h3 class="feature-group-title">Приватность и контроль</h3>
+                <ul class="feature-list">
+                    <li><span class="feature-icon">**</span><span><strong>Хранилище паролей</strong> Пароли SFTP, FTP, баз данных и git хранятся в зашифрованном хранилище под мастер-паролем (Argon2 + ChaCha20-Poly1305) и никогда не попадают в закладки, раскладки и логи.</span></li>
+                    <li><span class="feature-icon">~/</span><span><strong>Только туда, куда вы указали</strong> Никакой телеметрии и проверок обновлений: termide подключается к настроенным вами серверам, базам данных и endpoint'ам моделей — и больше никуда.</span></li>
+                    <li><span class="feature-icon">#!</span><span><strong>Каждый промпт — файл</strong> Системный промпт агента, служебные промпты и описания инструментов — обычные файлы, которые можно прочитать и переопределить; <code>/prompt</code> показывает собранный результат.</span></li>
                 </ul>
             </div>
             </div>
@@ -631,14 +675,15 @@ error       = &quot;LightRed&quot;" title="Скопировать"><span class="
                     <tbody>
                         <tr><td>Встроенный агент для кода (локальные и облачные модели)</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="plugin">плагин</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
                         <tr><td>MCP-серверы</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="plugin">плагин</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
-                        <tr><td>Удалённые ФС (SFTP/FTP)</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="plugin">SSH</span></td><td><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
-                        <tr><td>Просмотр баз данных</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="plugin">плагин</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
-                        <tr><td>Отсоединяемые экземпляры</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
-                        <tr><td>Монитор ресурсов</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
                         <tr><td>Файловый менеджер</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="plugin">только дерево</span></td><td><span class="plugin">плагин</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
                         <tr><td>Фоновые файловые операции</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="plugin">плагин</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
-                        <tr><td>Встроенный терминал</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="plugin">плагин</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
-                        <tr><td>Нулевая настройка</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td></tr>
+                        <tr><td>Хранилище паролей</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="plugin">плагин</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+                        <tr><td>Просмотр баз данных</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="plugin">плагин</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+                        <tr><td>Hex / бинарный просмотрщик</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="plugin">плагин</span></td><td><span class="cross">&#10007;</span></td><td><span class="plugin">плагин</span></td></tr>
+                        <tr><td>Просмотр диаграмм (Mermaid)</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="plugin">плагин</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+                        <tr><td>Предпросмотр HTML</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="plugin">плагин</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+                        <tr><td>Просмотр изображений</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="plugin">плагин</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+                        <tr><td>Монитор ресурсов</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
                     </tbody>
                 </table>
             </div>
@@ -651,17 +696,18 @@ error       = &quot;LightRed&quot;" title="Скопировать"><span class="
                         </thead>
                         <tbody>
                         <tr><td>Поддержка LSP</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="plugin">плагин</span></td></tr>
+                        <tr><td>Нулевая настройка</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td></tr>
                         <tr><td>Автоматизация скриптами</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="plugin">плагин</span></td></tr>
                         <tr><td>Внешние агенты (Claude Code, Codex, Gemini CLI)</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="plugin">плагин</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+                        <tr><td>Удалённые ФС (SFTP/FTP)</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="plugin">SSH</span></td><td><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
                         <tr><td>Просмотр Markdown</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="plugin">плагин</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+                        <tr><td>Встроенный терминал</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="plugin">плагин</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
                         <tr><td>Интеграция с Git</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="plugin">плагин</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
                         <tr><td>Раскладки проектов</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="plugin">плагин</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
                         <tr><td>Многопанельный интерфейс</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="plugin">плагин</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
                         <tr><td>Закладки</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="plugin">плагин</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
-                        <tr><td>Hex / бинарный просмотрщик</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="plugin">плагин</span></td><td><span class="cross">&#10007;</span></td><td><span class="plugin">плагин</span></td></tr>
                         <tr><td>Просмотр архивов (zip/tar)</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
-                        <tr><td>Просмотр диаграмм (Mermaid)</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="plugin">плагин</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
-                        <tr><td>Просмотр изображений</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="plugin">плагин</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+                        <tr><td>Отсоединяемые экземпляры</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -728,10 +774,10 @@ error       = &quot;LightRed&quot;" title="Скопировать"><span class="
                 <p class="platform">Статический musl-бинарник для любого Linux, включая Alpine и контейнеры.</p>
                 <div class="code-block">
                     <pre><code data-template="curl -LO https://github.com/termide/termide/releases/latest/download/termide-{v}-x86_64-unknown-linux-musl.tar.gz
-tar xzf termide-{v}-x86_64-unknown-linux-musl.tar.gz &amp;&amp; ./termide">curl -LO https://github.com/termide/termide/releases/latest/download/termide-0.37.0-x86_64-unknown-linux-musl.tar.gz
-tar xzf termide-0.37.0-x86_64-unknown-linux-musl.tar.gz &amp;&amp; ./termide</code></pre>
-                    <button class="copy-btn" data-copy="curl -LO https://github.com/termide/termide/releases/latest/download/termide-0.37.0-x86_64-unknown-linux-musl.tar.gz
-tar xzf termide-0.37.0-x86_64-unknown-linux-musl.tar.gz &amp;&amp; ./termide" title="Скопировать"><span class="copy-icon">&#128203;</span></button>
+tar xzf termide-{v}-x86_64-unknown-linux-musl.tar.gz &amp;&amp; ./termide">curl -LO https://github.com/termide/termide/releases/latest/download/termide-0.40.0-x86_64-unknown-linux-musl.tar.gz
+tar xzf termide-0.40.0-x86_64-unknown-linux-musl.tar.gz &amp;&amp; ./termide</code></pre>
+                    <button class="copy-btn" data-copy="curl -LO https://github.com/termide/termide/releases/latest/download/termide-0.40.0-x86_64-unknown-linux-musl.tar.gz
+tar xzf termide-0.40.0-x86_64-unknown-linux-musl.tar.gz &amp;&amp; ./termide" title="Скопировать"><span class="copy-icon">&#128203;</span></button>
                 </div>
             </div>
             <div class="install-panel" role="tabpanel" data-panel="brew">
@@ -762,17 +808,17 @@ brew install termide" title="Скопировать"><span class="copy-icon">&#1
                 <p class="platform">Debian и Ubuntu, x86_64.</p>
                 <div class="code-block">
                     <pre><code data-template="curl -LO https://github.com/termide/termide/releases/latest/download/termide_{v}-1_amd64.deb
-sudo dpkg -i termide_{v}-1_amd64.deb">curl -LO https://github.com/termide/termide/releases/latest/download/termide_0.37.0-1_amd64.deb
-sudo dpkg -i termide_0.37.0-1_amd64.deb</code></pre>
-                    <button class="copy-btn" data-copy="curl -LO https://github.com/termide/termide/releases/latest/download/termide_0.37.0-1_amd64.deb
-sudo dpkg -i termide_0.37.0-1_amd64.deb" title="Скопировать"><span class="copy-icon">&#128203;</span></button>
+sudo dpkg -i termide_{v}-1_amd64.deb">curl -LO https://github.com/termide/termide/releases/latest/download/termide_0.40.0-1_amd64.deb
+sudo dpkg -i termide_0.40.0-1_amd64.deb</code></pre>
+                    <button class="copy-btn" data-copy="curl -LO https://github.com/termide/termide/releases/latest/download/termide_0.40.0-1_amd64.deb
+sudo dpkg -i termide_0.40.0-1_amd64.deb" title="Скопировать"><span class="copy-icon">&#128203;</span></button>
                 </div>
             </div>
             <div class="install-panel" role="tabpanel" data-panel="rpm">
                 <p class="platform">Fedora, RHEL и CentOS, x86_64.</p>
                 <div class="code-block">
-                    <pre><code data-template="sudo rpm -i https://github.com/termide/termide/releases/latest/download/termide-{v}-1.x86_64.rpm">sudo rpm -i https://github.com/termide/termide/releases/latest/download/termide-0.37.0-1.x86_64.rpm</code></pre>
-                    <button class="copy-btn" data-copy="sudo rpm -i https://github.com/termide/termide/releases/latest/download/termide-0.37.0-1.x86_64.rpm" title="Скопировать"><span class="copy-icon">&#128203;</span></button>
+                    <pre><code data-template="sudo rpm -i https://github.com/termide/termide/releases/latest/download/termide-{v}-1.x86_64.rpm">sudo rpm -i https://github.com/termide/termide/releases/latest/download/termide-0.40.0-1.x86_64.rpm</code></pre>
+                    <button class="copy-btn" data-copy="sudo rpm -i https://github.com/termide/termide/releases/latest/download/termide-0.40.0-1.x86_64.rpm" title="Скопировать"><span class="copy-icon">&#128203;</span></button>
                 </div>
             </div>
             <div class="install-panel" role="tabpanel" data-panel="termux">
@@ -781,18 +827,18 @@ sudo dpkg -i termide_0.37.0-1_amd64.deb" title="Скопировать"><span cl
                     <pre><code data-template="pkg install git openssh
 curl -LO https://github.com/termide/termide/releases/latest/download/termide-{v}-aarch64-unknown-linux-musl.tar.gz
 tar xzf termide-{v}-aarch64-unknown-linux-musl.tar.gz &amp;&amp; ./termide">pkg install git openssh
-curl -LO https://github.com/termide/termide/releases/latest/download/termide-0.37.0-aarch64-unknown-linux-musl.tar.gz
-tar xzf termide-0.37.0-aarch64-unknown-linux-musl.tar.gz &amp;&amp; ./termide</code></pre>
+curl -LO https://github.com/termide/termide/releases/latest/download/termide-0.40.0-aarch64-unknown-linux-musl.tar.gz
+tar xzf termide-0.40.0-aarch64-unknown-linux-musl.tar.gz &amp;&amp; ./termide</code></pre>
                     <button class="copy-btn" data-copy="pkg install git openssh
-curl -LO https://github.com/termide/termide/releases/latest/download/termide-0.37.0-aarch64-unknown-linux-musl.tar.gz
-tar xzf termide-0.37.0-aarch64-unknown-linux-musl.tar.gz &amp;&amp; ./termide" title="Скопировать"><span class="copy-icon">&#128203;</span></button>
+curl -LO https://github.com/termide/termide/releases/latest/download/termide-0.40.0-aarch64-unknown-linux-musl.tar.gz
+tar xzf termide-0.40.0-aarch64-unknown-linux-musl.tar.gz &amp;&amp; ./termide" title="Скопировать"><span class="copy-icon">&#128203;</span></button>
                 </div>
             </div>
             <div class="install-panel" role="tabpanel" data-panel="windows">
                 <p class="platform">Скачайте, распакуйте и запустите <code>termide.exe</code> в Windows Terminal.</p>
                 <div class="code-block">
-                    <pre><code data-template="https://github.com/termide/termide/releases/latest/download/termide-{v}-x86_64-pc-windows-msvc.zip">https://github.com/termide/termide/releases/latest/download/termide-0.37.0-x86_64-pc-windows-msvc.zip</code></pre>
-                    <button class="copy-btn" data-copy="https://github.com/termide/termide/releases/latest/download/termide-0.37.0-x86_64-pc-windows-msvc.zip" title="Скопировать"><span class="copy-icon">&#128203;</span></button>
+                    <pre><code data-template="https://github.com/termide/termide/releases/latest/download/termide-{v}-x86_64-pc-windows-msvc.zip">https://github.com/termide/termide/releases/latest/download/termide-0.40.0-x86_64-pc-windows-msvc.zip</code></pre>
+                    <button class="copy-btn" data-copy="https://github.com/termide/termide/releases/latest/download/termide-0.40.0-x86_64-pc-windows-msvc.zip" title="Скопировать"><span class="copy-icon">&#128203;</span></button>
                 </div>
             </div>
             </div>
@@ -814,7 +860,7 @@ tar xzf termide-0.37.0-aarch64-unknown-linux-musl.tar.gz &amp;&amp; ./termide" t
                 </div>
                 <div class="footer-meta">
                     <p>Лицензия MIT &bull; Сделано с <span class="rust-heart">&#9829;</span> на Rust</p>
-                    <p class="version">v<span data-version>0.37.0</span></p>
+                    <p class="version">v<span data-version>0.40.0</span></p>
                 </div>
             </div>
         </div>

@@ -27,7 +27,7 @@
       "monitor": "CPU, memory, processes and ports one click away",
       "docs": "Rendered Markdown with Mermaid diagrams",
       "hex": "Hex view and in-place editing for binary files",
-      "themes": "38 themes, from Dracula to Norton Commander"
+      "themes": "44 themes, from Dracula to Norton Commander"
     },
     "install_all": "All install options"
   },
@@ -45,7 +45,7 @@
     "desk": {
       "editor": {
         "t": "Code with LSP",
-        "d": "Completion, go to definition, references, rename and diagnostics for 22 languages, without a plugin setup."
+        "d": "Completion, go to definition, references, rename and diagnostics from any language server, seven of them set up out of the box."
       },
       "agent": {
         "t": "An agent on your model",
@@ -105,7 +105,7 @@
       },
       "tools": {
         "t": "Tools it needs, nothing more",
-        "d": "Read, edit, write and shell, plus web search and fetch through a browser profile of its own, never your logins."
+        "d": "Read, edit, write and shell, plus web search and fetch through a browser profile of its own, never your logins, and <code>recall</code> over earlier sessions, git history and project files."
       },
       "agents": {
         "t": "Other agents in the same panel",
@@ -146,7 +146,7 @@
         "cards": {
           "editor": {
             "t": "Editor with LSP",
-            "d": "Completion, hover, go to definition, references, rename and quick fixes; a diagnostics panel; tree-sitter highlighting for 22 languages."
+            "d": "Completion, hover, go to definition, references, rename and quick fixes; a diagnostics panel; tree-sitter highlighting for 23 languages."
           },
           "outline": {
             "t": "Code outline",
@@ -213,7 +213,7 @@
           },
           "projects": {
             "t": "Projects",
-            "d": "Panel layouts restored per directory, with per-project settings and commands."
+            "d": "Panel layouts restored per directory, with per-project settings and commands; projects you switch away from keep running in the background, one button each in the menu bar."
           },
           "commands": {
             "t": "Custom commands",
@@ -229,7 +229,7 @@
         "title": "Look and feel",
         "cards": {
           "themes": {
-            "t": "38 themes",
+            "t": "44 themes",
             "d": "Dark, light, retro and cinematic; write your own in TOML."
           },
           "languages": {
@@ -243,6 +243,23 @@
           "vim": {
             "t": "Vim mode",
             "d": "Optional Vim-style editing for those whose fingers expect it."
+          }
+        }
+      },
+      "privacy": {
+        "title": "Privacy and control",
+        "cards": {
+          "vault": {
+            "t": "Password vault",
+            "d": "Passwords of SFTP, FTP, databases and git live in an encrypted vault under a master password (Argon2 + ChaCha20-Poly1305), never in bookmarks, layouts or logs."
+          },
+          "offline": {
+            "t": "Goes only where you point it",
+            "d": "No telemetry, no update checks: termide connects to the servers, databases and model endpoints you set up, and nothing else."
+          },
+          "prompts": {
+            "t": "Every prompt is a file",
+            "d": "The agent's system prompt, service prompts and tool descriptions are plain files you can read and override; <code>/prompt</code> shows the assembled result."
           }
         }
       }
@@ -279,7 +296,9 @@
       "detach": "Detachable instances",
       "panels": "Multi-panel layout",
       "bookmarks": "Bookmarks",
-      "monitor": "Resource monitor"
+      "monitor": "Resource monitor",
+      "vault": "Password vault",
+      "html": "HTML preview"
     },
     "stack_title": "// The everyday part of your toolbox",
     "stack_subtitle": "TermIDE does not try to replace these tools. It covers the part you reach for every day, in one place.",
