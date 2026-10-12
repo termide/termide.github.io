@@ -174,8 +174,10 @@ class Page:
         return self._code_block(self.data["hero_install"], 16, extra=" hero-install")
 
     def trust(self):
+        # `{mb}` is the release download size, set with `version` on a release.
+        mb = str(self.data["download_mb"])
         items = "\n".join(
-            f'            <li><span class="trust-mark">&#10003;</span> {self.t(f"trust.{k}")}</li>'
+            f'            <li><span class="trust-mark">&#10003;</span> {self.t(f"trust.{k}").replace("{mb}", mb)}</li>'
             for k in self.data["trust"]
         )
         return f'        <ul class="trust-strip">\n{items}\n        </ul>'

@@ -32,7 +32,7 @@
     "install_all": "All install options"
   },
   "trust": {
-    "size": "One ~16 MB download, no dependencies",
+    "size": "One ~{mb} MB download, no dependencies",
     "privacy": "No telemetry, no account, no update checks",
     "ai_off": "AI stays off until you configure a model",
     "familiar": "Menus, mouse and F-keys: familiar from minute one"
@@ -288,6 +288,7 @@
       "remote": "Remote filesystems (SFTP/FTP)",
       "hex": "Hex / binary viewer",
       "archive": "Archive browsing (zip/tar)",
+      "packarc": "Pack and unpack archives",
       "db": "Database viewer",
       "md": "Markdown preview",
       "mermaid": "Diagram viewer (Mermaid)",
@@ -422,6 +423,10 @@
       "ai": {
         "q": "Do I have to use the AI agent?",
         "a": "No. No provider or model is set by default, so the agent does nothing and sends nothing until you configure one. Everything else works without it."
+      },
+      "unattended": {
+        "q": "Can the agent work unattended?",
+        "a": "Yes, within the limits you set. <code>/goal</code> keeps it at a task until a separate judge agrees it is done, <code>/loop</code> repeats a prompt on an interval, and <code>on_limit = \"wait\"</code> waits out a rate or subscription limit instead of stopping. In the default <code>auto</code> mode a reviewer model decides what your permission rules leave open, so it rarely stops to ask; <code>deny</code> rules hold in every mode."
       },
       "privacy": {
         "q": "Does TermIDE phone home?",

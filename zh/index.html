@@ -711,6 +711,7 @@ error       = &quot;LightRed&quot;" title="复制到剪贴板"><span class="copy
                         <tr><td>多面板布局</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="plugin">插件</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
                         <tr><td>书签</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="plugin">插件</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
                         <tr><td>浏览压缩包（zip/tar）</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+                        <tr><td>打包和解压压缩包</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
                         <tr><td>可分离实例</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
                         </tbody>
                     </table>
@@ -724,6 +725,10 @@ error       = &quot;LightRed&quot;" title="复制到剪贴板"><span class="copy
                 <details class="faq-item">
                     <summary>必须使用 AI 智能体吗？</summary>
                     <p>不必。默认不设置任何服务商和模型，因此在你配置之前，智能体不会执行任何操作，也不会发送任何数据。其余功能都可独立使用。</p>
+                </details>
+                <details class="faq-item">
+                    <summary>代理可以无人值守地工作吗？</summary>
+                    <p>可以，在你设定的范围内。<code>/goal</code> 让它持续处理任务，直到独立的评审确认完成；<code>/loop</code> 按间隔重复一个提示；<code>on_limit = "wait"</code> 会等待速率或订阅限额恢复，而不是停止。在默认的 <code>auto</code> 模式下，权限规则未决定的操作由审查模型判断，因此很少停下来询问；<code>deny</code> 规则在任何模式下都有效。</p>
                 </details>
                 <details class="faq-item">
                     <summary>TermIDE 会向外发送数据吗？</summary>

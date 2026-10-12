@@ -29,9 +29,13 @@ does not, and warns about images referenced but not present in `assets/`.
 To add a language: add it to `languages` in `src/data.json`, copy
 `src/i18n/en.json` to `src/i18n/<code>.json`, translate, rebuild.
 
-On a release, bump `version` in `src/data.json`. The page also asks the GitHub
-API for the latest release and updates the footer and the versioned install
-commands when a newer one exists.
+On a release, the main repository's release workflow (`update-site` in
+`.github/workflows/release.yml`) sets `version` and `download_mb` in
+`src/data.json` from the published release, rebuilds the pages and pushes
+them; it needs the `SITE_DEPLOY_KEY` secret there, a deploy key with write
+access to this repository. `download_mb` fills `{mb}` in the strings. The page
+also asks the GitHub API for the latest release and updates the footer and the
+versioned install commands when a newer one exists.
 
 ## Screenshots
 

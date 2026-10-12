@@ -711,6 +711,7 @@ error       = &quot;LightRed&quot;" title="Скопировать"><span class="
                         <tr><td>Многопанельный интерфейс</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="plugin">плагин</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
                         <tr><td>Закладки</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="plugin">плагин</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
                         <tr><td>Просмотр архивов (zip/tar)</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+                        <tr><td>Упаковка и распаковка архивов</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
                         <tr><td>Отсоединяемые экземпляры</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
                         </tbody>
                     </table>
@@ -724,6 +725,10 @@ error       = &quot;LightRed&quot;" title="Скопировать"><span class="
                 <details class="faq-item">
                     <summary>Обязательно ли пользоваться ИИ-агентом?</summary>
                     <p>Нет. По умолчанию не задан ни провайдер, ни модель, поэтому агент ничего не делает и никуда ничего не отправляет, пока вы его не настроите. Всё остальное работает без него.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>Может ли агент работать без присмотра?</summary>
+                    <p>Да, в заданных вами рамках. <code>/goal</code> держит его у задачи, пока отдельный судья не признает её решённой, <code>/loop</code> повторяет промпт с интервалом, а <code>on_limit = "wait"</code> пережидает лимит запросов или подписки вместо остановки. В режиме <code>auto</code>, который включён по умолчанию, то, что не решают ваши правила разрешений, решает модель-ревьюер, так что вопросы почти не всплывают; правила <code>deny</code> действуют в любом режиме.</p>
                 </details>
                 <details class="faq-item">
                     <summary>TermIDE что-то отправляет в сеть?</summary>

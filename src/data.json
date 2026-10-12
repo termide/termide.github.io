@@ -2,6 +2,7 @@
   "site_url": "https://termide.github.io",
   "repo_url": "https://github.com/termide/termide",
   "version": "0.41.0",
+  "download_mb": 16,
   "languages": [
     {
       "code": "en",
@@ -356,6 +357,16 @@
           "yes",
           "no",
           "yes",
+          "no",
+          "no"
+        ]
+      },
+      {
+        "id": "packarc",
+        "values": [
+          "yes",
+          "no",
+          "no",
           "no",
           "no"
         ]
@@ -781,6 +792,7 @@
   "gallery_initial": 9,
   "faq": [
     "ai",
+    "unattended",
     "privacy",
     "tmux",
     "ssh",

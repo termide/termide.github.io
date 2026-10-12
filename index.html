@@ -711,6 +711,7 @@ error       = &quot;LightRed&quot;" title="Copy to clipboard"><span class="copy-
                         <tr><td>Multi-panel layout</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="plugin">plugin</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
                         <tr><td>Bookmarks</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="plugin">plugin</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
                         <tr><td>Archive browsing (zip/tar)</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+                        <tr><td>Pack and unpack archives</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
                         <tr><td>Detachable instances</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
                         </tbody>
                     </table>
@@ -724,6 +725,10 @@ error       = &quot;LightRed&quot;" title="Copy to clipboard"><span class="copy-
                 <details class="faq-item">
                     <summary>Do I have to use the AI agent?</summary>
                     <p>No. No provider or model is set by default, so the agent does nothing and sends nothing until you configure one. Everything else works without it.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>Can the agent work unattended?</summary>
+                    <p>Yes, within the limits you set. <code>/goal</code> keeps it at a task until a separate judge agrees it is done, <code>/loop</code> repeats a prompt on an interval, and <code>on_limit = "wait"</code> waits out a rate or subscription limit instead of stopping. In the default <code>auto</code> mode a reviewer model decides what your permission rules leave open, so it rarely stops to ask; <code>deny</code> rules hold in every mode.</p>
                 </details>
                 <details class="faq-item">
                     <summary>Does TermIDE phone home?</summary>
