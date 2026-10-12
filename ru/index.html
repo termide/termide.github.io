@@ -40,7 +40,7 @@
   "description": "Редактор с LSP, двухпанельный файловый менеджер с SFTP/FTP, терминал, git, просмотр баз данных и агент для кода на вашей собственной модели — один статический бинарник на Rust без настройки.",
   "applicationCategory": "DeveloperApplication",
   "operatingSystem": "Linux, macOS, Windows, Android",
-  "softwareVersion": "0.40.0",
+  "softwareVersion": "0.41.0",
   "license": "https://opensource.org/licenses/MIT",
   "downloadUrl": "https://github.com/termide/termide/releases/latest",
   "codeRepository": "https://github.com/termide/termide",
@@ -127,7 +127,7 @@
         </div>
 
         <ul class="trust-strip">
-            <li><span class="trust-mark">&#10003;</span> Один файл ~12 МБ, без зависимостей</li>
+            <li><span class="trust-mark">&#10003;</span> Один файл ~16 МБ, без зависимостей</li>
             <li><span class="trust-mark">&#10003;</span> Без телеметрии, аккаунтов и проверки обновлений</li>
             <li><span class="trust-mark">&#10003;</span> ИИ выключен, пока вы не настроите модель</li>
             <li><span class="trust-mark">&#10003;</span> Меню, мышь и F-клавиши: привычно с первой минуты</li>
@@ -214,7 +214,7 @@
                 <div class="agent-items">
                     <div class="agent-item">
                         <h4>Своя модель</h4>
-                        <p>Любой OpenAI- или Anthropic-совместимый endpoint: llama.cpp, Ollama, vLLM, omlx или облачный провайдер. Размер контекста берётся с сервера, если он его сообщает.</p>
+                        <p>Любой OpenAI- или Anthropic-совместимый endpoint: llama.cpp, Ollama, vLLM, omlx или облачный провайдер. Размер контекста берётся с сервера, если он его сообщает. Скриншот можно вставить прямо в промпт — модель его увидит.</p>
                     </div>
                     <div class="agent-item">
                         <h4>Без вас ничего не меняется</h4>
@@ -227,6 +227,10 @@
                     <div class="agent-item">
                         <h4>Другие агенты в той же панели</h4>
                         <p>Claude Code, Codex и Gemini CLI по Agent Client Protocol, ваши собственные агенты и субагенты для отдельных задач.</p>
+                    </div>
+                    <div class="agent-item">
+                        <h4>Пусть работает сам</h4>
+                        <p><code>/goal</code> держит агента у задачи, пока отдельный судья не признает её решённой, <code>/loop</code> повторяет промпт с интервалом, а работа, прерванная закрытием панели, продолжается с того же места.</p>
                     </div>
                     <div class="agent-item">
                         <h4>Расширяется файлами</h4>
@@ -620,7 +624,7 @@ error       = &quot;LightRed&quot;" title="Скопировать"><span class="
             <div class="feature-group">
                 <h3 class="feature-group-title">Файлы и данные</h3>
                 <ul class="feature-list">
-                    <li><span class="feature-icon">[]</span><span><strong>Файловый менеджер</strong> Дерево с вложенным git-статусом, поиск по glob и regex, пакетные операции, закладки и переключатель каталогов. Архивы zip, tar и ISO открываются как папки, в том числе на сервере; <code>P</code> упаковывает выделенное.</span></li>
+                    <li><span class="feature-icon">[]</span><span><strong>Файловый менеджер</strong> Дерево с вложенным git-статусом, поиск по glob и regex, выделение по маске, пакетные операции, закладки и переключатель каталогов со списком подключённых дисков. Архивы zip, tar и ISO открываются как папки, в том числе на сервере; <code>P</code> упаковывает выделенное с выбранным уровнем сжатия, <code>Alt+F9</code> распаковывает.</span></li>
                     <li><span class="feature-icon">↔</span><span><strong>Удалённые файловые системы</strong> SFTP, FTP и FTPS на чистом Rust; SMB и NFS через монтирование ОС.</span></li>
                     <li><span class="feature-icon">⇅</span><span><strong>Фоновые операции</strong> Копирование, перемещение, загрузка и выгрузка с прогрессом, паузой, продолжением и отменой.</span></li>
                     <li><span class="feature-icon">▦</span><span><strong>Просмотр баз данных</strong> SQLite, PostgreSQL и MySQL: серверная сортировка, фильтры по столбцам, правка ячеек, строки в TSV, JSON или INSERT.</span></li>
@@ -774,10 +778,10 @@ error       = &quot;LightRed&quot;" title="Скопировать"><span class="
                 <p class="platform">Статический musl-бинарник для любого Linux, включая Alpine и контейнеры.</p>
                 <div class="code-block">
                     <pre><code data-template="curl -LO https://github.com/termide/termide/releases/latest/download/termide-{v}-x86_64-unknown-linux-musl.tar.gz
-tar xzf termide-{v}-x86_64-unknown-linux-musl.tar.gz &amp;&amp; ./termide">curl -LO https://github.com/termide/termide/releases/latest/download/termide-0.40.0-x86_64-unknown-linux-musl.tar.gz
-tar xzf termide-0.40.0-x86_64-unknown-linux-musl.tar.gz &amp;&amp; ./termide</code></pre>
-                    <button class="copy-btn" data-copy="curl -LO https://github.com/termide/termide/releases/latest/download/termide-0.40.0-x86_64-unknown-linux-musl.tar.gz
-tar xzf termide-0.40.0-x86_64-unknown-linux-musl.tar.gz &amp;&amp; ./termide" title="Скопировать"><span class="copy-icon">&#128203;</span></button>
+tar xzf termide-{v}-x86_64-unknown-linux-musl.tar.gz &amp;&amp; ./termide">curl -LO https://github.com/termide/termide/releases/latest/download/termide-0.41.0-x86_64-unknown-linux-musl.tar.gz
+tar xzf termide-0.41.0-x86_64-unknown-linux-musl.tar.gz &amp;&amp; ./termide</code></pre>
+                    <button class="copy-btn" data-copy="curl -LO https://github.com/termide/termide/releases/latest/download/termide-0.41.0-x86_64-unknown-linux-musl.tar.gz
+tar xzf termide-0.41.0-x86_64-unknown-linux-musl.tar.gz &amp;&amp; ./termide" title="Скопировать"><span class="copy-icon">&#128203;</span></button>
                 </div>
             </div>
             <div class="install-panel" role="tabpanel" data-panel="brew">
@@ -808,17 +812,17 @@ brew install termide" title="Скопировать"><span class="copy-icon">&#1
                 <p class="platform">Debian и Ubuntu, x86_64.</p>
                 <div class="code-block">
                     <pre><code data-template="curl -LO https://github.com/termide/termide/releases/latest/download/termide_{v}-1_amd64.deb
-sudo dpkg -i termide_{v}-1_amd64.deb">curl -LO https://github.com/termide/termide/releases/latest/download/termide_0.40.0-1_amd64.deb
-sudo dpkg -i termide_0.40.0-1_amd64.deb</code></pre>
-                    <button class="copy-btn" data-copy="curl -LO https://github.com/termide/termide/releases/latest/download/termide_0.40.0-1_amd64.deb
-sudo dpkg -i termide_0.40.0-1_amd64.deb" title="Скопировать"><span class="copy-icon">&#128203;</span></button>
+sudo dpkg -i termide_{v}-1_amd64.deb">curl -LO https://github.com/termide/termide/releases/latest/download/termide_0.41.0-1_amd64.deb
+sudo dpkg -i termide_0.41.0-1_amd64.deb</code></pre>
+                    <button class="copy-btn" data-copy="curl -LO https://github.com/termide/termide/releases/latest/download/termide_0.41.0-1_amd64.deb
+sudo dpkg -i termide_0.41.0-1_amd64.deb" title="Скопировать"><span class="copy-icon">&#128203;</span></button>
                 </div>
             </div>
             <div class="install-panel" role="tabpanel" data-panel="rpm">
                 <p class="platform">Fedora, RHEL и CentOS, x86_64.</p>
                 <div class="code-block">
-                    <pre><code data-template="sudo rpm -i https://github.com/termide/termide/releases/latest/download/termide-{v}-1.x86_64.rpm">sudo rpm -i https://github.com/termide/termide/releases/latest/download/termide-0.40.0-1.x86_64.rpm</code></pre>
-                    <button class="copy-btn" data-copy="sudo rpm -i https://github.com/termide/termide/releases/latest/download/termide-0.40.0-1.x86_64.rpm" title="Скопировать"><span class="copy-icon">&#128203;</span></button>
+                    <pre><code data-template="sudo rpm -i https://github.com/termide/termide/releases/latest/download/termide-{v}-1.x86_64.rpm">sudo rpm -i https://github.com/termide/termide/releases/latest/download/termide-0.41.0-1.x86_64.rpm</code></pre>
+                    <button class="copy-btn" data-copy="sudo rpm -i https://github.com/termide/termide/releases/latest/download/termide-0.41.0-1.x86_64.rpm" title="Скопировать"><span class="copy-icon">&#128203;</span></button>
                 </div>
             </div>
             <div class="install-panel" role="tabpanel" data-panel="termux">
@@ -827,18 +831,18 @@ sudo dpkg -i termide_0.40.0-1_amd64.deb" title="Скопировать"><span cl
                     <pre><code data-template="pkg install git openssh
 curl -LO https://github.com/termide/termide/releases/latest/download/termide-{v}-aarch64-unknown-linux-musl.tar.gz
 tar xzf termide-{v}-aarch64-unknown-linux-musl.tar.gz &amp;&amp; ./termide">pkg install git openssh
-curl -LO https://github.com/termide/termide/releases/latest/download/termide-0.40.0-aarch64-unknown-linux-musl.tar.gz
-tar xzf termide-0.40.0-aarch64-unknown-linux-musl.tar.gz &amp;&amp; ./termide</code></pre>
+curl -LO https://github.com/termide/termide/releases/latest/download/termide-0.41.0-aarch64-unknown-linux-musl.tar.gz
+tar xzf termide-0.41.0-aarch64-unknown-linux-musl.tar.gz &amp;&amp; ./termide</code></pre>
                     <button class="copy-btn" data-copy="pkg install git openssh
-curl -LO https://github.com/termide/termide/releases/latest/download/termide-0.40.0-aarch64-unknown-linux-musl.tar.gz
-tar xzf termide-0.40.0-aarch64-unknown-linux-musl.tar.gz &amp;&amp; ./termide" title="Скопировать"><span class="copy-icon">&#128203;</span></button>
+curl -LO https://github.com/termide/termide/releases/latest/download/termide-0.41.0-aarch64-unknown-linux-musl.tar.gz
+tar xzf termide-0.41.0-aarch64-unknown-linux-musl.tar.gz &amp;&amp; ./termide" title="Скопировать"><span class="copy-icon">&#128203;</span></button>
                 </div>
             </div>
             <div class="install-panel" role="tabpanel" data-panel="windows">
                 <p class="platform">Скачайте, распакуйте и запустите <code>termide.exe</code> в Windows Terminal.</p>
                 <div class="code-block">
-                    <pre><code data-template="https://github.com/termide/termide/releases/latest/download/termide-{v}-x86_64-pc-windows-msvc.zip">https://github.com/termide/termide/releases/latest/download/termide-0.40.0-x86_64-pc-windows-msvc.zip</code></pre>
-                    <button class="copy-btn" data-copy="https://github.com/termide/termide/releases/latest/download/termide-0.40.0-x86_64-pc-windows-msvc.zip" title="Скопировать"><span class="copy-icon">&#128203;</span></button>
+                    <pre><code data-template="https://github.com/termide/termide/releases/latest/download/termide-{v}-x86_64-pc-windows-msvc.zip">https://github.com/termide/termide/releases/latest/download/termide-0.41.0-x86_64-pc-windows-msvc.zip</code></pre>
+                    <button class="copy-btn" data-copy="https://github.com/termide/termide/releases/latest/download/termide-0.41.0-x86_64-pc-windows-msvc.zip" title="Скопировать"><span class="copy-icon">&#128203;</span></button>
                 </div>
             </div>
             </div>
@@ -860,7 +864,7 @@ tar xzf termide-0.40.0-aarch64-unknown-linux-musl.tar.gz &amp;&amp; ./termide" t
                 </div>
                 <div class="footer-meta">
                     <p>Лицензия MIT &bull; Сделано с <span class="rust-heart">&#9829;</span> на Rust</p>
-                    <p class="version">v<span data-version>0.40.0</span></p>
+                    <p class="version">v<span data-version>0.41.0</span></p>
                 </div>
             </div>
         </div>

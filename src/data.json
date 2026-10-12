@@ -1,7 +1,7 @@
 {
   "site_url": "https://termide.github.io",
   "repo_url": "https://github.com/termide/termide",
-  "version": "0.40.0",
+  "version": "0.41.0",
   "languages": [
     {
       "code": "en",
@@ -86,6 +86,7 @@
       "permissions",
       "tools",
       "agents",
+      "autonomy",
       "extend",
       "visibility"
     ],

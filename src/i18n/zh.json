@@ -32,7 +32,7 @@
     "install_all": "全部安装方式"
   },
   "trust": {
-    "size": "下载仅约 12 MB，无任何依赖",
+    "size": "下载仅约 16 MB，无任何依赖",
     "privacy": "无遥测、无需账户、不检查更新",
     "ai_off": "在你配置模型之前，AI 保持关闭",
     "familiar": "菜单、鼠标和 F 键：上手即会"
@@ -97,7 +97,7 @@
     "items": {
       "models": {
         "t": "使用你自己的模型",
-        "d": "任何兼容 OpenAI 或 Anthropic 的接口：llama.cpp、Ollama、vLLM、omlx 或云端服务商。服务器提供上下文窗口时会自动采用。"
+        "d": "任何兼容 OpenAI 或 Anthropic 的接口：llama.cpp、Ollama、vLLM、omlx 或云端服务商。服务器提供上下文窗口时会自动采用。可将截图直接粘贴到提示中，模型能看到它。"
       },
       "permissions": {
         "t": "未经你同意不做任何修改",
@@ -110,6 +110,10 @@
       "agents": {
         "t": "同一面板中的其他智能体",
         "d": "通过 Agent Client Protocol 接入 Claude Code、Codex 和 Gemini CLI，也支持自定义智能体和处理专项任务的子智能体。"
+      },
+      "autonomy": {
+        "t": "让它自己干活",
+        "d": "<code>/goal</code> 让代理持续处理任务，直到独立的评审确认完成；<code>/loop</code> 按间隔重复一个提示；因关闭面板而中断的工作可从中断处继续。"
       },
       "extend": {
         "t": "用文件来扩展",
@@ -167,7 +171,7 @@
         "cards": {
           "fm": {
             "t": "文件管理器",
-            "d": "带嵌套 git 状态的目录树、glob 与正则搜索、批量操作、书签和目录切换器。zip、tar 和 ISO 压缩包可像文件夹一样打开，服务器上的也可以；按 <code>P</code> 打包所选内容。"
+            "d": "带嵌套 git 状态的目录树、glob 与正则搜索、按掩码选择、批量操作、书签，以及列出已挂载磁盘的目录切换器。zip、tar 和 ISO 压缩包可像文件夹一样打开，服务器上的也可以；按 <code>P</code> 以所选压缩级别打包所选内容，按 <code>Alt+F9</code> 解压。"
           },
           "remote": {
             "t": "远程文件系统",

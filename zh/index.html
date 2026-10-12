@@ -40,7 +40,7 @@
   "description": "带 LSP 的编辑器、支持 SFTP/FTP 的双栏文件管理器、终端、git、数据库查看器，以及运行在你自己模型上的编程智能体 —— 一个零配置、使用 Rust 编写的静态二进制文件。",
   "applicationCategory": "DeveloperApplication",
   "operatingSystem": "Linux, macOS, Windows, Android",
-  "softwareVersion": "0.40.0",
+  "softwareVersion": "0.41.0",
   "license": "https://opensource.org/licenses/MIT",
   "downloadUrl": "https://github.com/termide/termide/releases/latest",
   "codeRepository": "https://github.com/termide/termide",
@@ -127,7 +127,7 @@
         </div>
 
         <ul class="trust-strip">
-            <li><span class="trust-mark">&#10003;</span> 下载仅约 12 MB，无任何依赖</li>
+            <li><span class="trust-mark">&#10003;</span> 下载仅约 16 MB，无任何依赖</li>
             <li><span class="trust-mark">&#10003;</span> 无遥测、无需账户、不检查更新</li>
             <li><span class="trust-mark">&#10003;</span> 在你配置模型之前，AI 保持关闭</li>
             <li><span class="trust-mark">&#10003;</span> 菜单、鼠标和 F 键：上手即会</li>
@@ -214,7 +214,7 @@
                 <div class="agent-items">
                     <div class="agent-item">
                         <h4>使用你自己的模型</h4>
-                        <p>任何兼容 OpenAI 或 Anthropic 的接口：llama.cpp、Ollama、vLLM、omlx 或云端服务商。服务器提供上下文窗口时会自动采用。</p>
+                        <p>任何兼容 OpenAI 或 Anthropic 的接口：llama.cpp、Ollama、vLLM、omlx 或云端服务商。服务器提供上下文窗口时会自动采用。可将截图直接粘贴到提示中，模型能看到它。</p>
                     </div>
                     <div class="agent-item">
                         <h4>未经你同意不做任何修改</h4>
@@ -227,6 +227,10 @@
                     <div class="agent-item">
                         <h4>同一面板中的其他智能体</h4>
                         <p>通过 Agent Client Protocol 接入 Claude Code、Codex 和 Gemini CLI，也支持自定义智能体和处理专项任务的子智能体。</p>
+                    </div>
+                    <div class="agent-item">
+                        <h4>让它自己干活</h4>
+                        <p><code>/goal</code> 让代理持续处理任务，直到独立的评审确认完成；<code>/loop</code> 按间隔重复一个提示；因关闭面板而中断的工作可从中断处继续。</p>
                     </div>
                     <div class="agent-item">
                         <h4>用文件来扩展</h4>
@@ -620,7 +624,7 @@ error       = &quot;LightRed&quot;" title="复制到剪贴板"><span class="copy
             <div class="feature-group">
                 <h3 class="feature-group-title">文件与数据</h3>
                 <ul class="feature-list">
-                    <li><span class="feature-icon">[]</span><span><strong>文件管理器</strong> 带嵌套 git 状态的目录树、glob 与正则搜索、批量操作、书签和目录切换器。zip、tar 和 ISO 压缩包可像文件夹一样打开，服务器上的也可以；按 <code>P</code> 打包所选内容。</span></li>
+                    <li><span class="feature-icon">[]</span><span><strong>文件管理器</strong> 带嵌套 git 状态的目录树、glob 与正则搜索、按掩码选择、批量操作、书签，以及列出已挂载磁盘的目录切换器。zip、tar 和 ISO 压缩包可像文件夹一样打开，服务器上的也可以；按 <code>P</code> 以所选压缩级别打包所选内容，按 <code>Alt+F9</code> 解压。</span></li>
                     <li><span class="feature-icon">↔</span><span><strong>远程文件系统</strong> 纯 Rust 实现的 SFTP、FTP 和 FTPS；SMB 和 NFS 通过操作系统挂载。</span></li>
                     <li><span class="feature-icon">⇅</span><span><strong>后台操作</strong> 复制、移动、上传和下载，带进度显示，可暂停、继续和取消。</span></li>
                     <li><span class="feature-icon">▦</span><span><strong>数据库查看器</strong> SQLite、PostgreSQL 和 MySQL：服务端排序、按列筛选、单元格编辑，行可导出为 TSV、JSON 或 INSERT。</span></li>
@@ -774,10 +778,10 @@ error       = &quot;LightRed&quot;" title="复制到剪贴板"><span class="copy
                 <p class="platform">适用于任何 Linux 的静态 musl 二进制，包括 Alpine 和容器。</p>
                 <div class="code-block">
                     <pre><code data-template="curl -LO https://github.com/termide/termide/releases/latest/download/termide-{v}-x86_64-unknown-linux-musl.tar.gz
-tar xzf termide-{v}-x86_64-unknown-linux-musl.tar.gz &amp;&amp; ./termide">curl -LO https://github.com/termide/termide/releases/latest/download/termide-0.40.0-x86_64-unknown-linux-musl.tar.gz
-tar xzf termide-0.40.0-x86_64-unknown-linux-musl.tar.gz &amp;&amp; ./termide</code></pre>
-                    <button class="copy-btn" data-copy="curl -LO https://github.com/termide/termide/releases/latest/download/termide-0.40.0-x86_64-unknown-linux-musl.tar.gz
-tar xzf termide-0.40.0-x86_64-unknown-linux-musl.tar.gz &amp;&amp; ./termide" title="复制到剪贴板"><span class="copy-icon">&#128203;</span></button>
+tar xzf termide-{v}-x86_64-unknown-linux-musl.tar.gz &amp;&amp; ./termide">curl -LO https://github.com/termide/termide/releases/latest/download/termide-0.41.0-x86_64-unknown-linux-musl.tar.gz
+tar xzf termide-0.41.0-x86_64-unknown-linux-musl.tar.gz &amp;&amp; ./termide</code></pre>
+                    <button class="copy-btn" data-copy="curl -LO https://github.com/termide/termide/releases/latest/download/termide-0.41.0-x86_64-unknown-linux-musl.tar.gz
+tar xzf termide-0.41.0-x86_64-unknown-linux-musl.tar.gz &amp;&amp; ./termide" title="复制到剪贴板"><span class="copy-icon">&#128203;</span></button>
                 </div>
             </div>
             <div class="install-panel" role="tabpanel" data-panel="brew">
@@ -808,17 +812,17 @@ brew install termide" title="复制到剪贴板"><span class="copy-icon">&#12820
                 <p class="platform">Debian 和 Ubuntu，x86_64。</p>
                 <div class="code-block">
                     <pre><code data-template="curl -LO https://github.com/termide/termide/releases/latest/download/termide_{v}-1_amd64.deb
-sudo dpkg -i termide_{v}-1_amd64.deb">curl -LO https://github.com/termide/termide/releases/latest/download/termide_0.40.0-1_amd64.deb
-sudo dpkg -i termide_0.40.0-1_amd64.deb</code></pre>
-                    <button class="copy-btn" data-copy="curl -LO https://github.com/termide/termide/releases/latest/download/termide_0.40.0-1_amd64.deb
-sudo dpkg -i termide_0.40.0-1_amd64.deb" title="复制到剪贴板"><span class="copy-icon">&#128203;</span></button>
+sudo dpkg -i termide_{v}-1_amd64.deb">curl -LO https://github.com/termide/termide/releases/latest/download/termide_0.41.0-1_amd64.deb
+sudo dpkg -i termide_0.41.0-1_amd64.deb</code></pre>
+                    <button class="copy-btn" data-copy="curl -LO https://github.com/termide/termide/releases/latest/download/termide_0.41.0-1_amd64.deb
+sudo dpkg -i termide_0.41.0-1_amd64.deb" title="复制到剪贴板"><span class="copy-icon">&#128203;</span></button>
                 </div>
             </div>
             <div class="install-panel" role="tabpanel" data-panel="rpm">
                 <p class="platform">Fedora、RHEL 和 CentOS，x86_64。</p>
                 <div class="code-block">
-                    <pre><code data-template="sudo rpm -i https://github.com/termide/termide/releases/latest/download/termide-{v}-1.x86_64.rpm">sudo rpm -i https://github.com/termide/termide/releases/latest/download/termide-0.40.0-1.x86_64.rpm</code></pre>
-                    <button class="copy-btn" data-copy="sudo rpm -i https://github.com/termide/termide/releases/latest/download/termide-0.40.0-1.x86_64.rpm" title="复制到剪贴板"><span class="copy-icon">&#128203;</span></button>
+                    <pre><code data-template="sudo rpm -i https://github.com/termide/termide/releases/latest/download/termide-{v}-1.x86_64.rpm">sudo rpm -i https://github.com/termide/termide/releases/latest/download/termide-0.41.0-1.x86_64.rpm</code></pre>
+                    <button class="copy-btn" data-copy="sudo rpm -i https://github.com/termide/termide/releases/latest/download/termide-0.41.0-1.x86_64.rpm" title="复制到剪贴板"><span class="copy-icon">&#128203;</span></button>
                 </div>
             </div>
             <div class="install-panel" role="tabpanel" data-panel="termux">
@@ -827,18 +831,18 @@ sudo dpkg -i termide_0.40.0-1_amd64.deb" title="复制到剪贴板"><span class=
                     <pre><code data-template="pkg install git openssh
 curl -LO https://github.com/termide/termide/releases/latest/download/termide-{v}-aarch64-unknown-linux-musl.tar.gz
 tar xzf termide-{v}-aarch64-unknown-linux-musl.tar.gz &amp;&amp; ./termide">pkg install git openssh
-curl -LO https://github.com/termide/termide/releases/latest/download/termide-0.40.0-aarch64-unknown-linux-musl.tar.gz
-tar xzf termide-0.40.0-aarch64-unknown-linux-musl.tar.gz &amp;&amp; ./termide</code></pre>
+curl -LO https://github.com/termide/termide/releases/latest/download/termide-0.41.0-aarch64-unknown-linux-musl.tar.gz
+tar xzf termide-0.41.0-aarch64-unknown-linux-musl.tar.gz &amp;&amp; ./termide</code></pre>
                     <button class="copy-btn" data-copy="pkg install git openssh
-curl -LO https://github.com/termide/termide/releases/latest/download/termide-0.40.0-aarch64-unknown-linux-musl.tar.gz
-tar xzf termide-0.40.0-aarch64-unknown-linux-musl.tar.gz &amp;&amp; ./termide" title="复制到剪贴板"><span class="copy-icon">&#128203;</span></button>
+curl -LO https://github.com/termide/termide/releases/latest/download/termide-0.41.0-aarch64-unknown-linux-musl.tar.gz
+tar xzf termide-0.41.0-aarch64-unknown-linux-musl.tar.gz &amp;&amp; ./termide" title="复制到剪贴板"><span class="copy-icon">&#128203;</span></button>
                 </div>
             </div>
             <div class="install-panel" role="tabpanel" data-panel="windows">
                 <p class="platform">下载、解压，然后在 Windows Terminal 中运行 <code>termide.exe</code>。</p>
                 <div class="code-block">
-                    <pre><code data-template="https://github.com/termide/termide/releases/latest/download/termide-{v}-x86_64-pc-windows-msvc.zip">https://github.com/termide/termide/releases/latest/download/termide-0.40.0-x86_64-pc-windows-msvc.zip</code></pre>
-                    <button class="copy-btn" data-copy="https://github.com/termide/termide/releases/latest/download/termide-0.40.0-x86_64-pc-windows-msvc.zip" title="复制到剪贴板"><span class="copy-icon">&#128203;</span></button>
+                    <pre><code data-template="https://github.com/termide/termide/releases/latest/download/termide-{v}-x86_64-pc-windows-msvc.zip">https://github.com/termide/termide/releases/latest/download/termide-0.41.0-x86_64-pc-windows-msvc.zip</code></pre>
+                    <button class="copy-btn" data-copy="https://github.com/termide/termide/releases/latest/download/termide-0.41.0-x86_64-pc-windows-msvc.zip" title="复制到剪贴板"><span class="copy-icon">&#128203;</span></button>
                 </div>
             </div>
             </div>
@@ -860,7 +864,7 @@ tar xzf termide-0.40.0-aarch64-unknown-linux-musl.tar.gz &amp;&amp; ./termide" t
                 </div>
                 <div class="footer-meta">
                     <p>MIT 许可证 &bull; 用 <span class="rust-heart">&#9829;</span> 和 Rust 打造</p>
-                    <p class="version">v<span data-version>0.40.0</span></p>
+                    <p class="version">v<span data-version>0.41.0</span></p>
                 </div>
             </div>
         </div>

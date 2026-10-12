@@ -32,7 +32,7 @@
     "install_all": "All install options"
   },
   "trust": {
-    "size": "One ~12 MB download, no dependencies",
+    "size": "One ~16 MB download, no dependencies",
     "privacy": "No telemetry, no account, no update checks",
     "ai_off": "AI stays off until you configure a model",
     "familiar": "Menus, mouse and F-keys: familiar from minute one"
@@ -97,7 +97,7 @@
     "items": {
       "models": {
         "t": "Bring your own model",
-        "d": "Any OpenAI- or Anthropic-compatible endpoint: llama.cpp, Ollama, vLLM, omlx or a hosted provider. The context window comes from the server when it reports one."
+        "d": "Any OpenAI- or Anthropic-compatible endpoint: llama.cpp, Ollama, vLLM, omlx or a hosted provider. The context window comes from the server when it reports one. Paste a screenshot into the prompt and the model sees it."
       },
       "permissions": {
         "t": "Nothing changes without you",
@@ -110,6 +110,10 @@
       "agents": {
         "t": "Other agents in the same panel",
         "d": "Claude Code, Codex and Gemini CLI over the Agent Client Protocol, your own agents, and subagents for focused jobs."
+      },
+      "autonomy": {
+        "t": "Leave it working",
+        "d": "<code>/goal</code> keeps it at a task until a separate judge agrees it is done, <code>/loop</code> repeats a prompt on an interval, and work cut off by a closed panel picks up where it stopped."
       },
       "extend": {
         "t": "Extend it in files",
@@ -167,7 +171,7 @@
         "cards": {
           "fm": {
             "t": "File manager",
-            "d": "Tree with nested git status, glob and regex search, batch operations, bookmarks and a directory switcher. Zip, tar and ISO archives open like folders, also on a server; <code>P</code> packs the selection."
+            "d": "Tree with nested git status, glob and regex search, selection by mask, batch operations, bookmarks and a directory switcher that lists mounted disks. Zip, tar and ISO archives open like folders, also on a server; <code>P</code> packs the selection at the compression level you pick, <code>Alt+F9</code> unpacks."
           },
           "remote": {
             "t": "Remote filesystems",
