@@ -458,6 +458,9 @@
     "docs": "Документация",
     "releases": "Релизы",
     "issues": "Задачи",
+    "discussions": "Обсуждения",
+    "news": "Новости в Telegram",
+    "chat": "Чат в Telegram",
     "license": "Лицензия MIT &bull; Сделано с <span class=\"rust-heart\">&#9829;</span> на Rust"
   }
 }

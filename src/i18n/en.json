@@ -458,6 +458,9 @@
     "docs": "Documentation",
     "releases": "Releases",
     "issues": "Issues",
+    "discussions": "Discussions",
+    "news": "Telegram news",
+    "chat": "Telegram chat",
     "license": "MIT License &bull; Made with <span class=\"rust-heart\">&#9829;</span> and Rust"
   }
 }

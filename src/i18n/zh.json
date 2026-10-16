@@ -458,6 +458,9 @@
     "docs": "文档",
     "releases": "版本发布",
     "issues": "问题反馈",
+    "discussions": "讨论区",
+    "news": "Telegram 频道",
+    "chat": "Telegram 群组",
     "license": "MIT 许可证 &bull; 用 <span class=\"rust-heart\">&#9829;</span> 和 Rust 打造"
   }
 }
