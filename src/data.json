@@ -1,8 +1,8 @@
 {
   "site_url": "https://termide.github.io",
   "repo_url": "https://github.com/termide/termide",
-  "version": "0.41.0",
-  "download_mb": 16,
+  "version": "0.42.0",
+  "download_mb": 17,
   "languages": [
     {
       "code": "en",
