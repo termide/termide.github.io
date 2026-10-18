@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "TermIDE — all-in-one terminal workspace for desktops and servers",
-    "description": "Editor with LSP, dual-pane file manager with SFTP/FTP, terminal, git, database viewer and a coding agent that runs on your own model — one zero-config static binary written in Rust.",
+    "description": "Editor with LSP and a debugger, dual-pane file manager with SFTP/FTP, terminal, git, database viewer and a coding agent that runs on your own model — one zero-config static binary written in Rust.",
     "og_title": "TermIDE — one terminal workspace, on your laptop and on your servers",
     "og_description": "Editor, file manager, terminal, git, databases and a coding agent in one static Rust binary. Zero config."
   },
@@ -46,6 +46,10 @@
       "editor": {
         "t": "Code with LSP",
         "d": "Completion, go to definition, references, rename and diagnostics from any language server, seven of them set up out of the box."
+      },
+      "debug": {
+        "t": "Debug in place",
+        "d": "<code>F5</code> runs to a breakpoint set with <code>Ctrl+F8</code>; step and read the stack and variables in a debug panel. lldb, GDB, Delve and debugpy; a Python or Go file needs no setup."
       },
       "agent": {
         "t": "An agent on your model",
@@ -105,11 +109,11 @@
       },
       "tools": {
         "t": "Tools it needs, nothing more",
-        "d": "Read, edit, write and shell, plus web search and fetch through a browser profile of its own, never your logins, and <code>recall</code> over earlier sessions, git history and project files."
+        "d": "Read, edit, write and shell, plus web search and fetch through a browser profile of its own, never your logins, and <code>recall</code> over earlier sessions, git history and project files, and <code>debug</code>: breakpoints, stepping and evaluation in the same session you watch."
       },
       "agents": {
-        "t": "Other agents in the same panel",
-        "d": "Claude Code, Codex and Gemini CLI over the Agent Client Protocol, your own agents, and subagents for focused jobs."
+        "t": "Agents that work together",
+        "d": "Claude Code, Codex and Gemini CLI over the Agent Client Protocol, and your own agents. Hand tasks to subagents, hidden, in a panel of their own or in the background; agents in different panels message each other and do not overwrite each other's edits."
       },
       "autonomy": {
         "t": "Leave it working",
@@ -151,6 +155,10 @@
           "editor": {
             "t": "Editor with LSP",
             "d": "Completion, hover, go to definition, references, rename and quick fixes; a diagnostics panel; tree-sitter highlighting for 23 languages."
+          },
+          "debugger": {
+            "t": "Debugger",
+            "d": "Breakpoints beside the line numbers that move with your edits; a debug panel over DAP (lldb-dap, GDB, Delve, debugpy) with the call stack, variables, stepping and expression evaluation; the program gets a terminal of its own for input. Command-line lldb, gdb, dlv and pdb work too."
           },
           "outline": {
             "t": "Code outline",
@@ -276,10 +284,12 @@
     "values": {
       "plugin": "plugin",
       "ssh": "SSH",
-      "tree": "tree only"
+      "tree": "tree only",
+      "exp": "experimental"
     },
     "rows": {
       "lsp": "LSP support",
+      "debug": "Debugger (DAP)",
       "zero": "Zero config",
       "script": "Script automation",
       "agent": "Built-in coding agent (local or hosted models)",
@@ -327,6 +337,11 @@
         "task": "Edit code and configs",
         "usual": "vim, nano",
         "termide": "Editor with LSP"
+      },
+      "debug": {
+        "task": "Step through a program",
+        "usual": "gdb, lldb, pdb",
+        "termide": "Debug panel, breakpoints in the editor"
       },
       "git": {
         "task": "Review and commit",

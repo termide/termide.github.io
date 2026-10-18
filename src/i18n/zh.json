@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "TermIDE —— 面向工作站与服务器的一站式终端工作台",
-    "description": "带 LSP 的编辑器、支持 SFTP/FTP 的双栏文件管理器、终端、git、数据库查看器，以及运行在你自己模型上的编程智能体 —— 一个零配置、使用 Rust 编写的静态二进制文件。",
+    "description": "带 LSP 和调试器的编辑器、支持 SFTP/FTP 的双栏文件管理器、终端、git、数据库查看器，以及运行在你自己模型上的编程智能体 —— 一个零配置、使用 Rust 编写的静态二进制文件。",
     "og_title": "TermIDE —— 同一个终端工作台，笔记本和服务器上都能用",
     "og_description": "编辑器、文件管理器、终端、git、数据库和编程智能体，集成在一个 Rust 静态二进制文件中。零配置。"
   },
@@ -46,6 +46,10 @@
       "editor": {
         "t": "带 LSP 的代码编辑",
         "d": "来自任意语言服务器的补全、跳转到定义、查找引用、重命名和诊断，其中七种开箱即用。"
+      },
+      "debug": {
+        "t": "就地调试",
+        "d": "<code>F5</code> 运行到用 <code>Ctrl+F8</code> 设置的断点；在调试面板中单步执行、查看调用栈和变量。支持 lldb、GDB、Delve 和 debugpy；Python 或 Go 文件无需配置。"
       },
       "agent": {
         "t": "跑在你模型上的智能体",
@@ -105,11 +109,11 @@
       },
       "tools": {
         "t": "只给它需要的工具",
-        "d": "读取、编辑、写入和 shell，外加通过独立浏览器配置文件进行的网页搜索和抓取，绝不使用你的登录状态；<code>recall</code> 可检索以往会话、git 历史和项目文件。"
+        "d": "读取、编辑、写入和 shell，外加通过独立浏览器配置文件进行的网页搜索和抓取，绝不使用你的登录状态；<code>recall</code> 可检索以往会话、git 历史和项目文件；还有 <code>debug</code>：在你看得到的同一会话中设置断点、单步执行和求值。"
       },
       "agents": {
-        "t": "同一面板中的其他智能体",
-        "d": "通过 Agent Client Protocol 接入 Claude Code、Codex 和 Gemini CLI，也支持自定义智能体和处理专项任务的子智能体。"
+        "t": "协同工作的智能体",
+        "d": "通过 Agent Client Protocol 接入 Claude Code、Codex 和 Gemini CLI，也支持自定义智能体。任务可交给子智能体——隐藏运行、在独立面板中或在后台运行；不同面板中的智能体可以互发消息，且不会覆盖彼此的修改。"
       },
       "autonomy": {
         "t": "让它自己干活",
@@ -151,6 +155,10 @@
           "editor": {
             "t": "带 LSP 的编辑器",
             "d": "补全、悬停提示、跳转到定义、查找引用、重命名和快速修复；诊断面板；基于 tree-sitter 的 23 种语言语法高亮。"
+          },
+          "debugger": {
+            "t": "调试器",
+            "d": "断点显示在行号旁并随编辑移动；基于 DAP 的调试面板（lldb-dap、GDB、Delve、debugpy）提供调用栈、变量、单步执行和表达式求值；被调试的程序拥有自己的终端用于输入。也支持命令行的 lldb、gdb、dlv 和 pdb。"
           },
           "outline": {
             "t": "代码大纲",
@@ -276,10 +284,12 @@
     "values": {
       "plugin": "插件",
       "ssh": "SSH",
-      "tree": "仅文件树"
+      "tree": "仅文件树",
+      "exp": "实验性"
     },
     "rows": {
       "lsp": "LSP 支持",
+      "debug": "调试器（DAP）",
       "zero": "零配置",
       "script": "脚本自动化",
       "agent": "内置编程智能体（本地或云端模型）",
@@ -327,6 +337,11 @@
         "task": "编辑代码和配置",
         "usual": "vim、nano",
         "termide": "带 LSP 的编辑器"
+      },
+      "debug": {
+        "task": "单步调试程序",
+        "usual": "gdb、lldb、pdb",
+        "termide": "调试面板与编辑器内断点"
       },
       "git": {
         "task": "审阅并提交",

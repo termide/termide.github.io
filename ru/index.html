@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TermIDE — терминальное рабочее место «всё в одном» для рабочей машины и серверов</title>
-    <meta name="description" content="Редактор с LSP, двухпанельный файловый менеджер с SFTP/FTP, терминал, git, просмотр баз данных и агент для кода на вашей собственной модели — один статический бинарник на Rust без настройки.">
+    <meta name="description" content="Редактор с LSP и отладчиком, двухпанельный файловый менеджер с SFTP/FTP, терминал, git, просмотр баз данных и агент для кода на вашей собственной модели — один статический бинарник на Rust без настройки.">
     <link rel="canonical" href="https://termide.github.io/ru/">
     <link rel="alternate" hreflang="en" href="https://termide.github.io/">
     <link rel="alternate" hreflang="ru" href="https://termide.github.io/ru/">
@@ -37,7 +37,7 @@
   "@type": "SoftwareApplication",
   "name": "TermIDE",
   "url": "https://termide.github.io/ru/",
-  "description": "Редактор с LSP, двухпанельный файловый менеджер с SFTP/FTP, терминал, git, просмотр баз данных и агент для кода на вашей собственной модели — один статический бинарник на Rust без настройки.",
+  "description": "Редактор с LSP и отладчиком, двухпанельный файловый менеджер с SFTP/FTP, терминал, git, просмотр баз данных и агент для кода на вашей собственной модели — один статический бинарник на Rust без настройки.",
   "applicationCategory": "DeveloperApplication",
   "operatingSystem": "Linux, macOS, Windows, Android",
   "softwareVersion": "0.43.0",
@@ -144,6 +144,10 @@
                         <p>Автодополнение, переход к определению, ссылки, переименование и диагностика от любого языкового сервера; семь из них настроены из коробки.</p>
                     </div>
                     <div class="home-item">
+                        <h4>Отладка на месте</h4>
+                        <p><code>F5</code> запускает программу до точки останова, поставленной по <code>Ctrl+F8</code>; шаги, стек и переменные — в панели отладки. lldb, GDB, Delve и debugpy; файл на Python или Go отлаживается без настройки.</p>
+                    </div>
+                    <div class="home-item">
                         <h4>Агент на вашей модели</h4>
                         <p>Подключите llama.cpp, Ollama или vLLM на своей машине — и код никуда не уходит. Или используйте облачный endpoint.</p>
                     </div>
@@ -222,11 +226,11 @@
                     </div>
                     <div class="agent-item">
                         <h4>Только нужные инструменты</h4>
-                        <p>Чтение, правка, запись и шелл, плюс веб-поиск и загрузка страниц через собственный профиль браузера — без ваших логинов, и <code>recall</code> по прошлым сессиям, истории git и файлам проекта.</p>
+                        <p>Чтение, правка, запись и шелл, плюс веб-поиск и загрузка страниц через собственный профиль браузера — без ваших логинов, и <code>recall</code> по прошлым сессиям, истории git и файлам проекта, и <code>debug</code>: точки останова, шаги и вычисления в той же сессии, что видите вы.</p>
                     </div>
                     <div class="agent-item">
-                        <h4>Другие агенты в той же панели</h4>
-                        <p>Claude Code, Codex и Gemini CLI по Agent Client Protocol, ваши собственные агенты и субагенты для отдельных задач.</p>
+                        <h4>Агенты работают вместе</h4>
+                        <p>Claude Code, Codex и Gemini CLI по Agent Client Protocol и ваши собственные агенты. Задачи передаются субагентам — скрыто, в отдельной панели или в фоне; агенты в разных панелях пишут друг другу и не затирают чужие правки.</p>
                     </div>
                     <div class="agent-item">
                         <h4>Пусть работает сам</h4>
@@ -264,6 +268,7 @@
                         <tr><td>Не потерять работу при обрыве SSH</td><td>tmux, screen</td><td class="highlight">Отсоединяемые экземпляры</td></tr>
                         <tr><td>Перенести файлы между хостами</td><td>mc, ranger, scp</td><td class="highlight">Двухпанельный файловый менеджер с SFTP/FTP</td></tr>
                         <tr><td>Править код и конфиги</td><td>vim, nano</td><td class="highlight">Редактор с LSP</td></tr>
+                        <tr><td>Пройти программу по шагам</td><td>gdb, lldb, pdb</td><td class="highlight">Панель отладки, точки останова в редакторе</td></tr>
                         <tr><td>Просмотреть и закоммитить</td><td>lazygit, tig</td><td class="highlight">Панели статуса, лога и diff</td></tr>
                         <tr><td>Найти, что нагружает сервер</td><td>htop, ss</td><td class="highlight">Монитор ресурсов</td></tr>
                         <tr><td>Заглянуть в базу данных</td><td>sqlite3, psql</td><td class="highlight">Просмотр баз данных</td></tr>
@@ -616,6 +621,7 @@ error       = &quot;LightRed&quot;" title="Скопировать"><span class="
                 <h3 class="feature-group-title">Код</h3>
                 <ul class="feature-list">
                     <li><span class="feature-icon">{}</span><span><strong>Редактор с LSP</strong> Автодополнение, hover, переход к определению, ссылки, переименование и быстрые исправления; панель диагностики; подсветка tree-sitter для 23 языков.</span></li>
+                    <li><span class="feature-icon">●</span><span><strong>Отладчик</strong> Точки останова у номеров строк, которые сдвигаются вместе с правками; панель отладки по DAP (lldb-dap, GDB, Delve, debugpy) со стеком вызовов, переменными, шагами и вычислением выражений; у программы свой терминал для ввода. Работают и консольные lldb, gdb, dlv и pdb.</span></li>
                     <li><span class="feature-icon">§</span><span><strong>Структура кода</strong> Навигация по структуре через запросы tree-sitter, синхронизированная с курсором.</span></li>
                     <li><span class="feature-icon">¶</span><span><strong>Документы и диаграммы</strong> Отрендеренные Markdown и HTML, текстовый браузер, сохраняющий страницы в Markdown, и диаграммы Mermaid, нарисованные текстом, — включая диаграммы классов из ваших исходников.</span></li>
                     <li><span class="feature-icon">0x</span><span><strong>Hex-редактор</strong> Hex/ASCII-просмотр с курсором по байтам, выделением и поиском; правка поверх с резервной копией <code>.bak</code>.</span></li>
@@ -679,6 +685,7 @@ error       = &quot;LightRed&quot;" title="Скопировать"><span class="
                     <tbody>
                         <tr><td>Встроенный агент для кода (локальные и облачные модели)</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="plugin">плагин</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
                         <tr><td>MCP-серверы</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="plugin">плагин</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+                        <tr><td>Отладчик (DAP)</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="plugin">плагин</span></td><td><span class="plugin">экспериментально</span></td><td><span class="cross">&#10007;</span></td></tr>
                         <tr><td>Файловый менеджер</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="plugin">только дерево</span></td><td><span class="plugin">плагин</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
                         <tr><td>Фоновые файловые операции</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="plugin">плагин</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
                         <tr><td>Хранилище паролей</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="plugin">плагин</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>

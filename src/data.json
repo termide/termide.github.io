@@ -66,6 +66,7 @@
   "homes": {
     "desk": [
       "editor",
+      "debug",
       "agent",
       "git",
       "docs",
@@ -105,6 +106,10 @@
         {
           "id": "editor",
           "icon": "{}"
+        },
+        {
+          "id": "debugger",
+          "icon": "●"
         },
         {
           "id": "outline",
@@ -239,6 +244,16 @@
           "yes",
           "yes",
           "plugin"
+        ]
+      },
+      {
+        "id": "debug",
+        "values": [
+          "yes",
+          "no",
+          "plugin",
+          "exp",
+          "no"
         ]
       },
       {
@@ -485,6 +500,7 @@
     "featured": [
       "agent",
       "mcp",
+      "debug",
       "fm",
       "bgops",
       "vault",
@@ -500,6 +516,7 @@
     "detach",
     "files",
     "edit",
+    "debug",
     "git",
     "procs",
     "db",

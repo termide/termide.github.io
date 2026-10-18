@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TermIDE —— 面向工作站与服务器的一站式终端工作台</title>
-    <meta name="description" content="带 LSP 的编辑器、支持 SFTP/FTP 的双栏文件管理器、终端、git、数据库查看器，以及运行在你自己模型上的编程智能体 —— 一个零配置、使用 Rust 编写的静态二进制文件。">
+    <meta name="description" content="带 LSP 和调试器的编辑器、支持 SFTP/FTP 的双栏文件管理器、终端、git、数据库查看器，以及运行在你自己模型上的编程智能体 —— 一个零配置、使用 Rust 编写的静态二进制文件。">
     <link rel="canonical" href="https://termide.github.io/zh/">
     <link rel="alternate" hreflang="en" href="https://termide.github.io/">
     <link rel="alternate" hreflang="ru" href="https://termide.github.io/ru/">
@@ -37,7 +37,7 @@
   "@type": "SoftwareApplication",
   "name": "TermIDE",
   "url": "https://termide.github.io/zh/",
-  "description": "带 LSP 的编辑器、支持 SFTP/FTP 的双栏文件管理器、终端、git、数据库查看器，以及运行在你自己模型上的编程智能体 —— 一个零配置、使用 Rust 编写的静态二进制文件。",
+  "description": "带 LSP 和调试器的编辑器、支持 SFTP/FTP 的双栏文件管理器、终端、git、数据库查看器，以及运行在你自己模型上的编程智能体 —— 一个零配置、使用 Rust 编写的静态二进制文件。",
   "applicationCategory": "DeveloperApplication",
   "operatingSystem": "Linux, macOS, Windows, Android",
   "softwareVersion": "0.43.0",
@@ -144,6 +144,10 @@
                         <p>来自任意语言服务器的补全、跳转到定义、查找引用、重命名和诊断，其中七种开箱即用。</p>
                     </div>
                     <div class="home-item">
+                        <h4>就地调试</h4>
+                        <p><code>F5</code> 运行到用 <code>Ctrl+F8</code> 设置的断点；在调试面板中单步执行、查看调用栈和变量。支持 lldb、GDB、Delve 和 debugpy；Python 或 Go 文件无需配置。</p>
+                    </div>
+                    <div class="home-item">
                         <h4>跑在你模型上的智能体</h4>
                         <p>接入本机的 llama.cpp、Ollama 或 vLLM，代码不会离开你的机器；也可以使用云端接口。</p>
                     </div>
@@ -222,11 +226,11 @@
                     </div>
                     <div class="agent-item">
                         <h4>只给它需要的工具</h4>
-                        <p>读取、编辑、写入和 shell，外加通过独立浏览器配置文件进行的网页搜索和抓取，绝不使用你的登录状态；<code>recall</code> 可检索以往会话、git 历史和项目文件。</p>
+                        <p>读取、编辑、写入和 shell，外加通过独立浏览器配置文件进行的网页搜索和抓取，绝不使用你的登录状态；<code>recall</code> 可检索以往会话、git 历史和项目文件；还有 <code>debug</code>：在你看得到的同一会话中设置断点、单步执行和求值。</p>
                     </div>
                     <div class="agent-item">
-                        <h4>同一面板中的其他智能体</h4>
-                        <p>通过 Agent Client Protocol 接入 Claude Code、Codex 和 Gemini CLI，也支持自定义智能体和处理专项任务的子智能体。</p>
+                        <h4>协同工作的智能体</h4>
+                        <p>通过 Agent Client Protocol 接入 Claude Code、Codex 和 Gemini CLI，也支持自定义智能体。任务可交给子智能体——隐藏运行、在独立面板中或在后台运行；不同面板中的智能体可以互发消息，且不会覆盖彼此的修改。</p>
                     </div>
                     <div class="agent-item">
                         <h4>让它自己干活</h4>
@@ -264,6 +268,7 @@
                         <tr><td>SSH 断开后工作不丢失</td><td>tmux、screen</td><td class="highlight">可分离实例</td></tr>
                         <tr><td>在主机之间传输文件</td><td>mc、ranger、scp</td><td class="highlight">支持 SFTP/FTP 的双栏文件管理器</td></tr>
                         <tr><td>编辑代码和配置</td><td>vim、nano</td><td class="highlight">带 LSP 的编辑器</td></tr>
+                        <tr><td>单步调试程序</td><td>gdb、lldb、pdb</td><td class="highlight">调试面板与编辑器内断点</td></tr>
                         <tr><td>审阅并提交</td><td>lazygit、tig</td><td class="highlight">Git 状态、日志和 diff 面板</td></tr>
                         <tr><td>找出占满服务器的进程</td><td>htop、ss</td><td class="highlight">资源监控</td></tr>
                         <tr><td>查看数据库</td><td>sqlite3、psql</td><td class="highlight">数据库查看器</td></tr>
@@ -616,6 +621,7 @@ error       = &quot;LightRed&quot;" title="复制到剪贴板"><span class="copy
                 <h3 class="feature-group-title">代码</h3>
                 <ul class="feature-list">
                     <li><span class="feature-icon">{}</span><span><strong>带 LSP 的编辑器</strong> 补全、悬停提示、跳转到定义、查找引用、重命名和快速修复；诊断面板；基于 tree-sitter 的 23 种语言语法高亮。</span></li>
+                    <li><span class="feature-icon">●</span><span><strong>调试器</strong> 断点显示在行号旁并随编辑移动；基于 DAP 的调试面板（lldb-dap、GDB、Delve、debugpy）提供调用栈、变量、单步执行和表达式求值；被调试的程序拥有自己的终端用于输入。也支持命令行的 lldb、gdb、dlv 和 pdb。</span></li>
                     <li><span class="feature-icon">§</span><span><strong>代码大纲</strong> 基于 tree-sitter 查询的结构化导航，与光标同步。</span></li>
                     <li><span class="feature-icon">¶</span><span><strong>文档与图表</strong> 渲染后的 Markdown 和 HTML、可将网页保存为 Markdown 的文本模式浏览器，以及以文本绘制的 Mermaid 图表，包括从源代码生成的类图。</span></li>
                     <li><span class="feature-icon">0x</span><span><strong>十六进制编辑器</strong> 带字节光标、选区和搜索的十六进制/ASCII 视图；覆盖式编辑并自动生成 <code>.bak</code> 备份。</span></li>
@@ -679,6 +685,7 @@ error       = &quot;LightRed&quot;" title="复制到剪贴板"><span class="copy
                     <tbody>
                         <tr><td>内置编程智能体（本地或云端模型）</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="plugin">插件</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
                         <tr><td>MCP 服务器</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="plugin">插件</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+                        <tr><td>调试器（DAP）</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="plugin">插件</span></td><td><span class="plugin">实验性</span></td><td><span class="cross">&#10007;</span></td></tr>
                         <tr><td>文件管理器</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="plugin">仅文件树</span></td><td><span class="plugin">插件</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
                         <tr><td>后台文件操作</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="plugin">插件</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
                         <tr><td>密码保险库</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="plugin">插件</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>

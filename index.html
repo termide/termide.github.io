@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TermIDE — all-in-one terminal workspace for desktops and servers</title>
-    <meta name="description" content="Editor with LSP, dual-pane file manager with SFTP/FTP, terminal, git, database viewer and a coding agent that runs on your own model — one zero-config static binary written in Rust.">
+    <meta name="description" content="Editor with LSP and a debugger, dual-pane file manager with SFTP/FTP, terminal, git, database viewer and a coding agent that runs on your own model — one zero-config static binary written in Rust.">
     <link rel="canonical" href="https://termide.github.io/">
     <link rel="alternate" hreflang="en" href="https://termide.github.io/">
     <link rel="alternate" hreflang="ru" href="https://termide.github.io/ru/">
@@ -37,7 +37,7 @@
   "@type": "SoftwareApplication",
   "name": "TermIDE",
   "url": "https://termide.github.io/",
-  "description": "Editor with LSP, dual-pane file manager with SFTP/FTP, terminal, git, database viewer and a coding agent that runs on your own model — one zero-config static binary written in Rust.",
+  "description": "Editor with LSP and a debugger, dual-pane file manager with SFTP/FTP, terminal, git, database viewer and a coding agent that runs on your own model — one zero-config static binary written in Rust.",
   "applicationCategory": "DeveloperApplication",
   "operatingSystem": "Linux, macOS, Windows, Android",
   "softwareVersion": "0.43.0",
@@ -144,6 +144,10 @@
                         <p>Completion, go to definition, references, rename and diagnostics from any language server, seven of them set up out of the box.</p>
                     </div>
                     <div class="home-item">
+                        <h4>Debug in place</h4>
+                        <p><code>F5</code> runs to a breakpoint set with <code>Ctrl+F8</code>; step and read the stack and variables in a debug panel. lldb, GDB, Delve and debugpy; a Python or Go file needs no setup.</p>
+                    </div>
+                    <div class="home-item">
                         <h4>An agent on your model</h4>
                         <p>Point it at llama.cpp, Ollama or vLLM on your machine and no code leaves it, or use a hosted endpoint.</p>
                     </div>
@@ -222,11 +226,11 @@
                     </div>
                     <div class="agent-item">
                         <h4>Tools it needs, nothing more</h4>
-                        <p>Read, edit, write and shell, plus web search and fetch through a browser profile of its own, never your logins, and <code>recall</code> over earlier sessions, git history and project files.</p>
+                        <p>Read, edit, write and shell, plus web search and fetch through a browser profile of its own, never your logins, and <code>recall</code> over earlier sessions, git history and project files, and <code>debug</code>: breakpoints, stepping and evaluation in the same session you watch.</p>
                     </div>
                     <div class="agent-item">
-                        <h4>Other agents in the same panel</h4>
-                        <p>Claude Code, Codex and Gemini CLI over the Agent Client Protocol, your own agents, and subagents for focused jobs.</p>
+                        <h4>Agents that work together</h4>
+                        <p>Claude Code, Codex and Gemini CLI over the Agent Client Protocol, and your own agents. Hand tasks to subagents, hidden, in a panel of their own or in the background; agents in different panels message each other and do not overwrite each other's edits.</p>
                     </div>
                     <div class="agent-item">
                         <h4>Leave it working</h4>
@@ -264,6 +268,7 @@
                         <tr><td>Keep work alive after SSH drops</td><td>tmux, screen</td><td class="highlight">Detached instances</td></tr>
                         <tr><td>Move files between hosts</td><td>mc, ranger, scp</td><td class="highlight">Dual-pane file manager with SFTP/FTP</td></tr>
                         <tr><td>Edit code and configs</td><td>vim, nano</td><td class="highlight">Editor with LSP</td></tr>
+                        <tr><td>Step through a program</td><td>gdb, lldb, pdb</td><td class="highlight">Debug panel, breakpoints in the editor</td></tr>
                         <tr><td>Review and commit</td><td>lazygit, tig</td><td class="highlight">Git status, log and diff panels</td></tr>
                         <tr><td>Find what is eating the box</td><td>htop, ss</td><td class="highlight">Resource monitor</td></tr>
                         <tr><td>Look into a database</td><td>sqlite3, psql</td><td class="highlight">Database viewer</td></tr>
@@ -616,6 +621,7 @@ error       = &quot;LightRed&quot;" title="Copy to clipboard"><span class="copy-
                 <h3 class="feature-group-title">Code</h3>
                 <ul class="feature-list">
                     <li><span class="feature-icon">{}</span><span><strong>Editor with LSP</strong> Completion, hover, go to definition, references, rename and quick fixes; a diagnostics panel; tree-sitter highlighting for 23 languages.</span></li>
+                    <li><span class="feature-icon">●</span><span><strong>Debugger</strong> Breakpoints beside the line numbers that move with your edits; a debug panel over DAP (lldb-dap, GDB, Delve, debugpy) with the call stack, variables, stepping and expression evaluation; the program gets a terminal of its own for input. Command-line lldb, gdb, dlv and pdb work too.</span></li>
                     <li><span class="feature-icon">§</span><span><strong>Code outline</strong> Structural navigation through tree-sitter queries, synced with the cursor.</span></li>
                     <li><span class="feature-icon">¶</span><span><strong>Docs and diagrams</strong> Rendered Markdown and HTML, a text-mode browser that saves pages as Markdown, and Mermaid diagrams drawn as text, including class diagrams from your source.</span></li>
                     <li><span class="feature-icon">0x</span><span><strong>Hex editor</strong> Hex/ASCII view with a byte cursor, selection and search; overwrite editing with a <code>.bak</code> backup.</span></li>
@@ -679,6 +685,7 @@ error       = &quot;LightRed&quot;" title="Copy to clipboard"><span class="copy-
                     <tbody>
                         <tr><td>Built-in coding agent (local or hosted models)</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="plugin">plugin</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
                         <tr><td>MCP servers</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="plugin">plugin</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+                        <tr><td>Debugger (DAP)</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="plugin">plugin</span></td><td><span class="plugin">experimental</span></td><td><span class="cross">&#10007;</span></td></tr>
                         <tr><td>File manager</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="plugin">tree only</span></td><td><span class="plugin">plugin</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
                         <tr><td>Background file operations</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="plugin">plugin</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
                         <tr><td>Password vault</td><td class="highlight"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="plugin">plugin</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
