@@ -39,9 +39,18 @@ versioned install commands when a newer one exists.
 
 ## Screenshots
 
-Screenshots under `assets/screenshots/` come from the reproducible pipeline in
-the main repository (`tools/screenshots/`), which records a synthetic project in
-an isolated container.
+Screenshots under `assets/screenshots/` and theme previews under
+`assets/themes/` come from the reproducible pipeline in the main repository
+(`tools/screenshots/`), which records a synthetic project in an isolated
+container. After a run there, `./sync-shots.sh` copies its `out/site/` here;
+review with `git status` and commit what should change.
+
+This repository is where termide's images live for anything that links to
+them: the main repository's README and docs use
+`https://termide.github.io/assets/…` (`screenshots/tour.gif`, `agent.png`,
+`themes/<id>.png` and others), so a file they name must not be renamed or
+removed without updating them. Drafts and the sources of posters, figures
+and posts stay in the media workshop, not here.
 
 ## Local preview
 
