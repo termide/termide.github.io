@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "TermIDE — all-in-one terminal workspace for desktops and servers",
-    "description": "Editor with LSP and a debugger, dual-pane file manager with SFTP/FTP, terminal, git, database viewer and a coding agent that runs on your own model — one zero-config static binary written in Rust.",
+    "description": "Editor with LSP and a debugger, dual-pane file manager with SFTP/FTP, terminal, git, database viewer, a coding agent that runs on your own model and plugins in any language — one zero-config static binary written in Rust.",
     "og_title": "TermIDE — one terminal workspace, on your laptop and on your servers",
     "og_description": "Editor, file manager, terminal, git, databases and a coding agent in one static Rust binary. Zero config."
   },
@@ -49,7 +49,7 @@
       },
       "debug": {
         "t": "Debug in place",
-        "d": "<code>F5</code> runs to a breakpoint set with <code>Ctrl+F8</code>; step and read the stack and variables in a debug panel. lldb, GDB, Delve and debugpy; a Python or Go file needs no setup."
+        "d": "<code>F5</code> runs to a breakpoint set with <code>Ctrl+F8</code>; step and read the stack and variables in a debug panel. lldb, GDB, Delve and debugpy; a Python, Go or Rust file needs no setup."
       },
       "agent": {
         "t": "An agent on your model",
@@ -65,7 +65,7 @@
       },
       "commands": {
         "t": "Your project commands",
-        "d": "Build, test and deploy commands in <code>commands.toml</code>, per project, on a hotkey."
+        "d": "Build, test and deploy commands in <code>commands.toml</code>, per project, on a hotkey, and can run from the project root wherever you are."
       }
     },
     "server": {
@@ -109,11 +109,11 @@
       },
       "tools": {
         "t": "Tools it needs, nothing more",
-        "d": "Read, edit, write and shell, plus web search and fetch through a browser profile of its own, never your logins, and <code>recall</code> over earlier sessions, git history and project files, and <code>debug</code>: breakpoints, stepping and evaluation in the same session you watch."
+        "d": "Read, edit, write and shell, plus web search and fetch through a browser profile of its own, never your logins, or over plain HTTP where no browser runs, and <code>recall</code> over earlier sessions, git history and project files, and <code>debug</code>: breakpoints, stepping and evaluation in the same session you watch."
       },
       "agents": {
         "t": "Agents that work together",
-        "d": "Claude Code, Codex and Gemini CLI over the Agent Client Protocol, and your own agents. Hand tasks to subagents, hidden, in a panel of their own or in the background; agents in different panels message each other and do not overwrite each other's edits."
+        "d": "Claude Code, Codex and Gemini CLI over the Agent Client Protocol, and your own agents. Hand a task to a copy of the agent or to any of them: it runs out of sight while you watch, take it over or stop it; a pause holds it, and a restart carries it on. Agents in different panels message each other and do not overwrite each other's edits."
       },
       "autonomy": {
         "t": "Leave it working",
@@ -121,7 +121,7 @@
       },
       "extend": {
         "t": "Extend it in files",
-        "d": "Skills, prompt templates, command scripts, MCP servers, hooks and project instructions, all plain files."
+        "d": "Skills, prompt templates, command scripts, MCP servers, hooks, plugins and project instructions, all plain files."
       },
       "visibility": {
         "t": "See what it costs",
@@ -221,7 +221,7 @@
         "cards": {
           "git": {
             "t": "Git",
-            "d": "Status, log with a coloured commit graph, diff, staging, stash, blame, branches and their worktrees."
+            "d": "Status, log with a coloured commit graph, diff, staging, stash, blame, branches and their worktrees; a folder of many checkouts lists them as a tree."
           },
           "projects": {
             "t": "Projects",
@@ -234,6 +234,10 @@
           "palette": {
             "t": "Palette and Open",
             "d": "<code>Ctrl+P</code> fuzzy command palette; <code>Ctrl+G</code> opens a file, a folder or a URL with path suggestions."
+          },
+          "plugins": {
+            "t": "Plugins",
+            "d": "A program in any language, copied into <code>plugins/</code>, speaks JSON-RPC: palette commands with keys, status bar items, panels, editor marks, completion and formatting on save, tools for the agent. Each is on, opt-in or off in your global config; a project only switches it within that."
           }
         }
       },
@@ -268,6 +272,10 @@
           "offline": {
             "t": "Goes only where you point it",
             "d": "No telemetry, no update checks: termide connects to the servers, databases and model endpoints you set up, and nothing else."
+          },
+          "repo": {
+            "t": "A cloned repo runs nothing",
+            "d": "A project's MCP servers, hooks and commands wait for your approval before they first run, and its config and agents cannot name the programs termide starts or loosen the agent's permissions."
           },
           "prompts": {
             "t": "Every prompt is a file",
@@ -446,6 +454,10 @@
       "privacy": {
         "q": "Does TermIDE phone home?",
         "a": "No telemetry, no account and no update checks. It goes online only when you ask: a remote location, a web page, <code>git push</code> or <code>pull</code>, or a model for the agent."
+      },
+      "repo": {
+        "q": "Is it safe to open a repository I just cloned?",
+        "a": "termide runs nothing a repository brings until you approve it: a project's MCP servers, hooks and commands ask first, plugins come only from your own config directory, and a project's settings cannot change the programs termide starts or loosen the agent's permission rules, only make it ask or refuse more."
       },
       "tmux": {
         "q": "Does it replace tmux?",

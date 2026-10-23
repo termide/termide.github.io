@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TermIDE — all-in-one terminal workspace for desktops and servers</title>
-    <meta name="description" content="Editor with LSP and a debugger, dual-pane file manager with SFTP/FTP, terminal, git, database viewer and a coding agent that runs on your own model — one zero-config static binary written in Rust.">
+    <meta name="description" content="Editor with LSP and a debugger, dual-pane file manager with SFTP/FTP, terminal, git, database viewer, a coding agent that runs on your own model and plugins in any language — one zero-config static binary written in Rust.">
     <link rel="canonical" href="https://termide.github.io/">
     <link rel="alternate" hreflang="en" href="https://termide.github.io/">
     <link rel="alternate" hreflang="ru" href="https://termide.github.io/ru/">
@@ -37,7 +37,7 @@
   "@type": "SoftwareApplication",
   "name": "TermIDE",
   "url": "https://termide.github.io/",
-  "description": "Editor with LSP and a debugger, dual-pane file manager with SFTP/FTP, terminal, git, database viewer and a coding agent that runs on your own model — one zero-config static binary written in Rust.",
+  "description": "Editor with LSP and a debugger, dual-pane file manager with SFTP/FTP, terminal, git, database viewer, a coding agent that runs on your own model and plugins in any language — one zero-config static binary written in Rust.",
   "applicationCategory": "DeveloperApplication",
   "operatingSystem": "Linux, macOS, Windows, Android",
   "softwareVersion": "0.45.0",
@@ -145,7 +145,7 @@
                     </div>
                     <div class="home-item">
                         <h4>Debug in place</h4>
-                        <p><code>F5</code> runs to a breakpoint set with <code>Ctrl+F8</code>; step and read the stack and variables in a debug panel. lldb, GDB, Delve and debugpy; a Python or Go file needs no setup.</p>
+                        <p><code>F5</code> runs to a breakpoint set with <code>Ctrl+F8</code>; step and read the stack and variables in a debug panel. lldb, GDB, Delve and debugpy; a Python, Go or Rust file needs no setup.</p>
                     </div>
                     <div class="home-item">
                         <h4>An agent on your model</h4>
@@ -161,7 +161,7 @@
                     </div>
                     <div class="home-item">
                         <h4>Your project commands</h4>
-                        <p>Build, test and deploy commands in <code>commands.toml</code>, per project, on a hotkey.</p>
+                        <p>Build, test and deploy commands in <code>commands.toml</code>, per project, on a hotkey, and can run from the project root wherever you are.</p>
                     </div>
                 </div>
                 <div class="home-column">
@@ -226,11 +226,11 @@
                     </div>
                     <div class="agent-item">
                         <h4>Tools it needs, nothing more</h4>
-                        <p>Read, edit, write and shell, plus web search and fetch through a browser profile of its own, never your logins, and <code>recall</code> over earlier sessions, git history and project files, and <code>debug</code>: breakpoints, stepping and evaluation in the same session you watch.</p>
+                        <p>Read, edit, write and shell, plus web search and fetch through a browser profile of its own, never your logins, or over plain HTTP where no browser runs, and <code>recall</code> over earlier sessions, git history and project files, and <code>debug</code>: breakpoints, stepping and evaluation in the same session you watch.</p>
                     </div>
                     <div class="agent-item">
                         <h4>Agents that work together</h4>
-                        <p>Claude Code, Codex and Gemini CLI over the Agent Client Protocol, and your own agents. Hand tasks to subagents, hidden, in a panel of their own or in the background; agents in different panels message each other and do not overwrite each other's edits.</p>
+                        <p>Claude Code, Codex and Gemini CLI over the Agent Client Protocol, and your own agents. Hand a task to a copy of the agent or to any of them: it runs out of sight while you watch, take it over or stop it; a pause holds it, and a restart carries it on. Agents in different panels message each other and do not overwrite each other's edits.</p>
                     </div>
                     <div class="agent-item">
                         <h4>Leave it working</h4>
@@ -238,7 +238,7 @@
                     </div>
                     <div class="agent-item">
                         <h4>Extend it in files</h4>
-                        <p>Skills, prompt templates, command scripts, MCP servers, hooks and project instructions, all plain files.</p>
+                        <p>Skills, prompt templates, command scripts, MCP servers, hooks, plugins and project instructions, all plain files.</p>
                     </div>
                     <div class="agent-item">
                         <h4>See what it costs</h4>
@@ -648,10 +648,11 @@ error       = &quot;LightRed&quot;" title="Copy to clipboard"><span class="copy-
             <div class="feature-group">
                 <h3 class="feature-group-title">Workspace</h3>
                 <ul class="feature-list">
-                    <li><span class="feature-icon">+-</span><span><strong>Git</strong> Status, log with a coloured commit graph, diff, staging, stash, blame, branches and their worktrees.</span></li>
+                    <li><span class="feature-icon">+-</span><span><strong>Git</strong> Status, log with a coloured commit graph, diff, staging, stash, blame, branches and their worktrees; a folder of many checkouts lists them as a tree.</span></li>
                     <li><span class="feature-icon">::</span><span><strong>Projects</strong> Panel layouts restored per directory, with per-project settings and commands; projects you switch away from keep running in the background, one button each in the menu bar.</span></li>
                     <li><span class="feature-icon">$/</span><span><strong>Custom commands</strong> Global or per-project commands with hotkeys, parameter forms and terminal, background or report modes.</span></li>
                     <li><span class="feature-icon">⌘</span><span><strong>Palette and Open</strong> <code>Ctrl+P</code> fuzzy command palette; <code>Ctrl+G</code> opens a file, a folder or a URL with path suggestions.</span></li>
+                    <li><span class="feature-icon">++</span><span><strong>Plugins</strong> A program in any language, copied into <code>plugins/</code>, speaks JSON-RPC: palette commands with keys, status bar items, panels, editor marks, completion and formatting on save, tools for the agent. Each is on, opt-in or off in your global config; a project only switches it within that.</span></li>
                 </ul>
             </div>
             <div class="feature-group">
@@ -668,6 +669,7 @@ error       = &quot;LightRed&quot;" title="Copy to clipboard"><span class="copy-
                 <ul class="feature-list">
                     <li><span class="feature-icon">**</span><span><strong>Password vault</strong> Passwords of SFTP, FTP, databases and git live in an encrypted vault under a master password (Argon2 + ChaCha20-Poly1305), never in bookmarks, layouts or logs.</span></li>
                     <li><span class="feature-icon">~/</span><span><strong>Goes only where you point it</strong> No telemetry, no update checks: termide connects to the servers, databases and model endpoints you set up, and nothing else.</span></li>
+                    <li><span class="feature-icon">✓</span><span><strong>A cloned repo runs nothing</strong> A project's MCP servers, hooks and commands wait for your approval before they first run, and its config and agents cannot name the programs termide starts or loosen the agent's permissions.</span></li>
                     <li><span class="feature-icon">#!</span><span><strong>Every prompt is a file</strong> The agent's system prompt, service prompts and tool descriptions are plain files you can read and override; <code>/prompt</code> shows the assembled result.</span></li>
                 </ul>
             </div>
@@ -740,6 +742,10 @@ error       = &quot;LightRed&quot;" title="Copy to clipboard"><span class="copy-
                 <details class="faq-item">
                     <summary>Does TermIDE phone home?</summary>
                     <p>No telemetry, no account and no update checks. It goes online only when you ask: a remote location, a web page, <code>git push</code> or <code>pull</code>, or a model for the agent.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>Is it safe to open a repository I just cloned?</summary>
+                    <p>termide runs nothing a repository brings until you approve it: a project's MCP servers, hooks and commands ask first, plugins come only from your own config directory, and a project's settings cannot change the programs termide starts or loosen the agent's permission rules, only make it ask or refuse more.</p>
                 </details>
                 <details class="faq-item">
                     <summary>Does it replace tmux?</summary>
