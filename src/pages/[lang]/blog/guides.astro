@@ -1,0 +1,6 @@
+---
+import Feed from '../../../views/Feed.astro';
+import { localeProps } from '../../../lib/paths';
+export const getStaticPaths = () => localeProps();
+---
+<Feed {...Astro.props} kind="guide" />

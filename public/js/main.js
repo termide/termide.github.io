@@ -177,7 +177,8 @@ function initLightbox() {
             if (img) openLightbox(img);
         });
     }
-    document.querySelectorAll('.agent-shot img').forEach(img => {
+    // Screenshots in blog posts (`data-lightbox` on their frame)
+    document.querySelectorAll('.agent-shot img, [data-lightbox] img').forEach(img => {
         img.addEventListener('click', () => openLightbox(img));
     });
 

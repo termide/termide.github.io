@@ -11,7 +11,8 @@
     "compare": "对比",
     "themes": "主题",
     "install": "安装",
-    "docs": "文档"
+    "docs": "文档",
+    "blog": "博客"
   },
   "hero": {
     "headline": "同一个终端工作台 —— 在你的笔记本上，也在你的服务器上。",
@@ -488,6 +489,35 @@
     "discussions": "讨论区",
     "news": "Telegram 频道",
     "chat": "Telegram 群组",
-    "license": "MIT 许可证 &bull; 用 <span class=\"rust-heart\">&#9829;</span> 和 Rust 打造"
+    "license": "MIT 许可证 &bull; 用 <span class=\"rust-heart\">&#9829;</span> 和 Rust 打造",
+    "blog": "博客"
+  },
+  "blog": {
+    "title": "博客",
+    "subtitle": "版本发布公告，以及 termide 功能的上手指南。",
+    "empty": "第一批文章即将发布。",
+    "all": "全部",
+    "kinds": {
+      "release": "版本发布",
+      "guide": "指南"
+    },
+    "kind": {
+      "release": "版本",
+      "guide": "指南"
+    },
+    "tag": "主题",
+    "rss": "RSS",
+    "notes": "完整发布说明",
+    "install": "安装或更新",
+    "discuss": "在 Telegram 讨论",
+    "back": "全部文章",
+    "tags": {
+      "agent": "智能体",
+      "file-manager": "文件管理器",
+      "git": "git",
+      "editor": "编辑器",
+      "plugins": "插件",
+      "far": "Far 习惯"
+    }
   }
 }

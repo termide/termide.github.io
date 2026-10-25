@@ -11,7 +11,8 @@
     "compare": "Сравнение",
     "themes": "Темы",
     "install": "Установка",
-    "docs": "Документация"
+    "docs": "Документация",
+    "blog": "Блог"
   },
   "hero": {
     "headline": "Одно терминальное рабочее место — на ноутбуке и на серверах.",
@@ -488,6 +489,35 @@
     "discussions": "Обсуждения",
     "news": "Новости в Telegram",
     "chat": "Чат в Telegram",
-    "license": "Лицензия MIT &bull; Сделано с <span class=\"rust-heart\">&#9829;</span> на Rust"
+    "license": "Лицензия MIT &bull; Сделано с <span class=\"rust-heart\">&#9829;</span> на Rust",
+    "blog": "Блог"
+  },
+  "blog": {
+    "title": "Блог",
+    "subtitle": "Анонсы выпусков и наглядные руководства по возможностям termide.",
+    "empty": "Первые записи скоро появятся.",
+    "all": "Все",
+    "kinds": {
+      "release": "Выпуски",
+      "guide": "Руководства"
+    },
+    "kind": {
+      "release": "Выпуск",
+      "guide": "Руководство"
+    },
+    "tag": "Тема",
+    "rss": "RSS",
+    "notes": "Полные заметки о выпуске",
+    "install": "Установить или обновить",
+    "discuss": "Обсудить в Telegram",
+    "back": "Все записи",
+    "tags": {
+      "agent": "агент",
+      "file-manager": "файловый менеджер",
+      "git": "git",
+      "editor": "редактор",
+      "plugins": "плагины",
+      "far": "привычки Far"
+    }
   }
 }

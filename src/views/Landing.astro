@@ -1,0 +1,245 @@
+---
+/**
+ * The landing page. Data (slides, cards, tables, commands, themes) comes from src/data.json,
+ * every visible string from src/i18n/<lang>.json; strings may carry inline HTML.
+ */
+import Base from '../layouts/Base.astro';
+import CodeBlock from '../components/CodeBlock.astro';
+import CompareTable from '../components/CompareTable.astro';
+import data from '../data.json';
+import { absoluteUrl, docUrl, localePath, t, type Locale } from '../lib/i18n';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const s = (path: string) => t(locale, path);
+
+const slides = data.slides.map((slide) => ({ text: s(`hero.slides.${slide.id}`), image: `/${slide.image}` }));
+const jsonld = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'TermIDE',
+  url: absoluteUrl(localePath(locale, '/')),
+  description: s('meta.description'),
+  applicationCategory: 'DeveloperApplication',
+  operatingSystem: 'Linux, macOS, Windows, Android',
+  softwareVersion: data.version,
+  license: 'https://opensource.org/licenses/MIT',
+  downloadUrl: `${data.repo_url}/releases/latest`,
+  codeRepository: data.repo_url,
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+};
+// `</` inside an inline script would end it early.
+const inlineJson = (value: unknown) => JSON.stringify(value).replace(/<\//g, '<\\/');
+
+const byId = new Map(data.compare.rows.map((row) => [row.id, row]));
+const featured = data.compare.featured.map((id) => byId.get(id)!);
+const rest = data.compare.rows.filter((row) => !data.compare.featured.includes(row.id));
+const stackCols = ['task', 'usual', 'termide'];
+const custom = data.theme_custom;
+---
+
+<Base locale={locale} path="/" title={s('meta.title')} description={s('meta.description')} ogTitle={s('meta.og_title')} ogDescription={s('meta.og_description')} current="landing">
+  <script slot="head" is:inline type="application/ld+json" set:html={inlineJson(jsonld)} />
+  <script slot="body-start" is:inline set:html={`window.heroSlides = ${inlineJson(slides)};`} />
+
+  <div class="hero-header">
+    <img src="/assets/logo.svg" alt="TermIDE" class="logo" />
+    <h1 class="glitch" data-text="TermIDE">TermIDE</h1>
+  </div>
+
+  <div class="hero-carousel">
+    <div class="hero-carousel-content">
+      <p class="headline" set:html={s('hero.headline')} />
+      <p class="tagline"><span class="typewriter"></span><span class="cursor">_</span></p>
+      <p class="subtitle" set:html={s('hero.subtitle')} />
+      <CodeBlock locale={locale} command={data.hero_install} class="hero-install" />
+      <div class="cta-buttons">
+        <a href="#install" class="btn btn-secondary"><span class="btn-icon">$</span> <Fragment set:html={s('hero.install_all')} /></a>
+        <a href={data.repo_url} class="btn btn-secondary" target="_blank" rel="noopener"><span class="btn-icon">&gt;</span> <Fragment set:html={s('hero.cta_github')} /></a>
+      </div>
+    </div>
+    <div class="hero-carousel-image">
+      <div class="terminal-frame neon-border">
+        <div class="terminal-header">
+          <span class="terminal-dot red"></span>
+          <span class="terminal-dot yellow"></span>
+          <span class="terminal-dot green"></span>
+          <span class="terminal-title">demo@demo: ~/project — termide</span>
+        </div>
+        <div class="hero-screenshots">
+          {slides.map((slide, i) => (
+            <img src={slide.image} alt={slide.text} class:list={['screenshot', { active: i === 0 }]} loading={i === 0 ? undefined : 'lazy'} />
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ul class="trust-strip">
+    {data.trust.map((k) => (
+      <li><span class="trust-mark">&#10003;</span> <Fragment set:html={s(`trust.${k}`).replace('{mb}', String(data.download_mb))} /></li>
+    ))}
+  </ul>
+
+  <section id="homes" class="homes">
+    <h2 class="section-title glitch-hover" set:html={s('homes.title')} />
+    <p class="section-subtitle" set:html={s('homes.subtitle')} />
+    <div class="homes-grid">
+      {[['desk', '~$'], ['server', 'root@srv:~#']].map(([key, prompt]) => (
+        <div class="home-column">
+          <h3 class="home-title"><span class="home-prompt">{prompt}</span> <Fragment set:html={s(`homes.${key}_title`)} /></h3>
+          {data.homes[key as 'desk' | 'server'].map((item) => (
+            <div class="home-item">
+              <h4 set:html={s(`homes.${key}.${item}.t`)} />
+              <p set:html={s(`homes.${key}.${item}.d`)} />
+            </div>
+          ))}
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section id="agent" class="agent">
+    <h2 class="section-title glitch-hover" set:html={s('agent.title')} />
+    <p class="section-subtitle" set:html={s('agent.subtitle')} />
+    <div class="agent-hooks">
+      {data.agent.hooks.map((k) => (
+        <div class="agent-hook">
+          <span class="agent-hook-q" set:html={s(`agent.hooks.${k}.t`)} />
+          <span class="agent-hook-a" set:html={s(`agent.hooks.${k}.d`)} />
+        </div>
+      ))}
+    </div>
+    <div class="agent-layout">
+      <div class="terminal-frame neon-border agent-shot">
+        <img src={`/${data.agent.image}`} alt="TermIDE agent panel" class="screenshot" loading="lazy" />
+      </div>
+      <div class="agent-items">
+        {data.agent.items.map((item) => (
+          <div class="agent-item">
+            <h4 set:html={s(`agent.items.${item}.t`)} />
+            <p set:html={s(`agent.items.${item}.d`)} />
+          </div>
+        ))}
+      </div>
+    </div>
+    <div class="agent-cli">
+      <h3 set:html={s('agent.cli_title')} />
+      <p set:html={s('agent.cli_desc')} />
+      <CodeBlock locale={locale} command={data.agent.cli} />
+    </div>
+  </section>
+
+  <section id="toolbox" class="comparison">
+    <h2 class="section-title glitch-hover" set:html={s('compare.stack_title')} />
+    <p class="section-subtitle" set:html={s('compare.stack_subtitle')} />
+    <div class="table-wrapper">
+      <table class="comparison-table stack-table">
+        <thead>
+          <tr>{stackCols.map((c) => <th class:list={{ highlight: c === 'termide' }} set:html={s(`compare.stack_cols.${c}`)} />)}</tr>
+        </thead>
+        <tbody>
+          {data.stack.map((item) => (
+            <tr>{stackCols.map((c) => <td class:list={{ highlight: c === 'termide' }} set:html={s(`compare.stack.${item}.${c}`)} />)}</tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="screenshots" class="screenshots">
+    <h2 class="section-title glitch-hover" set:html={s('themes.title')} />
+    <p class="section-subtitle" set:html={s('themes.subtitle')} />
+    <div class="theme-filters">
+      {data.theme_groups.map((group, i) => (
+        <button class:list={['filter-btn', { active: i === 0 }]} data-filter={group} set:html={s(`themes.groups.${group}`)} />
+      ))}
+    </div>
+    <div class="gallery">
+      {data.themes.map((theme, i) => (
+        <div class:list={['gallery-item', { extra: i >= data.gallery_initial }]} data-group={theme.group}>
+          <div class="gallery-frame neon-border-hover">
+            <img src={`/assets/themes/${theme.id}.png`} alt={theme.name} loading="lazy" />
+            <div class="gallery-overlay"><span class="theme-name">{theme.name}</span></div>
+          </div>
+        </div>
+      ))}
+    </div>
+    {data.themes.length > data.gallery_initial && (
+      <div class="show-all">
+        <button class="btn btn-secondary" data-show-all set:html={s('themes.show_all').replace('{n}', String(data.themes.length))} />
+      </div>
+    )}
+    <div class="theme-custom">
+      <div class="theme-custom-text">
+        <h3 set:html={s('themes.custom.title')} />
+        <p set:html={s('themes.custom.subtitle')} />
+        <ul>{custom.points.map((k) => <li set:html={s(`themes.custom.points.${k}`)} />)}</ul>
+        <a class="doc-link" href={docUrl(locale, custom.doc)} target="_blank" rel="noopener">&gt; <Fragment set:html={s('themes.custom.doc')} /></a>
+      </div>
+      <CodeBlock locale={locale} command={custom.example} class="theme-example" />
+    </div>
+  </section>
+
+  <section id="features" class="features">
+    <h2 class="section-title glitch-hover" set:html={s('features.title')} />
+    <p class="section-subtitle" set:html={s('features.subtitle')} />
+    <div class="feature-groups">
+      {data.feature_groups.map((group) => (
+        <div class="feature-group">
+          <h3 class="feature-group-title" set:html={s(`features.groups.${group.id}.title`)} />
+          <ul class="feature-list">
+            {group.cards.map((card) => (
+              <li>
+                <span class="feature-icon" set:html={card.icon} />
+                <span><strong set:html={s(`features.groups.${group.id}.cards.${card.id}.t`)} /> <Fragment set:html={s(`features.groups.${group.id}.cards.${card.id}.d`)} /></span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section id="compare" class="comparison">
+    <h2 class="section-title glitch-hover" set:html={s('compare.title')} />
+    <p class="section-subtitle" set:html={s('compare.subtitle')} />
+    <CompareTable locale={locale} rows={featured} />
+    {rest.length > 0 && (
+      <details class="compare-more">
+        <summary set:html={s('compare.show_all')} />
+        <CompareTable locale={locale} rows={rest} />
+      </details>
+    )}
+  </section>
+
+  <section id="faq" class="faq">
+    <h2 class="section-title glitch-hover" set:html={s('faq.title')} />
+    <div class="faq-list">
+      {data.faq.map((k) => (
+        <details class="faq-item">
+          <summary set:html={s(`faq.items.${k}.q`)} />
+          <p set:html={s(`faq.items.${k}.a`)} />
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <section id="install" class="installation">
+    <h2 class="section-title glitch-hover" set:html={s('install.title')} />
+    <p class="section-subtitle" set:html={s('install.subtitle')} />
+    <div class="install-card">
+      <div class="install-tabs" role="tablist">
+        {data.install.map((method, i) => (
+          <button class:list={['install-tab', { active: i === 0 }]} role="tab" aria-selected={i === 0 ? 'true' : 'false'} data-tab={method.id} set:html={s(`install.tabs.${method.id}.label`)} />
+        ))}
+      </div>
+      {data.install.map((method, i) => (
+        <div class:list={['install-panel', { active: i === 0 }]} role="tabpanel" data-panel={method.id}>
+          <p class="platform" set:html={s(`install.tabs.${method.id}.note`)} />
+          <CodeBlock locale={locale} command={method.command} />
+        </div>
+      ))}
+    </div>
+  </section>
+</Base>

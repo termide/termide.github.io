@@ -1,0 +1,55 @@
+---
+title: Select files by mask
+subtitle: Pick files by pattern instead of one by one, the way Far and Total Commander do
+description: "In termide's file manager, + selects what matches a mask, - unselects it and * inverts the selection: a quick way to copy, pack or delete a group of files."
+date: 2026-10-24
+kind: guide
+version: 0.41.0
+tags: [file-manager, far]
+cover: ./cover.png
+coverAlt: "Termide's file manager with the Python files of a project selected by the mask *.py"
+coverInPost: false
+---
+
+import Keys from '../../../components/mdx/Keys.astro';
+import Video from '../../../components/mdx/Video.astro';
+
+Copying every Rust source out of a directory, or deleting the build output of a dozen packages, means selecting a group of files. Clicking them one by one is slow. Since version 0.41, termide's file manager selects by pattern, with the keys Far Manager and Total Commander users already know.
+
+<Video src="/assets/blog/select-by-mask/select-by-mask.mp4" label="Selecting the Python files of a project with the mask *.py" caption="<code>+</code>, the mask <code>*.py</code>, <code>Enter</code>: the Python files are selected." />
+
+## Three keys
+
+| Key | What it does |
+|---|---|
+| <Keys k="+" /> | Select what matches a mask |
+| <Keys k="-" /> | Unselect what matches a mask |
+| <Keys k="*" /> | Invert the selection |
+
+<Keys k="+" /> and <Keys k="-" /> open a small dialog asking for the mask, with `*` filled in, so <Keys k="+" /> <Keys k="Enter" /> selects everything. The selection then works with every file operation: copy with <Keys k="F5" />, move with <Keys k="F6" />, pack with <Keys k="Alt+F5" />, delete with <Keys k="F8" />. <Keys k="Esc" /> clears it.
+
+## Writing a mask
+
+- A mask is one or more glob patterns: `*.rs *.md` matches Rust and Markdown files.
+- Separate patterns with spaces, commas or semicolons, whichever you type faster.
+- Matching ignores case: `*.jpg` also finds `PHOTO.JPG`.
+- A pattern matches files. End it with `/` to match directories instead: `target/` for one, `*/` for all of them.
+
+Combining the keys covers most cases. To select everything except the tests, press <Keys k="+" /> <Keys k="Enter" /> to take it all, then <Keys k="-" /> with `test_*`. To clean up build output, <Keys k="+" /> with `target/ node_modules/`, then <Keys k="F8" />.
+
+## With the mouse
+
+<Keys k="Ctrl+Click" /> toggles a row, and <Keys k="Shift+Click" /> selects from the cursor to the clicked row. macOS terminals turn <Keys k="Ctrl+Click" /> into a right click, so <Keys k="Alt+Click" /> does the same there and works everywhere.
+
+## Other keys
+
+The keys live in the `[file_manager.keybindings]` section of `config.toml`:
+
+```toml
+[file_manager.keybindings]
+select_group = "+"
+unselect_group = "-"
+invert_selection = "*"
+```
+
+The [file manager guide](https://github.com/termide/termide/blob/main/doc/en/file-manager.md#file-selection) lists every selection key.

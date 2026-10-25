@@ -1,0 +1,22 @@
+---
+import Base from '../layouts/Base.astro';
+import PostList from '../components/PostList.astro';
+import Tags from '../components/Tags.astro';
+import { t, type Locale } from '../lib/i18n';
+import { getPosts, getUsedTags } from '../lib/content';
+import '../styles/blog.css';
+
+interface Props { locale: Locale; tag: string }
+const { locale, tag } = Astro.props;
+const posts = (await getPosts(locale)).filter((p) => p.data.tags.includes(tag));
+const label = `#${t(locale, `blog.tags.${tag}`)}`;
+---
+
+<Base locale={locale} path={`/blog/tags/${tag}/`} title={`${label} — TermIDE`} description={t(locale, 'blog.subtitle')} current="blog">
+  <section class="blog">
+    <p class="section-subtitle blog-tag-label">{t(locale, 'blog.tag')}</p>
+    <h1 class="section-title">{label}</h1>
+    <Tags locale={locale} tags={await getUsedTags()} current={tag} />
+    <PostList locale={locale} posts={posts} />
+  </section>
+</Base>

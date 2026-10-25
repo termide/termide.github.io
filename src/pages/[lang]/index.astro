@@ -1,0 +1,6 @@
+---
+import Landing from '../../views/Landing.astro';
+import { localeProps } from '../../lib/paths';
+export const getStaticPaths = () => localeProps();
+---
+<Landing {...Astro.props} />

@@ -1,0 +1,60 @@
+---
+title: "Termide 0.45: plugins, and delegates in view"
+subtitle: Extend termide with your own programs, and keep an eye on the work your agent hands out
+description: Plugins speak JSON-RPC and add panels, commands and agent tools; delegated tasks can be watched, paused and carried on after a restart; commands can run from the project root.
+date: 2026-10-21
+kind: release
+version: 0.45.0
+tags: [plugins, agent, git]
+cover: ./cover.jpg
+coverAlt: "Termide v0.45.0 release poster"
+---
+
+import Keys from '../../../components/mdx/Keys.astro';
+
+Termide 0.45 opens termide to programs of your own and brings the agent's delegated work into view. Here are the main changes; the [full release notes](https://github.com/termide/termide/releases/tag/0.45.0) list everything.
+
+## Plugins
+
+A plugin is a program in `plugins/<name>/` beside your global `config.toml`, with a `plugin.toml` that names its command. Termide runs it in the background for each open project and talks to it over JSON-RPC on its stdin and stdout. A plugin can:
+
+- hear files opened and saved, focus, change and git events;
+- add commands to the palette and the Commands menu, with keys of their own;
+- show items in the status bar and open panels drawn from the Markdown it sends;
+- mark lines in the editor beside the language servers' diagnostics, and answer completion, hover and go-to-definition;
+- edit a file before <Keys k="Ctrl+S" /> writes it, which is all formatting on save needs;
+- give the coding agent tools of its own.
+
+Plugins are yours, not the repository's. The global configuration gives each one a mode, `on`, `opt-in` or `off`, and a project's `.termide/config.toml` can only switch it within that mode, so no repository you open wakes a plugin you did not allow. A plugin that keeps crashing is restarted with backoff and given up on after three crashes in a minute.
+
+The [plugin guide](https://github.com/termide/termide/blob/main/doc/en/plugins.md) covers the protocol, and [`examples/plugins/`](https://github.com/termide/termide/tree/main/examples/plugins) holds a small Python library with three plugins built on it: `trim-on-save`, `todo-lint` and `word-count`.
+
+## Delegates in view
+
+When the agent hands a task to another agent, that work no longer runs where you cannot see it.
+
+- **Watch it.** <Keys k="o" /> on a task's block, or a click on its row above the input, shows the delegate's steps live over the layout. From there <Keys k="F9" /> moves the view into a panel, <Keys k="Ctrl+T" /> takes the task over, and **Stop** ends it.
+- **Pause holds it.** Pausing a panel now also holds the tasks it handed out, and they go on where they stood after `/continue`. A delegate run by an external agent cannot be held: it keeps going and is counted apart.
+- **Quit, and carry on.** A delegated task that termide quit upon shows as unfinished. The panel that handed it out offers to carry it on, and the task takes its steps back from its own log rather than starting over.
+- **It asks you.** A delegate's permission requests come to the panel that delegated it, instead of being refused.
+
+A lone agent can now delegate to a fresh copy of itself, for a clean context or work in the background, and external agents with a `command` can be delegates too.
+
+## Commands from the project root
+
+A command ran in the directory of the focused panel, so `cargo test` meant something else after every navigation. `cwd = "project"` in `commands.toml`, or the **Run from the project folder** box in the command's form, runs it in the project root whichever panel is focused.
+
+## Repositories as a tree
+
+A project that is a folder of checkouts grouped by host and team now shows them as a tree in the git panels' repository dropdown, folding like the file tree. The filter matches the path, so typing a host or a group finds what is under it. Repository discovery also looks one level deeper and no longer picks up a repository that merely contains the project, such as a dotfiles repository over your whole home.
+
+## Safer projects
+
+A repository you open can no longer decide what termide runs. A project's config cannot set commands for debuggers, language servers or the shell, or loosen the agent's mode and rules. A project's MCP servers, hooks and commands wait for your approval before their first run, and "allow always in this project" is kept outside the project.
+
+## Also in this release
+
+- `web_search` works without a browser, over plain HTTP, on Termux and headless servers.
+- Git network errors name the repository and the server.
+- `install.sh` installs the static musl build where there is no glibc: Alpine, NixOS, 32-bit Raspberry Pi OS.
+- The system monitor shows RAM under 2 GB in megabytes.
