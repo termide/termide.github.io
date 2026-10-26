@@ -1,0 +1,9 @@
+---
+/** A key or a chord, drawn as key caps: <Keys k="Ctrl+Shift+F" />, <Keys k="+" />. */
+interface Props { k: string }
+const { k } = Astro.props;
+// Split on a "+" that has a key after it, so a "+" key survives: "Ctrl++" → ["Ctrl", "+"], "+" → ["+"].
+const parts = k.split(/\+(?=.)/);
+---
+
+<span class="keys">{parts.map((p, i) => <>{i > 0 && <span class="keys-plus">+</span>}<kbd>{p}</kbd></>)}</span>

@@ -1,8 +1,8 @@
 {
   "meta": {
-    "title": "TermIDE —— 面向工作站与服务器的一站式终端工作台",
+    "title": "Termide —— 面向工作站与服务器的一站式终端工作台",
     "description": "带 LSP 和调试器的编辑器、支持 SFTP/FTP 的双栏文件管理器、终端、git、数据库查看器、运行在你自己模型上的编程智能体，以及可用任意语言编写的插件 —— 一个零配置、使用 Rust 编写的静态二进制文件。",
-    "og_title": "TermIDE —— 同一个终端工作台，笔记本和服务器上都能用",
+    "og_title": "Termide —— 同一个终端工作台，笔记本和服务器上都能用",
     "og_description": "编辑器、文件管理器、终端、git、数据库和编程智能体，集成在一个 Rust 静态二进制文件中。零配置。"
   },
   "nav": {
@@ -11,7 +11,8 @@
     "compare": "对比",
     "themes": "主题",
     "install": "安装",
-    "docs": "文档"
+    "docs": "文档",
+    "blog": "博客"
   },
   "hero": {
     "headline": "同一个终端工作台 —— 在你的笔记本上，也在你的服务器上。",
@@ -286,8 +287,8 @@
     }
   },
   "compare": {
-    "title": "// 为什么选择 TermIDE？",
-    "subtitle": "编辑器只负责代码，TermIDE 还覆盖了代码之外的一切。",
+    "title": "// 为什么选择 Termide？",
+    "subtitle": "编辑器只负责代码，Termide 还覆盖了代码之外的一切。",
     "feature_col": "功能",
     "values": {
       "plugin": "插件",
@@ -324,11 +325,11 @@
       "html": "HTML 预览"
     },
     "stack_title": "// 你工具箱中的日常部分",
-    "stack_subtitle": "TermIDE 并不打算取代这些工具，而是把你每天都要用到的那部分集中到一处。",
+    "stack_subtitle": "Termide 并不打算取代这些工具，而是把你每天都要用到的那部分集中到一处。",
     "stack_cols": {
       "task": "任务",
       "usual": "通常使用",
-      "termide": "在 TermIDE 中"
+      "termide": "在 Termide 中"
     },
     "stack": {
       "detach": {
@@ -452,7 +453,7 @@
         "a": "可以，在你设定的范围内。<code>/goal</code> 让它持续处理任务，直到独立的评审确认完成；<code>/loop</code> 按间隔重复一个提示；<code>on_limit = \"wait\"</code> 会等待速率或订阅限额恢复，而不是停止。在默认的 <code>auto</code> 模式下，权限规则未决定的操作由审查模型判断，因此很少停下来询问；<code>deny</code> 规则在任何模式下都有效。"
       },
       "privacy": {
-        "q": "TermIDE 会向外发送数据吗？",
+        "q": "Termide 会向外发送数据吗？",
         "a": "没有遥测、无需账户、不检查更新。只有在你主动要求时才会联网：打开远程位置、网页、执行 <code>git push</code> 或 <code>pull</code>，或为智能体接入模型。"
       },
       "repo": {
@@ -488,6 +489,38 @@
     "discussions": "讨论区",
     "news": "Telegram 频道",
     "chat": "Telegram 群组",
-    "license": "MIT 许可证 &bull; 用 <span class=\"rust-heart\">&#9829;</span> 和 Rust 打造"
+    "license": "MIT 许可证 &bull; 用 <span class=\"rust-heart\">&#9829;</span> 和 Rust 打造",
+    "blog": "博客"
+  },
+  "blog": {
+    "title": "博客",
+    "subtitle": "版本发布公告，以及 termide 功能的上手指南。",
+    "empty": "第一批文章即将发布。",
+    "all": "全部",
+    "kinds": {
+      "release": "版本发布",
+      "guide": "指南"
+    },
+    "kind": {
+      "release": "版本",
+      "guide": "指南"
+    },
+    "tag": "主题",
+    "rss": "RSS",
+    "notes": "完整发布说明",
+    "install": "安装或更新",
+    "discuss": "在 Telegram 讨论",
+    "back": "全部文章",
+    "newer": "较新",
+    "older": "较早",
+    "page": "第 {n} 页，共 {total} 页",
+    "tags": {
+      "agent": "智能体",
+      "file-manager": "文件管理器",
+      "git": "git",
+      "editor": "编辑器",
+      "plugins": "插件",
+      "far": "Far 习惯"
+    }
   }
 }

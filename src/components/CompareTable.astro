@@ -1,0 +1,37 @@
+---
+import data from '../data.json';
+import { t, type Locale } from '../lib/i18n';
+
+type Row = (typeof data.compare.rows)[number];
+interface Props { locale: Locale; rows: Row[] }
+const { locale, rows } = Astro.props;
+---
+
+<div class="table-wrapper">
+  <table class="comparison-table">
+    <thead>
+      <tr>
+        <th>{t(locale, 'compare.feature_col')}</th>
+        {data.compare.columns.map((col, i) => <th class:list={{ highlight: i === 0 }}>{col}</th>)}
+      </tr>
+    </thead>
+    <tbody>
+      {rows.map((row) => (
+        <tr>
+          <td set:html={t(locale, `compare.rows.${row.id}`)} />
+          {row.values.map((value, i) => (
+            <td class:list={{ highlight: i === 0 }}>
+              {value === 'yes' ? (
+                <span class="check">&#10003;</span>
+              ) : value === 'no' ? (
+                <span class="cross">&#10007;</span>
+              ) : (
+                <span class="plugin" set:html={t(locale, `compare.values.${value}`)} />
+              )}
+            </td>
+          ))}
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,38 @@
+---
+import { Image } from 'astro:assets';
+import { formatDate, localePath, t, type Locale } from '../lib/i18n';
+import { slugOf, type Post } from '../lib/content';
+
+interface Props { locale: Locale; posts: Post[] }
+const { locale, posts } = Astro.props;
+---
+
+{posts.length === 0 ? (
+  <p class="blog-empty">{t(locale, 'blog.empty')}</p>
+) : (
+  <ul class="post-list">
+    {posts.map((post) => {
+      const href = localePath(locale, `/blog/${slugOf(post)}/`);
+      const { title, description, date, kind, version, cover, coverAlt } = post.data;
+      return (
+        <li>
+          <article class="post-card neon-border-hover">
+            {cover && (
+              <div class="post-card-cover">
+                <Image src={cover} alt={coverAlt ?? ''} widths={[400, 800]} sizes="(max-width: 768px) 100vw, 360px" />
+              </div>
+            )}
+            <div class="post-card-body">
+              <p class="post-meta">
+                <span class:list={['post-kind', `post-kind-${kind}`]}>{t(locale, `blog.kind.${kind}`)}{version && ` ${version}`}</span>
+                <time datetime={date.toISOString()}>{formatDate(locale, date)}</time>
+              </p>
+              <h2><a href={href}>{title}</a></h2>
+              <p class="post-card-description">{description}</p>
+            </div>
+          </article>
+        </li>
+      );
+    })}
+  </ul>
+)}

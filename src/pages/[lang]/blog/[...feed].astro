@@ -1,0 +1,6 @@
+---
+import Feed from '../../../views/Feed.astro';
+import { feedPaths } from '../../../lib/paths';
+export const getStaticPaths = () => feedPaths();
+---
+<Feed {...Astro.props} />

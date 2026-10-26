@@ -237,7 +237,7 @@
   ],
   "compare": {
     "columns": [
-      "TermIDE",
+      "Termide",
       "Fresh",
       "Vim/Neovim",
       "Helix",

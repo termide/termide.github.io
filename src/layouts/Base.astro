@@ -1,0 +1,137 @@
+---
+/**
+ * The frame every page shares: head, menubar, footer, lightbox and js/main.js.
+ * `path` is the page's locale-free path ("/", "/blog/", "/blog/<slug>/"): the language switcher
+ * and the hreflang links point at the same page in the other languages.
+ */
+import data from '../data.json';
+import { absoluteUrl, docUrl, htmlLang, languageLabel, localePath, locales, ogLocale, plain, t, type Locale } from '../lib/i18n';
+
+interface Props {
+  locale: Locale;
+  path: string;
+  /** Full <title>; the landing passes its own, other pages get " — Termide" appended. */
+  title: string;
+  description: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  /** Absolute URL of the preview image; the site's og.png when absent. */
+  ogImage?: string;
+  ogType?: 'website' | 'article';
+  /** Which menubar item is current: the landing highlights sections itself (js/main.js). */
+  current?: 'landing' | 'blog';
+}
+
+const { locale, path, title, description, ogType = 'website', current } = Astro.props;
+const ogTitle = Astro.props.ogTitle ?? title;
+const ogDescription = Astro.props.ogDescription ?? description;
+const ogImage = Astro.props.ogImage ?? absoluteUrl(data.og_image);
+const canonical = absoluteUrl(localePath(locale, path));
+const home = current === 'landing' ? '' : localePath(locale, '/');
+const blog = localePath(locale, '/blog/');
+const docs = docUrl(locale);
+// The feed is a file: trailingSlash must not reach it
+const rss = localePath(locale, '/rss.xml').replace(/\/$/, '');
+---
+
+<!doctype html>
+<html lang={htmlLang[locale]}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={plain(description)} />
+    <link rel="canonical" href={canonical} />
+    {locales.map((l) => <link rel="alternate" hreflang={l} href={absoluteUrl(localePath(l, path))} />)}
+    <link rel="alternate" hreflang="x-default" href={absoluteUrl(localePath('en', path))} />
+    <link rel="alternate" type="application/rss+xml" title={`Termide — ${t(locale, 'blog.title')}`} href={rss} />
+
+    <meta property="og:title" content={plain(ogTitle)} />
+    <meta property="og:description" content={plain(ogDescription)} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:locale" content={ogLocale[locale]} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={plain(ogTitle)} />
+    <meta name="twitter:description" content={plain(ogDescription)} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <link rel="icon" type="image/svg+xml" href="/assets/logo.svg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="/css/style.css" />
+    <slot name="head" />
+  </head>
+  <body class="scanlines">
+    <slot name="body-start" />
+
+    <nav class="menubar">
+      {current !== 'landing' && (
+        <a class="menubar-home" href={home}>
+          <img src="/assets/logo.svg" alt="" width="26" height="26" />
+          <span>Termide</span>
+        </a>
+      )}
+      <div class="menubar-nav">
+        <a href={`${home}#homes`}>{t(locale, 'nav.features')}</a>
+        <a href={`${home}#agent`}>{t(locale, 'nav.agent')}</a>
+        <a href={`${home}#toolbox`}>{t(locale, 'nav.compare')}</a>
+        <a href={`${home}#screenshots`}>{t(locale, 'nav.themes')}</a>
+        <a href={`${home}#install`}>{t(locale, 'nav.install')}</a>
+        <a href={blog} class:list={{ active: current === 'blog' }}>{t(locale, 'nav.blog')}</a>
+        <a href={docs} target="_blank" rel="noopener">{t(locale, 'nav.docs')}</a>
+      </div>
+      <div class="lang-switcher">
+        {locales.map((l, i) => (
+          <>
+            {i > 0 && <span class="divider">/</span>}
+            <a href={localePath(l, path)} class:list={{ active: l === locale }}>{languageLabel(l)}</a>
+          </>
+        ))}
+      </div>
+    </nav>
+
+    <main class="page-container">
+      <slot />
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        <div class="footer-content">
+          <div class="footer-logo">
+            <img src="/assets/logo.svg" alt="Termide" class="footer-logo-img" />
+            <span class="footer-name">Termide</span>
+          </div>
+          <div class="footer-links">
+            <a href={data.repo_url} target="_blank" rel="noopener">GitHub</a>
+            <a href={docs} target="_blank" rel="noopener">{t(locale, 'footer.docs')}</a>
+            <a href={blog}>{t(locale, 'footer.blog')}</a>
+            <a href={rss}>{t(locale, 'blog.rss')}</a>
+            <a href={`${data.repo_url}/releases`} target="_blank" rel="noopener">{t(locale, 'footer.releases')}</a>
+            <a href={`${data.repo_url}/issues`} target="_blank" rel="noopener">{t(locale, 'footer.issues')}</a>
+            <a href={`${data.repo_url}/discussions`} target="_blank" rel="noopener">{t(locale, 'footer.discussions')}</a>
+            <a href="https://t.me/termide_news" target="_blank" rel="noopener">{t(locale, 'footer.news')}</a>
+            <a href="https://t.me/termide_talks" target="_blank" rel="noopener">{t(locale, 'footer.chat')}</a>
+          </div>
+          <div class="footer-meta">
+            <p set:html={t(locale, 'footer.license')} />
+            <p class="version">v<span data-version>{data.version}</span></p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-grid"></div>
+    </footer>
+
+    <div id="lightbox" class="lightbox">
+      <button class="lightbox-close">&times;</button>
+      <img class="lightbox-image" src="" alt="" />
+    </div>
+
+    <script is:inline src="/js/main.js"></script>
+  </body>
+</html>

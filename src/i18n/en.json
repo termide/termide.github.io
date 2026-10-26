@@ -1,8 +1,8 @@
 {
   "meta": {
-    "title": "TermIDE — all-in-one terminal workspace for desktops and servers",
+    "title": "Termide — all-in-one terminal workspace for desktops and servers",
     "description": "Editor with LSP and a debugger, dual-pane file manager with SFTP/FTP, terminal, git, database viewer, a coding agent that runs on your own model and plugins in any language — one zero-config static binary written in Rust.",
-    "og_title": "TermIDE — one terminal workspace, on your laptop and on your servers",
+    "og_title": "Termide — one terminal workspace, on your laptop and on your servers",
     "og_description": "Editor, file manager, terminal, git, databases and a coding agent in one static Rust binary. Zero config."
   },
   "nav": {
@@ -11,7 +11,8 @@
     "compare": "Compare",
     "themes": "Themes",
     "install": "Install",
-    "docs": "Docs"
+    "docs": "Docs",
+    "blog": "Blog"
   },
   "hero": {
     "headline": "One terminal workspace — on your laptop and on your servers.",
@@ -286,8 +287,8 @@
     }
   },
   "compare": {
-    "title": "// Why TermIDE?",
-    "subtitle": "Editors cover the code. TermIDE covers what surrounds it too.",
+    "title": "// Why Termide?",
+    "subtitle": "Editors cover the code. Termide covers what surrounds it too.",
     "feature_col": "Feature",
     "values": {
       "plugin": "plugin",
@@ -324,11 +325,11 @@
       "html": "HTML preview"
     },
     "stack_title": "// The everyday part of your toolbox",
-    "stack_subtitle": "TermIDE does not try to replace these tools. It covers the part you reach for every day, in one place.",
+    "stack_subtitle": "Termide does not try to replace these tools. It covers the part you reach for every day, in one place.",
     "stack_cols": {
       "task": "Task",
       "usual": "Usually",
-      "termide": "In TermIDE"
+      "termide": "In Termide"
     },
     "stack": {
       "detach": {
@@ -452,7 +453,7 @@
         "a": "Yes, within the limits you set. <code>/goal</code> keeps it at a task until a separate judge agrees it is done, <code>/loop</code> repeats a prompt on an interval, and <code>on_limit = \"wait\"</code> waits out a rate or subscription limit instead of stopping. In the default <code>auto</code> mode a reviewer model decides what your permission rules leave open, so it rarely stops to ask; <code>deny</code> rules hold in every mode."
       },
       "privacy": {
-        "q": "Does TermIDE phone home?",
+        "q": "Does Termide phone home?",
         "a": "No telemetry, no account and no update checks. It goes online only when you ask: a remote location, a web page, <code>git push</code> or <code>pull</code>, or a model for the agent."
       },
       "repo": {
@@ -488,6 +489,38 @@
     "discussions": "Discussions",
     "news": "Telegram news",
     "chat": "Telegram chat",
-    "license": "MIT License &bull; Made with <span class=\"rust-heart\">&#9829;</span> and Rust"
+    "license": "MIT License &bull; Made with <span class=\"rust-heart\">&#9829;</span> and Rust",
+    "blog": "Blog"
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Release announcements and hands-on guides to what termide can do.",
+    "empty": "The first posts are on their way.",
+    "all": "All",
+    "kinds": {
+      "release": "Releases",
+      "guide": "Guides"
+    },
+    "kind": {
+      "release": "Release",
+      "guide": "Guide"
+    },
+    "tag": "Topic",
+    "rss": "RSS",
+    "notes": "Full release notes",
+    "install": "Install or update",
+    "discuss": "Discuss on Telegram",
+    "back": "All posts",
+    "newer": "Newer",
+    "older": "Older",
+    "page": "Page {n} of {total}",
+    "tags": {
+      "agent": "agent",
+      "file-manager": "file manager",
+      "git": "git",
+      "editor": "editor",
+      "plugins": "plugins",
+      "far": "Far habits"
+    }
   }
 }
