@@ -24,11 +24,11 @@ const jsonld = {
   inLanguage: locale,
   url: absoluteUrl(localePath(locale, `/blog/${slug}/`)),
   ...(ogImage && { image: ogImage }),
-  publisher: { '@type': 'Organization', name: 'TermIDE', url: data.site_url },
+  publisher: { '@type': 'Organization', name: 'Termide', url: data.site_url },
 };
 ---
 
-<Base locale={locale} path={`/blog/${slug}/`} title={`${title} — TermIDE`} description={description} ogImage={ogImage} ogType="article" current="blog">
+<Base locale={locale} path={`/blog/${slug}/`} title={`${title} — Termide`} description={description} ogImage={ogImage} ogType="article" current="blog">
   <script slot="head" is:inline type="application/ld+json" set:html={JSON.stringify(jsonld).replace(/<\//g, '<\\/')} />
   <article class="post">
     <header class="post-header">

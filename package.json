@@ -11,7 +11,8 @@
     "preview": "astro preview",
     "check": "node scripts/check.mjs && astro check",
     "translations": "node scripts/check.mjs",
-    "astro": "astro"
+    "astro": "astro",
+    "release-post": "node scripts/release-post.mjs"
   },
   "dependencies": {
     "@astrojs/mdx": "^8.1.1",

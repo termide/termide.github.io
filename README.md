@@ -1,6 +1,6 @@
-# TermIDE website
+# Termide website
 
-The landing page and blog of [TermIDE](https://github.com/termide/termide), an
+The landing page and blog of [Termide](https://github.com/termide/termide), an
 all-in-one terminal workspace for desktops and servers. Astro, built and
 deployed to GitHub Pages by `.github/workflows/deploy.yml` on every push to
 `main`.
@@ -54,6 +54,21 @@ pnpm translations stamp src/content/posts/<slug>
 Images go beside the post and are imported or referenced relatively
 (`cover: ./cover.png`), so Astro resizes them. Screen recordings are MP4
 files under `public/assets/blog/<slug>/`, shown with `<Video>`.
+
+### Release posts
+
+A release's post is made from its GitHub release, not written by hand:
+
+```bash
+pnpm release-post 0.46.0
+```
+
+writes `src/content/posts/release-0-46-0/en.md` from the release notes and
+`cover.jpg` from the poster attached to the release (`termide-<v>-poster.jpg`),
+dated by the day it was published. Rerun it when the notes change: the text,
+date and cover follow them, while an edited `title`, `subtitle`,
+`description`, `tags` or `discussion` stays. Then translate `ru.md` and
+`zh.md` and stamp them as above. Needs the GitHub CLI (`gh`).
 
 ## Releases
 

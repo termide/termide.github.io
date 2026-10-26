@@ -1,6 +1,7 @@
-// TermIDE Landing Page - Main JavaScript
+// Termide Landing Page - Main JavaScript
 
 document.addEventListener('DOMContentLoaded', () => {
+    initHeroPrompt();
     initHeroCarousel();
     initCopyButtons();
     initLightbox();
@@ -11,6 +12,27 @@ document.addEventListener('DOMContentLoaded', () => {
     initThemeFilters();
     initLatestVersion();
 });
+
+// Hero prompt: `$` waits a beat, the name is typed like a command, then entered: the cursor goes.
+// The page renders the word empty (see Landing.astro); with reduced motion it stays as rendered.
+function initHeroPrompt() {
+    const header = document.querySelector('.hero-header');
+    const typed = header && header.querySelector('.hero-prompt-typed');
+    if (!typed) return;
+    const word = typed.dataset.word;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || typed.textContent === word) {
+        typed.textContent = word;
+        header.classList.add('typed');
+        return;
+    }
+    let i = 0;
+    function step() {
+        typed.textContent = word.slice(0, ++i);
+        if (i < word.length) setTimeout(step, 80 + Math.random() * 110);
+        else setTimeout(() => header.classList.add('typed'), 700);
+    }
+    setTimeout(step, 600);
+}
 
 // Hero Carousel with Typewriter Effect
 function initHeroCarousel() {
@@ -414,6 +436,6 @@ async function initLatestVersion() {
 }
 
 // Console Easter Egg
-console.log('%c TermIDE ', 'background: #40ff40; color: #0a0a0f; font-size: 24px; font-weight: bold; font-family: monospace;');
+console.log('%c Termide ', 'background: #40ff40; color: #0a0a0f; font-size: 24px; font-weight: bold; font-family: monospace;');
 console.log('%c All-in-one terminal workspace for desktops and servers ', 'color: #40ff40; font-size: 14px; font-family: monospace;');
 console.log('%c https://github.com/termide/termide ', 'color: #888; font-size: 12px; font-family: monospace;');

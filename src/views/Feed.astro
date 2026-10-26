@@ -1,21 +1,24 @@
 ---
-/** The blog's feed: every post, or one kind of them (releases, guides). */
+/** One page of the blog's feed: every post, or one kind of them (releases, guides). */
 import Base from '../layouts/Base.astro';
 import PostList from '../components/PostList.astro';
 import Tags from '../components/Tags.astro';
 import { localePath, t, type Locale } from '../lib/i18n';
 import { getPosts, getUsedTags, kinds, kindSegment, type Kind } from '../lib/content';
+import { PER_PAGE } from '../lib/paths';
 import '../styles/blog.css';
 
-interface Props { locale: Locale; kind?: Kind }
-const { locale, kind } = Astro.props;
-const posts = await getPosts(locale, kind);
+interface Props { locale: Locale; kind?: Kind; page?: number; pages?: number }
+const { locale, kind, page = 1, pages = 1 } = Astro.props;
+const posts = (await getPosts(locale, kind)).slice((page - 1) * PER_PAGE, page * PER_PAGE);
 const tags = await getUsedTags();
-const path = kind ? `/blog/${kindSegment[kind]}/` : '/blog/';
+const base = kind ? `/blog/${kindSegment[kind]}/` : '/blog/';
+const pagePath = (n: number) => (n > 1 ? `${base}page/${n}/` : base);
+const path = pagePath(page);
 const title = kind ? t(locale, `blog.kinds.${kind}`) : t(locale, 'blog.title');
 ---
 
-<Base locale={locale} path={path} title={`${title} — TermIDE`} description={t(locale, 'blog.subtitle')} current="blog">
+<Base locale={locale} path={path} title={`${title} — Termide`} description={t(locale, 'blog.subtitle')} current="blog">
   <section class="blog">
     <h1 class="section-title">{title}</h1>
     <p class="section-subtitle">{t(locale, 'blog.subtitle')}</p>
@@ -24,9 +27,15 @@ const title = kind ? t(locale, `blog.kinds.${kind}`) : t(locale, 'blog.title');
       {kinds.map((k) => (
         <a href={localePath(locale, `/blog/${kindSegment[k]}/`)} class:list={['filter-btn', { active: k === kind }]}>{t(locale, `blog.kinds.${k}`)}</a>
       ))}
-      <a href={localePath(locale, '/rss.xml').replace(/\/$/, '')} class="filter-btn blog-rss">{t(locale, 'blog.rss')}</a>
     </nav>
     <Tags locale={locale} tags={tags} />
     <PostList locale={locale} posts={posts} />
+    {pages > 1 && (
+      <nav class="blog-pages">
+        {page > 1 ? <a class="filter-btn" href={localePath(locale, pagePath(page - 1))} rel="prev">← {t(locale, 'blog.newer')}</a> : <span />}
+        <span class="blog-pages-count">{t(locale, 'blog.page').replace('{n}', String(page)).replace('{total}', String(pages))}</span>
+        {page < pages ? <a class="filter-btn" href={localePath(locale, pagePath(page + 1))} rel="next">{t(locale, 'blog.older')} →</a> : <span />}
+      </nav>
+    )}
   </section>
 </Base>

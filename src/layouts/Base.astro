@@ -10,7 +10,7 @@ import { absoluteUrl, docUrl, htmlLang, languageLabel, localePath, locales, ogLo
 interface Props {
   locale: Locale;
   path: string;
-  /** Full <title>; the landing passes its own, other pages get " — TermIDE" appended. */
+  /** Full <title>; the landing passes its own, other pages get " — Termide" appended. */
   title: string;
   description: string;
   ogTitle?: string;
@@ -30,6 +30,8 @@ const canonical = absoluteUrl(localePath(locale, path));
 const home = current === 'landing' ? '' : localePath(locale, '/');
 const blog = localePath(locale, '/blog/');
 const docs = docUrl(locale);
+// The feed is a file: trailingSlash must not reach it
+const rss = localePath(locale, '/rss.xml').replace(/\/$/, '');
 ---
 
 <!doctype html>
@@ -42,7 +44,7 @@ const docs = docUrl(locale);
     <link rel="canonical" href={canonical} />
     {locales.map((l) => <link rel="alternate" hreflang={l} href={absoluteUrl(localePath(l, path))} />)}
     <link rel="alternate" hreflang="x-default" href={absoluteUrl(localePath('en', path))} />
-    <link rel="alternate" type="application/rss+xml" title={`TermIDE — ${t(locale, 'blog.title')}`} href={localePath(locale, '/rss.xml').replace(/\/$/, '')} />
+    <link rel="alternate" type="application/rss+xml" title={`Termide — ${t(locale, 'blog.title')}`} href={rss} />
 
     <meta property="og:title" content={plain(ogTitle)} />
     <meta property="og:description" content={plain(ogDescription)} />
@@ -69,7 +71,12 @@ const docs = docUrl(locale);
     <slot name="body-start" />
 
     <nav class="menubar">
-      <a class="menubar-logo" href={localePath(locale, '/')}>TermIDE</a>
+      {current !== 'landing' && (
+        <a class="menubar-home" href={home}>
+          <img src="/assets/logo.svg" alt="" width="26" height="26" />
+          <span>Termide</span>
+        </a>
+      )}
       <div class="menubar-nav">
         <a href={`${home}#homes`}>{t(locale, 'nav.features')}</a>
         <a href={`${home}#agent`}>{t(locale, 'nav.agent')}</a>
@@ -97,13 +104,14 @@ const docs = docUrl(locale);
       <div class="footer-inner">
         <div class="footer-content">
           <div class="footer-logo">
-            <img src="/assets/logo.svg" alt="TermIDE" class="footer-logo-img" />
-            <span class="footer-name">TermIDE</span>
+            <img src="/assets/logo.svg" alt="Termide" class="footer-logo-img" />
+            <span class="footer-name">Termide</span>
           </div>
           <div class="footer-links">
             <a href={data.repo_url} target="_blank" rel="noopener">GitHub</a>
             <a href={docs} target="_blank" rel="noopener">{t(locale, 'footer.docs')}</a>
             <a href={blog}>{t(locale, 'footer.blog')}</a>
+            <a href={rss}>{t(locale, 'blog.rss')}</a>
             <a href={`${data.repo_url}/releases`} target="_blank" rel="noopener">{t(locale, 'footer.releases')}</a>
             <a href={`${data.repo_url}/issues`} target="_blank" rel="noopener">{t(locale, 'footer.issues')}</a>
             <a href={`${data.repo_url}/discussions`} target="_blank" rel="noopener">{t(locale, 'footer.discussions')}</a>

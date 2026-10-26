@@ -18,9 +18,9 @@ const { locale, posts } = Astro.props;
         <li>
           <article class="post-card neon-border-hover">
             {cover && (
-              <a href={href} class="post-card-cover" tabindex="-1" aria-hidden="true">
+              <div class="post-card-cover">
                 <Image src={cover} alt={coverAlt ?? ''} widths={[400, 800]} sizes="(max-width: 768px) 100vw, 360px" />
-              </a>
+              </div>
             )}
             <div class="post-card-body">
               <p class="post-meta">

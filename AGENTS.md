@@ -1,4 +1,4 @@
-# termide.github.io — the TermIDE website
+# termide.github.io — the Termide website
 
 Astro + MDX, static build, deployed to GitHub Pages from `main` by
 `.github/workflows/deploy.yml`. Everything in this repository that is not site
@@ -22,10 +22,13 @@ output. See `README.md` for the layout and commands.
 
 ## Posts
 
-- `src/content/posts/<slug>/en.mdx` is the original; `ru.mdx` and `zh.mdx` translate it. A slug may not be
+- `src/content/posts/<slug>/en.mdx` (or `.md`) is the original; `ru` and `zh` translate it. A slug may not be
   `releases`, `guides` or `tags`.
 - `kind: release` announces a release and needs `version`; `kind: guide` shows one feature in use and gives
   the release that brought it in `version`.
+- A release post is the release's GitHub notes and poster, made by `pnpm release-post <version>`
+  (`scripts/release-post.mjs`); fix its text in the notes and rerun, edit only its head fields by hand.
+  Its translations are `ru.md` / `zh.md`: plain Markdown, since the notes are not MDX-safe.
 - Every claim comes from the main repository: its release notes, `doc/en/`, the code. Keys, settings and
   labels are spelled as termide shows them; in translations, use the label termide shows in that language
   (`crates/i18n/i18n/<lang>.toml`).

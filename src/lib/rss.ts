@@ -6,7 +6,7 @@ import { getPosts, slugOf } from './content';
 export async function feed(locale: Locale, ctx: APIContext) {
   const posts = await getPosts(locale);
   return rss({
-    title: `TermIDE — ${t(locale, 'blog.title')}`,
+    title: `Termide — ${t(locale, 'blog.title')}`,
     description: t(locale, 'blog.subtitle'),
     site: new URL(localePath(locale, '/blog/'), ctx.site!).href,
     trailingSlash: true,

@@ -17,7 +17,7 @@ const slides = data.slides.map((slide) => ({ text: s(`hero.slides.${slide.id}`),
 const jsonld = {
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
-  name: 'TermIDE',
+  name: 'Termide',
   url: absoluteUrl(localePath(locale, '/')),
   description: s('meta.description'),
   applicationCategory: 'DeveloperApplication',
@@ -42,15 +42,22 @@ const custom = data.theme_custom;
   <script slot="head" is:inline type="application/ld+json" set:html={inlineJson(jsonld)} />
   <script slot="body-start" is:inline set:html={`window.heroSlides = ${inlineJson(slides)};`} />
 
+  {/* The name as a shell command: js/main.js types it out. Search and screen readers get the plain name. */}
   <div class="hero-header">
-    <img src="/assets/logo.svg" alt="TermIDE" class="logo" />
-    <h1 class="glitch" data-text="TermIDE">TermIDE</h1>
+    <h1>
+      <span class="visually-hidden">Termide</span>
+      <span class="hero-prompt-sign" aria-hidden="true">$</span><span class="hero-prompt-typed" aria-hidden="true" data-word="termide">termide</span><span class="hero-prompt-caret" aria-hidden="true">▌</span>
+    </h1>
   </div>
+  {/* Empty the word before the first paint, so the page does not flash it before typing it. */}
+  <script is:inline>
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.querySelector('.hero-prompt-typed').textContent = '';
+  </script>
 
   <div class="hero-carousel">
     <div class="hero-carousel-content">
       <p class="headline" set:html={s('hero.headline')} />
-      <p class="tagline"><span class="typewriter"></span><span class="cursor">_</span></p>
+      <p class="tagline"><span class="typewriter"></span><span class="cursor" aria-hidden="true">█</span></p>
       <p class="subtitle" set:html={s('hero.subtitle')} />
       <CodeBlock locale={locale} command={data.hero_install} class="hero-install" />
       <div class="cta-buttons">
@@ -112,7 +119,7 @@ const custom = data.theme_custom;
     </div>
     <div class="agent-layout">
       <div class="terminal-frame neon-border agent-shot">
-        <img src={`/${data.agent.image}`} alt="TermIDE agent panel" class="screenshot" loading="lazy" />
+        <img src={`/${data.agent.image}`} alt="Termide agent panel" class="screenshot" loading="lazy" />
       </div>
       <div class="agent-items">
         {data.agent.items.map((item) => (

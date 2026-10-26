@@ -18,7 +18,7 @@ const ORIGINAL = 'en';
 const TARGETS = ['ru', 'zh'];
 const EXT = ['mdx', 'md'];
 /** Feed pages beside the posts under /blog/; a post may not take their names. */
-const RESERVED = ['releases', 'guides', 'tags'];
+const RESERVED = ['releases', 'guides', 'tags', 'page'];
 
 const readJson = (path) => JSON.parse(readFileSync(path, 'utf8'));
 const find = (dir, lang) => EXT.map((e) => join(dir, `${lang}.${e}`)).find(existsSync);
@@ -82,8 +82,9 @@ function stamp(dir) {
     if (!file) { console.error(`${dir}: no ${lang} translation`); process.exitCode = 1; continue; }
     const text = readFileSync(file, 'utf8');
     const next = /^sourceHash:/m.test(frontmatter(text))
-      ? text.replace(/^(---\n[\s\S]*?)^sourceHash:.*$/m, `$1sourceHash: ${h}`)
-      : text.replace(/^---\n/, `---\nsourceHash: ${h}\n`);
+      // Quoted: a hex hash like 24227e668961 would read as a number in YAML.
+      ? text.replace(/^(---\n[\s\S]*?)^sourceHash:.*$/m, `$1sourceHash: "${h}"`)
+      : text.replace(/^---\n/, `---\nsourceHash: "${h}"\n`);
     writeFileSync(file, next);
     console.log(`${file}: sourceHash ${h}`);
   }
