@@ -1,7 +1,7 @@
 ---
 /**
- * A copyable command. `{v}` in it stands for the release version: the page shows the version it
- * was built with, and js/main.js swaps in a newer one from `data-template` when GitHub has it.
+ * A copyable command. `{v}` in it stands for the release version the site was built with; a
+ * release sets it in data.json and the push rebuilds the site.
  */
 import data from '../data.json';
 import { t, type Locale } from '../lib/i18n';
@@ -12,6 +12,6 @@ const shown = command.replaceAll('{v}', data.version);
 ---
 
 <div class:list={['code-block', extra]}>
-  <pre><code data-template={command}>{shown}</code></pre>
+  <pre><code>{shown}</code></pre>
   <button class="copy-btn" data-copy={shown} title={t(locale, 'install.copy')}><span class="copy-icon">&#128203;</span></button>
 </div>

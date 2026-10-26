@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initActiveSection();
     initInstallTabs();
     initThemeFilters();
-    initLatestVersion();
 });
 
 // Hero prompt: `$` waits a beat, the name is typed like a command, then entered: the cursor goes.
@@ -411,27 +410,6 @@ function initThemeFilters() {
                 item.hidden = group !== 'all' && item.dataset.group !== group;
             });
         });
-    });
-}
-
-// The page is built with the version current at build time; a newer
-// release replaces it in the footer and in every versioned command.
-async function initLatestVersion() {
-    let version;
-    try {
-        const response = await fetch('https://api.github.com/repos/termide/termide/releases/latest');
-        if (!response.ok) return;
-        version = (await response.json()).tag_name.replace(/^v/, '');
-    } catch (err) {
-        return;
-    }
-    if (!/^\d+\.\d+\.\d+$/.test(version)) return;
-    document.querySelectorAll('[data-version]').forEach(el => { el.textContent = version; });
-    document.querySelectorAll('code[data-template]').forEach(code => {
-        const command = code.dataset.template.replaceAll('{v}', version);
-        code.textContent = command;
-        const button = code.closest('.code-block').querySelector('.copy-btn');
-        if (button) button.dataset.copy = command;
     });
 }
 
