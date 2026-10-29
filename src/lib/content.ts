@@ -8,6 +8,14 @@ export const kinds: readonly Kind[] = ['release', 'guide'];
 export const kindSegment: Record<Kind, string> = { release: 'releases', guide: 'guides' };
 
 /** "my-post/ru" → ["my-post", "ru"] */
+/**
+ * The version on a post's kind label: a release names its version; a guide names the release
+ * series its feature arrived in and holds from then on, as `0.35+`.
+ */
+export function versionLabel(kind: Kind, version: string): string {
+  return kind === 'guide' ? `${version.split('.').slice(0, 2).join('.')}+` : version;
+}
+
 export function parseId(id: string): [slug: string, locale: Locale] {
   const i = id.lastIndexOf('/');
   return [id.slice(0, i), id.slice(i + 1) as Locale];

@@ -5,7 +5,7 @@ import Base from '../layouts/Base.astro';
 import Tags from '../components/Tags.astro';
 import data from '../data.json';
 import { absoluteUrl, formatDate, localePath, t, type Locale } from '../lib/i18n';
-import { slugOf, type Post } from '../lib/content';
+import { slugOf, versionLabel, type Post } from '../lib/content';
 import '../styles/blog.css';
 
 interface Props { locale: Locale; post: Post }
@@ -33,7 +33,7 @@ const jsonld = {
   <article class="post">
     <header class="post-header">
       <p class="post-meta">
-        <a href={localePath(locale, `/blog/${kind === 'release' ? 'releases' : 'guides'}/`)} class:list={['post-kind', `post-kind-${kind}`]}>{t(locale, `blog.kind.${kind}`)}{version && ` ${version}`}</a>
+        <a href={localePath(locale, `/blog/${kind === 'release' ? 'releases' : 'guides'}/`)} class:list={['post-kind', `post-kind-${kind}`]}>{t(locale, `blog.kind.${kind}`)}{version && ` ${versionLabel(kind, version)}`}</a>
         <time datetime={date.toISOString()}>{formatDate(locale, date)}</time>
       </p>
       <h1>{title}</h1>
