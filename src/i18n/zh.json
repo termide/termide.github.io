@@ -520,7 +520,8 @@
       "git": "git",
       "editor": "编辑器",
       "plugins": "插件",
-      "far": "Far 习惯"
+      "far": "Far 习惯",
+      "remote": "远程工作"
     }
   }
 }

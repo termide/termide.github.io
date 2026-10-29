@@ -1,0 +1,87 @@
+---
+title: Work on a server without tmux
+subtitle: Close the SSH connection, come back an hour later, and find everything where you left it
+description: "A detached termide keeps running after its terminal is gone: editors, shells, language servers and long builds wait for you to attach again, with no tmux in between."
+date: 2026-10-29
+kind: guide
+version: 0.47.0
+tags: [remote]
+---
+
+import Keys from '../../../components/mdx/Keys.astro';
+
+It is evening, and you are working on a server. A build has been running in one of termide's panels for twenty minutes, three files are open in the editor, and next to them an agent is working through the tests. Then the Wi-Fi drops. The SSH connection goes with it, and so does everything that was running in that terminal: the build never finishes, the editor closes, and the agent stops mid-sentence.
+
+The usual way to guard against this is tmux. It does the job, but it adds another program between you and termide, with a prefix key of its own that intercepts termide's shortcuts, and its own settings for colours and the mouse. termide can survive a dropped connection by itself, with nothing in between.
+
+{/* TODO: video — a build running in a terminal panel, Alt+D, the shell prompt, termide, the build has moved on. */}
+
+## One flag at launch
+
+All it takes is starting termide with the `--detached` flag, or its short form `-d`:
+
+```bash
+cd ~/src/my-project
+termide --detached
+```
+
+On the surface nothing changes: the same termide opens, and you work in it the same way. The difference is that it no longer depends on your terminal. termide runs on the server on its own, and the terminal merely shows it, like a window. Close the window, and everything behind it stays where it was. A termide like this is called an instance, and it is named after the project folder, `my-project` in our case. termide has been detachable since version 0.35, but until 0.47 `--detached` only started the instance, and `termide --attach` then connected to it.
+
+## Step away and come back
+
+When you need to step away, press <Keys k="Alt+D" /> or choose **Options → Detach instance** in the menu. The shell comes back, and termide leaves you the command that will bring you back to it. You do not have to press anything, though: if the connection drops or you simply close the window, termide notices that nobody is watching any more and keeps working.
+
+You can come back whenever and from wherever you like, even the next day and from another computer. Connect to the server, go to the project and start termide, this time without any flags:
+
+```bash
+cd ~/src/my-project
+termide
+```
+
+No second copy appears beside the first. A project can be open in only one termide, so when termide sees that a detached instance already has `my-project`, it simply takes you into it. The build has finished in the meantime, the files are open where you left them, and the agent has finished its answer.
+
+Nothing was restored, because nothing was ever interrupted. termide does not save your work when you leave and load it when you return: it has been running all along, together with its shells, language servers and jobs.
+
+If you have several instances, or do not remember which is which, ask termide for the list and attach by name:
+
+```bash
+termide --list-instances
+termide --attach my-project
+```
+
+The list shows how long each instance has been running and whether anyone is attached to it right now. With shell completion installed, <Keys k="Tab" /> fills in the names after `--attach`, and the command without a name picks the most recent instance. The terminal you come back from may turn out to be quite different, with another size and other colours: termide finds out what it can do and redraws the screen from scratch.
+
+## When something goes wrong
+
+Only one terminal can show an instance at a time. If termide is still attached to your office computer and you are already at home, a plain `--attach` will refuse. In that case, take the instance over:
+
+```bash
+termide --attach my-project --force
+```
+
+The office terminal is told that the instance was taken over, and nothing changes inside termide itself.
+
+Sometimes termide stops responding to keys. Press <Keys k="Ctrl+\" /> three times in a row then. These keys are caught not by termide but by the small program that connects you to it, so they detach even a frozen instance. If termide has to be ended altogether, do it from outside:
+
+```bash
+termide --kill my-project
+```
+
+Unsaved changes are not lost. termide keeps them together with the project's layout and gives them back when you open the project again; its shells and jobs, however, end along with it.
+
+One more small thing: the familiar <Keys k="Ctrl+Z" /> will not help here. termide reads every key itself, so this one never reaches the shell that could put the program to sleep. <Keys k="Alt+D" /> is there for that.
+
+## So you never have to remember the flag
+
+Being detachable has one condition: it has to be arranged in advance. A termide started without `--detached` cannot be detached later, because a running program is bound tightly to its terminal. tmux has the same limitation. If you spend most of your time on servers, it is simpler to make every launch detachable. `config.toml` has a setting for that:
+
+```toml
+[general]
+always_detachable = true
+```
+
+The same can be switched on in Settings (<Keys k="Alt+P" />), under **General**, with the **Always detachable (Unix)** checkbox.
+
+Just keep in mind that from then on closing a window no longer closes termide, and not only on the server but on your laptop too. Its shells and language servers keep running as well, so look at `termide --list-instances` from time to time. There is one exception. When termide opens as `$EDITOR`, for example from `git commit`, the setting does not apply: git waits for the editor to close, and a detach would tell it the edit was finished when it was not.
+
+Detached instances work on Linux, macOS and BSD. Every command and detail, down to where termide keeps its sockets, is in the [full guide](https://github.com/termide/termide/blob/main/doc/en/detached-instances.md).

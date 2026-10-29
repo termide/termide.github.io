@@ -520,7 +520,8 @@
       "git": "git",
       "editor": "editor",
       "plugins": "plugins",
-      "far": "Far habits"
+      "far": "Far habits",
+      "remote": "remote work"
     }
   }
 }
