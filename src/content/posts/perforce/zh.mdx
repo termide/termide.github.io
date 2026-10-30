@@ -100,7 +100,7 @@ Perforce 允许多人编辑同一个文件，但你会希望在动手之前就�
 
 ## 检查并提交
 
-工作完成后，按 <Keys k="Alt+G" /> 打开 **Opened files** 面板：在 git 之外的项目中，git 状态面板的快捷键会打开 Perforce 的面板。它按 changelist 分组列出你在此工作区中打开的所有文件，每个文件的颜色与文件管理器中相同，后面是它的操作。它的用法和 git 状态面板一样，快捷键也相同：用方向键移动，<Keys k="Enter" /> 或 <Keys k="F4" /> 在编辑器中打开文件，<Keys k="F3" /> 显示改了什么，<Keys k="Backspace" /> 还原它。在 changelist 的标题行上按 <Keys k="Enter" /> 会提交它：默认 changelist 会让你填写描述，编号的 changelist 则带着自己的描述提交。状态栏以可点击的按钮显示选中行可做的操作，<Keys k="Space" /> 或右键单击会列出它们：
+工作完成后，按 <Keys k="Alt+G" /> 打开 **Opened files** 面板：在 git 之外的项目中，git 状态面板的快捷键会打开 Perforce 的面板。它按 changelist 分组、以文件夹树的形式列出你在此工作区中打开的所有文件，每个文件的颜色与文件管理器中相同，后面是它的操作。它的用法和 git 状态面板一样，快捷键也相同：用方向键移动，<Keys k="Enter" /> 或 <Keys k="F4" /> 在编辑器中打开文件，<Keys k="F3" /> 显示改了什么，<Keys k="Backspace" /> 还原它；<Keys k="←" /> 和 <Keys k="→" /> 折叠和展开文件夹。在 changelist 的标题行上按 <Keys k="Enter" /> 会提交它：默认 changelist 会让你填写描述，编号的 changelist 则带着自己的描述提交。状态栏以可点击的按钮显示选中行可做的操作，<Keys k="Space" /> 或右键单击会列出它们：
 
 <Shot src={actions} alt="按 changelist 分组的 Opened files 面板，上方是 Source/Game/Health.cpp 的列表：Open (Enter / F4)、Diff (F3)、Revert (Backspace / Delete)" caption="<kbd>Space</kbd> 列出可对文件执行的操作；状态栏显示的也是这些。" />
 
@@ -112,7 +112,7 @@ diff 在与 git diff 相同的面板中打开，颜色、行号和折叠都一�
 
 提交之后，面板显示仍然打开的文件，已提交的文件在文件管理器中不再着色。
 
-要获取同事的改动，在面板的 <code>[≡]</code> 菜单中选择 **Sync the workspace**，或在命令面板（<Keys k="Ctrl+P" />）中选择 **perforce: Sync the workspace**。它会在终端面板中运行 `p4 sync`，你可以看着文件到达，p4 有问题要问时也能直接回答。
+要获取同事的改动，按面板底部的 **[Sync the workspace]**（用键盘可按 <Keys k="Tab" /> 到达），或在命令面板（<Keys k="Ctrl+P" />）中选择 **perforce: Sync the workspace**。它会在终端面板中运行 `p4 sync`，你可以看着文件到达，p4 有问题要问时也能直接回答。
 
 ## 全部按键
 
@@ -125,6 +125,8 @@ diff 在与 git diff 相同的面板中打开，颜色、行号和折叠都一�
 | <Keys k="Backspace" /> | 在面板中：还原文件，先询问。 |
 | <Keys k="Space" /> | 在面板中：列出可对该行执行的操作。 |
 | <Keys k="Ctrl+R" /> | 在面板中：刷新它。 |
+| <Keys k="←" /> / <Keys k="→" /> | 在面板中：折叠 / 展开文件夹。 |
+| <Keys k="Tab" /> | 在面板中：在列表下方的按钮与列表之间切换。 |
 
 所有命令也都在命令面板（<Keys k="Ctrl+P" />）中：输入 `perforce` 即可。
 

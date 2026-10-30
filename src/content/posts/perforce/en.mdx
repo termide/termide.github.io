@@ -99,7 +99,7 @@ A file someone has locked is not checked out at all: the plugin says who holds t
 
 ## Review and submit
 
-When the work is done, press <Keys k="Alt+G" /> for the **Opened files** panel: in a project outside git, the key of git's status panel opens Perforce's. It lists everything you have opened in this workspace, grouped by changelist, each file coloured as the file manager colours it and followed by its action. It works as git's status panel does, with the same keys: move with the arrows, <Keys k="Enter" /> or <Keys k="F4" /> opens the file in the editor, <Keys k="F3" /> shows what changed, and <Keys k="Backspace" /> reverts it. On a changelist's heading, <Keys k="Enter" /> submits it: for the default changelist the plugin asks for a description, and a numbered changelist goes with its own. The status bar shows what the selected line offers, as buttons to click, and <Keys k="Space" /> or a right click lists it:
+When the work is done, press <Keys k="Alt+G" /> for the **Opened files** panel: in a project outside git, the key of git's status panel opens Perforce's. It lists everything you have opened in this workspace, grouped by changelist and laid out in a tree of folders, each file coloured as the file manager colours it and followed by its action. It works as git's status panel does, with the same keys: move with the arrows, <Keys k="Enter" /> or <Keys k="F4" /> opens the file in the editor, <Keys k="F3" /> shows what changed, and <Keys k="Backspace" /> reverts it; <Keys k="←" /> and <Keys k="→" /> fold and unfold a folder. On a changelist's heading, <Keys k="Enter" /> submits it: for the default changelist the plugin asks for a description, and a numbered changelist goes with its own. The status bar shows what the selected line offers, as buttons to click, and <Keys k="Space" /> or a right click lists it:
 
 <Shot src={actions} alt="The Opened files panel grouped by changelist, with a list over it for Source/Game/Health.cpp: Open (Enter / F4), Diff (F3), Revert (Backspace / Delete)" caption="<kbd>Space</kbd> lists what can be done with the file; the status bar shows the same." />
 
@@ -111,7 +111,7 @@ The diff opens in the panel git's diffs open in, with the same colours, line num
 
 After a submit, the panel shows what remains opened, and the submitted files lose their colour in the file manager.
 
-To get your colleagues' changes, use **Sync the workspace** in the panel's <code>[≡]</code> menu or **perforce: Sync the workspace** in the command palette (<Keys k="Ctrl+P" />). It runs `p4 sync` in a terminal panel, so you can watch the files arrive and answer p4 if it asks you something.
+To get your colleagues' changes, press **[Sync the workspace]** at the bottom of the panel (<Keys k="Tab" /> gets you there from the keyboard) or use **perforce: Sync the workspace** in the command palette (<Keys k="Ctrl+P" />). It runs `p4 sync` in a terminal panel, so you can watch the files arrive and answer p4 if it asks you something.
 
 ## All the keys
 
@@ -124,6 +124,8 @@ To get your colleagues' changes, use **Sync the workspace** in the panel's <code
 | <Keys k="Backspace" /> | In the panel: reverts the file, asking first. |
 | <Keys k="Space" /> | In the panel: lists what can be done with the line. |
 | <Keys k="Ctrl+R" /> | In the panel: refreshes it. |
+| <Keys k="←" /> / <Keys k="→" /> | In the panel: folds / unfolds a folder. |
+| <Keys k="Tab" /> | In the panel: goes to the buttons under the list and back. |
 
 Every command is also in the command palette (<Keys k="Ctrl+P" />): type `perforce`.
 
