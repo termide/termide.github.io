@@ -1,6 +1,7 @@
 // Termide Landing Page - Main JavaScript
 
 document.addEventListener('DOMContentLoaded', () => {
+    initColorScheme();
     initHeroPrompt();
     initHeroCarousel();
     initCopyButtons();
@@ -11,6 +12,22 @@ document.addEventListener('DOMContentLoaded', () => {
     initInstallTabs();
     initThemeFilters();
 });
+
+// Light/dark switcher in the menubar. The choice lives in localStorage; the inline script in
+// Base.astro's <head> applies it before the first paint.
+function initColorScheme() {
+    const button = document.querySelector('.theme-toggle');
+    if (!button) return;
+    const root = document.documentElement;
+    button.setAttribute('aria-checked', String(root.dataset.theme === 'light'));
+    button.addEventListener('click', () => {
+        const light = root.dataset.theme !== 'light';
+        if (light) root.dataset.theme = 'light';
+        else delete root.dataset.theme;
+        button.setAttribute('aria-checked', String(light));
+        try { localStorage.setItem('color-scheme', light ? 'light' : 'dark'); } catch (e) {}
+    });
+}
 
 // Hero prompt: `$` waits a beat, the name is typed like a command, then entered: the cursor goes.
 // The page renders the word empty (see Landing.astro); with reduced motion it stays as rendered.

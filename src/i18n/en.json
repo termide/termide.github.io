@@ -12,7 +12,8 @@
     "themes": "Themes",
     "install": "Install",
     "docs": "Docs",
-    "blog": "Blog"
+    "blog": "Blog",
+    "theme": "Light / dark theme"
   },
   "hero": {
     "headline": "One terminal workspace — on your laptop and on your servers.",

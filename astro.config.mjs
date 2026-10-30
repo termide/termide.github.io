@@ -12,7 +12,12 @@ export default defineConfig({
     routing: { prefixDefaultLocale: false },
   },
   markdown: {
-    shikiConfig: { theme: 'github-dark-dimmed', wrap: true },
+    // Dark inline, light as --shiki-light variables for the light scheme (public/css/style.css)
+    shikiConfig: {
+      themes: { dark: 'github-dark-dimmed', light: 'github-light' },
+      defaultColor: 'dark',
+      wrap: true,
+    },
   },
   integrations: [
     mdx(),
