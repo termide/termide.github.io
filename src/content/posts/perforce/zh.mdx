@@ -1,0 +1,133 @@
+---
+sourceHash: "63e2001ff65b"
+title: 在 termide 中使用 Perforce
+subtitle: 不离开编辑器就能检出、查看差异和提交，还能像 git 用户那样看到自己改了什么
+description: "termide 内置 Perforce 插件：状态栏显示文件状态，一个按键执行 p4 edit，编辑器边栏标出改动的行，文件管理器中打开的文件带颜色，还有一个用于 diff 和 submit 的面板。"
+date: 2026-10-30
+kind: guide
+version: 0.48.0
+tags: [plugins, editor]
+draft: true
+---
+
+import Keys from '../../../components/mdx/Keys.astro';
+import Shot from '../../../components/mdx/Shot.astro';
+import Video from '../../../components/mdx/Video.astro';
+import readonly from './perforce-readonly.png';
+import team from './perforce-team.png';
+import diff from './perforce-diff.png';
+import stop from './perforce-stop.png';
+import stopUnsaved from './perforce-stop-unsaved.png';
+
+你的团队把代码放在 Perforce 中。工作区里的每个文件都是只读的，直到你用 `p4 edit` 把它检出。只认识 git 的编辑器只能让你去猜：这个文件是最新版本吗？同事锁定它了吗？我到目前为止改了什么？结果编辑器旁边总开着一个终端，`p4` 命令全靠手敲。
+
+termide 内置了一个 Perforce 插件。它在状态栏显示每个文件的状态，按一个键就能检出文件，标出相对 depot 改动过的行，在文件管理器中为你打开的文件着色，还提供一个面板，让你检查并提交改动。无需下载任何东西：它只需要 `p4` 命令行客户端，而只要你在用 Perforce，就已经装好了。
+
+## 开启插件
+
+在你开启之前插件一直是关闭的，所以从没听说过 Perforce 的人不会受到打扰。按 <Keys k="Alt+P" /> 打开设置，进入 **插件** 标签页，选中 `perforce`，按 <Keys k="Enter" /> 直到显示 **处处开启**。也可以手动在全局 `config.toml` 中写入同样的内容：
+
+```toml
+[plugins.perforce]
+mode = "on"
+```
+
+如果你还有 git 项目，只想在 Perforce 工作区中使用插件，就选 **仅在项目开启它的地方**，在文件中就是 `mode = "opt-in"`：
+
+```toml
+[plugins.perforce]
+mode = "opt-in"
+```
+
+然后在工作区自己的 `.termide/config.toml` 中开启它：
+
+```toml
+[plugins.perforce]
+enabled = true
+```
+
+插件查找服务器、用户和工作区的方式与 shell 中的 `p4` 相同：通过 `P4PORT`、`P4USER` 和 `P4CLIENT`，或者工作区中的 `P4CONFIG` 文件。如果在该文件夹的终端里 `p4 info` 能正常工作，插件也能。
+
+## 一眼看清每个文件的状态
+
+在 termide 中打开工作区，再打开一个文件。文件管理器会为你在 Perforce 中打开的文件着色，包含它们的文件夹也一样；状态栏右侧则显示编辑器中文件的情况：
+
+<Shot src={readonly} alt="Perforce 工作区中的 termide：文件管理器中打开的文件带颜色，编辑器中的 Health.cpp 为只读，状态栏显示 p4: #2/2" caption="<code>Weapon.h</code> 已打开编辑，显示为彩色。<code>Health.cpp</code> 没有打开，所以编辑器显示 <code>Edit: No</code>，状态栏说明工作区中是第 2 版，共 2 版。" />
+
+状态栏可能显示：
+
+- `p4: #2/2`：你有最新版本，文件未打开；
+- `p4: #3/5 (out of date)`：你有第 3 版，depot 已有第 5 版，该 sync 了；
+- `p4: edit #5/5 · change 1234`：你已打开它进行编辑，在 changelist 1234 中；
+- `p4: #5/5 · also opened by alex@alex-ws` 或 `locked by alex@alex-ws`：别人持有这个文件；
+- `p4: not in depot`：一个还没有人添加的新文件。
+
+## 检出文件并编辑
+
+编辑器知道文件是只读的，不会让你输入。像对待任何文件一样开启编辑：按 <Keys k="Ctrl+E" />，或点击状态栏中的 `Edit: No`。插件会执行 `p4 edit`，而不是让你在一个无法保存的文件里打字：编辑器当场变为可编辑，状态栏显示 `edit`，文件在文件管理器中也有了颜色。现在开始输入：你新增或修改的行会在行号旁的边栏中标出，对比的是你检出的那个版本，就像 termide 在 git 中标出相对最近一次提交的改动一样。
+
+<Video src="/assets/blog/perforce/perforce-edit.mp4" poster="/assets/blog/perforce/perforce-edit.png" label="Ctrl+E 在 Perforce 中打开 Health.cpp 进行编辑；三行新代码在边栏中被标出，文件在文件管理器中变为彩色" caption="<kbd>Ctrl+E</kbd> 检出文件；你输入的内容都会对照 depot 中的版本标出。" />
+
+改完了，或者改主意了？再按一次 <Keys k="Ctrl+E" /> 退出编辑。插件会询问如何处理这个文件，选项取决于你的改动是否已保存。
+
+有未保存的改动时：
+
+<Shot src={stopUnsaved} alt="标题为 perforce · Stop editing Source/Game/Health.cpp: it has unsaved changes 的列表：Save, then stop editing；Discard the unsaved changes；Revert it in Perforce, losing its saved and unsaved changes" caption="有未保存的改动时：保存、丢弃或还原。" />
+
+- **Save, then stop editing** —— 第一项，<Keys k="Enter" /> 默认选中它：文件像按 <Keys k="Ctrl+S" /> 一样被保存，编辑器回到查看模式，文件仍保持检出，稍后再提交。
+- **Discard the unsaved changes** —— 丢弃未保存的改动，编辑器显示磁盘上的文件，文件仍保持检出。
+- **Revert it in Perforce** —— 执行 `p4 revert`：已保存和未保存的改动都会丢失，文件回到 depot 中的版本，并重新变为只读。
+- <Keys k="Esc" /> —— 什么都不做，继续编辑。
+
+全部已保存时没有需要保存的内容，只剩两项：
+
+<Shot src={stop} alt="标题为 perforce · Stop editing Source/Game/Health.cpp 的列表：Only stop editing: keep it opened for edit 和 Revert it in Perforce, losing its changes" caption="文件已保存：保留检出，或还原它。" />
+
+- **Only stop editing** —— 编辑器回到查看模式，文件仍保持检出。
+- **Revert it in Perforce** —— 执行 `p4 revert`，同上。
+- <Keys k="Esc" /> —— 继续编辑。
+
+depot 中还没有的新文件本身可写，无需开启编辑：从命令面板用 `perforce: Open the file for edit or add` 打开它进行添加。
+
+## 当同事也打开了这个文件
+
+Perforce 允许多人编辑同一个文件，但你会希望在动手之前就知道。打开文件时状态栏就会告诉你，而 <Keys k="Ctrl+E" /> 在检出之前也会先问一句：
+
+<Shot src={team} alt="对话框：Source/Game/Player.cpp is also opened by alex@alex-game. Open it for edit too? 状态栏显示 also opened by alex@alex-game。" caption="别人打开了这个文件时，插件会先询问。" />
+
+被别人锁定的文件根本不会被检出：插件会告诉你锁在谁手里，文件保持原样。
+
+## 检查并提交
+
+工作完成后，按 <Keys k="Alt+G" /> 打开 **Opened files** 面板：在 git 之外的项目中，git 状态面板的快捷键会打开 Perforce 的面板。它按 changelist 分组列出你在此工作区中打开的所有文件，并显示每个文件的操作。每个文件有三个链接：文件名在编辑器中打开它，**diff** 显示改了什么，**revert** 还原它。每个 changelist 都有一个 **Submit** 链接：默认 changelist 会让你填写描述，编号的 changelist 则带着自己的描述提交。**Refresh** 和 **Sync** 位于顶部。你可以点击链接，也可以把光标移到链接上按 <Keys k="Enter" />。
+
+<Video src="/assets/blog/perforce/perforce-opened.mp4" poster="/assets/blog/perforce/perforce-opened.png" label="Opened files 面板：Health.cpp 的 diff，然后带描述提交默认 changelist，面板和文件管理器随之更新" caption="查看 diff、填写描述、提交：面板和文件管理器显示剩下的内容。" />
+
+diff 会在单独的面板中打开。对于编辑器中的文件，命令面板中的 **perforce: Show the file's changes** 可以直接打开它：
+
+<Shot src={diff} alt="一个面板，显示 Source/Game/Health.cpp 相对 depot 的 unified diff" caption="相对 depot 的 diff，与 <code>p4 diff -du</code> 的输出一致。" />
+
+提交之后，面板显示仍然打开的文件，已提交的文件在文件管理器中不再着色。
+
+要获取同事的改动，在面板中点 **Sync**，或在命令面板（<Keys k="Ctrl+P" />）中选择 **perforce: Sync the workspace**。它会在终端面板中运行 `p4 sync`，你可以看着文件到达，p4 有问题要问时也能直接回答。
+
+## 全部按键
+
+| 按键 | 作用 |
+|---|---|
+| <Keys k="Ctrl+E" /> | 在只读文件中，打开它进行编辑。别人打开了它时先询问，被锁定时拒绝。在你已检出的文件中，关闭编辑：有未保存的改动时，可选择保存、丢弃或还原文件；全部已保存时，可选择仅停止编辑或还原。 |
+| <Keys k="Alt+G" /> | 在 git 之外的项目中打开 **Opened files** 面板；在 git 仓库中照常打开 git 状态。 |
+
+所有命令也都在命令面板（<Keys k="Ctrl+P" />）中：输入 `perforce` 即可。
+
+## 编程智能体也懂 Perforce
+
+插件为 termide 的编程智能体提供三个工具。`opened` 列出打开的文件，`diff` 显示文件的改动。两者都只读，所以智能体可以随意使用。`edit` 检出文件或添加新文件，所以智能体在运行它之前会先征求你的同意。没有这些工具，被要求修复 Perforce 工作区中某个 bug 的智能体会撞上只读文件，只能去猜原因。
+
+## 须知
+
+- **登录过期时**，插件会提议在终端面板中运行 `p4 login`；在那里登录之后，下一条命令就能正常工作。
+- **git 优先。** 如果一个文件夹既是 git 仓库又是 Perforce 工作区，文件管理器和边栏显示的是 git 的结果，Perforce 只在 git 没有说法的地方补充。
+- **独立运行。** 插件是一个独立进程，termide 只在开启了它的项目中启动它。它只向服务器询问你打开的文件和你已打开的文件，不会碰 depot 的其余部分。
+
+如果你在使用 Perforce 的日常工作中还缺少什么，请在 [讨论](https://github.com/termide/termide/discussions/65) 中告诉我们。设置说明见 [插件指南](https://github.com/termide/termide/blob/main/doc/zh/plugins.md)。
