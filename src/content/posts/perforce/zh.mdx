@@ -1,5 +1,5 @@
 ---
-sourceHash: "63e2001ff65b"
+sourceHash: "7942165a9616"
 title: 在 termide 中使用 Perforce
 subtitle: 不离开编辑器就能检出、查看差异和提交，还能像 git 用户那样看到自己改了什么
 description: "termide 内置 Perforce 插件：状态栏显示文件状态，一个按键执行 p4 edit，编辑器边栏标出改动的行，文件管理器中打开的文件带颜色，还有一个用于 diff 和 submit 的面板。"
@@ -17,6 +17,7 @@ import readonly from './perforce-readonly.png';
 import team from './perforce-team.png';
 import diff from './perforce-diff.png';
 import actions from './perforce-actions.png';
+import submit from './perforce-submit.png';
 import stop from './perforce-stop.png';
 import stopUnsaved from './perforce-stop-unsaved.png';
 
@@ -100,7 +101,7 @@ Perforce 允许多人编辑同一个文件，但你会希望在动手之前就�
 
 ## 检查并提交
 
-工作完成后，按 <Keys k="Alt+G" /> 打开 **Opened files** 面板：在 git 之外的项目中，git 状态面板的快捷键会打开 Perforce 的面板。它按 changelist 分组、以文件夹树的形式列出你在此工作区中打开的所有文件，每个文件的颜色与文件管理器中相同，后面是它的操作。它的用法和 git 状态面板一样，快捷键也相同：用方向键移动，<Keys k="Enter" /> 或 <Keys k="F4" /> 在编辑器中打开文件，<Keys k="F3" /> 显示改了什么，<Keys k="Backspace" /> 还原它；<Keys k="←" /> 和 <Keys k="→" /> 折叠和展开文件夹。在 changelist 的标题行上按 <Keys k="Enter" /> 会提交它：默认 changelist 会让你填写描述，编号的 changelist 则带着自己的描述提交。状态栏以可点击的按钮显示选中行可做的操作，<Keys k="Space" /> 或右键单击会列出它们：
+工作完成后，按 <Keys k="Alt+G" /> 打开 **Opened files** 面板：在 git 之外的项目中，git 状态面板的快捷键会打开 Perforce 的面板。它按 changelist 分组、以文件夹树的形式列出你在此工作区中打开的所有文件，每个文件的颜色与文件管理器中相同，后面是它的操作。它的用法和 git 状态面板一样，快捷键也相同：用方向键移动，<Keys k="Enter" /> 或 <Keys k="F4" /> 在编辑器中打开文件，<Keys k="F3" /> 显示改了什么，<Keys k="Backspace" /> 还原它；<Keys k="←" /> 和 <Keys k="→" /> 折叠和展开文件夹。在 changelist 的标题行上按 <Keys k="Enter" /> 会提交它：编号的 changelist 带着自己的描述提交，默认 changelist 则会打开一个对话框，见下文。状态栏以可点击的按钮显示选中行可做的操作，<Keys k="Space" /> 或右键单击会列出它们：
 
 <Shot src={actions} alt="按 changelist 分组的 Opened files 面板，上方是 Source/Game/Health.cpp 的列表：Open (Enter / F4)、Diff (F3)、Revert (Backspace / Delete)" caption="<kbd>Space</kbd> 列出可对文件执行的操作；状态栏显示的也是这些。" />
 
@@ -109,6 +110,10 @@ Perforce 允许多人编辑同一个文件，但你会希望在动手之前就�
 diff 在与 git diff 相同的面板中打开，颜色、行号和折叠都一样。对于编辑器中的文件，命令面板中的 **perforce: Show the file's changes** 可以直接打开它：
 
 <Shot src={diff} alt="diff 面板显示 Source/Game/Health.cpp 相对 depot 的改动：删除的行为红色，新增的行为绿色，左侧是新旧行号" caption="相对 depot 的 diff，画法与 termide 画 git 的 diff 相同。" />
+
+提交默认 changelist 时，会让你填写描述（行数不限）并选择要提交其中哪些文件，一开始全部勾选。<Keys k="Tab" /> 从描述移到文件列表，再移到按钮；<Keys k="Space" /> 取消勾选想暂不提交的文件；在列表中按 <Keys k="Enter" /> 即提交。未勾选的文件留在默认 changelist 中；其余文件由插件移到一个单独的编号 changelist 并提交：
+
+<Shot src={submit} alt="Opened files 面板上方的对话框，标题为 perforce · Submit the default changelist：两行描述、已勾选的文件 Source/Game/Health.cpp，以及 Submit 和 Cancel 按钮" caption="描述和要提交的文件，在同一个窗口中。" />
 
 提交之后，面板显示仍然打开的文件，已提交的文件在文件管理器中不再着色。
 

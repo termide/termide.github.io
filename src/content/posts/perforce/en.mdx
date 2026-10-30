@@ -16,6 +16,7 @@ import readonly from './perforce-readonly.png';
 import team from './perforce-team.png';
 import diff from './perforce-diff.png';
 import actions from './perforce-actions.png';
+import submit from './perforce-submit.png';
 import stop from './perforce-stop.png';
 import stopUnsaved from './perforce-stop-unsaved.png';
 
@@ -99,7 +100,7 @@ A file someone has locked is not checked out at all: the plugin says who holds t
 
 ## Review and submit
 
-When the work is done, press <Keys k="Alt+G" /> for the **Opened files** panel: in a project outside git, the key of git's status panel opens Perforce's. It lists everything you have opened in this workspace, grouped by changelist and laid out in a tree of folders, each file coloured as the file manager colours it and followed by its action. It works as git's status panel does, with the same keys: move with the arrows, <Keys k="Enter" /> or <Keys k="F4" /> opens the file in the editor, <Keys k="F3" /> shows what changed, and <Keys k="Backspace" /> reverts it; <Keys k="←" /> and <Keys k="→" /> fold and unfold a folder. On a changelist's heading, <Keys k="Enter" /> submits it: for the default changelist the plugin asks for a description, and a numbered changelist goes with its own. The status bar shows what the selected line offers, as buttons to click, and <Keys k="Space" /> or a right click lists it:
+When the work is done, press <Keys k="Alt+G" /> for the **Opened files** panel: in a project outside git, the key of git's status panel opens Perforce's. It lists everything you have opened in this workspace, grouped by changelist and laid out in a tree of folders, each file coloured as the file manager colours it and followed by its action. It works as git's status panel does, with the same keys: move with the arrows, <Keys k="Enter" /> or <Keys k="F4" /> opens the file in the editor, <Keys k="F3" /> shows what changed, and <Keys k="Backspace" /> reverts it; <Keys k="←" /> and <Keys k="→" /> fold and unfold a folder. On a changelist's heading, <Keys k="Enter" /> submits it: a numbered changelist goes with its own description, and the default one opens a dialog, shown below. The status bar shows what the selected line offers, as buttons to click, and <Keys k="Space" /> or a right click lists it:
 
 <Shot src={actions} alt="The Opened files panel grouped by changelist, with a list over it for Source/Game/Health.cpp: Open (Enter / F4), Diff (F3), Revert (Backspace / Delete)" caption="<kbd>Space</kbd> lists what can be done with the file; the status bar shows the same." />
 
@@ -108,6 +109,10 @@ When the work is done, press <Keys k="Alt+G" /> for the **Opened files** panel: 
 The diff opens in the panel git's diffs open in, with the same colours, line numbers and folding. For the file in the editor, **perforce: Show the file's changes** in the command palette opens it without the detour:
 
 <Shot src={diff} alt="The diff panel with Source/Game/Health.cpp against the depot: removed lines in red, added in green, the old and new line numbers on the left" caption="The diff against the depot, drawn as termide draws git's." />
+
+Submitting the default changelist asks for a description, of as many lines as you like, and which of its files to send, all of them ticked to start with. <Keys k="Tab" /> moves from the description to the files and on to the buttons, <Keys k="Space" /> unticks a file you want to keep back, and <Keys k="Enter" /> on the list submits. The files you leave unticked stay in the default changelist; the plugin moves the rest to a numbered changelist of their own and submits that:
+
+<Shot src={submit} alt="A dialog over the Opened files panel, headed perforce · Submit the default changelist: a description of two lines, the file Source/Game/Health.cpp ticked, and the buttons Submit and Cancel" caption="The description and the files to send, in one window." />
 
 After a submit, the panel shows what remains opened, and the submitted files lose their colour in the file manager.
 
