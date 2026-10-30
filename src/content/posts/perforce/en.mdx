@@ -15,6 +15,7 @@ import Video from '../../../components/mdx/Video.astro';
 import readonly from './perforce-readonly.png';
 import team from './perforce-team.png';
 import diff from './perforce-diff.png';
+import actions from './perforce-actions.png';
 import stop from './perforce-stop.png';
 import stopUnsaved from './perforce-stop-unsaved.png';
 
@@ -98,17 +99,19 @@ A file someone has locked is not checked out at all: the plugin says who holds t
 
 ## Review and submit
 
-When the work is done, press <Keys k="Alt+G" /> for the **Opened files** panel: in a project outside git, the key of git's status panel opens Perforce's. It lists everything you have opened in this workspace, grouped by changelist, with the action of each file. Every file has three links: its name opens it in the editor, **diff** shows what changed, and **revert** reverts it. Every changelist has a **Submit** link: for the default changelist the plugin asks for a description, and a numbered changelist goes with its own. **Refresh** and **Sync** are at the top. You can click the links, or move the cursor onto one and press <Keys k="Enter" />.
+When the work is done, press <Keys k="Alt+G" /> for the **Opened files** panel: in a project outside git, the key of git's status panel opens Perforce's. It lists everything you have opened in this workspace, grouped by changelist, each file coloured as the file manager colours it and followed by its action. It works as git's status panel does, with the same keys: move with the arrows, <Keys k="Enter" /> or <Keys k="F4" /> opens the file in the editor, <Keys k="F3" /> shows what changed, and <Keys k="Backspace" /> reverts it. On a changelist's heading, <Keys k="Enter" /> submits it: for the default changelist the plugin asks for a description, and a numbered changelist goes with its own. The status bar shows what the selected line offers, as buttons to click, and <Keys k="Space" /> or a right click lists it:
+
+<Shot src={actions} alt="The Opened files panel grouped by changelist, with a list over it for Source/Game/Health.cpp: Open (Enter / F4), Diff (F3), Revert (Backspace / Delete)" caption="<kbd>Space</kbd> lists what can be done with the file; the status bar shows the same." />
 
 <Video src="/assets/blog/perforce/perforce-opened.mp4" poster="/assets/blog/perforce/perforce-opened.png" label="The Opened files panel: a diff of Health.cpp, then the default changelist submitted with a description, and the panel and the file manager updated" caption="Diff, describe, submit: the panel and the file manager show what is left." />
 
-The diff opens in a panel of its own. For the file in the editor, **perforce: Show the file's changes** in the command palette opens it without the detour:
+The diff opens in the panel git's diffs open in, with the same colours, line numbers and folding. For the file in the editor, **perforce: Show the file's changes** in the command palette opens it without the detour:
 
-<Shot src={diff} alt="A diff panel with the unified diff of Source/Game/Health.cpp against the depot" caption="The diff against the depot, as <code>p4 diff -du</code> prints it." />
+<Shot src={diff} alt="The diff panel with Source/Game/Health.cpp against the depot: removed lines in red, added in green, the old and new line numbers on the left" caption="The diff against the depot, drawn as termide draws git's." />
 
 After a submit, the panel shows what remains opened, and the submitted files lose their colour in the file manager.
 
-To get your colleagues' changes, use **Sync** in the panel or **perforce: Sync the workspace** in the command palette (<Keys k="Ctrl+P" />). It runs `p4 sync` in a terminal panel, so you can watch the files arrive and answer p4 if it asks you something.
+To get your colleagues' changes, use **Sync the workspace** in the panel's <code>[≡]</code> menu or **perforce: Sync the workspace** in the command palette (<Keys k="Ctrl+P" />). It runs `p4 sync` in a terminal panel, so you can watch the files arrive and answer p4 if it asks you something.
 
 ## All the keys
 
@@ -116,6 +119,11 @@ To get your colleagues' changes, use **Sync** in the panel or **perforce: Sync t
 |---|---|
 | <Keys k="Ctrl+E" /> | In a read-only file, opens it for edit. Asks first when someone else has it open, and refuses when it is locked. In a file you have opened, turns editing off: with unsaved changes it offers to save them, discard them or revert the file; with everything saved, to only stop editing or revert. |
 | <Keys k="Alt+G" /> | Opens the **Opened files** panel in a project outside git; in a git repository, git's status as ever. |
+| <Keys k="Enter" /> | In the **Opened files** panel: opens the file, or submits the changelist on its heading. |
+| <Keys k="F3" /> / <Keys k="F4" /> | In the panel: shows the file's diff / opens it in the editor. |
+| <Keys k="Backspace" /> | In the panel: reverts the file, asking first. |
+| <Keys k="Space" /> | In the panel: lists what can be done with the line. |
+| <Keys k="Ctrl+R" /> | In the panel: refreshes it. |
 
 Every command is also in the command palette (<Keys k="Ctrl+P" />): type `perforce`.
 

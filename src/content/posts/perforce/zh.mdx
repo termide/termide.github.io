@@ -16,6 +16,7 @@ import Video from '../../../components/mdx/Video.astro';
 import readonly from './perforce-readonly.png';
 import team from './perforce-team.png';
 import diff from './perforce-diff.png';
+import actions from './perforce-actions.png';
 import stop from './perforce-stop.png';
 import stopUnsaved from './perforce-stop-unsaved.png';
 
@@ -99,17 +100,19 @@ Perforce 允许多人编辑同一个文件，但你会希望在动手之前就�
 
 ## 检查并提交
 
-工作完成后，按 <Keys k="Alt+G" /> 打开 **Opened files** 面板：在 git 之外的项目中，git 状态面板的快捷键会打开 Perforce 的面板。它按 changelist 分组列出你在此工作区中打开的所有文件，并显示每个文件的操作。每个文件有三个链接：文件名在编辑器中打开它，**diff** 显示改了什么，**revert** 还原它。每个 changelist 都有一个 **Submit** 链接：默认 changelist 会让你填写描述，编号的 changelist 则带着自己的描述提交。**Refresh** 和 **Sync** 位于顶部。你可以点击链接，也可以把光标移到链接上按 <Keys k="Enter" />。
+工作完成后，按 <Keys k="Alt+G" /> 打开 **Opened files** 面板：在 git 之外的项目中，git 状态面板的快捷键会打开 Perforce 的面板。它按 changelist 分组列出你在此工作区中打开的所有文件，每个文件的颜色与文件管理器中相同，后面是它的操作。它的用法和 git 状态面板一样，快捷键也相同：用方向键移动，<Keys k="Enter" /> 或 <Keys k="F4" /> 在编辑器中打开文件，<Keys k="F3" /> 显示改了什么，<Keys k="Backspace" /> 还原它。在 changelist 的标题行上按 <Keys k="Enter" /> 会提交它：默认 changelist 会让你填写描述，编号的 changelist 则带着自己的描述提交。状态栏以可点击的按钮显示选中行可做的操作，<Keys k="Space" /> 或右键单击会列出它们：
+
+<Shot src={actions} alt="按 changelist 分组的 Opened files 面板，上方是 Source/Game/Health.cpp 的列表：Open (Enter / F4)、Diff (F3)、Revert (Backspace / Delete)" caption="<kbd>Space</kbd> 列出可对文件执行的操作；状态栏显示的也是这些。" />
 
 <Video src="/assets/blog/perforce/perforce-opened.mp4" poster="/assets/blog/perforce/perforce-opened.png" label="Opened files 面板：Health.cpp 的 diff，然后带描述提交默认 changelist，面板和文件管理器随之更新" caption="查看 diff、填写描述、提交：面板和文件管理器显示剩下的内容。" />
 
-diff 会在单独的面板中打开。对于编辑器中的文件，命令面板中的 **perforce: Show the file's changes** 可以直接打开它：
+diff 在与 git diff 相同的面板中打开，颜色、行号和折叠都一样。对于编辑器中的文件，命令面板中的 **perforce: Show the file's changes** 可以直接打开它：
 
-<Shot src={diff} alt="一个面板，显示 Source/Game/Health.cpp 相对 depot 的 unified diff" caption="相对 depot 的 diff，与 <code>p4 diff -du</code> 的输出一致。" />
+<Shot src={diff} alt="diff 面板显示 Source/Game/Health.cpp 相对 depot 的改动：删除的行为红色，新增的行为绿色，左侧是新旧行号" caption="相对 depot 的 diff，画法与 termide 画 git 的 diff 相同。" />
 
 提交之后，面板显示仍然打开的文件，已提交的文件在文件管理器中不再着色。
 
-要获取同事的改动，在面板中点 **Sync**，或在命令面板（<Keys k="Ctrl+P" />）中选择 **perforce: Sync the workspace**。它会在终端面板中运行 `p4 sync`，你可以看着文件到达，p4 有问题要问时也能直接回答。
+要获取同事的改动，在面板的 <code>[≡]</code> 菜单中选择 **Sync the workspace**，或在命令面板（<Keys k="Ctrl+P" />）中选择 **perforce: Sync the workspace**。它会在终端面板中运行 `p4 sync`，你可以看着文件到达，p4 有问题要问时也能直接回答。
 
 ## 全部按键
 
@@ -117,6 +120,11 @@ diff 会在单独的面板中打开。对于编辑器中的文件，命令面板
 |---|---|
 | <Keys k="Ctrl+E" /> | 在只读文件中，打开它进行编辑。别人打开了它时先询问，被锁定时拒绝。在你已检出的文件中，关闭编辑：有未保存的改动时，可选择保存、丢弃或还原文件；全部已保存时，可选择仅停止编辑或还原。 |
 | <Keys k="Alt+G" /> | 在 git 之外的项目中打开 **Opened files** 面板；在 git 仓库中照常打开 git 状态。 |
+| <Keys k="Enter" /> | 在 **Opened files** 面板中：打开文件；在 changelist 标题行上则提交它。 |
+| <Keys k="F3" /> / <Keys k="F4" /> | 在面板中：显示文件的 diff / 在编辑器中打开它。 |
+| <Keys k="Backspace" /> | 在面板中：还原文件，先询问。 |
+| <Keys k="Space" /> | 在面板中：列出可对该行执行的操作。 |
+| <Keys k="Ctrl+R" /> | 在面板中：刷新它。 |
 
 所有命令也都在命令面板（<Keys k="Ctrl+P" />）中：输入 `perforce` 即可。
 
