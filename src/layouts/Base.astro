@@ -4,6 +4,8 @@
  * `path` is the page's locale-free path ("/", "/blog/", "/blog/<slug>/"): the language switcher
  * and the hreflang links point at the same page in the other languages.
  */
+import { createHash } from 'node:crypto';
+import { readFileSync } from 'node:fs';
 import data from '../data.json';
 import { absoluteUrl, docUrl, htmlLang, languageLabel, localePath, locales, ogLocale, plain, t, type Locale } from '../lib/i18n';
 
@@ -32,6 +34,9 @@ const blog = localePath(locale, '/blog/');
 const docs = docUrl(locale);
 // The feed is a file: trailingSlash must not reach it
 const rss = localePath(locale, '/rss.xml').replace(/\/$/, '');
+// A query that changes with the file, so a cached copy is not used with newer pages
+const versioned = (file: string) =>
+  `${file}?v=${createHash('sha256').update(readFileSync(`public${file}`)).digest('hex').slice(0, 10)}`;
 ---
 
 <!doctype html>
@@ -66,7 +71,7 @@ const rss = localePath(locale, '/rss.xml').replace(/\/$/, '');
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 
-    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href={versioned('/css/style.css')} />
     <slot name="head" />
   </head>
   <body class="scanlines">
@@ -140,6 +145,6 @@ const rss = localePath(locale, '/rss.xml').replace(/\/$/, '');
       <img class="lightbox-image" src="" alt="" />
     </div>
 
-    <script is:inline src="/js/main.js"></script>
+    <script is:inline src={versioned('/js/main.js')}></script>
   </body>
 </html>
