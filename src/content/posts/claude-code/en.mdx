@@ -1,0 +1,143 @@
+---
+title: Claude Code in the agent panel
+subtitle: Your Claude subscription drives termide's agent, with termide's tools, permission cards and editor around it
+description: "Set up a Claude Code connection in termide: the panel runs on your Claude sign-in, with termide's tools and permissions, the auto mode reviewer on Haiku, delegated tasks and a way past a used-up limit."
+date: 2026-11-05
+kind: guide
+version: 0.49.0
+tags: [agent]
+---
+
+import Keys from '../../../components/mdx/Keys.astro';
+import Shot from '../../../components/mdx/Shot.astro';
+import Video from '../../../components/mdx/Video.astro';
+import models from './claude-code-models.png';
+import permission from './claude-code-permission.png';
+import limit from './claude-code-limit.png';
+
+You already pay for Claude, and Claude Code is signed in on your machine. You could run `claude` in one of termide's terminal panels, and it would work, but it would live beside termide rather than inside it: its edits land on disk behind the back of the open editor, its permission prompts are its own, and its sessions are not termide's.
+
+termide's agent panel can run on Claude Code instead. The model and the subscription stay Claude's; the tools, the permission cards, the session list and the editor that follows every edit are termide's. This guide sets that up and shows what changes compared with Claude Code in a terminal.
+
+## What you need
+
+- **Node.js**, with `npx` on `PATH`. termide drives Claude Code through its adapter for the [Agent Client Protocol](https://agentclientprotocol.com), `@agentclientprotocol/claude-agent-acp`, and runs its latest release through `npx`. The copy in npm's cache starts without asking the registry; termide looks for a newer release once per run in the background, and a new one starts from the next panel on.
+- **Claude Code signed in.** termide does not run a sign-in itself. If you use Claude Code already, you are set; otherwise run `claude` in a terminal once and sign in with `/login`.
+
+No API key: the connection works on the sign-in Claude Code already has, your subscription or your own key.
+
+## Add the connection
+
+Open the settings with <Keys k="Alt+P" /> and go to **AI**. **Connections** comes first. Pick **+ Add connection**, and on the new connection's page set **Provider** to **Claude Code**. The page sheds the fields Claude Code does not need — base URL, API key, the fallback context window — and the connection is named `claude-code` until you name it.
+
+<Shot src={models} alt="Settings, AI › claude-code: Provider set to Claude Code, the Model dropdown open on Auto — the provider's choice, Default (recommended), Opus 5.5 (1M context), Sonnet 5, Haiku 4.5 and Enter a model id…" caption="The model dropdown lists the models of your sign-in, by the names Claude Code gives them." />
+
+The rest of the page:
+
+- **Model**: termide starts Claude Code for a moment and lists the models of your sign-in; a spinner turns in the field meanwhile. **Auto — the provider's choice** leaves the pick to Claude Code. The model you choose is only the one pre-selected: in the panel you can switch at any time.
+- **Context window limit**: leave it empty to keep the model's window, or make it smaller, 100000 at least. Claude Code gets it as `CLAUDE_CODE_AUTO_COMPACT_WINDOW` and compacts its conversation there, and the panel's `Context:` shows no more than it.
+- **Use by default**: tick it, and new agent panels start on Claude Code.
+
+The same in `config.toml`:
+
+```toml
+[ai]
+connection = "claude"        # the connection new sessions start on
+
+[ai.connections.claude]
+provider = "claude_code"     # nothing else is required
+# model = ""                 # empty: Claude Code's own default
+# context_window_limit = 400000
+```
+
+## The first request
+
+Open the agent panel with <Keys k="Alt+A" />. The banner shows the connection and the model; the **Model** chip in the status bar spins while Claude Code starts in the background, and a request sent meanwhile waits for it. Then the panel works as with any other connection: answers, reasoning and tool calls appear as blocks, an editor that has the file open follows each edit, and the run clock ticks until Claude Code is done.
+
+<Video src="/assets/blog/claude-code/claude-code.mp4" poster="/assets/blog/claude-code/claude-code.png" label="The agent panel on the Claude Code connection below report.py: a request, a read, an edit the editor shows on lines 14 and 15, a permission card for python3 -m unittest -q answered with 1, and the answer" caption="A request on Claude Code: the editor marks the lines it changes, and running the tests waits for your answer." />
+
+The chips switch what Claude Code offers, at any time, during a run too:
+
+- **Model**: the models of your sign-in, by the names Claude Code gives them.
+- **Reasoning**: its reasoning effort.
+- **Options**: the rest of its settings, fast mode for one.
+
+Claude Code's own `/` commands join the panel's `/` list and go to it as typed; its `/compact` stands in for termide's. A message typed while it works joins the turn it is running, as it would in Claude Code itself.
+
+## termide's tools, not Claude Code's
+
+The key thing to know: in the panel, Claude Code runs on **termide's system prompt and termide's tools**, served to it over a local MCP server, in place of its own. Its built-in tools and its own settings are left out: its rules, hooks, MCP servers, and the `CLAUDE.md` it would load itself. What that gives you:
+
+- **One set of permissions.** Every call goes through the same checks as termide's own agent: the permission mode, your rules, the answers you gave in the session, plan mode, and `/undo` checkpoints.
+- **The tool checklist.** The **Tools** chip lists termide's tools, your skills and the tools of termide's MCP servers; an unticked one is refused from the first request on.
+- **Your project instructions still count.** termide reads `AGENTS.md`, or `CLAUDE.md` where there is no `AGENTS.md`, from every directory between the root and the panel's working directory, and puts them into its own prompt.
+- **MCP servers, skills and hooks go in termide's config.** Set them up once there, and they work the same whichever connection a session runs on.
+
+The conversation loop stays Claude Code's: it compacts its context itself (the compaction shows in the panel with its summary), and a run cannot pause between steps.
+
+## Permissions and auto mode
+
+The **Permissions** chip (or <Keys k="Shift+Tab" />) sets the mode: `ask`, `plan`, `edit`, `configured`, `auto`, `all`. Anything the mode and the rules do not settle comes up as a card above the input: allow once, for the session, always in this project or everywhere, deny, deny and tell the agent why, or stop the run.
+
+<Shot src={permission} alt="A card above the input: Agent wants to run shell: python3 -m unittest -q, with Allow once, Allow for this session (python3 *), Deny, Deny for this session, Deny and tell the agent why, Stop the run" caption="Claude Code asks through termide's card, as termide's own agent does." />
+
+`auto` is for a run you trust in its direction but do not want to answer card after card. What would put a card up goes to a reviewer, a separate model call that decides whether the step serves what you asked for. On a Claude Code connection the reviewer runs **through your subscription, on Haiku** — the cheapest model the sign-in offers — with no API key; termide keeps the adapter running and asks each review in a short session of its own, without tools and without the agent's conversation, so the agent never judges itself. A review takes a second or more and counts against the subscription's limits. Another reviewer goes in **Auto mode reviewer** on the connection's page or in `[ai.auto_reviewer]`:
+
+```toml
+[ai.auto_reviewer]
+connection = "claude"   # empty: the session's own
+model = "haiku"         # a model of it, by id, name or a part of either
+```
+
+Claude Code's own auto mode is not used: termide's reviewer judges every call.
+
+## When the limit runs out
+
+A used-up subscription window ends the run with a card that knows when the limit resets, as Claude Code's adapter reports it:
+
+- **Wait until 15:00 and try again**,
+- **Try again now**,
+- **Stop** (<Keys k="Esc" />).
+
+<Shot src={limit} alt="The session limit error and a card Usage limit reached, Resets at 15:00 (in 4h17m), with Wait until 15:00 and try again, Try again now, Stop" caption="A used-up limit: the card counts down to the reset." />
+
+For an unattended `/goal` or `/loop`, set **On a limit or outage** (`on_limit` under `[ai]`) to `wait`, and the run waits for the reset and carries on by itself; `ask_else_wait` shows the card and waits if nobody answers. Closing termide meanwhile loses nothing: the reopened session brings the card back.
+
+If you do not want to wait, keep a second connection. The status bar's **Connection** chip stays clickable while the card is up: move the session to it, then answer **Try again now**. The conversation carries over, so the other model picks it up where Claude stopped:
+
+```toml
+[ai.connections.claude]
+provider = "claude_code"
+
+[ai.connections.api]
+provider = "anthropic_compatible"
+model = "claude-sonnet-5"
+api_key_env = "ANTHROPIC_API_KEY"   # or store the key in termide's vault from the settings
+```
+
+A local model through llama.cpp or Ollama does as well, with `provider = "openai_compatible"` and its `base_url`.
+
+## Delegated tasks
+
+When the agent hands a task over with `task`, the task runs as a copy of Claude Code: a session of its own, with the delegate's prompt and termide's tools, and its permission requests come to you in the delegating panel. To spend the subscription on the main conversation only, name another connection under **Subagents** on the Claude Code connection's page:
+
+```toml
+[ai.connections.claude]
+provider = "claude_code"
+subagents = "local"     # delegated tasks run on the local model
+```
+
+It works the other way too: a session on a local model can hand its tasks to Claude Code.
+
+## Sessions and spending
+
+The session log records Claude Code's own session, so a reopened panel continues it, with the whole conversation and its tool calls known to Claude Code. A session that moved to Claude Code from another connection starts with a record of the conversation so far.
+
+**Session info** (<Keys k="F3" /> or `/usage`) breaks the tokens down by who spent them — the conversation, delegates, the `auto` reviewer, and what Claude Code spends inside itself — and by model.
+
+## Good to know
+
+- **No sandbox.** termide's permissions are a control, not isolation: the commands you allow run with your rights.
+- **Codex and Gemini CLI connect the same way**: `provider = "codex"` or `"gemini_cli"`. They keep their own system prompts and tools, and termide maps its permission mode onto theirs: [Codex in the agent panel](/blog/codex/) and [Gemini CLI in the agent panel](/blog/gemini-cli/) go through them.
+- **Any OpenAI- or Anthropic-compatible API can be the second connection** to move a session to when the limit runs out: a hosted one such as OpenAI, [OpenRouter](/blog/openrouter/) or Anthropic, or a server of your own, with termide's own agent. [llama.cpp](/blog/llama-cpp/) and [omlx](/blog/omlx/) are two examples of the latter.
+- **The details** are in the [agent guide](https://github.com/termide/termide/blob/main/doc/en/agent.md#configuring-a-model).

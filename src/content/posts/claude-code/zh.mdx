@@ -1,0 +1,144 @@
+---
+sourceHash: "7853dd78f790"
+title: 代理面板中的 Claude Code
+subtitle: 由你的 Claude 订阅驱动 termide 的代理，周围是 termide 的工具、权限卡片和编辑器
+description: "在 termide 中配置 Claude Code 连接：面板使用你的 Claude 登录运行，配合 termide 的工具和权限、在 Haiku 上运行的 auto 模式审查、委派任务，以及用完额度后的应对办法。"
+date: 2026-11-05
+kind: guide
+version: 0.49.0
+tags: [agent]
+---
+
+import Keys from '../../../components/mdx/Keys.astro';
+import Shot from '../../../components/mdx/Shot.astro';
+import Video from '../../../components/mdx/Video.astro';
+import models from './claude-code-models.png';
+import permission from './claude-code-permission.png';
+import limit from './claude-code-limit.png';
+
+你已经在为 Claude 付费，机器上的 Claude Code 也已登录。你可以在 termide 的某个终端面板里运行 `claude`，它也能用，但它只是待在 termide 旁边，而不是融入其中：它的修改绕过打开的编辑器直接写入磁盘，权限提示是它自己的，会话也不属于 termide。
+
+termide 的代理面板可以改为在 Claude Code 上运行。模型和订阅仍归 Claude；工具、权限卡片、会话列表以及跟随每次修改的编辑器则归 termide。本指南介绍如何配置，以及与在终端中使用 Claude Code 相比有哪些不同。
+
+## 准备工作
+
+- **Node.js**，并且 `npx` 在 `PATH` 中。termide 通过 Claude Code 的 [Agent Client Protocol](https://agentclientprotocol.com) 适配器 `@agentclientprotocol/claude-agent-acp` 驱动它，并用 `npx` 运行其最新版本。npm 缓存中的副本启动时不访问注册表；termide 每次运行时在后台检查一次新版本，新版本从下一个面板起生效。
+- **已登录 Claude Code。** termide 本身不执行登录。如果你已经在用 Claude Code，就无需再做什么；否则在终端中运行一次 `claude`，并用 `/login` 登录。
+
+不需要 API 密钥：连接使用 Claude Code 已有的登录，即你的订阅或你自己的密钥。
+
+## 添加连接
+
+按 <Keys k="Alt+P" /> 打开设置，进入 **AI**。最上面是 **连接**。选择 **+ 添加连接**，在新连接的页面上把 **提供方** 设为 **Claude Code**。页面会去掉 Claude Code 用不到的字段——基础 URL、API 密钥、后备上下文窗口——在你命名之前，连接名为 `claude-code`。
+
+<Shot src={models} alt="设置，AI › claude-code：提供方为 Claude Code，模型下拉列表展开：自动（由提供方决定）、Default (recommended)、Opus 5.5 (1M context)、Sonnet 5、Haiku 4.5 和手动输入模型 id" caption="模型下拉列表列出你登录账号的模型，显示 Claude Code 给它们的名称。" />
+
+页面上的其余项：
+
+- **模型**：termide 会短暂启动 Claude Code，列出你登录账号可用的模型；加载期间字段中显示旋转指示。**自动（由提供方决定）** 把选择留给 Claude Code。这里选的只是预选模型：在面板中随时可以切换。
+- **上下文窗口上限**：留空则使用模型自身的窗口，也可以设得更小，但不少于 100000。Claude Code 以 `CLAUDE_CODE_AUTO_COMPACT_WINDOW` 接收它并在此处压缩对话，面板的 `Context:` 也不会超过它。
+- **默认使用**：勾选后，新的代理面板都会在 Claude Code 上启动。
+
+在 `config.toml` 中写法相同：
+
+```toml
+[ai]
+connection = "claude"        # 新会话使用的连接
+
+[ai.connections.claude]
+provider = "claude_code"     # 其他都不是必需的
+# model = ""                 # 留空：使用 Claude Code 自己的默认模型
+# context_window_limit = 400000
+```
+
+## 第一个请求
+
+按 <Keys k="Alt+A" /> 打开代理面板。横幅显示连接和模型；Claude Code 在后台启动期间，状态栏的 **模型** 标签会旋转，此时发送的请求会等待它就绪。之后面板的工作方式与其他连接相同：回答、推理和工具调用以块的形式出现，打开了该文件的编辑器会跟随每次修改，运行计时一直走到 Claude Code 完成为止。
+
+<Video src="/assets/blog/claude-code/claude-code.mp4" poster="/assets/blog/claude-code/claude-code.png" label="report.py 下方是连接 Claude Code 的代理面板：一个请求、一次读取、编辑器在第 14 和 15 行显示的修改、python3 -m unittest -q 的权限卡片（按 1 回答），然后是回答" caption="在 Claude Code 上发一个请求：编辑器标出改动的行，运行测试要等你回答。" />
+
+这些标签可以随时切换 Claude Code 提供的选项，运行期间也可以：
+
+- **模型**：你登录账号的模型，名称与 Claude Code 给出的一致。
+- **推理**：推理强度。
+- **选项**：它的其余设置，例如快速模式。
+
+Claude Code 自己的 `/` 命令会加入面板的 `/` 列表，按原样发送给它；它的 `/compact` 取代 termide 的同名命令。在它工作时输入的消息会并入正在进行的回合，与在 Claude Code 中一样。
+
+## 用的是 termide 的工具，而不是 Claude Code 的
+
+最需要了解的一点：在面板中，Claude Code 使用 **termide 的系统提示词和 termide 的工具**，由 termide 通过本地 MCP 服务器提供，取代它自己的。它的内置工具和它自己的设置都不会使用：它的规则、钩子、MCP 服务器，以及它原本会自行加载的 `CLAUDE.md`。这带来的是：
+
+- **统一的权限。** 每次调用都经过与 termide 自身代理相同的检查：权限模式、你的规则、你在本会话中给出的答复、计划模式，以及 `/undo` 检查点。
+- **工具清单。** **工具** 标签列出 termide 的工具、你的技能和 termide 的 MCP 服务器提供的工具；取消勾选的工具从第一个请求起就会被拒绝。
+- **项目说明依然有效。** termide 会从根目录到面板工作目录之间的每个目录读取 `AGENTS.md`（没有时读取 `CLAUDE.md`），并放入自己的提示词。
+- **MCP 服务器、技能和钩子在 termide 中配置。** 在那里配置一次，无论会话运行在哪个连接上，效果都一样。
+
+对话循环仍由 Claude Code 负责：它自己压缩上下文（压缩会连同摘要显示在面板中），运行也无法在步骤之间暂停。
+
+## 权限与 auto 模式
+
+**权限** 标签（或 <Keys k="Shift+Tab" />）设置模式：`ask`、`plan`、`edit`、`configured`、`auto`、`all`。模式和规则未能决定的操作会以卡片形式出现在输入框上方：允许一次、本会话允许、在本项目中始终允许或处处允许、拒绝、拒绝并告诉代理原因，或停止运行。
+
+<Shot src={permission} alt="输入框上方的卡片：代理想运行 python3 -m unittest -q，选项有允许一次、本会话允许、拒绝、本会话拒绝、拒绝并告诉代理原因、停止运行" caption="Claude Code 通过 termide 的卡片询问，和 termide 自己的代理一样。" />
+
+`auto` 适用于你信任其方向、但不想一张张回答卡片的运行。本该弹出卡片的操作会交给审查模型——一次独立的模型调用，判断这一步是否服务于你的请求。在 Claude Code 连接上，审查 **通过你的订阅在 Haiku 上运行**——即你登录账号中最便宜的模型——无需 API 密钥：termide 保持适配器运行，每次审查都在一个简短的独立会话中进行，不带工具，也不带代理的对话，因此代理永远不会评判自己。一次审查需要一秒或更久，并计入订阅额度。可以在连接页面的 **auto 模式审查模型** 或 `[ai.auto_reviewer]` 中指定其他审查者：
+
+```toml
+[ai.auto_reviewer]
+connection = "claude"   # 留空：会话自己的连接
+model = "haiku"         # 该连接的某个模型，按 id、名称或其中一部分匹配
+```
+
+Claude Code 自己的 auto 模式不会被使用：每次调用都由 termide 的审查模型判断。
+
+## 额度用完时
+
+订阅时间窗口的额度用完后，运行会结束并弹出卡片，卡片知道额度何时重置——这由 Claude Code 的适配器报告：
+
+- **等到 15:00 再重试**，
+- **立即重试**，
+- **停止**（<Keys k="Esc" />）。
+
+<Shot src={limit} alt="会话限额错误和卡片 Usage limit reached：15:00 重置（还有 4 小时 17 分），选项有等到 15:00 再重试、立即重试、停止" caption="限额用完：卡片倒数到重置时间。" />
+
+对于无人值守的 `/goal` 或 `/loop`，把 **遇到限额或中断时**（`[ai]` 下的 `on_limit`）设为 `wait`，运行会等到重置后自行继续；`ask_else_wait` 会显示卡片，无人回应时则等待。这期间关闭 termide 也不会丢失任何东西：重新打开的会话会把卡片带回来。
+
+如果不想等，可以准备第二个连接。卡片显示期间，状态栏的 **连接** 标签仍可点击：把会话切换过去，然后回答 **立即重试**。对话会一并带过去，另一个模型从 Claude 停下的地方接着做：
+
+```toml
+[ai.connections.claude]
+provider = "claude_code"
+
+[ai.connections.api]
+provider = "anthropic_compatible"
+model = "claude-sonnet-5"
+api_key_env = "ANTHROPIC_API_KEY"   # 或在设置中把密钥存入 termide 的密码库
+```
+
+通过 llama.cpp 或 Ollama 运行的本地模型同样可以：`provider = "openai_compatible"` 加上它的 `base_url`。
+
+## 委派任务
+
+当代理用 `task` 委派任务时，任务由一个 Claude Code 副本执行：它有自己的会话，使用委派代理的提示词和 termide 的工具，其权限请求会出现在发起委派的面板中由你处理。若只想把订阅用在主对话上，在 Claude Code 连接页面的 **子代理** 中指定另一个连接：
+
+```toml
+[ai.connections.claude]
+provider = "claude_code"
+subagents = "local"     # 委派任务由本地模型执行
+```
+
+反过来也行：在本地模型上运行的会话可以把任务委派给 Claude Code。
+
+## 会话与开销
+
+会话日志记录 Claude Code 自己的会话，因此重新打开的面板会继续该会话，Claude Code 了解完整的对话及其工具调用。从其他连接切换到 Claude Code 的会话，会先收到此前对话的记录。
+
+**会话信息**（<Keys k="F3" /> 或 `/usage`）按花费者——对话、委派任务、`auto` 审查，以及 Claude Code 内部的花费——和按模型细分 token 用量。
+
+## 须知
+
+- **没有沙箱。** termide 的权限是一种控制手段，而不是隔离：你允许的命令以你的权限运行。
+- **Codex 和 Gemini CLI 的接入方式相同**：`provider = "codex"` 或 `"gemini_cli"`。它们保留自己的系统提示词和工具，termide 把自己的权限模式映射到它们的模式上。参见 [代理面板中的 Codex](/zh/blog/codex/) 和 [代理面板中的 Gemini CLI](/zh/blog/gemini-cli/)。
+- **任何 OpenAI 或 Anthropic 兼容的 API 都可以作为备用连接**，额度用完时把会话切换过去：OpenAI、[OpenRouter](/zh/blog/openrouter/) 或 Anthropic 这样的托管 API，或你自己的服务器，使用 termide 自己的代理。[llama.cpp](/zh/blog/llama-cpp/) 和 [omlx](/zh/blog/omlx/) 是后者的两个例子。
+- **详细说明** 见 [代理指南](https://github.com/termide/termide/blob/main/doc/zh/agent.md#配置模型)。
