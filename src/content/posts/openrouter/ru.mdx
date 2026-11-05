@@ -1,0 +1,117 @@
+---
+sourceHash: "29e4aa2dbf38"
+title: OpenRouter в агентной панели
+subtitle: Один ключ к моделям всех крупных лабораторий работает в агенте termide — с окном модели, кэшированием промпта и моделью подешевле для побочной работы
+description: "Подключаем OpenRouter к termide: один API-ключ, модели шлюза по именам и с их окнами, кэширование промпта для Claude, модель подешевле для ревьюера и сабагентов и что происходит, когда кончаются кредиты."
+date: 2026-11-05
+kind: guide
+version: 0.49.0
+tags: [agent]
+---
+
+import Keys from '../../../components/mdx/Keys.astro';
+import Shot from '../../../components/mdx/Shot.astro';
+import Video from '../../../components/mdx/Video.astro';
+import connection from './openrouter-connection.png';
+import models from './openrouter-models.png';
+
+[OpenRouter](https://openrouter.ai) собирает за одним API сотни моделей: Anthropic, OpenAI, Google, DeepSeek, Qwen, Moonshot и других. У вас один ключ и один баланс предоплаченных кредитов, а платите вы за токены той модели, к которой обращаетесь. Его API — это OpenAI chat API, так что агентная панель termide работает на нём как на обычном OpenAI-совместимом подключении.
+
+Как и с локальным сервером, агент здесь собственный, termide: его системный промпт, его инструменты, его проверки разрешений и его сжатие контекста, а OpenRouter только отвечает на обращения к модели. OpenRouter добавляет выбор: модель можно сменить посреди сессии, а побочную работу отдать модели подешевле. Этот гайд показывает, как это настроить и что termide делает именно для OpenRouter.
+
+## Что понадобится
+
+- **Аккаунт OpenRouter с кредитами.** Модели, чей id заканчивается на `:free`, бесплатны, но разрешают лишь несколько запросов в минуту и в день, а агент тратит их быстро: каждый шаг задачи — это запрос.
+- **API-ключ**, созданный на странице [Keys](https://openrouter.ai/settings/keys) вашего аккаунта (`sk-or-v1-…`). У ключа может быть собственный лимит кредитов — он ограничивает, сколько termide может потратить с этим ключом.
+
+## Добавьте подключение
+
+Откройте настройки клавишей <Keys k="Alt+P" /> и перейдите в **AI**. Первым идёт список **Connections**. **+ Add connection** добавляет OpenAI-совместимое подключение; на его странице:
+
+- **Name**: например, `openrouter`. По этому имени вы потом на подключение переключаетесь.
+- **Base URL**: `https://openrouter.ai/api/v1`.
+- **API key**: **Enter a key…** сохраняет ключ в зашифрованном хранилище termide, а не в `config.toml`. Или положите ключ в переменную окружения и укажите её имя в **API key variable** — например, `OPENROUTER_API_KEY`.
+- **Identify as Termide**: появляется, как только base URL указывает на OpenRouter (см. [ниже](#identify-as-termide)).
+- **Model**: выберите модель (см. [Модель](#модель)).
+- **Context window (fallback)**: оставьте пустым. OpenRouter сообщает окно каждой модели, и termide берёт его оттуда.
+- **Use by default**: отметьте — и новые агентные панели будут открываться на OpenRouter.
+
+<Shot src={connection} alt="Настройки, AI › openrouter: Provider OpenAI compatible, Base URL https://openrouter.ai/api/v1, API key not stored, API key variable OPENROUTER_API_KEY, Identify as Termide отмечено, Model anthropic/claude-sonnet-5, Context window (fallback) по умолчанию 32000, Requests at once без ограничения, Subagents это подключение, Auto mode reviewer модель сессии, Use by default отмечено" caption="Подключение OpenRouter: адрес, ключ и модель; окно приходит от OpenRouter." />
+
+То же в `config.toml`:
+
+```toml
+[ai]
+connection = "openrouter"            # подключение, на котором начинаются новые сессии
+
+[ai.connections.openrouter]
+provider = "openai_compatible"
+base_url = "https://openrouter.ai/api/v1"
+model = "anthropic/claude-sonnet-5"
+api_key_env = "OPENROUTER_API_KEY"   # или уберите и храните ключ в хранилище
+# app_attribution = false            # не называть termide в запросах к OpenRouter
+```
+
+## Модель
+
+Выпадающий список **Model** показывает модели OpenRouter под именами, которые даёт им OpenRouter, — `Anthropic: Claude Sonnet 5` для `anthropic/claude-sonnet-5`, — а сохраняет id. Список длинный: пункт **Enter a model id…** в его конце принимает id, введённый вручную и скопированный со страницы модели на [openrouter.ai/models](https://openrouter.ai/models), — в том числе вариант `:free` или псевдоним вроде `~anthropic/claude-sonnet-latest`.
+
+<Shot src={models} alt="Выпадающий список Model под полем Model: Auto — the provider's choice, затем Anthropic: Claude Haiku 5, Anthropic: Claude Opus 5.5, Anthropic: Claude Sonnet 5 с отметкой сохранённой, DeepSeek: DeepSeek V4, Google: Gemini 3.5 Flash, Google: Gemini 4 Pro Preview, MoonshotAI: Kimi K3, OpenAI: GPT-6 Luna, OpenAI: GPT-6.1 Sol, Qwen: Qwen3.6 35B A3B, Qwen: Qwen3.8 Coder Plus" caption="Модели OpenRouter по именам; в конфиг попадает id." />
+
+Выберите модель, а не оставляйте **Auto**. Auto работает на первой модели, которую перечисляет сервер: на локальном сервере это загруженная модель, а на OpenRouter — просто первый id по алфавиту.
+
+Модель должна вызывать инструменты: агент читает, правит и запускает команды только через вызовы инструментов. Каталог OpenRouter фильтрует модели по поддерживаемым параметрам, `tools` среди них, и большинство современных моделей их принимает.
+
+Окно каждой модели приходит вместе со списком: при старте сессии и при смене модели termide берёт окно, которое OpenRouter сообщает для неё, — миллион токенов у одной модели, 200 000 у другой — и держит контекст в его пределах. Статусная строка показывает контекст относительно этого окна (`11k/1M`).
+
+## Первый запрос
+
+Откройте агентную панель клавишей <Keys k="Alt+A" /> и дайте ей задачу. Статусная строка называет подключение и модель, а чип **Reasoning** задаёт, насколько усердно модель думает: termide отправляет уровень как `reasoning_effort`, а OpenRouter передаёт его в том виде, который принимает провайдер модели. У моделей OpenAI свой набор уровней, у остальных — `low`, `medium` и `high`.
+
+<Video src="/assets/blog/openrouter/openrouter.mp4" poster="/assets/blog/openrouter/openrouter.png" label="Агентная панель на подключении OpenRouter под report.py: запрос, рассуждения модели, чтение, правка, которую редактор показывает в строках 14 и 15, карточка разрешения для python3 -m unittest -q с ответом 1 и итоговый ответ; в статусной строке Connection: openrouter, Model: anthropic/claude-sonnet-5, ↑11k ↻30k ↓460, 11k/1M" caption="Запрос через OpenRouter: шаги, правка в редакторе, карточка разрешения и ↻ — то, что пришло из кэша." />
+
+Чип **Model** в статусной строке меняет модель сессии: разговор продолжается, а следующий запрос уходит новой модели с её окном. Трудный шаг можно отдать модели посильнее, а потом вернуться.
+
+## Кэширование промпта
+
+Агент на каждом шаге отправляет весь разговор: системный промпт, схемы инструментов и всё сказанное и прочитанное до сих пор. Провайдер, который кэширует промпт, читает это из кэша за долю цены входа; провайдер без кэша на каждом шаге заново выставляет счёт за всё.
+
+OpenAI, DeepSeek, Gemini, Moonshot и большинство других кэшируют сами. Модели Anthropic кэшируют, только когда их просят, и termide просит: на подключении OpenRouter запрос к модели `anthropic/…` несёт `cache_control`, который кэширует разговор до последнего сообщения и сдвигается по мере его роста. Цифра `↻` в статусной строке — то, что пришло из кэша: в записи выше `↻30k` против `↑11k`, прочитанных заново.
+
+## Расходы
+
+termide считает токены, а не деньги: **Session info** (<Keys k="F3" /> или `/usage`) раскладывает их по тому, кто их потратил, — разговор, сабагенты, ревьюер `auto`, сводки — и по моделям. Сколько они стоят, видно на странице [Activity](https://openrouter.ai/activity) в OpenRouter, запрос за запросом.
+
+Счёт сдерживают две вещи. Сжатие держит контекст в пределах окна, а длинную сессию можно сжать и самому командой `/compact` задолго до этого. А побочную работу можно отдать модели подешевле: второе подключение к OpenRouter с небольшой моделью, указанное как ревьюер режима `auto` этого подключения и как подключение для его делегированных задач:
+
+```toml
+[ai.connections.openrouter]
+# …
+reviewer = "openrouter-small"        # ревьюер auto; по умолчанию [ai.auto_reviewer]
+subagents = "openrouter-small"       # делегированные задачи; по умолчанию это подключение
+
+[ai.connections.openrouter-small]
+provider = "openai_compatible"
+base_url = "https://openrouter.ai/api/v1"
+model = "anthropic/claude-haiku-5"
+api_key_env = "OPENROUTER_API_KEY"
+```
+
+Ревьюер оценивает каждое действие режима `auto`, которое не решают правила; чтение, правки внутри проекта и команды только для просмотра до него не доходят. **Permissions** (или <Keys k="Shift+Tab" />) переключает `ask`, `configured`, `plan`, `edit`, `all` и `auto`, как на любом подключении.
+
+## Identify as Termide
+
+OpenRouter ведёт разбивку использования по приложениям, которые отправили запросы, а запрос, не назвавший приложения, записывает в `Unknown`. **Identify as Termide** (`app_attribution`), включённый по умолчанию, называет termide в заголовках запроса, и OpenRouter записывает запросы на termide. Страница приложения в OpenRouter общая для всех, кто пользуется termide, и её статистика там публична. Выключите переключатель, чтобы остаться неназванным. termide показывает его только для OpenRouter — единственного известного ему сервиса с такой разбивкой.
+
+## Когда что-то идёт не так
+
+- **Кончились кредиты**: OpenRouter отклоняет запрос (402), и задача останавливается с карточкой: **Try again now**, **Keep trying until it goes through** или **Stop**. Пополните баланс и повторите — или, пока карточка открыта, переведите сессию на другое подключение чипом **Connection** в статусной строке и ответьте на карточку **Try again now**.
+- **Ограничение частоты**: поминутный лимит модели `:free` или перегруженный провайдер (429). Лимит, который снимется в течение минуты, termide переждёт и повторит сам; для более долгого карточка предложит подождать или повторять. Для `/goal` или `/loop` без присмотра поставьте **On a limit or outage** (`on_limit` в `[ai]`) в `wait`.
+- **Контекст заполнен**: termide сжимает сессию и пробует ещё раз сам; если не вышло и так, карточка предложит **Compact the context and try again**.
+
+## Полезно знать
+
+- **OpenRouter — лишь пример.** То же OpenAI-совместимое подключение работает с самим OpenAI (`https://api.openai.com/v1`), с Gemini API и другими шлюзами, а также с вашими собственными серверами вроде [llama.cpp](/ru/blog/llama-cpp/) и [omlx](/ru/blog/omlx/); `provider = "anthropic_compatible"` подключает Anthropic API.
+- **Подписки — другой путь.** [Claude Code](/ru/blog/claude-code/), [Codex](/ru/blog/codex/) и [Gemini CLI](/ru/blog/gemini-cli/) приносят своих агентов и работают по тарифному плану, а не на кредитах; подключение OpenRouter — хорошее второе, на которое можно перевести сессию, когда лимит плана кончился.
+- **termide песочницы не даёт.** Его разрешения — это контроль, а не изоляция: всё, что вы разрешили, выполняется с вашими правами.
+- **Подробности** — в [руководстве по агенту](https://github.com/termide/termide/blob/main/doc/ru/agent.md#настройка-модели).
