@@ -486,6 +486,7 @@
   "footer": {
     "docs": "文档",
     "releases": "版本发布",
+    "signing": "代码签名政策 (Code signing policy)",
     "issues": "问题反馈",
     "discussions": "讨论区",
     "news": "Telegram 频道",

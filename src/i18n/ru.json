@@ -486,6 +486,7 @@
   "footer": {
     "docs": "Документация",
     "releases": "Релизы",
+    "signing": "Политика подписи кода (Code signing policy)",
     "issues": "Задачи",
     "discussions": "Обсуждения",
     "news": "Новости в Telegram",

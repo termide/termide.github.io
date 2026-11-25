@@ -126,6 +126,7 @@ const versioned = (file: string) =>
             <a href={blog}>{t(locale, 'footer.blog')}</a>
             <a href={rss}>{t(locale, 'blog.rss')}</a>
             <a href={`${data.repo_url}/releases`} target="_blank" rel="noopener">{t(locale, 'footer.releases')}</a>
+            <a href={docUrl(locale, 'code-signing.md')} target="_blank" rel="noopener">{t(locale, 'footer.signing')}</a>
             <a href={`${data.repo_url}/issues`} target="_blank" rel="noopener">{t(locale, 'footer.issues')}</a>
             <a href={`${data.repo_url}/discussions`} target="_blank" rel="noopener">{t(locale, 'footer.discussions')}</a>
             <a href="https://t.me/termide_news" target="_blank" rel="noopener">{t(locale, 'footer.news')}</a>

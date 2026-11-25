@@ -486,6 +486,7 @@
   "footer": {
     "docs": "Documentation",
     "releases": "Releases",
+    "signing": "Code signing policy",
     "issues": "Issues",
     "discussions": "Discussions",
     "news": "Telegram news",
